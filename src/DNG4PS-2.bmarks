@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<BrowseTracker_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="AboutDialog.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="1037" topLine="2" />
+	</File>
+	<File name="DNG4PSApp.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="1035" topLine="0" />
+	</File>
+	<File name="DNG4PSMain.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="1036" topLine="2" />
+	</File>
+	<File name="FileList.cpp" open="1" top="0" tabpos="8">
+		<Cursor position="1034" topLine="0" />
+	</File>
+	<File name="FilesPathDialog.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="4720" topLine="83" />
+	</File>
+	<File name="Options.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="1033" topLine="0" />
+	</File>
+	<File name="Options.h" open="1" top="0" tabpos="4">
+		<Cursor position="483" topLine="25" />
+	</File>
+	<File name="OptionsDialog.cpp" open="0" top="0" tabpos="10">
+		<Cursor position="1819" topLine="33" />
+		<BrowseMarks positions="" />
+		<Book_Marks positions="" />
+	</File>
+	<File name="ProcessDialog.cpp" open="1" top="0" tabpos="11">
+		<Cursor position="1039" topLine="0" />
+	</File>
+	<File name="ProgramObjects.cpp" open="0" top="0" tabpos="12">
+		<Cursor position="1192" topLine="1" />
+		<BrowseMarks positions="" />
+		<Book_Marks positions="" />
+	</File>
+	<File name="Utils.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="6303" topLine="144" />
+		<BrowseMarks positions="3479" />
+		<Book_Marks positions="" />
+	</File>
+	<File name="Utils.h" open="1" top="0" tabpos="2">
+		<Cursor position="643" topLine="0" />
+	</File>
+	<File name="langs\de\dng4ps-2.po" open="0" top="0" tabpos="0">
+		<Cursor position="6468" topLine="266" />
+	</File>
+	<File name="langs\es\dng4ps-2.po" open="0" top="0" tabpos="0">
+		<Cursor position="4878" topLine="205" />
+	</File>
+	<File name="langs\fi\dng4ps-2.po" open="0" top="0" tabpos="0">
+		<Cursor position="442" topLine="237" />
+	</File>
+	<File name="langs\it\dng4ps-2.po" open="0" top="0" tabpos="0">
+		<Cursor position="6905" topLine="266" />
+	</File>
+	<File name="langs\nn\dng4ps-2.po" open="0" top="0" tabpos="0">
+		<Cursor position="4592" topLine="205" />
+	</File>
+	<File name="langs\ru\dng4ps-2.po" open="0" top="0" tabpos="0">
+		<Cursor position="8067" topLine="270" />
+	</File>
+	<File name="langs\zh\dng4ps-2.po" open="0" top="0" tabpos="0">
+		<Cursor position="4628" topLine="199" />
+	</File>
+</BrowseTracker_layout_file>

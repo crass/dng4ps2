@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="DNG4PS-2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/lin/Debug/dng4ps-2" prefix_auto="1" extension_auto="1" />
+				<Option object_output=".obj/lin/Debug/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<ExtraCommands>
+					<Add after="./build_langs.sh ./bin/lin/Debug" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/lin/Release/dng4ps-2" prefix_auto="1" extension_auto="1" />
+				<Option object_output=".obj/lin/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-march=i586" />
+					<Add option="-O3" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="./build_langs.sh ./bin/lin/Release" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="`wx-config --cflags`" />
+			<Add option="-pipe" />
+			<Add option="-Winvalid-pch" />
+			<Add option="-finput-charset=utf-8" />
+			<Add option="-Wno-attributes" />
+			<Add option="-fno-strict-aliasing" />
+			<Add option="-DWX_PRECOMP" />
+			<Add option="-DwxUSE_UNICODE" />
+			<Add option="-DqWinOS=0" />
+			<Add option="-DqMacOS=0" />
+			<Add option="-DqLinOS=1" />
+			<Add option="-DqDNGLittleEndian=1" />
+			<Add option="-DUNIX_ENV=1" />
+			<Add option="-DDISABLE_CALIBR" />
+			<Add directory="/usr/include/wx-2.8" />
+			<Add directory="/usr/lib/wx/include/gtk2-unicode-release-2.8" />
+			<Add directory="external_libs/dng_sdk" />
+			<Add directory="external_libs/xmp_sdk/include" />
+			<Add directory="external_libs/xmp_sdk/common" />
+			<Add directory="external_libs/xmp_sdk/XMPCore" />
+			<Add directory="external_libs/expat/include" />
+			<Add directory="external_libs/MD5" />
+			<Add directory="external_libs/libexif" />
+			<Add directory="external_libs/libexif/canon" />
+			<Add directory="external_libs/libexif/olympus" />
+			<Add directory="external_libs/libexif/pentax" />
+		</Compiler>
+		<Linker>
+			<Add option="`wx-config --libs`" />
+			<Add library="expat" />
+		</Linker>
+		<Unit filename="AboutDialog.cpp" />
+		<Unit filename="AboutDialog.h" />
+		<Unit filename="CamCalibrFrame.cpp" />
+		<Unit filename="CamCalibrFrame.h" />
+		<Unit filename="DNG4PSApp.cpp" />
+		<Unit filename="DNG4PSApp.h" />
+		<Unit filename="DNG4PSMain.cpp" />
+		<Unit filename="DNG4PSMain.h" />
+		<Unit filename="Exception.hpp" />
+		<Unit filename="FileList.cpp" />
+		<Unit filename="FileList.h" />
+		<Unit filename="FilesPathDialog.cpp" />
+		<Unit filename="FilesPathDialog.h" />
+		<Unit filename="NewFolderDialog.cpp" />
+		<Unit filename="NewFolderDialog.h" />
+		<Unit filename="Options.cpp" />
+		<Unit filename="Options.h" />
+		<Unit filename="OptionsDialog.cpp" />
+		<Unit filename="OptionsDialog.h" />
+		<Unit filename="ProcessDialog.cpp" />
+		<Unit filename="ProcessDialog.h" />
+		<Unit filename="ProgramObjects.cpp" />
+		<Unit filename="ProgramObjects.h" />
+		<Unit filename="ScanProgressWin.cpp" />
+		<Unit filename="ScanProgressWin.h" />
+		<Unit filename="Utils.cpp" />
+		<Unit filename="Utils.h" />
+		<Unit filename="changes_en.txt" />
+		<Unit filename="changes_ru.txt" />
+		<Unit filename="external_libs/MD5/MD5.cpp" />
+		<Unit filename="external_libs/MD5/MD5.h" />
+		<Unit filename="external_libs/dng_sdk/dng_1d_function.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_1d_function.h" />
+		<Unit filename="external_libs/dng_sdk/dng_1d_table.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_1d_table.h" />
+		<Unit filename="external_libs/dng_sdk/dng_abort_sniffer.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_abort_sniffer.h" />
+		<Unit filename="external_libs/dng_sdk/dng_area_task.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_area_task.h" />
+		<Unit filename="external_libs/dng_sdk/dng_assertions.h" />
+		<Unit filename="external_libs/dng_sdk/dng_auto_ptr.h" />
+		<Unit filename="external_libs/dng_sdk/dng_bottlenecks.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_bottlenecks.h" />
+		<Unit filename="external_libs/dng_sdk/dng_camera_profile.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_camera_profile.h" />
+		<Unit filename="external_libs/dng_sdk/dng_classes.h" />
+		<Unit filename="external_libs/dng_sdk/dng_color_space.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_color_space.h" />
+		<Unit filename="external_libs/dng_sdk/dng_color_spec.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_color_spec.h" />
+		<Unit filename="external_libs/dng_sdk/dng_date_time.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_date_time.h" />
+		<Unit filename="external_libs/dng_sdk/dng_errors.h" />
+		<Unit filename="external_libs/dng_sdk/dng_exceptions.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_exceptions.h" />
+		<Unit filename="external_libs/dng_sdk/dng_exif.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_exif.h" />
+		<Unit filename="external_libs/dng_sdk/dng_fast_module.h" />
+		<Unit filename="external_libs/dng_sdk/dng_file_stream.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_file_stream.h" />
+		<Unit filename="external_libs/dng_sdk/dng_filter_task.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_filter_task.h" />
+		<Unit filename="external_libs/dng_sdk/dng_fingerprint.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_fingerprint.h" />
+		<Unit filename="external_libs/dng_sdk/dng_flags.h" />
+		<Unit filename="external_libs/dng_sdk/dng_globals.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_globals.h" />
+		<Unit filename="external_libs/dng_sdk/dng_host.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_host.h" />
+		<Unit filename="external_libs/dng_sdk/dng_ifd.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_ifd.h" />
+		<Unit filename="external_libs/dng_sdk/dng_image.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_image.h" />
+		<Unit filename="external_libs/dng_sdk/dng_image_writer.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_image_writer.h" />
+		<Unit filename="external_libs/dng_sdk/dng_info.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_info.h" />
+		<Unit filename="external_libs/dng_sdk/dng_iptc.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_iptc.h" />
+		<Unit filename="external_libs/dng_sdk/dng_linearization_info.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_linearization_info.h" />
+		<Unit filename="external_libs/dng_sdk/dng_lossless_jpeg.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_lossless_jpeg.h" />
+		<Unit filename="external_libs/dng_sdk/dng_matrix.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_matrix.h" />
+		<Unit filename="external_libs/dng_sdk/dng_memory.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_memory.h" />
+		<Unit filename="external_libs/dng_sdk/dng_memory_stream.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_memory_stream.h" />
+		<Unit filename="external_libs/dng_sdk/dng_mosaic_info.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_mosaic_info.h" />
+		<Unit filename="external_libs/dng_sdk/dng_mutex.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_mutex.h" />
+		<Unit filename="external_libs/dng_sdk/dng_negative.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_negative.h" />
+		<Unit filename="external_libs/dng_sdk/dng_orientation.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_orientation.h" />
+		<Unit filename="external_libs/dng_sdk/dng_parse_utils.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_parse_utils.h" />
+		<Unit filename="external_libs/dng_sdk/dng_pixel_buffer.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_pixel_buffer.h" />
+		<Unit filename="external_libs/dng_sdk/dng_point.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_point.h" />
+		<Unit filename="external_libs/dng_sdk/dng_rational.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_rational.h" />
+		<Unit filename="external_libs/dng_sdk/dng_read_image.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_read_image.h" />
+		<Unit filename="external_libs/dng_sdk/dng_rect.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_rect.h" />
+		<Unit filename="external_libs/dng_sdk/dng_reference.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_reference.h" />
+		<Unit filename="external_libs/dng_sdk/dng_render.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_render.h" />
+		<Unit filename="external_libs/dng_sdk/dng_resample.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_resample.h" />
+		<Unit filename="external_libs/dng_sdk/dng_sdk_limits.h" />
+		<Unit filename="external_libs/dng_sdk/dng_shared.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_shared.h" />
+		<Unit filename="external_libs/dng_sdk/dng_simple_image.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_simple_image.h" />
+		<Unit filename="external_libs/dng_sdk/dng_spline.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_spline.h" />
+		<Unit filename="external_libs/dng_sdk/dng_stream.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_stream.h" />
+		<Unit filename="external_libs/dng_sdk/dng_string.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_string.h" />
+		<Unit filename="external_libs/dng_sdk/dng_string_list.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_string_list.h" />
+		<Unit filename="external_libs/dng_sdk/dng_tag_codes.h" />
+		<Unit filename="external_libs/dng_sdk/dng_tag_types.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_tag_types.h" />
+		<Unit filename="external_libs/dng_sdk/dng_tag_values.h" />
+		<Unit filename="external_libs/dng_sdk/dng_temperature.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_temperature.h" />
+		<Unit filename="external_libs/dng_sdk/dng_tile_iterator.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_tile_iterator.h" />
+		<Unit filename="external_libs/dng_sdk/dng_types.h" />
+		<Unit filename="external_libs/dng_sdk/dng_utils.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_utils.h" />
+		<Unit filename="external_libs/dng_sdk/dng_xmp.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_xmp.h" />
+		<Unit filename="external_libs/dng_sdk/dng_xmp_sdk.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_xmp_sdk.h" />
+		<Unit filename="external_libs/dng_sdk/dng_xy_coord.cpp" />
+		<Unit filename="external_libs/dng_sdk/dng_xy_coord.h" />
+		<Unit filename="external_libs/libexif/_stdint.h" />
+		<Unit filename="external_libs/libexif/canon/exif-mnote-data-canon.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/canon/exif-mnote-data-canon.h" />
+		<Unit filename="external_libs/libexif/canon/mnote-canon-entry.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/canon/mnote-canon-entry.h" />
+		<Unit filename="external_libs/libexif/canon/mnote-canon-tag.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/canon/mnote-canon-tag.h" />
+		<Unit filename="external_libs/libexif/config.h" />
+		<Unit filename="external_libs/libexif/exif-byte-order.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/exif-byte-order.h" />
+		<Unit filename="external_libs/libexif/exif-content.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/exif-content.h" />
+		<Unit filename="external_libs/libexif/exif-data-type.h" />
+		<Unit filename="external_libs/libexif/exif-data.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/exif-data.h" />
+		<Unit filename="external_libs/libexif/exif-entry.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/exif-entry.h" />
+		<Unit filename="external_libs/libexif/exif-format.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/exif-format.h" />
+		<Unit filename="external_libs/libexif/exif-ifd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/exif-ifd.h" />
+		<Unit filename="external_libs/libexif/exif-loader.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/exif-loader.h" />
+		<Unit filename="external_libs/libexif/exif-log.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/exif-log.h" />
+		<Unit filename="external_libs/libexif/exif-mem.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/exif-mem.h" />
+		<Unit filename="external_libs/libexif/exif-mnote-data-priv.h" />
+		<Unit filename="external_libs/libexif/exif-mnote-data.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/exif-mnote-data.h" />
+		<Unit filename="external_libs/libexif/exif-tag.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/exif-tag.h" />
+		<Unit filename="external_libs/libexif/exif-utils.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/exif-utils.h" />
+		<Unit filename="external_libs/libexif/i18n.h" />
+		<Unit filename="external_libs/libexif/olympus/exif-mnote-data-olympus.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/olympus/exif-mnote-data-olympus.h" />
+		<Unit filename="external_libs/libexif/olympus/mnote-olympus-entry.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/olympus/mnote-olympus-entry.h" />
+		<Unit filename="external_libs/libexif/olympus/mnote-olympus-tag.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/olympus/mnote-olympus-tag.h" />
+		<Unit filename="external_libs/libexif/pentax/exif-mnote-data-pentax.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/pentax/exif-mnote-data-pentax.h" />
+		<Unit filename="external_libs/libexif/pentax/mnote-pentax-entry.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/pentax/mnote-pentax-entry.h" />
+		<Unit filename="external_libs/libexif/pentax/mnote-pentax-tag.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="external_libs/libexif/pentax/mnote-pentax-tag.h" />
+		<Unit filename="external_libs/missed_files/stdint.h" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/ExpatAdapter.cpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/ExpatAdapter.hpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/ParseRDF.cpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/WXMPIterator.cpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/WXMPMeta.cpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/WXMPUtils.cpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/XMLParserAdapter.hpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/XMPCore_Impl.cpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/XMPCore_Impl.hpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/XMPIterator.cpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/XMPIterator.hpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/XMPMeta-GetSet.cpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/XMPMeta-Parse.cpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/XMPMeta-Serialize.cpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/XMPMeta.cpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/XMPMeta.hpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/XMPUtils-FileInfo.cpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/XMPUtils.cpp" />
+		<Unit filename="external_libs/xmp_sdk/XMPCore/XMPUtils.hpp" />
+		<Unit filename="external_libs/xmp_sdk/common/UnicodeConversions.cpp" />
+		<Unit filename="external_libs/xmp_sdk/common/UnicodeConversions.hpp" />
+		<Unit filename="external_libs/xmp_sdk/include/TXMPFiles.hpp" />
+		<Unit filename="external_libs/xmp_sdk/include/TXMPIterator.hpp" />
+		<Unit filename="external_libs/xmp_sdk/include/TXMPMeta.hpp" />
+		<Unit filename="external_libs/xmp_sdk/include/TXMPUtils.hpp" />
+		<Unit filename="external_libs/xmp_sdk/include/XMP.hpp" />
+		<Unit filename="external_libs/xmp_sdk/include/XMP_BuildInfo.h" />
+		<Unit filename="external_libs/xmp_sdk/include/XMP_Const.h" />
+		<Unit filename="external_libs/xmp_sdk/include/XMP_Environment.h" />
+		<Unit filename="external_libs/xmp_sdk/include/XMP_Version.h" />
+		<Unit filename="external_libs/xmp_sdk/include/client-glue/WXMPFiles.hpp" />
+		<Unit filename="external_libs/xmp_sdk/include/client-glue/WXMPIterator.hpp" />
+		<Unit filename="external_libs/xmp_sdk/include/client-glue/WXMPMeta.hpp" />
+		<Unit filename="external_libs/xmp_sdk/include/client-glue/WXMPUtils.hpp" />
+		<Unit filename="external_libs/xmp_sdk/include/client-glue/WXMP_Common.hpp" />
+		<Unit filename="license.txt" />
+		<Unit filename="pch.h">
+			<Option compile="1" />
+			<Option weight="0" />
+		</Unit>
+		<Unit filename="readme_en.txt" />
+		<Unit filename="readme_rus.txt" />
+		<Unit filename="wxsmith/AboutDialog.wxs" />
+		<Unit filename="wxsmith/CamCalibrFrame.wxs" />
+		<Unit filename="wxsmith/CameraDialog.wxs" />
+		<Unit filename="wxsmith/ColorCalibrDialog.wxs" />
+		<Unit filename="wxsmith/DNG4PSframe.wxs" />
+		<Unit filename="wxsmith/FilesPathDialog.wxs" />
+		<Unit filename="wxsmith/NewFolderDialog.wxs" />
+		<Unit filename="wxsmith/OptionsDialog.wxs" />
+		<Unit filename="wxsmith/ProcessDialog.wxs" />
+		<Unit filename="wxsmith/ScanProgressWin.wxs" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="DNG4PSApp.cpp" main="DNG4PSFrame" init_handlers="necessary" language="CPP" />
+				<resources>
+					<wxFrame wxs="wxsmith/DNG4PSframe.wxs" src="DNG4PSMain.cpp" hdr="DNG4PSMain.h" name="DNG4PSFrame" language="CPP" />
+					<wxDialog wxs="wxsmith/AboutDialog.wxs" src="AboutDialog.cpp" hdr="AboutDialog.h" name="AboutDialog" language="CPP" />
+					<wxDialog wxs="wxsmith/OptionsDialog.wxs" src="OptionsDialog.cpp" hdr="OptionsDialog.h" name="OptionsDialog" language="CPP" />
+					<wxDialog wxs="wxsmith/FilesPathDialog.wxs" src="FilesPathDialog.cpp" hdr="FilesPathDialog.h" name="FilesPathDialog" language="CPP" />
+					<wxDialog wxs="wxsmith/ProcessDialog.wxs" src="ProcessDialog.cpp" hdr="ProcessDialog.h" name="ProcessDialog" language="CPP" />
+					<wxDialog wxs="wxsmith/NewFolderDialog.wxs" src="NewFolderDialog.cpp" hdr="NewFolderDialog.h" name="NewFolderDialog" language="CPP" />
+					<wxDialog wxs="wxsmith/ScanProgressWin.wxs" src="ScanProgressWin.cpp" hdr="ScanProgressWin.h" name="ScanProgressWin" language="CPP" />
+					<wxDialog wxs="wxsmith/ColorCalibrDialog.wxs" src="ColorCalibrDialog.cpp" hdr="ColorCalibrDialog.h" name="ColorCalibrDialog" language="CPP" />
+					<wxFrame wxs="wxsmith/CamCalibrFrame.wxs" src="CamCalibrFrame.cpp" hdr="CamCalibrFrame.h" name="CamCalibrFrame" language="CPP" />
+				</resources>
+			</wxsmith>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

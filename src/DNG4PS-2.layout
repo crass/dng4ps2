@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="AboutDialog.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="5259" topLine="65" />
+	</File>
+	<File name="CamCalibrFrame.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="38814" topLine="778" />
+	</File>
+	<File name="CamCalibrFrame.h" open="0" top="0" tabpos="3">
+		<Cursor position="4861" topLine="150" />
+	</File>
+	<File name="CameraOpts.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="15060" topLine="348" />
+	</File>
+	<File name="CameraOpts.h" open="1" top="0" tabpos="3">
+		<Cursor position="332" topLine="0" />
+	</File>
+	<File name="DNG4PSApp.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="1720" topLine="32" />
+	</File>
+	<File name="DNG4PSApp.h" open="0" top="0" tabpos="0">
+		<Cursor position="182" topLine="0" />
+	</File>
+	<File name="DNG4PSMain.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="15877" topLine="353" />
+	</File>
+	<File name="DNG4PSMain.h" open="0" top="0" tabpos="0">
+		<Cursor position="1780" topLine="28" />
+	</File>
+	<File name="Exception.hpp" open="0" top="0" tabpos="3">
+		<Cursor position="104" topLine="0" />
+	</File>
+	<File name="FileList.cpp" open="0" top="0" tabpos="7">
+		<Cursor position="1294" topLine="18" />
+	</File>
+	<File name="FileList.h" open="0" top="0" tabpos="0">
+		<Cursor position="126" topLine="0" />
+	</File>
+	<File name="FilesPathDialog.cpp" open="0" top="0" tabpos="9">
+		<Cursor position="4583" topLine="94" />
+	</File>
+	<File name="Options.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="4432" topLine="57" />
+	</File>
+	<File name="Options.h" open="0" top="0" tabpos="7">
+		<Cursor position="559" topLine="3" />
+	</File>
+	<File name="OptionsDialog.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="52215" topLine="876" />
+	</File>
+	<File name="OptionsDialog.h" open="0" top="0" tabpos="7">
+		<Cursor position="4912" topLine="138" />
+	</File>
+	<File name="ProcessDialog.cpp" open="0" top="0" tabpos="10">
+		<Cursor position="188" topLine="0" />
+	</File>
+	<File name="ProgramObjects.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="1330" topLine="0" />
+	</File>
+	<File name="ProgramObjects.h" open="0" top="0" tabpos="0">
+		<Cursor position="313" topLine="0" />
+	</File>
+	<File name="Utils.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="38319" topLine="940" />
+	</File>
+	<File name="Utils.h" open="0" top="0" tabpos="7">
+		<Cursor position="466" topLine="0" />
+	</File>
+	<File name="changes_en.txt" open="0" top="0" tabpos="2">
+		<Cursor position="197" topLine="0" />
+	</File>
+	<File name="changes_ru.txt" open="0" top="0" tabpos="3">
+		<Cursor position="328" topLine="0" />
+	</File>
+	<File name="external_libs\dng_sdk\dng_rect.h" open="0" top="0" tabpos="0">
+		<Cursor position="1074" topLine="24" />
+	</File>
+	<File name="external_libs\dng_sdk\dng_tag_values.h" open="0" top="0" tabpos="0">
+		<Cursor position="2875" topLine="125" />
+	</File>
+	<File name="external_libs\libexif\exif-loader.h" open="0" top="0" tabpos="0">
+		<Cursor position="1119" topLine="12" />
+	</File>
+	<File name="langs\de.po" open="0" top="0" tabpos="8">
+		<Cursor position="5358" topLine="222" />
+	</File>
+	<File name="langs\en.po" open="0" top="0" tabpos="5">
+		<Cursor position="5266" topLine="224" />
+	</File>
+	<File name="langs\es.po" open="0" top="0" tabpos="9">
+		<Cursor position="5687" topLine="224" />
+	</File>
+	<File name="langs\fi.po" open="0" top="0" tabpos="10">
+		<Cursor position="5727" topLine="251" />
+	</File>
+	<File name="langs\it.po" open="0" top="0" tabpos="11">
+		<Cursor position="5684" topLine="222" />
+	</File>
+	<File name="langs\nn.po" open="0" top="0" tabpos="12">
+		<Cursor position="5288" topLine="224" />
+	</File>
+	<File name="langs\ru.po" open="0" top="0" tabpos="13">
+		<Cursor position="7447" topLine="214" />
+	</File>
+	<File name="langs\zh.po" open="0" top="0" tabpos="14">
+		<Cursor position="4978" topLine="213" />
+	</File>
+</CodeBlocks_layout_file>

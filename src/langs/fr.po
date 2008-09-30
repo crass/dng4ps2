@@ -1,0 +1,374 @@
+msgid ""
+msgstr ""
+"Last-Translator: Denis Artyomov\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+##############
+#            #
+#    MAIN    #
+#            #
+##############
+
+msgid  "btnCancel"
+msgstr "Annuler"
+
+msgid  "btnOk"
+msgstr "OK"
+
+msgid  "btnExit"
+msgstr "Fermer"
+
+msgid  "errorUnknown"
+msgstr "Erreur inconnue"
+
+msgid  "SelectDir"
+msgstr "Choix du dossier"
+
+msgid  "WrongCameraError"
+msgstr "APN inconnu"
+
+msgid  "btnNewFolder"
+msgstr "Créer un dossier..."
+
+msgid  "cant_create_dir"
+msgstr "Création d'un nouveau dossier impossible!"
+
+msgid  "btnNewFolderHint"
+msgstr " Cliquez pour créer un nouveau dossier. "
+
+msgid  "error"
+msgstr "Erreur"
+
+msgid  "ScanInProgress"
+msgstr "Scan in progress..."
+
+msgid  "Wait"
+msgstr "Patientez"
+
+msgid  "file_not_found"
+msgstr "Fichier non trouvé"
+
+msgid  "wrong_camera_type"
+msgstr "Pas de profil d'APN pour ce fichier"
+
+msgid  "cant_open_file"
+msgstr "Impossible d'ouvrir le fichier"
+
+msgid "cant_save_file"
+msgstr "Impossible d'enregistrer le fichier"
+
+msgid "raw_file_size_not_correspond"
+msgstr "La taille du fichier RAW (%1$d bytes) ne correspond pas à celle de l'APN '%2$s'"
+
+
+###################
+#                 #
+#    MAIN FORM    #
+#                 #
+###################
+
+
+msgid  "MainFormCaption"
+
+msgstr "DNG4PS-2"
+
+msgid "FileNumber"
+msgstr "#"
+
+msgid "FileName"
+msgstr "Fichier"
+
+msgid "FileSize"
+msgstr "Taille"
+
+
+msgid  "PathToRAWFiles"
+msgstr "Dossier source des fichiers RAW:"
+
+msgid  "PathToRAW_Hint"
+msgstr " Cliquez pour choisir le dossier source. "
+
+msgid  "RawFilesList"
+msgstr "Liste des fichiers RAW:"
+
+msgid  "RawFilesList_Hint"
+msgstr " Liste des fichiers RAW et autres informations. "
+
+msgid  "OutputDir"
+msgstr "Dossier de sortie des fichiers DNG:"
+
+msgid  "OutputDirButton_Hint"
+msgstr " Cliquez pour choisir le dossier de sortie. "
+
+msgid  "ActionsLabel"
+msgstr "Actions"
+
+msgid  "ButtonGo"
+msgstr "Convertir"
+msgid  "ButtonGo_Hint"
+msgstr " Cliquez pour démarrer la conversion. "
+
+msgid  "ButtonOptions"
+msgstr "Options..."
+
+msgid  "ButtonAbout"
+msgstr "A propos"
+
+msgid  "Stopped"
+msgstr "CONVERSION ARRETEE"
+
+msgid  "Finished"
+msgstr "CONVERSION TERMINEE"
+
+msgid  "ButtonRescan"
+msgstr "Rafraichir"
+msgid  "ButtonRescanHint"
+msgstr " Cliquez pour rafraichir la liste. "
+
+
+########################
+#                      #
+#    SETTING DIALOG    #
+#                      #
+########################
+
+msgid "pgMain"
+msgstr "Général"
+
+msgid "optsDialogCaption"
+msgstr "Options"
+
+msgid "optsMainLabel"
+msgstr "Options principales"
+
+msgid "optsIncludeSubfolders"
+msgstr "Inclure les sous-dossiers"
+msgid "optsIncludeSubfolders_Hint"
+msgstr " Cochez pour inclure les sous-dossiers \n du dossier source. "
+
+msgid "optsDontOverwrite"
+msgstr "Ne pas écraser les fichiers DNG"
+msgid "optsDontOverwrite_Hint"
+msgstr " Cochez pour ne pas écraser \n les fichiers DNG existants. "
+
+msgid "optsDngFormatLabel"
+msgstr "Fichiers DNG"
+
+msgid "optsCompressDng"
+msgstr "Compresser les fichiers DNG"
+msgid "optsCompressDng_Hint"
+msgstr " Cochez pour compresser les fichiers DNG \n sans perte de qualité. "
+
+msgid "optsAddMetadata"
+msgstr "Inclure les métadonnés du fichier Jpeg associé"
+msgid "optsAddMetadata_Hint"
+msgstr " Cochez pour inclure les métadonnées du fichier Jpeg associé. \n Fichier RAW et Jpeg associé doivent être dans le même dossier. "
+
+msgid "optsPreviewLabel"
+msgstr "Insérer une vignette:"
+msgid "optsPreviewNone"
+msgstr "Aucune"
+msgid "optsPreviewMedium"
+msgstr "Moyenne"
+msgid "optsPreviewBig"
+msgstr "Grande"
+msgid "optsPreview_Hint"
+msgstr " Insère une vignette Jpeg dans le fichier DNG \n pour une prévisualisation plus rapide. "
+
+msgid "optsRegulating"
+msgstr "Sous-dossiers:"
+msgid "optsRegulating_Hint"
+msgstr " Cochez pour classer les fichiers DNG \n dans des sous-dossiers par date. "
+
+msgid "optsDateFormat1"
+msgstr "AAAA-MM-JJ"
+msgid "optsDateFormat2"
+msgstr "JJ-MM-AAAA"
+msgid "optsDateFormat3"
+msgstr "AA-MM-JJ"
+msgid "optsDateFormat4"
+msgstr "JJ-MM-AA"
+msgid "optsDateFormat_Hint"
+msgstr " Format de date:\n\n AAAA	= Année à 4 chiffres (2005 par exemple) \n AA	= Année à 2 chiffres (05 par exemple) \n MM	= numéro du mois (2 chiffres) \n JJ	= jour du mois (2 chiffres) "
+
+msgid "optsArtistChk"
+msgstr "Artiste:"
+msgid "optsArtistChk_Hint"
+msgstr " Cochez pour inclure/remplacer le nom de l'artiste \n dans les métadonnées du fichier DNG. "
+msgid "optsArtist_Hint"
+msgstr " Entrez le nom de l'artiste dans ce champ. "
+
+msgid "optsCameraTypesLabel"
+msgstr "Types d'APN"
+
+msgid "optsMiscLabel"
+msgstr "Divers"
+
+msgid "optsLanguageLabel"
+msgstr "Langue du programme:"
+msgid "optsLanguage_Hint"
+msgstr " Choisissez la langue dans la liste déroulante. "
+
+# camera selection page
+msgid "lblGroupNotice"
+msgstr "Normalement, DNG4PS-2 trouve le type d'APN dans les métadonnées du fichier Jpeg associé au fichier RAW. Si vous n'utilisez pas les fichiers Jpeg associés, vous devez faire correspondre, ici, la résolution du fichier RAW avec le type d'APN qui les génère."
+
+# camera options page
+
+msgid "btnResetToDefaults"
+msgstr "Réinitialiser..."
+msgid "btnResetToDefaultsHint"
+msgstr "Cliquez pour annuler les modifications."
+msgid "dlgDefaultCameraText"
+msgstr "Annuler les modificatiions du profil de l'APN '%s'?"
+msgid "dlgDefaultCameraCap"
+msgstr "Annulation des modifications"
+
+msgid "pgCamOpts"
+msgstr "Profils d'APN"
+
+msgid "lblGeometry"
+msgstr "Géométrie"
+msgid "lblColorMatrix1"
+msgstr "Matrice couleur #1"
+msgid "lblColorMatrix2"
+msgstr "Matrice couleur #2"
+
+msgid "optsCamera"
+msgstr "APN:"
+msgid "btnNew"
+msgstr "Créer"
+msgid "btnDelete"
+msgstr "Supprimer..."
+msgid "btnCopy"
+msgstr "Copier..."
+msgid "lblCameraName"
+msgstr "Nom de l'APN:"
+msgid "lblRawSize"
+msgstr "Taille capteur:"
+msgid "lblFileSize"
+msgstr "Taille RAW:"
+msgid "lblJpegSize"
+msgstr "Taille Jpeg:"
+msgid "lblActiveX1Y1"
+msgstr "Zone active x1, y1:"
+msgid "lblActiveX2Y2"
+msgstr "Zone active x2, y2:"
+msgid "lblBlackWhileLevels"
+msgstr "Niveaux Noir-Blanc:"
+msgid "lblMosaicType"
+msgstr "Type mosaique:"
+msgid "lblMatrIll"
+msgstr "Source lumineuse:"
+msgid "lblMatr"
+msgstr "Matrice:"
+msgid "lblMatrixMult"
+msgstr "Multiplicateur:"
+
+msgid "btnCalibr"
+msgstr "Calculer matrice..."
+
+# Copy camera profile dialog
+msgid "dlgCopyCameraText"
+msgstr "Confirmer la copie du profil de l'APN '%s'?"
+msgid "dlgCopyCameraCap"
+msgstr "Copie du profil de l'APN"
+msgid "copyOfCameraProf"
+msgstr "Copie de %s"
+msgid "dlgDeleteCameraText"
+msgstr "Confirmer la suppression du profil de l'APN '%s'?"
+msgid "dlgDeleteCameraCap"
+msgstr "Suppression du profil"
+
+############################
+#                          #
+#    CONVERT LOG WINDOW    #
+#                          #
+############################
+
+msgid "procFormCaption"
+msgstr "Conversion en cours..."
+
+msgid "procLogLabel"
+msgstr "Rapport de conversion:"
+
+msgid "procExecPercent"
+msgstr "Convertis"
+
+msgid "procPass1"
+msgstr "Temps écoulé"
+
+msgid "procPass2"
+msgstr "sur"
+
+msgid "procPass_Hint"
+msgstr " Temps écoulé sur temps total de conversion."
+
+###########################
+#                         #
+#    "ABOUT..." WINDOW    #
+#                         #
+###########################
+
+msgid "aboutFormCaption"
+msgstr "A propos..."
+
+msgid "aboutMain"
+msgstr "DNG4PS-2 __VERSION__ est un outil gratuit pour la conversion des fichiers RAW des APN CANON PowerShot au format DNG.\n\nVous pouvez télécharger la dernière version et les sources ici : http://dng4ps2.chat.ru/"
+
+msgid "lblYouLikeProgram"
+msgstr "Vous aimez cet outil? Soyez généreux:"
+
+
+#############################
+#                           #
+#    "NEW FOLDER" DIALOG    #
+#                           #
+#############################
+
+msgid "newfolderCaption"
+msgstr "Creation d'un nouveau dossier"
+
+msgid "newfolderRootCap"
+msgstr "Dossier racine:"
+
+msgid "newfolderName"
+msgstr "Non:"
+
+msgid "newfolderDefaultName"
+msgstr "Nouveau dossier"
+
+
+#############################
+#                           #
+#    Calibration Dialog     #
+#                           #
+#############################
+
+msgid "btnClearAreas_hint"
+msgstr "Efface les marqueurs de zone"
+
+msgid "btnDelArea_hint"
+msgstr "Supprime la zone sélectionnée"
+
+msgid "chLogLevel_hint"
+msgstr "Choisit le niveau de détail du rapport"
+
+msgid "btnClearLog_hint"
+msgstr "Efface la progression et les résultats"
+
+msgid "rbMove_hint"
+msgstr "La zone selectionnée est déplacée selon les changements ci-dessous"
+
+msgid "rbResize_hint"
+msgstr "La zone selectionnée est redimensionnée selon les changements ci-dessous"
+
+msgid "cant_find_jpeg_file"
+msgstr "Le fichier Jpeg associé au fichier RAW n'a pas été trouvé"
+
+msgid "wrong_camera"
+msgstr "Le fichier RAW choisi ne correspond pas à l'APN '%s'!"
+
+msgid "dlgOpenRawError"
+msgstr "Erreur lors de l'ouverture du fichier RAW!"

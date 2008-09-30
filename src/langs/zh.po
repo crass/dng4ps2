@@ -1,0 +1,365 @@
+msgid ""
+msgstr ""
+"Last-Translator: Clippit\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+##############
+#            #
+#    MAIN    #
+#            #
+##############
+
+msgid  "btnCancel"
+msgstr "取消"
+
+msgid  "btnOk"
+msgstr "确定"
+
+msgid  "btnExit"
+msgstr "退出"
+
+msgid  "errorUnknown"
+msgstr "未知错误"
+
+msgid  "SelectDir"
+msgstr "选择目录"
+
+msgid  "WrongCameraError"
+msgstr "未知的相机"
+
+msgid  "btnNewFolder"
+msgstr "新建文件夹..."
+
+msgid  "cant_create_dir"
+msgstr "无法创建新文件夹！"
+
+msgid  "btnNewFolderHint"
+msgstr " 创建新的子文件夹 "
+
+msgid  "error"
+msgstr "错误"
+
+msgid  "ScanInProgress"
+msgstr "正在扫描中..."
+
+msgid  "Wait"
+msgstr "请等待"
+
+msgid  "file_not_found"
+msgstr "文件没有找到"
+
+msgid  "wrong_camera_type"
+msgstr "无法找到适用于该相机的配置文件"
+
+msgid  "cant_open_file"
+msgstr "无法打开文件"
+
+msgid "cant_save_file"
+msgstr "无法保存文件"
+
+msgid "raw_file_size_not_correspond"
+msgstr "RAW 文件大小 (%1$d 字节) 不符合 '%2$s' 相机的文件大小"
+
+###################
+#                 #
+#    MAIN FORM    #
+#                 #
+###################
+
+msgid  "MainFormCaption"
+msgstr "DNG4PS-2"
+
+msgid "FileNumber"
+msgstr "#"
+
+msgid "FileName"
+msgstr "文件名"
+
+msgid "FileSize"
+msgstr "大小"
+
+
+msgid  "PathToRAWFiles"
+msgstr "RAW 文件路径"
+
+msgid  "PathToRAW_Hint"
+msgstr " 选择 RAW 文件目录 "
+
+msgid  "RawFilesList"
+msgstr "RAW 文件列表："
+
+msgid  "RawFilesList_Hint"
+msgstr " RAW 文件列表和其他一些东西 "
+
+msgid  "OutputDir"
+msgstr "DNG 文件输出目录："
+
+msgid  "OutputDirButton_Hint"
+msgstr " 选择保存 DNG 文件的目录 "
+
+msgid  "ActionsLabel"
+msgstr "操作"
+
+msgid  "ButtonGo"
+msgstr "转换"
+msgid  "ButtonGo_Hint"
+msgstr " 开始 RAW 文件转换 "
+
+msgid  "ButtonOptions"
+msgstr "设置..."
+
+msgid  "ButtonAbout"
+msgstr "关于"
+
+msgid  "Stopped"
+msgstr "停止"
+
+msgid  "Finished"
+msgstr "完成"
+
+msgid  "ButtonRescan"
+msgstr "重新扫描"
+msgid  "ButtonRescanHint"
+msgstr " 刷新文件列表 "
+
+
+########################
+#                      #
+#    SETTING DIALOG    #
+#                      #
+########################
+
+msgid "pgMain"
+msgstr  "常规"
+
+msgid "optsDialogCaption"
+msgstr "设置"
+
+msgid "optsMainLabel"
+msgstr "主要设置"
+
+msgid "optsIncludeSubfolders"
+msgstr "包含子文件夹"
+msgid "optsIncludeSubfolders_Hint"
+msgstr " 在子文件夹中查找文件 "
+
+msgid "optsDontOverwrite"
+msgstr "不要覆盖 DNG 文件"
+msgid "optsDontOverwrite_Hint"
+msgstr " 不要覆盖已存在的 DNG 文件 "
+
+msgid "optsDngFormatLabel"
+msgstr "DNG 文件"
+
+msgid "optsCompressDng"
+msgstr "压缩 DNG 文件"
+msgid "optsCompressDng_Hint"
+msgstr " 对 DNG 文件 进行无损压缩 "
+
+msgid "optsAddMetadata"
+msgstr "从 JPEG 文件中添加元数据"
+msgid "optsAddMetadata_Hint"
+msgstr " 给 DNG 文件添加来自于 JPEG 文件的元数据。 \n JPEG 文件和 RAW 必须在同一个目录内 "
+
+msgid "optsPreviewLabel"
+msgstr "插入预览文件："
+msgid "optsPreviewNone"
+msgstr "无"
+msgid "optsPreviewMedium"
+msgstr "中等尺寸"
+msgid "optsPreviewBig"
+msgstr "全尺寸"
+msgid "optsPreview_Hint"
+msgstr " 在 DNG 文件中插入 JPEG 文件以便快速预览 "
+
+msgid "optsRegulating"
+msgstr "子文件夹："
+msgid "optsRegulating_Hint"
+msgstr " 根据 RAW 文件日期将 DNG 文件放入子文件夹 "
+
+msgid "optsDateFormat1"
+msgstr "YYYY-MM-DD"
+msgid "optsDateFormat2"
+msgstr "DD-MM-YYYY"
+msgid "optsDateFormat3"
+msgstr "YY-MM-DD"
+msgid "optsDateFormat4"
+msgstr "DD-MM-YY"
+msgid "optsDateFormat_Hint"
+msgstr " 日期格式 \n\n YYYY - 四位数年份 (比如 2008) \n YY - 两位数年份 (比如 08) \n MM - 月份 (两位) \n DD - 日子 (两位) "
+
+msgid "optsArtistChk"
+msgstr "艺术家："
+msgid "optsArtistChk_Hint"
+msgstr " 包含/替换 DNG 文件元数据中的艺术家名字 "
+msgid "optsArtist_Hint"
+msgstr " 艺术家名称 "
+
+msgid "optsCameraTypesLabel"
+msgstr "相机类型"
+
+msgid "optsMiscLabel"
+msgstr "杂项"
+
+msgid "optsLanguageLabel"
+msgstr "界面语言："
+msgid "optsLanguage_Hint"
+msgstr " 界面语言 "
+
+# camera selection page
+msgid "lblGroupNotice"
+msgstr "只有当你不使用JPEG文件来转换，\n你才必须选择恰当的相机型号"
+
+# camera options page
+msgid "pgCamOpts"
+msgstr "相机选项"
+
+msgid "lblGeometry"
+msgstr "Geometry"
+msgid "lblColorMatrix1"
+msgstr "颜色矩阵 #1"
+msgid "lblColorMatrix2"
+msgstr "颜色矩阵 #2"
+
+msgid "optsCamera"
+msgstr "相机:"
+msgid "btnNew"
+msgstr "新建"
+msgid "btnDelete"
+msgstr "删除..."
+msgid "btnCopy"
+msgstr "复制..."
+msgid "lblCameraName"
+msgstr "相机名称:"
+msgid "lblShortName"
+msgstr "Short name:"
+msgid "lblRawSize"
+msgstr "传感器大小:"
+msgid "lblFileSize"
+msgstr "RAW 文件大小:"
+msgid "lblJpegSize"
+msgstr "Jpeg 大小:"
+msgid "lblActiveX1Y1"
+msgstr "活动区域 x1, y1:"
+msgid "lblActiveX2Y2"
+msgstr "活动区域 x2, y2:"
+msgid "lblBlackWhileLevels"
+msgstr "黑白等级:"
+msgid "lblMosaicType"
+msgstr "马赛克类型:"
+msgid "lblMatrIll"
+msgstr "光源:"
+msgid "lblMatr"
+msgstr "矩阵:"
+msgid "lblMatrixMult"
+msgstr "乘数:"
+
+msgid "btnCalibr"
+msgstr "计算颜色矩阵..."
+
+# Copy camera profile dialog
+msgid "dlgCopyCameraText"
+msgstr "制作 '%s' 相机配置文件的一个副本？"
+msgid "dlgCopyCameraCap"
+msgstr "复制相机配置文件"
+msgid "copyOfCameraProf"
+msgstr "%s 副本"
+msgid "dlgDeleteCameraText"
+msgstr "删除 '%s' 相机配置文件？"
+msgid "dlgDeleteCameraCap"
+msgstr "删除相机配置文件"
+
+
+############################
+#                          #
+#    CONVERT LOG WINDOW    #
+#                          #
+############################
+
+msgid "procFormCaption"
+msgstr "正在转换中..."
+
+msgid "procLogLabel"
+msgstr "转换日志："
+
+msgid "procExecPercent"
+msgstr "已完成"
+
+msgid "procPass1"
+msgstr "时间"
+
+msgid "procPass2"
+msgstr "共"
+
+msgid "procPass_Hint"
+msgstr " 释去的时间和总时间 "
+
+###########################
+#                         #
+#    "ABOUT..." WINDOW    #
+#                         #
+###########################
+
+msgid "aboutFormCaption"
+msgstr "关于..."
+
+msgid "aboutMain"
+msgstr "DNG4PS-2 __VERSION__ 是一个用来将佳能A系列相机中的 RAW 文件转换成 DNG 格式的免费软件。\n你可以在 http://dng4ps2.chat.ru/ 下载到最新软件和源代码。\n\n（简体中文语言制作：大眼夹(Clippit)\n http://clippit.blogcn.com/）"
+
+msgid "lblYouLikeProgram"
+msgstr "喜欢这个软件？请捐款："
+
+
+#############################
+#                           #
+#    "NEW FOLDER" DIALOG    #
+#                           #
+#############################
+
+msgid "newfolderCaption"
+msgstr "创建新文件夹"
+
+msgid "newfolderRootCap"
+msgstr "上级文件夹："
+
+msgid "newfolderName"
+msgstr "名称："
+
+msgid "newfolderDefaultName"
+msgstr "新建文件夹"
+
+
+#############################
+#                           #
+#    Calibration Dialog     #
+#                           #
+#############################
+
+msgid "btnClearAreas_hint"
+msgstr "清除所有标记的区域"
+
+msgid "btnDelArea_hint"
+msgstr "删除当前选择的区域"
+
+msgid "chLogLevel_hint"
+msgstr "选择操作记录的详细程度"
+
+msgid "btnClearLog_hint"
+msgstr "清除进程和结果"
+
+msgid "rbMove_hint"
+msgstr "选择的区域将被下面的数值改变所移动"
+
+msgid "rbResize_hint"
+msgstr "选择的区域将被下面的数值改变所调整大小"
+
+msgid "cant_find_jpeg_file"
+msgstr "找不到和所选择的 RAW 文件相配的 JPEG 文件"
+
+msgid "wrong_camera"
+msgstr "选择的 RAW 对 '%s' 相机不合适！"
+
+msgid "dlgOpenRawError"
+msgstr "打开 RAW 文件时发生错误！"

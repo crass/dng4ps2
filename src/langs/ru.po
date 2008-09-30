@@ -1,0 +1,379 @@
+msgid ""
+msgstr ""
+"Last-Translator: Denis Artyomov\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+###############
+#             #
+#    ОБЩИЕ    #
+#             #
+###############
+
+msgid  "btnCancel"
+msgstr "Отменить"
+
+msgid  "btnOk"
+msgstr "OK"
+
+msgid  "btnExit"
+msgstr "Выйти"
+
+msgid  "errorUnknown"
+msgstr "Неизвестная ошибка"
+
+msgid  "SelectDir"
+msgstr "Выберите папку"
+
+msgid  "WrongCameraError"
+msgstr "Неизвестная камера"
+
+msgid  "btnNewFolder"
+msgstr "Новая папка..."
+
+msgid  "cant_create_dir"
+msgstr "Невозможно создать новую папку"
+
+msgid  "ScanInProgress"
+msgstr "Идёт сканирование..."
+
+msgid  "Wait"
+msgstr "Подождите"
+
+msgid  "file_not_found"
+msgstr "Файл не найден"
+
+msgid  "wrong_camera_type"
+msgstr "Невозможно определить тип камеры для этого файла"
+
+msgid  "cant_open_file"
+msgstr "Невозможно открыть файл"
+
+msgid "cant_save_file"
+msgstr "Невозможно сохранить файл"
+
+msgid "raw_file_size_not_correspond"
+msgstr "Размер RAW файла (%1$d байт) не соответвует размеру RAW файла для фотокамеры '%2$s'"
+
+
+######################
+#                    #
+#    ГЛАВНОЕ ОКНО    #
+#                    #
+######################
+
+msgid  "MainFormCaption"
+msgstr "DNG4PS-2"
+
+msgid "FileNumber"
+msgstr "№"
+
+msgid "FileName"
+msgstr "Имя файла"
+
+msgid "FileSize"
+msgstr "Размер"
+
+msgid  "PathToRAWFiles"
+msgstr "Путь к RAW файлам:"
+
+msgid  "PathToRAW_Hint"
+msgstr " Выбрать каталог с RAW-файлами "
+
+msgid  "RawFilesList"
+msgstr "RAW-файлы:"
+
+msgid  "RawFilesList_Hint"
+msgstr " Список RAW-файлов и их параметры "
+
+msgid  "OutputDir"
+msgstr "Каталог для DNG файлов:"
+
+msgid  "OutputDirButton_Hint"
+msgstr " Выбрать каталог для DNG файлов "
+
+msgid  "ActionsLabel"
+msgstr "Действия"
+
+msgid  "ButtonGo"
+msgstr "Преобразовать"
+msgid  "ButtonGo_Hint"
+msgstr " Запустить преобразование файлов "
+
+msgid  "ButtonOptions"
+msgstr "Настройки..."
+
+msgid  "ButtonAbout"
+msgstr "О программе"
+
+msgid  "Stopped"
+msgstr "ОСТАНОВЛЕНО"
+
+msgid  "Finished"
+msgstr "ЗАВЕРШЕНО"
+
+msgid  "Error"
+msgstr "Произошла ошибка"
+
+msgid  "btnNewFolderHint"
+msgstr " Создание нового каталога "
+
+msgid  "error"
+msgstr "Ошибка"
+
+msgid  "ButtonRescan"
+msgstr "Пересканировать"
+msgid  "ButtonRescanHint"
+msgstr " Обновить список файлов "
+
+
+#######################
+#                     #
+#    ОКНО НАСТРОЕК    #
+#                     #
+#######################
+
+msgid "pgMain"
+msgstr "Главные"
+
+msgid "optsDialogCaption"
+msgstr "Настройки программы"
+
+msgid "optsMainLabel"
+msgstr "Основные настройки"
+
+msgid "optsIncludeSubfolders"
+msgstr "Включать подкаталоги"
+msgid "optsIncludeSubfolders_Hint"
+msgstr " Производить поиск файлов также и в подкаталогах "
+
+msgid "optsDontOverwrite"
+msgstr "Не обрабатывать, если файл существует"
+msgid "optsDontOverwrite_Hint"
+msgstr " Не обрабатывать файл, если \n он уже был обработан до этого "
+
+msgid "optsDngFormatLabel"
+msgstr "DNG формат"
+
+msgid "optsCompressDng"
+msgstr "Сжимать DNG файлы"
+msgid "optsCompressDng_Hint"
+msgstr " Сжимать содержимое DNG файлов для экономии места. \n Качество картинки при этом ухудшаться не будет. "
+
+msgid "optsAddMetadata"
+msgstr "Добавить метаданные из jpeg файла"
+msgid "optsAddMetadata_Hint"
+msgstr " Добавить параметры съёмки из JPEG-файла. \n JPEG-файл должен находиться в том же каталоге, \n что и RAW-файл "
+
+msgid "optsPreviewLabel"
+msgstr "Превью:"
+msgid "optsPreviewNone"
+msgstr "Нет"
+msgid "optsPreviewMedium"
+msgstr "Средний размер"
+msgid "optsPreviewBig"
+msgstr "Большой размер"
+msgid "optsPreview_Hint"
+msgstr " Вставлять в DNG файл картинку для \n быстрого просмотра содержимого "
+
+msgid "optsRegulating"
+msgstr "Разбивка:"
+msgid "optsRegulating_Hint"
+msgstr " Разбивать DNG-файлы по каталогам \n в соотвествии с датой файла "
+
+msgid "optsDateFormat1"
+msgstr "ГГГГ-ММ-ДД"
+msgid "optsDateFormat2"
+msgstr "ДД-ММ-ГГГГ"
+msgid "optsDateFormat3"
+msgstr "ГГ-ММ-ДД"
+msgid "optsDateFormat4"
+msgstr "ДД-ММ-ГГ"
+msgid "optsDateFormat_Hint"
+msgstr " Формат даты для разбивки на каталоги \n\n ГГГГ - 4-значный год (например: 2005) \n ГГ - 2-значный год (например: 05) \n ММ - номер месяца (2 цифры) \n ДД - число месяца (2 цифры) "
+
+msgid "optsArtistChk"
+msgstr "Фотограф:"
+msgid "optsArtistChk_Hint"
+msgstr " Включить в метаданные имя фотографа "
+msgid "optsArtist_Hint"
+msgstr " Имя фотографа "
+
+msgid "optsCameraTypesLabel"
+msgstr "Типы фотокамер"
+
+msgid "optsMiscLabel"
+msgstr "Прочее"
+
+msgid "optsLanguageLabel"
+msgstr "Язык интерфейса:"
+msgid "optsLanguage_Hint"
+msgstr " Язык интерфейса программы \n После смены языка необходимо перезапустить программу "
+
+# camera selection page
+msgid "lblGroupNotice"
+msgstr "Вы должны выбрать нужный тип фотокамеры только если вы не используете Jpeg файлов при конвертации"
+
+# camera options page
+
+msgid "btnResetToDefaults"
+msgstr "По умолчанию..."
+msgid "btnResetToDefaultsHint"
+msgstr "Сбросить настройки профиля фотокамеры на значения по умолчанию"
+msgid "dlgDefaultCameraText"
+msgstr "Сбросить настройки профиля фотокамеры '%s' на значения по умолчанию?"
+msgid "dlgDefaultCameraCap"
+msgstr "Значения по умолчанию"
+
+msgid "pgCamOpts"
+msgstr "Настройки камеры"
+
+msgid "lblGeometry"
+msgstr "Геометрия"
+msgid "lblColorMatrix1"
+msgstr "Цвет. матрица №1"
+msgid "lblColorMatrix2"
+msgstr "Цвет. матрица №2"
+
+msgid "optsCamera"
+msgstr "Фотокамера:"
+msgid "btnNew"
+msgstr "Новая"
+msgid "btnDelete"
+msgstr "Удалить..."
+msgid "btnCopy"
+msgstr "Копировать..."
+msgid "lblCameraName"
+msgstr "Название камеры:"
+msgid "lblShortName"
+msgstr "Краткое название:"
+msgid "lblRawSize"
+msgstr "Размер матрицы:"
+msgid "lblFileSize"
+msgstr "Размер RAW-файла:"
+msgid "lblJpegSize"
+msgstr "Размер Jpeg-файла:"
+msgid "lblActiveX1Y1"
+msgstr "Актив. зона x1, y1:"
+msgid "lblActiveX2Y2"
+msgstr "Актив. зона x2, y2:"
+msgid "lblBlackWhileLevels"
+msgstr "Уровни Ч-Б:"
+msgid "lblMosaicType"
+msgstr "Патерн:"
+msgid "lblMatrIll"
+msgstr "Освещение:"
+msgid "lblMatr"
+msgstr "Значения:"
+msgid "lblMatrixMult"
+msgstr "Множитель:"
+
+msgid "btnCalibr"
+msgstr "Расчёт цвет. матрицы..."
+
+# Copy camera profile dialog
+msgid "dlgCopyCameraText"
+msgstr "Сделать копию профиля для '%s' фотокамеры?"
+msgid "dlgCopyCameraCap"
+msgstr "Копирование профиля фотокамеры"
+msgid "copyOfCameraProf"
+msgstr "Копия %s"
+msgid "dlgDeleteCameraText"
+msgstr "Удалить профиль для '%s' фотокамеры?"
+msgid "dlgDeleteCameraCap"
+msgstr "Удаление профиля"
+
+
+#########################
+#                       #
+#    ОКНО ВЫПОЛНЕНИЯ    #
+#                       #
+#########################
+
+msgid "procFormCaption"
+msgstr "Идёт преобразование..."
+
+msgid "procLogLabel"
+msgstr "Ход преобразования:"
+
+msgid "procExecPercent"
+msgstr "Выполнено"
+
+msgid "procPass1"
+msgstr "Прошло"
+
+msgid "procPass2"
+msgstr "из"
+
+msgid "procPass_Hint"
+msgstr "Сколько времени прошло и общее количество времени.\nОтображается в формате ЧАСЫ:МИНУТЫ:СЕКУНДЫ"
+
+
+############################
+#                          #
+#    ОКНО "О ПРОГРАММЕ"    #
+#                          #
+############################
+
+msgid "aboutFormCaption"
+msgstr "О программе..."
+
+msgid "aboutMain"
+msgstr "DNG4PS-2 __VERSION__ - это бесплатная программа для преобразования RAW-файлов с фотоаппаратов Canon со вскрытой прошивкой\n\nОбновлённую версию программы и исходные коды можно скачать по ссылке http://dng4ps2.chat.ru/"
+
+msgid "lblYouLikeProgram"
+msgstr "Нравится программа? Отблагодарите автора:"
+
+
+##############################
+#                            #
+#    ДИАЛОГ НОВЫЙ КАТАЛОГ    #
+#                            #
+##############################
+
+msgid "newfolderCaption"
+msgstr "Создание нового каталога"
+
+msgid "newfolderRootCap"
+msgstr "Корневой каталог:"
+
+msgid "newfolderName"
+msgstr "Имя нового каталога:"
+
+msgid "newfolderDefaultName"
+msgstr "Новая папка"
+
+
+#############################
+#                           #
+#    Calibration Dialog     #
+#                           #
+#############################
+
+msgid "btnClearAreas_hint"
+msgstr "Clear all marked areas"
+
+msgid "btnDelArea_hint"
+msgstr "Delete currently selected area"
+
+msgid "chLogLevel_hint"
+msgstr "Choose the level of detail to be logged"
+
+msgid "btnClearLog_hint"
+msgstr "Clear progress and results"
+
+msgid "rbMove_hint"
+msgstr "Selected area is moved by changes below"
+
+msgid "rbResize_hint"
+msgstr "Selected area is resized when by changes below"
+
+msgid "cant_find_jpeg_file"
+msgstr "Не могу найти Jpeg файл для выбранного RAW файла"
+
+msgid "wrong_camera"
+msgstr "Выбранный RAW файл не подходит для фотокамеры '%s'!"
+
+msgid "dlgOpenRawError"
+msgstr "Ошибка во воремя открытия RAW-файла!"

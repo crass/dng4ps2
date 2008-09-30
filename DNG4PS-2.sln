@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DNG4PS-2", "src\DNG4PS-2.vcproj", "{18ED6DE0-C2AC-48C5-B317-F7B16F896B21}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18ED6DE0-C2AC-48C5-B317-F7B16F896B21}.Debug|Win32.ActiveCfg = Debug|Win32
+		{18ED6DE0-C2AC-48C5-B317-F7B16F896B21}.Debug|Win32.Build.0 = Debug|Win32
+		{18ED6DE0-C2AC-48C5-B317-F7B16F896B21}.Release|Win32.ActiveCfg = Release|Win32
+		{18ED6DE0-C2AC-48C5-B317-F7B16F896B21}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

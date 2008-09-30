@@ -1,0 +1,401 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: error 0.0\n"
+"POT-Creation-Date: 2001-08-17 13:03-0700\n"
+"PO-Revision-Date: 2008-06-20 18:18+0200\n"
+"Last-Translator: \n"
+"Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+##############
+#            #
+#    MAIN    #
+# "Content-Type: text/plain; charset=utf-8\n"           #
+##############
+msgid "btnCancel"
+msgstr "Peruuta"
+
+msgid "btnOk"
+msgstr "OK"
+
+msgid "btnExit"
+msgstr "Lopeta"
+
+msgid "errorUnknown"
+msgstr "Tuntematon virhe"
+
+msgid "SelectDir"
+msgstr "Valitse hakemisto"
+
+msgid "WrongCameraError"
+msgstr "Tuntematon kamera"
+
+msgid "btnNewFolder"
+msgstr "Uusi kansio..."
+
+msgid "cant_create_dir"
+msgstr "Uuden kansion luonti epäonnistui"
+
+msgid "btnNewFolderHint"
+msgstr "Luo uusi kansio"
+
+msgid "error"
+msgstr "Virhe"
+
+msgid "ScanInProgress"
+msgstr "Hakua suoritetaan..."
+
+msgid "Wait"
+msgstr "Odota"
+
+msgid "file_not_found"
+msgstr "Tiedostoa ei löydy"
+
+msgid "wrong_camera_type"
+msgstr "Tälle tiedostolle ei löydy kameran profiilia"
+
+msgid "cant_open_file"
+msgstr "Tiedoston avaus ei onnistu"
+
+msgid "cant_save_file"
+msgstr "Tiedoston tallennus ei onnistu"
+
+msgid "raw_file_size_not_correspond"
+msgstr "Size of RAW file (%1$d bytes) doesn't correspond of size for '%2$s' camera"
+
+
+###################
+#                 #
+#    MAIN FORM    #
+#                 #
+###################
+msgid "MainFormCaption"
+msgstr "DNG4PS-2"
+
+msgid "FileNumber"
+msgstr "#"
+
+msgid "FileName"
+msgstr "Tiedostonimi"
+
+msgid "FileSize"
+msgstr "Koko"
+
+msgid "PathToRAWFiles"
+msgstr "RAW-tiedostojen polku:"
+
+msgid "PathToRAW_Hint"
+msgstr " Valitse RAW-tiedostojen hakemisto"
+
+msgid "RawFilesList"
+msgstr "RAW-tiedostoluettelo:"
+
+msgid "RawFilesList_Hint"
+msgstr " RAW-tiedostoluettelo ja muuta"
+
+msgid "OutputDir"
+msgstr "DNG-tiedostojen polku:"
+
+msgid "OutputDirButton_Hint"
+msgstr " Valitse DNG-tiedostojen hakemisto"
+
+msgid "ActionsLabel"
+msgstr "Toiminnat"
+
+msgid "ButtonGo"
+msgstr "Muunna"
+
+msgid "ButtonGo_Hint"
+msgstr " Aloita RAW-tiedostojen muunnos"
+
+msgid "ButtonOptions"
+msgstr "Asetukset..."
+
+msgid "ButtonAbout"
+msgstr "Tietoja"
+
+msgid "Stopped"
+msgstr "PYSÄYTETTY"
+
+msgid "Finished"
+msgstr "VALMIS"
+
+msgid "ButtonRescan"
+msgstr "Hae"
+
+msgid "ButtonRescanHint"
+msgstr "Päivitä tiedostoluettelo"
+
+
+########################
+#                      #
+#    SETTING DIALOG    #
+#                      #
+########################
+
+msgid "pgMain"
+msgstr  "Common"
+
+msgid "optsDialogCaption"
+msgstr "Asetukset"
+
+msgid "optsMainLabel"
+msgstr "Pääasetukset"
+
+msgid "optsIncludeSubfolders"
+msgstr "Sisällytä alihakemistot"
+
+msgid "optsIncludeSubfolders_Hint"
+msgstr "Etsi tiedostoja alihakemistoista"
+
+msgid "optsDontOverwrite"
+msgstr "Älä ylikirjoita DNG-tiedostoja"
+
+msgid "optsDontOverwrite_Hint"
+msgstr "Älä ylikirjoita nykyisiä DNG-tiedostoja "
+
+msgid "optsDngFormatLabel"
+msgstr "DNG-tiedostot"
+
+msgid "optsCompressDng"
+msgstr "Pakkaa DNG-tiedostoja"
+
+msgid "optsCompressDng_Hint"
+msgstr " Pakkaa DNG-tiedostoja ilman laadun heikkenemistä"
+
+msgid "optsAddMetadata"
+msgstr "Lisää metadata JPEG-tiedostosta"
+
+msgid "optsAddMetadata_Hint"
+msgstr ""
+"Lisää metadata JPEG-tiedostosta DNG tiedostoon. \n"
+" JPEG-tiedosto ja RAW-tiedosto täytyy olla samassa kansiossa"
+
+msgid "optsPreviewLabel"
+msgstr "Esikatselu:"
+
+msgid "optsPreviewNone"
+msgstr "Ei mitään"
+
+msgid "optsPreviewMedium"
+msgstr "Keskikokoinen"
+
+msgid "optsPreviewBig"
+msgstr "Täysikokoinen"
+
+msgid "optsPreview_Hint"
+msgstr "Lisää JPEG-kuvan esikatselu DNG-tiedostoon, jolloin saadaan nopeampi esikatselu "
+
+msgid "optsRegulating"
+msgstr "Alihakemisto:"
+
+msgid "optsRegulating_Hint"
+msgstr " Laita DNG-tiedosto alihakemistoon RAW-tiedoston päiväyksen mukaisesti "
+
+msgid "optsDateFormat1"
+msgstr "YYYY-MM-DD"
+
+msgid "optsDateFormat2"
+msgstr "DD-MM-YYYY"
+
+msgid "optsDateFormat3"
+msgstr "YY-MM-DD"
+
+msgid "optsDateFormat4"
+msgstr "DD-MM-YY"
+
+msgid "optsDateFormat_Hint"
+msgstr ""
+"Päyväyksen muoto \n"
+"\n"
+" YYYY - 4-numeron vuosi (2005 esim.) \n"
+" YY - 2-numeron vuosi (05 esim.) \n"
+" MM - kuukausi (2 numeroa) \n"
+" DD - Kuukaudenpäivä (2 numeroa) "
+
+msgid "optsArtistChk"
+msgstr "Taiteilija:"
+
+msgid "optsArtistChk_Hint"
+msgstr " Sisällytä/korvaa taiteilijan nimi DNG-metadataan"
+
+msgid "optsArtist_Hint"
+msgstr " Esittäjän nimi"
+
+msgid "optsCameraTypesLabel"
+msgstr "Kameratyypit"
+
+msgid "optsMiscLabel"
+msgstr "Muita"
+
+msgid "optsLanguageLabel"
+msgstr "Ohjelman kieli"
+
+msgid "optsLanguage_Hint"
+msgstr "Ohjelman kieli"
+
+# camera selection page
+msgid "lblGroupNotice"
+msgstr "You have to select properly camera type ONLY if you don't use Jpeg files for convertion"
+
+# camera options page
+
+msgid "btnResetToDefaults"
+msgstr "Reset to defaults..."
+msgid "btnResetToDefaultsHint"
+msgstr "Reset settings of selected camera profile to default values"
+msgid "dlgDefaultCameraText"
+msgstr "Reset values of '%s' camera profile to defaults?"
+msgid "dlgDefaultCameraCap"
+msgstr "Reset to defaults"
+
+msgid "pgCamOpts"
+msgstr "Camera options"
+
+msgid "lblGeometry"
+msgstr "Geometry"
+msgid "lblColorMatrix1"
+msgstr "Color matrix #1"
+msgid "lblColorMatrix2"
+msgstr "Color matrix #2"
+
+msgid "optsCamera"
+msgstr "Camera:"
+msgid "btnNew"
+msgstr "New"
+msgid "btnDelete"
+msgstr "Delete..."
+msgid "btnCopy"
+msgstr "Copy..."
+msgid "lblCameraName"
+msgstr "Camera name:"
+msgid "lblShortName"
+msgstr "Short name:"
+msgid "lblRawSize"
+msgstr "Sensor size:"
+msgid "lblFileSize"
+msgstr "RAW file size:"
+msgid "lblJpegSize"
+msgstr "Jpeg size:"
+msgid "lblActiveX1Y1"
+msgstr "Active zone x1, y1:"
+msgid "lblActiveX2Y2"
+msgstr "Active zone x2, y2:"
+msgid "lblBlackWhileLevels"
+msgstr "Black-white levels:"
+msgid "lblMosaicType"
+msgstr "Mosaic type:"
+msgid "lblMatrIll"
+msgstr "Illuminant:"
+msgid "lblMatr"
+msgstr "Matrix:"
+msgid "lblMatrixMult"
+msgstr "Multiplicator:"
+
+msgid "btnCalibr"
+msgstr "Calc. color matrix..."
+
+# Copy camera profile dialog
+msgid "dlgCopyCameraText"
+msgstr "Make copy of '%s' camera profile?"
+msgid "dlgCopyCameraCap"
+msgstr "Copy camera profile"
+msgid "copyOfCameraProf"
+msgstr "Copy of %s"
+msgid "dlgDeleteCameraText"
+msgstr "Delete '%s' camera profile?"
+msgid "dlgDeleteCameraCap"
+msgstr "Delete camera profile"
+
+
+############################
+#                          #
+#    CONVERT LOG WINDOW    #
+#                          #
+############################
+
+msgid "procFormCaption"
+msgstr "Muunnosta suoritetaan..."
+
+msgid "procLogLabel"
+msgstr "Muuntoloki:"
+
+msgid "procExecPercent"
+msgstr "Suoritettu"
+
+msgid "procPass1"
+msgstr "Onnistui"
+
+msgid "procPass2"
+msgstr "/"
+
+msgid "procPass_Hint"
+msgstr "Onnistui ja kokonaisaika"
+
+###########################
+#                         #
+#    "ABOUT..." WINDOW    #
+#                         #
+###########################
+msgid "aboutFormCaption"
+msgstr "Tietoja..."
+
+msgid "aboutMain"
+msgstr ""
+"DNG4PS-2 __VERSION__ On ilmainen ohjelma RAW-tiedostojen muutamiseen DNG-muotoon, Canon A-sarjan kameroille.\n"
+"\n"
+"Voit ladata tämän ohjelman uusimman version ja ohjelmakoodin osoitteesta http://dng4ps2.chat.ru/"
+
+msgid "lblYouLikeProgram"
+msgstr "Like this program? Donate:"
+
+#############################
+#                           #
+#    "NEW FOLDER" DIALOG    #
+#                           #
+#############################
+msgid "newfolderCaption"
+msgstr "Luo uusi kansio"
+
+msgid "newfolderRootCap"
+msgstr "Päähakemisto:"
+
+msgid "newfolderName"
+msgstr "Nimi:"
+
+msgid "newfolderDefaultName"
+msgstr "Uusi kansio:"
+
+#############################
+#                           #
+#    Calibration Dialog     #
+#                           #
+#############################
+msgid "btnClearAreas_hint"
+msgstr "Tyhjennä kaikki merkityt alueet"
+
+msgid "btnDelArea_hint"
+msgstr "Poista kaikki merkityt alueet"
+
+msgid "chLogLevel_hint"
+msgstr "Valitse lokin kirjaustapa"
+
+msgid "btnClearLog_hint"
+msgstr "Tyhjennä suoritus ja tulokset"
+
+msgid "rbMove_hint"
+msgstr "Valittu alue on siirretty alapuolen muutosten mukaisesti"
+
+msgid "rbResize_hint"
+msgstr "Valittu alue on muutettu alapuolen muutosten mukaisesti"
+
+msgid "cant_find_jpeg_file"
+msgstr "Can't find Jpeg file for selected RAW file"
+
+msgid "wrong_camera"
+msgstr "Selected RAW file is not suitable for '%s' camera!"
+
+msgid "dlgOpenRawError"
+msgstr "Error during opening RAW file!"

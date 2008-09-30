@@ -1,0 +1,376 @@
+msgid ""
+msgstr ""
+"Last-Translator: Juan Miguel Expósito\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+##############
+#            #
+#    MAIN    #
+#            #
+##############
+
+msgid  "btnCancel"
+msgstr "Cancelar"
+
+msgid  "btnOk"
+msgstr "OK"
+
+msgid  "btnExit"
+msgstr "Salir"
+
+msgid  "errorUnknown"
+msgstr "Error desconocido"
+
+msgid  "SelectDir"
+msgstr "Elegir carpeta"
+
+msgid  "WrongCameraError"
+msgstr "Cámara desconocida"
+
+msgid  "btnNewFolder"
+msgstr "Nueva carpeta..."
+
+msgid  "cant_create_dir"
+msgstr "¡No se puede crear la nueva carpeta!"
+
+msgid  "btnNewFolderHint"
+msgstr " Crear nueva subcarpeta "
+
+msgid  "error"
+msgstr "Error"
+
+msgid  "ScanInProgress"
+msgstr "Exploración en curso..."
+
+msgid  "Wait"
+msgstr "Espere"
+
+msgid  "file_not_found"
+msgstr "Archivo no encontrado"
+
+msgid  "wrong_camera_type"
+msgstr "No se puede encontrar un perfil de cámara para este archivo"
+
+msgid  "cant_open_file"
+msgstr "No se puede abrir el archivo"
+
+msgid "cant_save_file"
+msgstr "No se puede guardar el archivo"
+
+msgid "raw_file_size_not_correspond"
+msgstr "Size of RAW file (%1$d bytes) doesn't correspond of size for '%2$s' camera"
+
+
+###################
+#                 #
+#    MAIN FORM    #
+#                 #
+###################
+
+msgid  "MainFormCaption"
+msgstr "DNG4PS-2"
+
+msgid "FileNumber"
+msgstr "#"
+
+msgid "FileName"
+msgstr "Nombre de archivo"
+
+msgid "FileSize"
+msgstr "Tamaño"
+
+
+msgid  "PathToRAWFiles"
+msgstr "Ruta a los archivos RAW:"
+
+msgid  "PathToRAW_Hint"
+msgstr " Elija la carpeta con archivos RAW "
+
+msgid  "RawFilesList"
+msgstr "Lista de archivos RAW:"
+
+msgid  "RawFilesList_Hint"
+msgstr " Lista de archivos RAW y otras cosas "
+
+msgid  "OutputDir"
+msgstr "Carpeta para los archivos DNG de salida:"
+
+msgid  "OutputDirButton_Hint"
+msgstr " Elija la carpeta para los archivos DNG "
+
+msgid  "ActionsLabel"
+msgstr "Acciones"
+
+msgid  "ButtonGo"
+msgstr "Convertir"
+msgid  "ButtonGo_Hint"
+msgstr " Comenzar la conversión de archivos RAW "
+
+msgid  "ButtonOptions"
+msgstr "Ajustes..."
+
+msgid  "ButtonAbout"
+msgstr "Acerca de"
+
+msgid  "Stopped"
+msgstr "DETENIDO"
+
+msgid  "Finished"
+msgstr "FINALIZADO"
+
+msgid  "ButtonRescan"
+msgstr "Refrescar"
+msgid  "ButtonRescanHint"
+msgstr " Refrescar la lista de archivos "
+
+
+########################
+#                      #
+#    SETTING DIALOG    #
+#                      #
+########################
+
+msgid "pgMain"
+msgstr "Common"
+
+msgid "optsDialogCaption"
+msgstr "Ajustes"
+
+msgid "optsMainLabel"
+msgstr "Ajustes principales"
+
+msgid "optsIncludeSubfolders"
+msgstr "Incluir subcarpetas"
+msgid "optsIncludeSubfolders_Hint"
+msgstr " Buscar archivos en las subcarpetas "
+
+msgid "optsDontOverwrite"
+msgstr "No sobreescribir archivos DNG"
+msgid "optsDontOverwrite_Hint"
+msgstr " No sobreescribir los archivos DNG preexistentes "
+
+msgid "optsDngFormatLabel"
+msgstr "Archivos DNG"
+
+msgid "optsCompressDng"
+msgstr "Comprimir archivos DNG"
+msgid "optsCompressDng_Hint"
+msgstr " Comprimir archivos DNG sin pérdida de calidad "
+
+msgid "optsAddMetadata"
+msgstr "Agregar metadatos del archivo JPEG"
+msgid "optsAddMetadata_Hint"
+msgstr " Agregar los metadatos del archivo JPEG al archivo DNG. \n Tanto el archivo JPEG como el RAW deben encontrarse en la misma carpeta "
+
+msgid "optsPreviewLabel"
+msgstr "Insertar vista previa:"
+msgid "optsPreviewNone"
+msgstr "No"
+msgid "optsPreviewMedium"
+msgstr "Tamaño medio"
+msgid "optsPreviewBig"
+msgstr "Tamaño grande"
+msgid "optsPreview_Hint"
+msgstr " Insertar vista previa en formato JPEG dentro del archivo DNG para una previsualización más rápida "
+
+msgid "optsRegulating"
+msgstr "Subcarpeta:"
+msgid "optsRegulating_Hint"
+msgstr " Poner los archivos DNG en subcarpetas según la fecha del archivo RAW "
+
+msgid "optsDateFormat1"
+msgstr "AAAA-MM-DD"
+msgid "optsDateFormat2"
+msgstr "DD-MM-AAAA"
+msgid "optsDateFormat3"
+msgstr "AA-MM-DD"
+msgid "optsDateFormat4"
+msgstr "DD-MM-AA"
+msgid "optsDateFormat_Hint"
+msgstr " Formato de fecha \n\n AAAA - Año en 4 dígitos (por ejemplo, 2005) \n AA - Año en 2 dígitos (por ejemplo, 05) \n MM - número de mes (2 dígitos) \n DD - día del mes (2 dígitos) "
+
+msgid "optsArtistChk"
+msgstr "Artista:"
+msgid "optsArtistChk_Hint"
+msgstr " Incluir/reemplazar el nombre del artista en los metadatos del DNG "
+msgid "optsArtist_Hint"
+msgstr " Nombre del artista "
+
+msgid "optsCameraTypesLabel"
+msgstr "Modelos de cámara"
+
+msgid "optsMiscLabel"
+msgstr "Misceláneos"
+
+msgid "optsLanguageLabel"
+msgstr "Lenguaje de la interfaz:"
+msgid "optsLanguage_Hint"
+msgstr " Lenguaje de la interfaz "
+
+# camera selection page
+msgid "lblGroupNotice"
+msgstr "You have to select properly camera type ONLY if you don't use Jpeg files for convertion"
+
+# camera options page
+
+msgid "btnResetToDefaults"
+msgstr "Reset to defaults..."
+msgid "btnResetToDefaultsHint"
+msgstr "Reset settings of selected camera profile to default values"
+msgid "dlgDefaultCameraText"
+msgstr "Reset values of '%s' camera profile to defaults?"
+msgid "dlgDefaultCameraCap"
+msgstr "Reset to defaults"
+
+msgid "pgCamOpts"
+msgstr "Camera options"
+
+msgid "lblGeometry"
+msgstr "Geometry"
+msgid "lblColorMatrix1"
+msgstr "Color matrix #1"
+msgid "lblColorMatrix2"
+msgstr "Color matrix #2"
+
+msgid "optsCamera"
+msgstr "Camera:"
+msgid "btnNew"
+msgstr "New"
+msgid "btnDelete"
+msgstr "Delete..."
+msgid "btnCopy"
+msgstr "Copy..."
+msgid "lblCameraName"
+msgstr "Camera name:"
+msgid "lblShortName"
+msgstr "Short name:"
+msgid "lblRawSize"
+msgstr "Sensor size:"
+msgid "lblFileSize"
+msgstr "RAW file size:"
+msgid "lblJpegSize"
+msgstr "Jpeg size:"
+msgid "lblActiveX1Y1"
+msgstr "Active zone x1, y1:"
+msgid "lblActiveX2Y2"
+msgstr "Active zone x2, y2:"
+msgid "lblBlackWhileLevels"
+msgstr "Black-white levels:"
+msgid "lblMosaicType"
+msgstr "Mosaic type:"
+msgid "lblMatrIll"
+msgstr "Illuminant:"
+msgid "lblMatr"
+msgstr "Matrix:"
+msgid "lblMatrixMult"
+msgstr "Multiplicator:"
+
+msgid "btnCalibr"
+msgstr "Calc. color matrix..."
+
+# Copy camera profile dialog
+msgid "dlgCopyCameraText"
+msgstr "Make copy of '%s' camera profile?"
+msgid "dlgCopyCameraCap"
+msgstr "Copy camera profile"
+msgid "copyOfCameraProf"
+msgstr "Copy of %s"
+msgid "dlgDeleteCameraText"
+msgstr "Delete '%s' camera profile?"
+msgid "dlgDeleteCameraCap"
+msgstr "Delete camera profile"
+
+
+############################
+#                          #
+#    CONVERT LOG WINDOW    #
+#                          #
+############################
+
+msgid "procFormCaption"
+msgstr "La conversión se está efectuando..."
+
+msgid "procLogLabel"
+msgstr "Registro de la conversión:"
+
+msgid "procExecPercent"
+msgstr "Ejecutado"
+
+msgid "procPass1"
+msgstr "Transcurrido"
+
+msgid "procPass2"
+msgstr "de"
+
+msgid "procPass_Hint"
+msgstr " Transcurrido y tiempo total "
+
+###########################
+#                         #
+#    "ABOUT..." WINDOW    #
+#                         #
+###########################
+
+msgid "aboutFormCaption"
+msgstr "Acerca de..."
+
+msgid "aboutMain"
+msgstr "DNG4PS-2 __VERSION__ is software libre para convertir archivos RAW de cámaras Canon de la serie A a formato DNG.\n\n La última versión y las fuentes del software están disponibles para la descarga en http://dng4ps2.chat.ru/"
+
+msgid "lblYouLikeProgram"
+msgstr "Like this program? Donate:"
+
+
+#############################
+#                           #
+#    "NEW FOLDER" DIALOG    #
+#                           #
+#############################
+
+msgid "newfolderCaption"
+msgstr "Crear nueva carpeta"
+
+msgid "newfolderRootCap"
+msgstr "Carpeta raíz:"
+
+msgid "newfolderName"
+msgstr "Nombre:"
+
+msgid "newfolderDefaultName"
+msgstr "Nueva carpeta"
+
+
+#############################
+#                           #
+#    Calibration Dialog     #
+#                           #
+#############################
+
+msgid "btnClearAreas_hint"
+msgstr "Clear all marked areas"
+
+msgid "btnDelArea_hint"
+msgstr "Delete currently selected area"
+
+msgid "chLogLevel_hint"
+msgstr "Choose the level of detail to be logged"
+
+msgid "btnClearLog_hint"
+msgstr "Clear progress and results"
+
+msgid "rbMove_hint"
+msgstr "Selected area is moved by changes below"
+
+msgid "rbResize_hint"
+msgstr "Selected area is resized when by changes below"
+
+msgid "cant_find_jpeg_file"
+msgstr "Can't find Jpeg file for selected RAW file"
+
+msgid "wrong_camera"
+msgstr "Selected RAW file is not suitable for '%s' camera!"
+
+msgid "dlgOpenRawError"
+msgstr "Error during opening RAW file!"

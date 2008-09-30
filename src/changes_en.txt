@@ -1,0 +1,37 @@
+VERSION 0.2.3beta:
+  + Added polish translation
+  + Camera type autodetection by Jpeg exif data
+  + Cameras profile can be edited
+  + New cameras support added
+  + Camera name synonyms support
+
+VERSION 0.2.2:
+  + Added norwegian, german, spanish, italian, chinese and finnish translations
+  * Exiftool utility is not used anymore
+  * Tempporary files preview.tif and preview.jpg not used for better speed
+  + For AutoISO photos real ISO is calculated
+  + Linux version
+  + UI language selection
+  + Program can convert RAW files with .jpg extension
+  + New cameras support added
+  - Fixed: progress window was closed after pressing "Esc" key
+
+VERSION 0.2.1:
+  * Jpeg files are used for preview insertion (if exists) for better speed
+  + Added progress indicator with estimated time value
+
+VERSION0.2.0:
+  * Adobe DNG Convertor is not used anymore
+  + True time in exif data even Kpeg files is not used
+  + It is possible to add 'artist' value to exif data
+  + Canon PS A700 is supported now
+
+VERSION 0.1.1
+  + Is is possible to put dng file into subfolder against of RAW files date
+
+VERSION 0.1 (base functionality)
+  * Batch RAW -> DNG conversion with log window
+  * Exif data inpored from Jpef files
+  * DNG lossless compression
+  * Preview insertion
+  * Supported cameras: A610, A620, A630, A640, A710 IS, S2 IS, S3 IS

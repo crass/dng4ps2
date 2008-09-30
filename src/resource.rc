@@ -1,0 +1,4 @@
+main_icon ICON "images/exe.ico"
+
+#include "wx/msw/wx.rc"
+

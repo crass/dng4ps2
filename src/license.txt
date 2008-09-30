@@ -1,0 +1,5 @@
+DNG4PS-2
+
+LICENSE
+
+DNG4PS-2 is free software. It is licensed by the GNU General Public License. You may use this software without any restriction.

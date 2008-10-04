@@ -255,7 +255,7 @@
 						<label>optsCameraTypesLabel</label>
 					</object>
 					<object class="notebookpage">
-						<object class="wxPanel" name="ID_PANEL3" variable="Panel3" member="no">
+						<object class="wxPanel" name="ID_PNL_CAM_OPTS" variable="Panel3" member="no">
 							<pos>177,10</pos>
 							<object class="wxFlexGridSizer" variable="FlexGridSizer8" member="no">
 								<cols>1</cols>
@@ -288,37 +288,49 @@
 										</object>
 										<object class="sizeritem">
 											<object class="wxFlexGridSizer" variable="FlexGridSizer10" member="no">
-												<cols>3</cols>
+												<cols>4</cols>
 												<hgap>0d</hgap>
 												<object class="sizeritem">
-													<object class="wxButton" name="ID_BUTTON1" variable="btnNew" member="no">
-														<label>btnNew</label>
-														<enabled>0</enabled>
+													<object class="wxPanel" name="ID_PANEL3" variable="pnlSecret" member="no">
+														<size>15,10d</size>
+														<handler function="PnlSecretLeftDClick" entry="EVT_LEFT_DCLICK" />
 													</object>
-													<flag>wxTOP|wxBOTTOM|wxLEFT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+													<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+													<border>5d</border>
+													<option>1</option>
+												</object>
+												<object class="sizeritem">
+													<object class="wxButton" name="ID_BUTTON6" variable="btnGetNewCam" member="no">
+														<label>btnGetNewCam</label>
+														<style>wxBU_EXACTFIT</style>
+													</object>
+													<flag>wxALL|wxALIGN_LEFT|wxALIGN_TOP</flag>
 													<border>5d</border>
 													<option>1</option>
 												</object>
 												<object class="sizeritem">
 													<object class="wxButton" name="ID_BUTTON3" variable="btnCopy" member="no">
 														<label>btnCopy</label>
+														<style>wxBU_EXACTFIT</style>
 														<handler function="btnCopyClick" entry="EVT_BUTTON" />
 													</object>
-													<flag>wxTOP|wxBOTTOM|wxLEFT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+													<flag>wxTOP|wxBOTTOM|wxLEFT|wxALIGN_LEFT|wxALIGN_TOP</flag>
 													<border>5d</border>
 													<option>1</option>
 												</object>
 												<object class="sizeritem">
 													<object class="wxButton" name="ID_BUTTON2" variable="btnDelete" member="no">
 														<label>btnDelete</label>
+														<size>-1,-1</size>
+														<style>wxBU_EXACTFIT</style>
 														<handler function="btnDeleteClick" entry="EVT_BUTTON" />
 													</object>
-													<flag>wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL</flag>
+													<flag>wxALL|wxALIGN_LEFT|wxALIGN_TOP</flag>
 													<border>5d</border>
 													<option>1</option>
 												</object>
 											</object>
-											<flag>wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL</flag>
+											<flag>wxBOTTOM|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL</flag>
 											<border>5d</border>
 											<option>1</option>
 										</object>

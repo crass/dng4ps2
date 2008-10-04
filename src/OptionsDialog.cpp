@@ -24,6 +24,9 @@
 #include "pch.h"
 
 #include <wx/msgdlg.h>
+#include <wx/fileconf.h>
+#include <wx/wfstream.h>
+#include <wx/stdpaths.h>
 
 #include "OptionsDialog.h"
 #include "Options.h"
@@ -110,7 +113,8 @@ const long OptionsDialog::ID_STATICTEXT4 = wxNewId();
 const long OptionsDialog::ID_PANEL2 = wxNewId();
 const long OptionsDialog::ID_STATICTEXT12 = wxNewId();
 const long OptionsDialog::ID_CHOICE9 = wxNewId();
-const long OptionsDialog::ID_BUTTON1 = wxNewId();
+const long OptionsDialog::ID_PANEL3 = wxNewId();
+const long OptionsDialog::ID_BUTTON6 = wxNewId();
 const long OptionsDialog::ID_BUTTON3 = wxNewId();
 const long OptionsDialog::ID_BUTTON2 = wxNewId();
 const long OptionsDialog::ID_BUTTON5 = wxNewId();
@@ -158,7 +162,7 @@ const long OptionsDialog::ID_TEXTCTRL18 = wxNewId();
 const long OptionsDialog::ID_STATICTEXT34 = wxNewId();
 const long OptionsDialog::ID_TEXTCTRL19 = wxNewId();
 const long OptionsDialog::ID_SCROLLEDWINDOW1 = wxNewId();
-const long OptionsDialog::ID_PANEL3 = wxNewId();
+const long OptionsDialog::ID_PNL_CAM_OPTS = wxNewId();
 const long OptionsDialog::ID_NOTEBOOK1 = wxNewId();
 //*)
 
@@ -183,11 +187,12 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	wxStaticText* StaticText14;
 	wxStaticText* StaticText30;
 	wxFlexGridSizer* FlexGridSizer10;
-	wxButton* btnNew;
 	wxFlexGridSizer* FlexGridSizer3;
 	wxStaticText* StaticText26;
 	wxStaticText* StaticText6;
+	wxButton* btnGetNewCam;
 	wxButton* btnResetToDefaults;
+	wxPanel* pnlSecret;
 	wxFlexGridSizer* FlexGridSizer5;
 	wxStaticText* StaticText32;
 	wxStaticText* StaticText19;
@@ -330,7 +335,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	pnlGroups->SetSizer(szGroupsMain);
 	szGroupsMain->Fit(pnlGroups);
 	szGroupsMain->SetSizeHints(pnlGroups);
-	Panel3 = new wxPanel(nbMain, ID_PANEL3, wxPoint(177,10), wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL3"));
+	Panel3 = new wxPanel(nbMain, ID_PNL_CAM_OPTS, wxPoint(177,10), wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PNL_CAM_OPTS"));
 	FlexGridSizer8 = new wxFlexGridSizer(0, 1, 0, 0);
 	FlexGridSizer8->AddGrowableCol(0);
 	FlexGridSizer9 = new wxFlexGridSizer(0, 1, wxDLG_UNIT(Panel3,wxSize(-7,0)).GetWidth(), 0);
@@ -344,15 +349,16 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	FlexGridSizer9->Add(StaticText12, 1, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
 	chCameraSelector = new wxChoice(Panel3, ID_CHOICE9, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE9"));
 	FlexGridSizer9->Add(chCameraSelector, 1, wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
-	FlexGridSizer10 = new wxFlexGridSizer(0, 3, 0, wxDLG_UNIT(Panel3,wxSize(0,0)).GetWidth());
-	btnNew = new wxButton(Panel3, ID_BUTTON1, _("btnNew"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON1"));
-	btnNew->Disable();
-	FlexGridSizer10->Add(btnNew, 1, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
-	btnCopy = new wxButton(Panel3, ID_BUTTON3, _("btnCopy"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON3"));
-	FlexGridSizer10->Add(btnCopy, 1, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
-	btnDelete = new wxButton(Panel3, ID_BUTTON2, _("btnDelete"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON2"));
-	FlexGridSizer10->Add(btnDelete, 1, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
-	FlexGridSizer9->Add(FlexGridSizer10, 1, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
+	FlexGridSizer10 = new wxFlexGridSizer(0, 4, 0, wxDLG_UNIT(Panel3,wxSize(0,0)).GetWidth());
+	pnlSecret = new wxPanel(Panel3, ID_PANEL3, wxDefaultPosition, wxDLG_UNIT(Panel3,wxSize(15,10)), wxTAB_TRAVERSAL, _T("ID_PANEL3"));
+	FlexGridSizer10->Add(pnlSecret, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
+	btnGetNewCam = new wxButton(Panel3, ID_BUTTON6, _("btnGetNewCam"), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT, wxDefaultValidator, _T("ID_BUTTON6"));
+	FlexGridSizer10->Add(btnGetNewCam, 1, wxALL|wxALIGN_LEFT|wxALIGN_TOP, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
+	btnCopy = new wxButton(Panel3, ID_BUTTON3, _("btnCopy"), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT, wxDefaultValidator, _T("ID_BUTTON3"));
+	FlexGridSizer10->Add(btnCopy, 1, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_LEFT|wxALIGN_TOP, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
+	btnDelete = new wxButton(Panel3, ID_BUTTON2, _("btnDelete"), wxDefaultPosition, wxSize(-1,-1), wxBU_EXACTFIT, wxDefaultValidator, _T("ID_BUTTON2"));
+	FlexGridSizer10->Add(btnDelete, 1, wxALL|wxALIGN_LEFT|wxALIGN_TOP, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
+	FlexGridSizer9->Add(FlexGridSizer10, 1, wxBOTTOM|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
 	FlexGridSizer8->Add(FlexGridSizer9, 1, wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
 	scrlwCameraOpt = new wxScrolledWindow(Panel3, ID_SCROLLEDWINDOW1, wxDefaultPosition, wxDefaultSize, wxVSCROLL, _T("ID_SCROLLEDWINDOW1"));
 	scrlwCameraOpt->SetMaxSize(wxDLG_UNIT(Panel3,wxSize(-1,190)));
@@ -506,6 +512,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	Connect(ID_CHECKBOX5,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&OptionsDialog::chbxUseDateForPathClick);
 	Connect(ID_CHECKBOX6,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&OptionsDialog::chkbArtistClick);
 	Connect(ID_CHOICE9,wxEVT_COMMAND_CHOICE_SELECTED,(wxObjectEventFunction)&OptionsDialog::chCameraSelectorSelect);
+	pnlSecret->Connect(wxEVT_LEFT_DCLICK,(wxObjectEventFunction)&OptionsDialog::PnlSecretLeftDClick,0,this);
 	Connect(ID_BUTTON3,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&OptionsDialog::btnCopyClick);
 	Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&OptionsDialog::btnDeleteClick);
 	Connect(ID_BUTTON5,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&OptionsDialog::btnResetToDefaultsClick);
@@ -515,6 +522,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	Connect(ID_NOTEBOOK1,wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED,(wxObjectEventFunction)&OptionsDialog::nbMainPageChanged);
 	Connect(ID_NOTEBOOK1,wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING,(wxObjectEventFunction)&OptionsDialog::nbMainPageChanging);
 	//*)
+
 
 	scrlwCameraOpt->SetScrollRate(16, 16);
 
@@ -622,6 +630,25 @@ void OptionsDialog::chkbArtistClick(wxCommandEvent& event)
 //        C A M E R A   O P T I O N S        //
 //                                           //
 ///////////////////////////////////////////////
+
+void OptionsDialog::PnlSecretLeftDClick(wxMouseEvent& event)
+{
+	CameraOpts def_opts;
+	wxFileConfig fc;
+
+	def_opts.set_defaults(true);
+	def_opts.save(fc, false);
+
+	wxFileName file_name;
+
+	file_name.SetPath(wxStandardPaths::Get().GetUserDataDir());
+	wxFileName::Mkdir(file_name.GetFullPath(), 0777, wxPATH_MKDIR_FULL);
+
+	file_name.SetName(L"cameras001.txt");
+
+	wxFFileOutputStream stream(file_name.GetFullPath());
+	fc.Save(stream);
+}
 
 void OptionsDialog::show_cameras_list(const wxString &camera_to_select)
 {
@@ -934,4 +961,3 @@ void OptionsDialog::nbMainPageChanging(wxNotebookEvent& event)
 {
 	if (event.GetSelection() == 1) read_groups();
 }
-

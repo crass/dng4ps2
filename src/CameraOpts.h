@@ -1,7 +1,7 @@
 #ifndef CAMERAOPTS_H_INCLUDED
 #define CAMERAOPTS_H_INCLUDED
 
-class wxConfig;
+class wxConfigBase;
 
 enum MosaicType
 {
@@ -61,7 +61,10 @@ public:
 	void sort_by_name();
 
 	void save();
+	void save(wxConfigBase &config, bool save_groups);
+
 	void load();
+	void load(wxConfigBase &config);
 
 	static wxString vct_to_str(const std::vector<float> &vct, const wchar_t *format);
 	static void str_to_vect(std::vector<float> &vct, const wxString &txt, size_t count);
@@ -82,8 +85,8 @@ private:
 	Items items_;
 	Groups file_sizes_;
 
-	static void save_matrix(wxConfig &config, const wxString &path, const CameraColorMatrix &matrix);
-	static void load_matrix(wxConfig &config, const wxString &path, CameraColorMatrix &matrix);
+	static void save_matrix(wxConfigBase &config, const wxString &path, const CameraColorMatrix &matrix);
+	static void load_matrix(wxConfigBase &config, const wxString &path, CameraColorMatrix &matrix);
 
 };
 

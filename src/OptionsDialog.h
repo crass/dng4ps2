@@ -45,7 +45,8 @@ class OptionsDialog: public wxDialog
 		static const long ID_PANEL2;
 		static const long ID_STATICTEXT12;
 		static const long ID_CHOICE9;
-		static const long ID_BUTTON1;
+		static const long ID_PANEL3;
+		static const long ID_BUTTON6;
 		static const long ID_BUTTON3;
 		static const long ID_BUTTON2;
 		static const long ID_BUTTON5;
@@ -93,7 +94,7 @@ class OptionsDialog: public wxDialog
 		static const long ID_STATICTEXT34;
 		static const long ID_TEXTCTRL19;
 		static const long ID_SCROLLEDWINDOW1;
-		static const long ID_PANEL3;
+		static const long ID_PNL_CAM_OPTS;
 		static const long ID_NOTEBOOK1;
 		//*)
 
@@ -114,6 +115,7 @@ class OptionsDialog: public wxDialog
 		void btnDeleteClick(wxCommandEvent& event);
 		void btnCalibrClick(wxCommandEvent& event);
 		void btnResetToDefaultsClick(wxCommandEvent& event);
+		void PnlSecretLeftDClick(wxMouseEvent& event);
 		//*)
 
 		//(*Declarations(OptionsDialog)

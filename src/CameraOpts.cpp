@@ -348,7 +348,7 @@ namespace
 		{ // Canon DIGITAL IXUS 960 IS / Canon PowerShot SD950 IS
 			L"Canon DIGITAL IXUS 960 IS / Canon PowerShot SD950 IS", L"IXUS 960 IS / PowerShot SD950 IS",
 			4104,3048, 48,12,24,12, 4000,3000, 31,1023, MOSAIC_TYPE1,
-			lsDaylight, {0.913762f,-0.261578f,-0.135582f, -0.099049f,1.067089f,0.061442f, 0.048717f,0.096802f,0.412056f},
+			lsDaylight, {0.764117f,-0.223884f,-0.116036f, -0.035875f,0.582534f,0.032982f, 0.010441f,0.064164f,0.198520f}, // my
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {},
 			L"{11111111-11110000-08a420c3-32f9001F}"
@@ -356,8 +356,8 @@ namespace
 
 		{ // Canon Digital IXUS 40 / Canon PowerShot SD300 (by fishpepper)
 			L"Canon DIGITAL IXUS 40 / Canon PowerShot SD300", L"IXUS 40 / PowerShot SD300", // name checked
-			2400,1720, 12,24,6,12, 2272,1704, 31, 1023, MOSAIC_TYPE1, // ??
-			lsDaylight, {0.652674f,-0.172074f,-0.107575f, -0.139063f,0.594517f,0.060252f, -0.009088f,0.082013f,0.23808f}, //??
+			2400,1720, 12,24,6,12, 2272,1704, 31, 1023, MOSAIC_TYPE1,
+			lsDaylight, {0.652674f,-0.172074f,-0.107575f, -0.139063f,0.594517f,0.060252f, -0.009088f,0.082013f,0.23808f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {},
 			L"{11111111-11110000-08a420c3-32f90020}"
@@ -375,7 +375,7 @@ namespace
 		{ // Canon DIGITAL IXUS 80 IS / Canon PowerShot SD1100 IS
 			L"Canon DIGITAL IXUS 80 IS / Canon PowerShot SD1100 IS", L"IXUS 80 IS / PowerShot SD1100 IS",
 			3336,2480, 6,6,32,4, 3264,2448, 31,1023, MOSAIC_TYPE2,
-			lsDaylight, {0.893969f,-0.343107f,-0.119590f, -0.041350f,0.581255f,0.049523f, 0.024221f,0.047554f,0.209996f},
+			lsDaylight, {0.866361,-0.268438,-0.136657, 0.005731,0.560176,0.029600, 0.008218,0.068954,0.216587}, // bad :(
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {},
 			L"{11111111-11110000-08a420c3-32f90022}"
@@ -506,7 +506,6 @@ const CameraData* CameraOpts::find_by_file_size(unsigned int size) const
 	for (std::vector<CameraData>::const_iterator it = items_.begin(), end = items_.end(); it != end; it++)
 		if (it->id == id) return &*it;
 	return NULL;
-
 }
 
 void CameraOpts::set_item(const wxString &id, const CameraData &item)
@@ -563,7 +562,7 @@ wxString CameraOpts::vct_to_str(const std::vector<float> &vct, const wchar_t *fo
 	return result.Trim();
 }
 
-void CameraOpts::save_matrix(wxConfig &config, const wxString &path, const CameraColorMatrix &matrix)
+void CameraOpts::save_matrix(wxConfigBase &config, const wxString &path, const CameraColorMatrix &matrix)
 {
 	config.Write(path+illum_opt_str, matrix.illum);
 	config.Write(path+matrix_opt_str, vct_to_str(matrix.matrix, L"%0.6f "));
@@ -573,6 +572,11 @@ void CameraOpts::save_matrix(wxConfig &config, const wxString &path, const Camer
 void CameraOpts::save()
 {
 	wxConfig config(app_name_opt_str);
+	save(config, true);
+}
+
+void CameraOpts::save(wxConfigBase &config, bool save_groups)
+{
 	wxString path;
 
 	config.Write(cam_count_opt_str, (int)items_.size());
@@ -606,16 +610,17 @@ void CameraOpts::save()
 		save_matrix(config, path+L"Matrix2/", item.matrix2);
 	}
 
-	config.Write(gr_count_opt_str, (long)file_sizes_.size());
-	int idx = 0;
-	foreach(const Groups::value_type &item, file_sizes_)
+	if (save_groups)
 	{
-		path.Printf(L"Group%03d/", idx++);
-
-		config.Write(path+file_size_opt_str, (long)item.first);
-		config.Write(path+id_opt_str, item.second);
+		config.Write(gr_count_opt_str, (long)file_sizes_.size());
+		int idx = 0;
+		foreach(const Groups::value_type &item, file_sizes_)
+		{
+			path.Printf(L"Group%03d/", idx++);
+			config.Write(path+file_size_opt_str, (long)item.first);
+			config.Write(path+id_opt_str, item.second);
+		}
 	}
-
 }
 
 void CameraOpts::str_to_vect(std::vector<float> &vct, const wxString &txt, size_t count)
@@ -645,7 +650,7 @@ void CameraOpts::str_to_vect(std::vector<float> &vct, const wxString &txt, size_
 	vct.swap(result);
 }
 
-void CameraOpts::load_matrix(wxConfig &config, const wxString &path, CameraColorMatrix &matrix)
+void CameraOpts::load_matrix(wxConfigBase &config, const wxString &path, CameraColorMatrix &matrix)
 {
 	matrix.illum = config.Read(path+illum_opt_str, -1);
 	str_to_vect(matrix.matrix, config.Read(path+matrix_opt_str, wxString()), 9);
@@ -655,6 +660,11 @@ void CameraOpts::load_matrix(wxConfig &config, const wxString &path, CameraColor
 void CameraOpts::load()
 {
 	wxConfig config(app_name_opt_str);
+	load(config);
+}
+
+void CameraOpts::load(wxConfigBase &config)
+{
 	CameraData item;
 	wxString path;
 	const unsigned int no_val = 0xFFFFFFFF;
@@ -682,7 +692,7 @@ void CameraOpts::load()
 					item.active_origin_x = item.active_origin_y = item.active_origin_right =
 					item.active_origin_bottom = item.black_level = item.white_level = no_val;
 
-				item.mosaic == (MosaicType)no_val;
+				item.mosaic = (MosaicType)no_val;
 			}
 
 			item.model_name = config.Read(path+name_opt_str, item.model_name);

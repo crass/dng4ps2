@@ -319,7 +319,7 @@ namespace
 		},
 
 		{ // Canon DIGITAL IXUS 750
-			L"Canon DIGITAL IXUS 750", L"IXUS 750",
+			L"Canon DIGITAL IXUS 750 / Canon PowerShot SD550", L"IXUS 750 / PowerShot SD550",
 			3152,2340, 36,12,4,0, 3072,2304, 31,1023, MOSAIC_TYPE1, // checked
 			lsDaylight, {0.580280f,-0.172239f,-0.089707f, -0.206596f,0.634926f,0.063877f, 0.010377f,0.062053f,0.242646f},
 			{1.0f, 1.0f, 1.0f},

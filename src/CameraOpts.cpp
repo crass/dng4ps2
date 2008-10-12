@@ -354,9 +354,9 @@ namespace
 			L"{11111111-11110000-08a420c3-32f9001F}"
 		},
 
-		{ // Canon Digital IXUS 40 / Canon PowerShot SD300 (by fishpepper)
+		{ // Canon Digital IXUS 40 / Canon PowerShot SD300
 			L"Canon DIGITAL IXUS 40 / Canon PowerShot SD300", L"IXUS 40 / PowerShot SD300", // name checked
-			2400,1720, 12,24,6,12, 2272,1704, 31, 1023, MOSAIC_TYPE1,
+			2400,1766, 12,12,44,2, 2272,1704, 31, 1023, MOSAIC_TYPE1,
 			lsDaylight, {0.652674f,-0.172074f,-0.107575f, -0.139063f,0.594517f,0.060252f, -0.009088f,0.082013f,0.23808f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {},

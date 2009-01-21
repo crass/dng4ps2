@@ -21,6 +21,8 @@ private:
 public:
 	void scan(const wxString & dir, bool recursive, const boost::function<void(int)> & on_progress);
 	size_t size() const;
+	void clear();
+	void addOneFile(wxString);
 
 	const FileListItem& operator[](int index) const;
 };

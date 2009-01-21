@@ -20,6 +20,7 @@ public:
 
 	DNG4PSFrame(wxWindow* parent,wxWindowID id = -1);
 	virtual ~DNG4PSFrame();
+	void convertFiles(wxArrayString files, wxString outputDir); //for command line version
 
 private:
 

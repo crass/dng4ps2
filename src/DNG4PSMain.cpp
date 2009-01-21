@@ -87,7 +87,7 @@ DNG4PSFrame::DNG4PSFrame(wxWindow* parent,wxWindowID id) : file_list(new FileLis
 	wxFlexGridSizer* szSource;
 	wxFlexGridSizer* FlexGridSizer1;
 	wxStaticText* StaticText4;
-	
+
 	Create(parent, id, _("MainFormCaption"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL, _T("id"));
 	SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
 	szMain = new wxFlexGridSizer(0, 1, 0, 0);
@@ -148,7 +148,7 @@ DNG4PSFrame::DNG4PSFrame(wxWindow* parent,wxWindowID id) : file_list(new FileLis
 	szMain->Fit(this);
 	szMain->SetSizeHints(this);
 	Center();
-	
+
 	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DNG4PSFrame::btnSelectPathToRawClick);
 	Connect(ID_BUTTON6,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DNG4PSFrame::btnRescanClick);
 	Connect(ID_BUTTON4,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DNG4PSFrame::btnSelectOutputDirClick);
@@ -390,7 +390,52 @@ void DNG4PSFrame::btnStartClick(wxCommandEvent& event)
 // DNG4PSFrame::startTimerTrigger
 void DNG4PSFrame::startTimerTrigger(wxTimerEvent& event)
 {
-	txtOutputDir->SetValue(sys().options->output_path);
+  	txtOutputDir->SetValue(sys().options->output_path);
 	txtPathToRaw->SetValue(sys().options->path_to_files);
-	fill_files_list();
+    fill_files_list();
+}
+
+// DNG4PSFrame: convertFiles
+// for command line, does not use threads
+void DNG4PSFrame::convertFiles(wxArrayString files, wxString outputDir)
+{
+    file_list->clear();
+    if( !outputDir.IsEmpty() )
+    {
+        txtOutputDir->SetValue(outputDir);
+        sys().options->output_path = txtOutputDir->GetValue();
+    }
+
+    for ( size_t num = 0; num < files.GetCount(); num++ )
+    {
+        wxString filename = files[num];
+        file_list->addOneFile(filename);
+    }
+
+	size_t count = file_list->size();
+	wxDateTime start_time = wxDateTime::Now();
+
+	for (size_t num = 0; num < count; num++)
+	{
+		const FileListItem& item= (*file_list)[num];
+
+		wxString err_text = L"";
+
+		try
+		{
+			Utils::process_file(item.path_and_name, item.jpeg_file_name, NULL, NULL, NULL);
+		}
+		catch (const std::exception & e)
+		{
+			err_text = wxString(e.what(), wxConvLibc);
+		}
+		catch (const Exception &e)
+		{
+			err_text = e.what();
+		}
+		catch (...)
+		{
+			err_text = _("errorUnknown");
+		}
+    }
 }

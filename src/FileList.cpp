@@ -89,6 +89,44 @@ size_t FileList::size() const
 	return items.size();
 }
 
+// FileList::clear
+void FileList::clear()
+{
+	items.clear();
+}
+
+// FileList::setOneFile
+void FileList::addOneFile(wxString full_path)
+{
+	wxFileName name(full_path);
+	size_t file_size = name.GetSize().ToULong();
+    FileListItem item;
+	std::vector<size_t> sizes;
+
+	wxString ext = name.GetExt().Lower();
+	if (ext == L"jpg")
+	{
+		wxFile file(full_path);
+		if (file.Error()) return;
+		char buffer[3] = {0, 0, 0};
+		static const char jpg_hdr[] = {0xFF, 0xD8, 0xFF};
+		file.Read(buffer, 3);
+		if (memcmp(buffer, jpg_hdr, 3) == 0) return;
+	}
+
+	item.path_and_name = name.GetFullPath();
+	item.name = name.GetFullName();
+	item.size = file_size;
+
+	wxFileName jpeg_name;
+
+	item.have_jpeg = Utils::get_jpeg_name(name, jpeg_name);
+	item.jpeg = item.have_jpeg ? jpeg_name.GetFullName() : L"-";
+	item.jpeg_file_name = item.have_jpeg ? jpeg_name.GetFullPath() : wxString();
+
+	items.push_back(item);
+}
+
 // FileList::operator[]
 const FileListItem& FileList::operator[](int index) const
 {

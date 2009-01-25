@@ -390,6 +390,16 @@ namespace
 			L"{11111111-11110000-08a420c3-32f90023}"
 		},
 
+		{ // Canon PowerShot A590 IS
+			L"Canon PowerShot A590 IS", L"PowerShot A590 IS",
+			3336,2480, 8,8,32,0, 3264,2448, 31,1023, MOSAIC_TYPE2, // checked
+			lsDaylight, {0.726857f,-0.176454f,-0.124118f, -0.071340f,0.592001f,0.075622f, 0.063222f,0.050547f,0.219582f}, // this matrix is not good
+			{1.0f, 1.0f, 1.0f},
+			-1, {}, {},
+			L"{11111111-11110000-08a420c3-32f90024}"
+		},
+
+
 		{NULL}
 	};
 

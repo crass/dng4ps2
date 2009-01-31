@@ -22,10 +22,9 @@
 
   /* Command line operation
 
-  dng4ps-2 [-d <directory] [-p0 | -p1 | -p2] [-c | -u] input-filename...
+  dng4ps-2 [-d <directory] [-p0 | -p1 | -p2] input-filename...
 
   If any parameter is present, the program will run in command line.
-
   <input-filename> is the FULL path to one or more raw files to be processed. At least one is mandatory
   -d directory  Base output directory path
   -p0           No preview
@@ -34,13 +33,13 @@
   -c            Compressed SNG file
   -u            Uncompressed DNG file
 
-  All other parameters are taken from the users dng4ps-2 settings as set in the GUI
+  All other parameters are taken from the users dng4ps2 settings as set in the GUI
   If an option is not specified, then the default is take from the users dng4ps2 settings as set in the GUI
 
   Note: Where possible using the same parameter spec as Adobe DNG Converter are used
   http://www.adobe.com/products/dng/pdfs/dng_commandline.pdf
 
-  TODO: Better error handling and logging, other parameters available in the settings dialog
+  TODO: Better error handling and logging
 
   */
 
@@ -108,6 +107,7 @@ bool DNG4PSApp::OnInit()
 
             wxCmdLineParser parser(argc, argv);
             wxString output_dir = _T("");
+            wxString output_filename = _T("");
             wxArrayString files;
 
             wxLog *logger=new wxLogStderr();
@@ -117,12 +117,15 @@ bool DNG4PSApp::OnInit()
             {
                 { wxCMD_LINE_SWITCH, _T("h"), _T("help"), _T("Display this help message"),
                 wxCMD_LINE_VAL_NONE, wxCMD_LINE_OPTION_HELP },
-                { wxCMD_LINE_OPTION, _T("d"), _T("output"),   _T("Base output directory") },
-                { wxCMD_LINE_SWITCH, _T("p0"), _T("output"),  _T("No preview") },
-                { wxCMD_LINE_SWITCH, _T("p1"), _T("output"),  _T("Medium Preview") },
-                { wxCMD_LINE_SWITCH, _T("p2"), _T("output"),  _T("Full preview") },
-                { wxCMD_LINE_SWITCH, _T("u"), _T("output"),   _T("Uncompressed DNG file") },
-                { wxCMD_LINE_SWITCH, _T("c"), _T("output"),   _T("Compressed DNG file") },
+                { wxCMD_LINE_OPTION, _T("d"), _T("outputdir"),   _T("Base output directory") },
+                { wxCMD_LINE_SWITCH, _T("p0"), _T("nopreview"),  _T("No preview") },
+                { wxCMD_LINE_SWITCH, _T("p1"), _T("medium"),  _T("Medium Preview") },
+                { wxCMD_LINE_SWITCH, _T("p2"), _T("full"),  _T("Full preview") },
+                { wxCMD_LINE_SWITCH, _T("u"), _T("uncompressed"),   _T("Uncompressed DNG file") },
+                { wxCMD_LINE_SWITCH, _T("c"), _T("compressed"),   _T("Compressed DNG file") },
+                { wxCMD_LINE_SWITCH, _T("m"), _T("meta"),   _T("Add meta data from jpeg") },
+                { wxCMD_LINE_SWITCH, _T("n"), _T("nooverwrite"),   _T("Don't overwrite DNG files") },
+                { wxCMD_LINE_OPTION, _T("o"), _T("outputfile"),   _T("Not used. Reserved for future use") },
                 { wxCMD_LINE_PARAM,  NULL, NULL, _T("input files"),
                     wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_MULTIPLE },
                 { wxCMD_LINE_NONE }
@@ -146,6 +149,11 @@ bool DNG4PSApp::OnInit()
                     }
                     s << '\n';
 
+                    if ( parser.Found(_T("o"), &output_filename) )
+                    {
+                        s << _T("Output filname IGNORED:\t") << output_filename << '\n';
+                    }
+
                     if ( parser.Found(_T("d"), &output_dir) )
                     {
                         s << _T("Output dir:\t") << output_dir << '\n';
@@ -168,6 +176,16 @@ bool DNG4PSApp::OnInit()
                     } else if ( parser.Found(_T("c")))
                     {
                         sys().options->compress_dng=true;
+                    }
+
+                    if ( parser.Found(_T("m")))
+                    {
+                        sys().options->add_metadata = true;
+                    }
+
+                    if ( parser.Found(_T("n")))
+                    {
+                        sys().options->dont_overwrite = true;
                     }
 
                     wxLogMessage(s);

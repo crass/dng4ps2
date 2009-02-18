@@ -46,7 +46,6 @@ class OptionsDialog: public wxDialog
 		static const long ID_STATICTEXT12;
 		static const long ID_CHOICE9;
 		static const long ID_PANEL3;
-		static const long ID_BUTTON6;
 		static const long ID_BUTTON3;
 		static const long ID_BUTTON2;
 		static const long ID_BUTTON5;

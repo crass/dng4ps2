@@ -114,7 +114,6 @@ const long OptionsDialog::ID_PANEL2 = wxNewId();
 const long OptionsDialog::ID_STATICTEXT12 = wxNewId();
 const long OptionsDialog::ID_CHOICE9 = wxNewId();
 const long OptionsDialog::ID_PANEL3 = wxNewId();
-const long OptionsDialog::ID_BUTTON6 = wxNewId();
 const long OptionsDialog::ID_BUTTON3 = wxNewId();
 const long OptionsDialog::ID_BUTTON2 = wxNewId();
 const long OptionsDialog::ID_BUTTON5 = wxNewId();
@@ -190,7 +189,6 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	wxFlexGridSizer* FlexGridSizer3;
 	wxStaticText* StaticText26;
 	wxStaticText* StaticText6;
-	wxButton* btnGetNewCam;
 	wxButton* btnResetToDefaults;
 	wxPanel* pnlSecret;
 	wxFlexGridSizer* FlexGridSizer5;
@@ -228,7 +226,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	wxStaticText* StaticText4;
 	wxButton* btnCopy;
 	wxStdDialogButtonSizer* StdDialogButtonSizer1;
-
+	
 	Create(parent, wxID_ANY, _("optsDialogCaption"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("wxID_ANY"));
 	szOptions = new wxFlexGridSizer(0, 1, 0, 0);
 	szOptions->AddGrowableCol(0);
@@ -352,8 +350,6 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	FlexGridSizer10 = new wxFlexGridSizer(0, 4, 0, wxDLG_UNIT(Panel3,wxSize(0,0)).GetWidth());
 	pnlSecret = new wxPanel(Panel3, ID_PANEL3, wxDefaultPosition, wxDLG_UNIT(Panel3,wxSize(15,10)), wxTAB_TRAVERSAL, _T("ID_PANEL3"));
 	FlexGridSizer10->Add(pnlSecret, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
-	btnGetNewCam = new wxButton(Panel3, ID_BUTTON6, _("btnGetNewCam"), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT, wxDefaultValidator, _T("ID_BUTTON6"));
-	FlexGridSizer10->Add(btnGetNewCam, 1, wxALL|wxALIGN_LEFT|wxALIGN_TOP, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
 	btnCopy = new wxButton(Panel3, ID_BUTTON3, _("btnCopy"), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT, wxDefaultValidator, _T("ID_BUTTON3"));
 	FlexGridSizer10->Add(btnCopy, 1, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_LEFT|wxALIGN_TOP, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
 	btnDelete = new wxButton(Panel3, ID_BUTTON2, _("btnDelete"), wxDefaultPosition, wxSize(-1,-1), wxBU_EXACTFIT, wxDefaultValidator, _T("ID_BUTTON2"));
@@ -508,7 +504,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	szOptions->Fit(this);
 	szOptions->SetSizeHints(this);
 	Center();
-
+	
 	Connect(ID_CHECKBOX5,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&OptionsDialog::chbxUseDateForPathClick);
 	Connect(ID_CHECKBOX6,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&OptionsDialog::chkbArtistClick);
 	Connect(ID_CHOICE9,wxEVT_COMMAND_CHOICE_SELECTED,(wxObjectEventFunction)&OptionsDialog::chCameraSelectorSelect);

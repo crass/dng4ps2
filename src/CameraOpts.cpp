@@ -399,6 +399,14 @@ namespace
 			L"{11111111-11110000-08a420c3-32f90024}"
 		},
 
+		{ // Canon DIGITAL IXUS 50 / SD400
+			L"Canon DIGITAL IXUS 50 / Canon PowerShot SD400", L"IXUS 50 / PowerShot SD400",
+			2672,1968, 12,8,44,0, 2592,1944, 31,1023, MOSAIC_TYPE1,
+			lsDaylight, {0.685247f,-0.204939f,-0.106531f, -0.267616f,0.790509f,0.073359f, 0.032401f,0.015655f,0.314892f}, // this matrix is not good
+			{1.0f, 1.0f, 1.0f},
+			-1, {}, {},
+			L"{11111111-11110000-08a420c3-32f90025}"
+		},
 
 		{NULL}
 	};

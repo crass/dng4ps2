@@ -60,7 +60,7 @@ msgid "cant_save_file"
 msgstr "Non riesco a salvare il file"
 
 msgid "raw_file_size_not_correspond"
-msgstr "Size of RAW file (%1$d bytes) doesn't correspond of size for '%2$s' camera"
+msgstr "La dimensione del file RAW (%1$d byte) non corrisponde a quella prevista per la fotocamera '%2$s'"
 
 
 ###################
@@ -85,7 +85,7 @@ msgid  "PathToRAWFiles"
 msgstr "Percorso dei file RAW:"
 
 msgid  "PathToRAW_Hint"
-msgstr " Scegli la cartella dei file RAW "
+msgstr " Scegli la cartella per i file RAW "
 
 msgid  "RawFilesList"
 msgstr "Lista dei file RAW:"
@@ -131,7 +131,7 @@ msgstr " Ricontrolla la lista dei file "
 #                      #
 ########################
 msgid "pgMain"
-msgstr  "Common"
+msgstr  "Comune"
 
 msgid "optsDialogCaption"
 msgstr "Impostazioni"
@@ -192,7 +192,7 @@ msgstr " Formato della data \n\n AAAA - anno intero: a 4 cifre (2005 per esempio
 msgid "optsArtistChk"
 msgstr "Artista:"
 msgid "optsArtistChk_Hint"
-msgstr " Includi/sostituisci il nome dell'artista nei metadati del DNG "
+msgstr " Includi o sostituisci il nome dell'artista nei metadati del DNG "
 msgid "optsArtist_Hint"
 msgstr " Nome dell'artista "
 
@@ -209,76 +209,76 @@ msgstr " Linguaggio utilizzato "
 
 # camera selection page
 msgid "lblGroupNotice"
-msgstr "You have to select properly camera type ONLY if you don't use Jpeg files for convertion"
+msgstr "Conviene selezionare il modello della fotocamera appositamente SOLO se non usi il confronto con i rispettivi Jpeg durante la conversione"
 
 # camera options page
 
 msgid "btnResetToDefaults"
-msgstr "Reset to defaults..."
+msgstr "Reimposta a predefiniti..."
 msgid "btnResetToDefaultsHint"
-msgstr "Reset settings of selected camera profile to default values"
+msgstr "Reimposta le opzioni del profilo della fotocamera selezionato ai valori predefiniti"
 msgid "dlgDefaultCameraText"
-msgstr "Reset values of '%s' camera profile to defaults?"
+msgstr "Reimpostare i valori del profilo della fotocamera '%s' a quelli predefiniti?"
 msgid "dlgDefaultCameraCap"
-msgstr "Reset to defaults"
+msgstr "Reimposta a predefiniti"
 
 msgid "pgCamOpts"
-msgstr "Camera options"
+msgstr "Opzioni fotocamera"
 
 msgid "lblGeometry"
-msgstr "Geometry"
+msgstr "Geometria"
 msgid "lblColorMatrix1"
-msgstr "Color matrix #1"
+msgstr "Matrice colore #1"
 msgid "lblColorMatrix2"
-msgstr "Color matrix #2"
+msgstr "Matrice colore #2"
 
 msgid "optsCamera"
-msgstr "Camera:"
+msgstr "Fotocamera:"
 msgid "btnNew"
-msgstr "New"
+msgstr "Nuova"
 msgid "btnDelete"
-msgstr "Delete..."
+msgstr "Cancella..."
 msgid "btnCopy"
-msgstr "Copy..."
+msgstr "Copia..."
 msgid "lblCameraName"
-msgstr "Camera name:"
+msgstr "Nome fotocamera:"
 msgid "lblShortName"
-msgstr "Short name:"
+msgstr "Nome abbreviato:"
 msgid "lblRawSize"
-msgstr "Sensor size:"
+msgstr "Dimensione sensore:"
 msgid "lblFileSize"
-msgstr "RAW file size:"
+msgstr "Misure del file RAW:"
 msgid "lblJpegSize"
-msgstr "Jpeg size:"
+msgstr "Misure del Jpeg:"
 msgid "lblActiveX1Y1"
-msgstr "Active zone x1, y1:"
+msgstr "Zona attiva x1, y1:"
 msgid "lblActiveX2Y2"
-msgstr "Active zone x2, y2:"
+msgstr "Zona attiva x2, y2:"
 msgid "lblBlackWhileLevels"
-msgstr "Black-white levels:"
+msgstr "Livelli bianco-nero:"
 msgid "lblMosaicType"
-msgstr "Mosaic type:"
+msgstr "Tipo di mosaico:"
 msgid "lblMatrIll"
-msgstr "Illuminant:"
+msgstr "Illuminante:"
 msgid "lblMatr"
-msgstr "Matrix:"
+msgstr "Matrice:"
 msgid "lblMatrixMult"
-msgstr "Multiplicator:"
+msgstr "Moltiplicatore:"
 
 msgid "btnCalibr"
-msgstr "Calc. color matrix..."
+msgstr "Calc. matrice colore..."
 
 # Copy camera profile dialog
 msgid "dlgCopyCameraText"
-msgstr "Make copy of '%s' camera profile?"
+msgstr "Fare una copia del profilo della fotocamera '%s'?"
 msgid "dlgCopyCameraCap"
-msgstr "Copy camera profile"
+msgstr "Copia il profilo della fotocamera"
 msgid "copyOfCameraProf"
-msgstr "Copy of %s"
+msgstr "Copia di '%s'"
 msgid "dlgDeleteCameraText"
-msgstr "Delete '%s' camera profile?"
+msgstr "Cancellare il profilo della fotocamera '%s'?"
 msgid "dlgDeleteCameraCap"
-msgstr "Delete camera profile"
+msgstr "Cancella il profilo della fotocamera"
 
 
 ############################
@@ -315,10 +315,10 @@ msgid "aboutFormCaption"
 msgstr "Informazioni..."
 
 msgid "aboutMain"
-msgstr "DNG4PS-2 __VERSION__ è un programma liberamente utilizzabile (free-software) per la conversione dei file RAW delle fotocamere Canon della serie-A nel formato DNG.\n\nPuoi scaricare l'ultima versione e i sorgenti di questo programma da http://dng4ps2.chat.ru/"
+msgstr "DNG4PS-2 __VERSION__ è un programma liberamente utilizzabile (free-software) per la conversione dei file RAW delle fotocamere Canon supportate dal CHDK nel formato DNG.\n\nPuoi scaricare l'ultima versione e i sorgenti di questo programma da http://dng4ps2.chat.ru/"
 
 msgid "lblYouLikeProgram"
-msgstr "Like this program? Donate:"
+msgstr "Ti piace il programma? Dona:"
 
 
 #############################
@@ -347,28 +347,28 @@ msgstr "Nuova Cartella"
 #############################
 
 msgid "btnClearAreas_hint"
-msgstr "Clear all marked areas"
+msgstr "Ripulisci tutte le aree selezionate"
 
 msgid "btnDelArea_hint"
-msgstr "Delete currently selected area"
+msgstr "Cancella l'area attualmente selezionata"
 
 msgid "chLogLevel_hint"
-msgstr "Choose the level of detail to be logged"
+msgstr "Scegli il livello di dettaglio da registrare"
 
 msgid "btnClearLog_hint"
-msgstr "Clear progress and results"
+msgstr "Ripulisci progressi e risultati"
 
 msgid "rbMove_hint"
-msgstr "Selected area is moved by changes below"
+msgstr "L'area selezionata viene mossa secondo i cambiamenti seguenti"
 
 msgid "rbResize_hint"
-msgstr "Selected area is resized when by changes below"
+msgstr "L'area selezionata viene ridimensionata secondo i cambiamenti seguenti"
 
 msgid "cant_find_jpeg_file"
-msgstr "Can't find Jpeg file for selected RAW file"
+msgstr "Non riesco a reperire il Jpeg per il corrispondente file RAW selezionato"
 
 msgid "wrong_camera"
-msgstr "Selected RAW file is not suitable for '%s' camera!"
+msgstr "Il file RAW selezionato non corrisponde per la fotocamera '%s'!"
 
 msgid "dlgOpenRawError"
-msgstr "Error during opening RAW file!"
+msgstr "Errore nell'apertura del file RAW!"

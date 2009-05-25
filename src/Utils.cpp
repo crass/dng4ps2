@@ -727,9 +727,27 @@ void Utils::create_dng_file
 	thumbnail_render.SetMaximumSize(256);
 	thumbnail.Reset(thumbnail_render.Render());
 
+	// Writes DNG file data inti memory stream (as dng_file_stream doesn't support of unicode in file names)
 	dng_image_writer writer;
-	dng_file_stream filestream(new_file.char_str(), true);
+	dng_memory_stream filestream(gDefaultDNGMemoryAllocator);
 	writer.WriteDNG(host, filestream, *negative.Get(), *thumbnail.Get(), sys().options->compress_dng ? ccJPEG : ccUncompressed, jpeg_preview.Get());
+
+	// Writes memory stream into file
+	wxFile dng_file(new_file.c_str(), wxFile::write);
+	if (dng_file.Error()) throw Exception(L"Can't open file for writing");
+	static const size_t BlockSize = 1024*64;
+	size_t mem_stream_size = filestream.Length();
+	std::vector<char> block_buffer(BlockSize);
+	filestream.SetReadPosition(0);
+	for (size_t p = 0; p < mem_stream_size; p += BlockSize)
+	{
+		size_t cur_clock_size = mem_stream_size-p;
+		if (cur_clock_size > BlockSize) cur_clock_size = BlockSize;
+		if (cur_clock_size == 0) break;
+		filestream.Get(&block_buffer.front(), cur_clock_size);
+		dng_file.Write(&block_buffer.front(), cur_clock_size);
+	}
+	dng_file.Close();
 }
 
 
@@ -749,10 +767,10 @@ void Utils::load_raw_file(const wxString & raw_file_name, size_t file_size, std:
 
 	raw_data.resize(file_size);
 
-	std::ifstream fstream((const char*)raw_file_name.char_str(), std::ios::binary);
-	if (!fstream) throw Exception(wxString() << _("cant_open_file") << L" \"" << raw_file_name << L"\"");
-	fstream.read((char*)&raw_data.front(), raw_data.size());
-	fstream.close();
+    wxFile file(raw_file_name, wxFile::read);
+    if (!file.IsOpened()) throw Exception(wxString() << _("cant_open_file") << L" \"" << raw_file_name << L"\"");
+    file.Read((char*)&raw_data.front(), raw_data.size());
+    file.Close();
 
 	data.resize(size);
 

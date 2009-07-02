@@ -87,7 +87,7 @@ DNG4PSFrame::DNG4PSFrame(wxWindow* parent,wxWindowID id) : file_list(new FileLis
 	wxFlexGridSizer* szSource;
 	wxFlexGridSizer* FlexGridSizer1;
 	wxStaticText* StaticText4;
-
+	
 	Create(parent, id, _("MainFormCaption"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL, _T("id"));
 	SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
 	szMain = new wxFlexGridSizer(0, 1, 0, 0);
@@ -145,16 +145,19 @@ DNG4PSFrame::DNG4PSFrame(wxWindow* parent,wxWindowID id) : file_list(new FileLis
 	SetSizer(szMain);
 	startTimer.SetOwner(this, ID_TIMER1);
 	startTimer.Start(30, true);
+	startTimer.SetOwner(this, ID_TIMER1);
+	startTimer.Start(30, true);
 	szMain->Fit(this);
 	szMain->SetSizeHints(this);
 	Center();
-
+	
 	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DNG4PSFrame::btnSelectPathToRawClick);
 	Connect(ID_BUTTON6,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DNG4PSFrame::btnRescanClick);
 	Connect(ID_BUTTON4,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DNG4PSFrame::btnSelectOutputDirClick);
 	Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DNG4PSFrame::btnStartClick);
 	Connect(ID_BUTTON5,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DNG4PSFrame::btnOptionsClick);
 	Connect(ID_BUTTON3,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DNG4PSFrame::btnAboutClick);
+	Connect(ID_TIMER1,wxEVT_TIMER,(wxObjectEventFunction)&DNG4PSFrame::startTimerTrigger);
 	Connect(ID_TIMER1,wxEVT_TIMER,(wxObjectEventFunction)&DNG4PSFrame::startTimerTrigger);
 	Connect(wxID_ANY,wxEVT_CLOSE_WINDOW,(wxObjectEventFunction)&DNG4PSFrame::OnClose);
 	//*)

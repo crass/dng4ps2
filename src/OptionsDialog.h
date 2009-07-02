@@ -45,6 +45,7 @@ class OptionsDialog: public wxDialog
 		static const long ID_PANEL2;
 		static const long ID_STATICTEXT12;
 		static const long ID_CHOICE9;
+		static const long ID_BUTTON1;
 		static const long ID_PANEL3;
 		static const long ID_BUTTON3;
 		static const long ID_BUTTON2;
@@ -115,6 +116,7 @@ class OptionsDialog: public wxDialog
 		void btnCalibrClick(wxCommandEvent& event);
 		void btnResetToDefaultsClick(wxCommandEvent& event);
 		void PnlSecretLeftDClick(wxMouseEvent& event);
+		void OnGetLastestClick(wxCommandEvent& event);
 		//*)
 
 		//(*Declarations(OptionsDialog)
@@ -150,6 +152,7 @@ class OptionsDialog: public wxDialog
 		wxStaticText* lblFileSize;
 		wxChoice* chMosaicType;
 		wxChoice* chDateType;
+		wxPanel* SecretPanel;
 		wxTextCtrl* txtActiveY2;
 		wxTextCtrl* txtJpegWidth;
 		wxTextCtrl* txtMatr1;

@@ -41,11 +41,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(wx)\include&quot;;&quot;$(wx)\lib\vc_lib\mswu&quot;;external_libs\dng_sdk;external_libs\expat\src;external_libs\libexif;external_libs\libexif\canon;external_libs\libexif\olympus;external_libs\MD5;external_libs\missed_files;external_libs\xmp_sdk\include;external_libs\xmp_sdk\common"
-				PreprocessorDefinitions="WIN32;_WINDOWS;wxUSE_UNICODE;wxUSE_NO_MANIFEST;WIN_ENV;qDNGLittleEndian=1;qWinOS=1;qMacOS=0;HAVE_MEMMOVE"
+				AdditionalIncludeDirectories="&quot;$(wx)\include&quot;;&quot;$(boost_include)&quot;;&quot;$(wx)\lib\vc_dll\mswud&quot;;external_libs\dng_sdk;external_libs\expat\src;external_libs\libexif;external_libs\libexif\canon;external_libs\libexif\olympus;external_libs\MD5;external_libs\missed_files;external_libs\xmp_sdk\include;external_libs\xmp_sdk\common"
+				PreprocessorDefinitions="WIN32;_WINDOWS;wxUSE_UNICODE;wxUSE_NO_MANIFEST;WIN_ENV;qDNGLittleEndian=1;qWinOS=1;qMacOS=0;HAVE_MEMMOVE;__WXDEBUG__;WXUSINGDLL"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="0"
+				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="4"
@@ -61,9 +61,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libcmt.lib comctl32.lib wxbase28u.lib wxmsw28u_core.lib wxjpeg.lib wxpng.lib wxzlib.lib wxtiff.lib"
+				AdditionalDependencies="wxbase28ud.lib wxmsw28ud_core.lib wxbase28ud_net.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxtiffd.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;$(wx)\lib\vc_lib&quot;"
+				AdditionalLibraryDirectories="&quot;$(wx)\lib\vc_dll&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -118,7 +118,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="3"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="&quot;$(wx)\include&quot;;&quot;$(wx)\lib\vc_lib\mswu&quot;;external_libs\dng_sdk;external_libs\expat\src;external_libs\libexif;external_libs\libexif\canon;external_libs\libexif\olympus;external_libs\MD5;external_libs\missed_files;external_libs\xmp_sdk\include;external_libs\xmp_sdk\common"
+				AdditionalIncludeDirectories="&quot;$(wx)\include&quot;;&quot;$(boost_include)&quot;;&quot;$(wx)\lib\vc_lib\mswu&quot;;external_libs\dng_sdk;external_libs\expat\src;external_libs\libexif;external_libs\libexif\canon;external_libs\libexif\olympus;external_libs\MD5;external_libs\missed_files;external_libs\xmp_sdk\include;external_libs\xmp_sdk\common"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;wxUSE_UNICODE;wxUSE_NO_MANIFEST;WIN_ENV;qDNGLittleEndian=1;qWinOS=1;qMacOS=0;HAVE_MEMMOVE;DISABLE_CALIBR"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
@@ -139,7 +139,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libcmt.lib comctl32.lib wxbase28u.lib wxjpeg.lib wxmsw28u_core.lib wxpng.lib wxzlib.lib wxtiff.lib "
+				AdditionalDependencies="libcmt.lib comctl32.lib wxbase28u.lib wxjpeg.lib wxmsw28u_core.lib wxbase28u_net.lib wxpng.lib wxzlib.lib wxtiff.lib wsock32.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;$(wx)\lib\vc_lib&quot;"
 				GenerateDebugInformation="false"
@@ -570,6 +570,50 @@
 					>
 				</File>
 			</Filter>
+		</Filter>
+		<Filter
+			Name="langs"
+			>
+			<File
+				RelativePath=".\langs\de.po"
+				>
+			</File>
+			<File
+				RelativePath=".\langs\en.po"
+				>
+			</File>
+			<File
+				RelativePath=".\langs\es.po"
+				>
+			</File>
+			<File
+				RelativePath=".\langs\fi.po"
+				>
+			</File>
+			<File
+				RelativePath=".\langs\fr.po"
+				>
+			</File>
+			<File
+				RelativePath=".\langs\it.po"
+				>
+			</File>
+			<File
+				RelativePath=".\langs\nn.po"
+				>
+			</File>
+			<File
+				RelativePath=".\langs\pl.po"
+				>
+			</File>
+			<File
+				RelativePath=".\langs\ru.po"
+				>
+			</File>
+			<File
+				RelativePath=".\langs\zh.po"
+				>
+			</File>
 		</Filter>
 		<File
 			RelativePath=".\AboutDialog.cpp"

@@ -54,6 +54,7 @@ namespace
     const wchar_t *gr_count_opt_str             = L"GroupsCount";
 	const wchar_t *file_size_opt_str            = L"FileSize";
 	const wchar_t *short_name_opt_str           = L"ShortName";
+	const wchar_t *ppc_str                      = L"PixelsPerColor";
 
 	struct CameraDefValue
 	{
@@ -76,6 +77,8 @@ namespace
 		float color_matrix2[9];
 		float color_matrix2_mult[3];
 
+		PixelsPerColor pixel_per_color;
+
 		const wchar_t * id;
 	};
 
@@ -85,7 +88,7 @@ namespace
 			L"Canon PowerShot A610", L"PowerShot A610",
 			2672,1968, 14,10,46,2, 2592,1944, 31,1023, MOSAIC_TYPE1,
 			17, {15591.0f,-6402.0f,-1592.0f, -5365.0f,13198.0f,2168.0f, -1300.0f,1824.0f,5075.0f }, {1.1f, 1.0f, 0.9f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90001}"
 		},
 
@@ -94,7 +97,7 @@ namespace
 			2672,1968, 14,10,46,2, 2592,1944, 31,1023, MOSAIC_TYPE1, // checked
 			lsDaylight, {0.580618f,-0.182631f,-0.094502f, -0.192656f,0.650899f,0.058592f, -0.015379f,0.089453f,0.256275f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90002}"
 		},
 
@@ -103,7 +106,7 @@ namespace
 			2672,1968, 12,20,44,0, 2592,1944, 31,1023, MOSAIC_TYPE1, // checked
 			lsDaylight, {0.725264f,-0.240542f,-0.122310f, -0.210248f,0.656077f,0.052390f, -0.011282f,0.070400f,0.300712f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90003}"
 		},
 
@@ -111,7 +114,7 @@ namespace
 			L"Canon PowerShot A620", L"PowerShot A620",
 			3152,2340, 38,14,6,2, 3072,2304, 31,1023, MOSAIC_TYPE1, // checked
 			17, {15265.0f,-6193.0f,-1558.0f, -4125.0f,12116.0f,2010.0f, -888.0f,1639.0f,5220.0f}, {1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90004}"
 		},
 
@@ -120,7 +123,7 @@ namespace
 			3152,2340, 38,14,6,2, 3072,2304, 31,1023, MOSAIC_TYPE1, // checked
 			lsDaylight, { 0.661014f,-0.189364f,-0.115797f, -0.168772f,0.661827f,0.047392f, -0.035846f,0.107148f,0.233705f },
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90005}"
 		},
 
@@ -129,7 +132,7 @@ namespace
 			3152,2340, 38,14,6,2, 3072,2304, 31,1023, MOSAIC_TYPE1, // checked
 			lsDaylight, {0.652674f,-0.172074f,-0.107575f, -0.139063f,0.594517f,0.060252f, -0.009088f,0.082013f,0.238048f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90006}"
 		},
 
@@ -138,7 +141,7 @@ namespace
 			3152,2340, 38,14,6,2, 3072,2304, 31,1023, MOSAIC_TYPE1,
 			lsDaylight, {0.664401f,-0.206085f,-0.105935f, -0.208489f,0.655900f,0.051953f, -0.051591f,0.115760f,0.234946f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90007}"
 		},
 
@@ -146,7 +149,7 @@ namespace
 			L"Canon PowerShot A560", L"PowerShot A560",
 			3152,2340, 38,14,6,2, 3072,2304, 31,1023, MOSAIC_TYPE1,
 			17, {15265,-6193,-1558, -4125,12116,2010, -888,1639,5220}, {1.0f, 1.0f, 1.0f},
-			-1,	{}, {},
+			-1,	{}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90008}"
 		},
 
@@ -155,7 +158,7 @@ namespace
 			3152,2340, 38,14,6,2, 3072,2304, 31,1023, MOSAIC_TYPE1,
 			lsDaylight, {0.528283f,-0.144259f,-0.085966f, -0.202789f,0.736563f,0.073008f, -0.027130f,0.107702f,0.264543f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90009}"
 		},
 
@@ -163,7 +166,7 @@ namespace
 			L"Canon DIGITAL IXUS 700", L"IXUS 700", // name checked
 			3152,2340, 38,14,6,2, 3072,2304, 31,1023, MOSAIC_TYPE1,
 			17, {15265,-6193,-1558, -4125,12116,2010, -888,1639,5220}, {1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f9000A}"
 		},
 
@@ -172,7 +175,7 @@ namespace
 			3344,2484, 14,8,46,8, 3264,2448, 31,1023, MOSAIC_TYPE1, // checked
 			lsDaylight, {0.656080f,-0.226478f,-0.085884f, -0.194636f,0.687905f,0.037862f, 0.022873f,0.075523f,0.265822f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f9000B}"
 		},
 
@@ -181,7 +184,7 @@ namespace
 			3336,2480, 10,8,34,6, 3264,2448, 31,1023, MOSAIC_TYPE2, // checked
 			lsDaylight, {0.640019f,-0.220031f,-0.096241f, -0.077419f,0.639766f,0.044009f, 0.017965f,0.078396f,0.231868f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f9000C}"
 		},
 
@@ -191,7 +194,7 @@ namespace
 			//
 			lsDaylight, {0.650591f,-0.199585f,-0.123118f, -0.069617f,0.583926f,0.034354f, -0.019113f,0.082163f,0.210786f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f9000D}"
 		},
 
@@ -199,7 +202,7 @@ namespace
 			L"Canon DIGITAL IXUS 950 IS", L"IXUS 950 IS",
 			3336,2480, 10,8,34,6, 3264,2448, 31,1023, MOSAIC_TYPE2, // checked
 			lsDaylight, {14573,-5482,-1546, -1266,9799,1468, -1040,1912,3810}, {1.0f, 1.0f, 1.0f}, // from Dave Coffin
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f9000E}"
 		},
 
@@ -207,7 +210,7 @@ namespace
 			L"Canon PowerShot A640", L"PowerShot A640",
 			3736,2772, 14,8,54,8, 3648,2736, 31,1023, MOSAIC_TYPE1,
 			17, {13124,-5329,-1390, -3602,11658,1944, -1612,2863,4885 }, {1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f9000F}"
 		},
 
@@ -216,7 +219,7 @@ namespace
 			3736,2772, 14,8,54,8, 3648,2736, 31,1023, MOSAIC_TYPE1, // checked
 			lsDaylight, { 0.575419f,-0.185557f,-0.077898f, -0.213702f,0.733569f,0.081514f, -0.024604f,0.131906f,0.280378f },
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90010}"
 		},
 
@@ -224,7 +227,7 @@ namespace
 			L"Canon PowerShot S3 IS", L"PowerShot S3 IS",
 			2888,2136, 44,8,4,0, 2816,2112, 31, 1023, MOSAIC_TYPE1, // checked
 			17, {14062,-5199,-1446, -4712,12470,2243, -1286,2028,4836 }, {1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90011}"
 		},
 
@@ -232,7 +235,7 @@ namespace
 			L"Canon PowerShot A700", L"PowerShot A700",
 			2888,2136, 44,8,4,0, 2816,2112, 31,1023, MOSAIC_TYPE1,
 			17, {14062,-5199,-1446, -4712,12470,2243, -1286,2028,4836 }, {1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90012}"
 		},
 
@@ -240,7 +243,7 @@ namespace
 			L"Canon DIGITAL IXUS 800 IS", L"IXUS 800 IS",
 			2888,2136, 44,8,4,0, 2816,2112, 31,1023, MOSAIC_TYPE1,
 			17, {14062,-5199,-1446, -4712,12470,2243, -1286,2028,4836 }, {1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90013}"
 		},
 
@@ -249,7 +252,7 @@ namespace
 			2888,2136, 44,8,4,0, 2816,2112, 31,1023, MOSAIC_TYPE1,
 			lsDaylight, {0.796464f,-0.214669f,-0.122599f, -0.182793f,0.736859f,0.075607f, 0.020593f,0.080194f,0.277992f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90014}"
 		},
 
@@ -258,7 +261,7 @@ namespace
 			2888,2136, 44,8,4,0, 2816,2112, 31,1023, MOSAIC_TYPE1,
 			lsDaylight, {0.687147f,-0.201964f,-0.125024f, -0.148403f,0.566810f,0.045401f, -0.009472f,0.063186f,0.208602f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90015}"
 		},
 
@@ -267,7 +270,7 @@ namespace
 			4104,3048, 52,14,28,18, 4000,3000, 31,1023, MOSAIC_TYPE1,
 			lsDaylight, {0.913762f,-0.261578f,-0.135582f, -0.099049f,1.067089f,0.061442f, 0.048717f,0.096802f,0.412056f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90016}"
 		},
 
@@ -276,7 +279,7 @@ namespace
 			2664,1968, 6,6,46,6, 2592,1944, 31,1023, MOSAIC_TYPE1,
 			lsDaylight, {0.649324f,-0.233893f,-0.088521f, -0.158955f,0.593407f,0.069775f, -0.044551f,0.136891f,0.254362f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90017}"
 		},
 
@@ -287,7 +290,7 @@ namespace
 						-0.050633f, 0.515687f, 0.023509f,
 						-0.021341f, 0.076495f, 0.186385f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90018}"
 		},
 
@@ -296,7 +299,7 @@ namespace
 			3152,2340, 12,8,44,8, 3072,2304, 31,1023, MOSAIC_TYPE1, // checked
 			lsDaylight, {0.510370f,-0.068998f,-0.086859f, -0.279980f,0.766686f,0.067944f, -0.014382f,0.113688f,0.239853f}, // poor?
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90019}"
 		},
 
@@ -305,7 +308,7 @@ namespace
 			3336,2480, 10,8,34,6, 3264,2448, 31,1023, MOSAIC_TYPE2,
 			lsDaylight, {0.656793f,-0.168702f,-0.108030f, -0.002711f,0.661538f,0.037919f, 0.077255f,0.048834f,0.241797f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f9001A}"
 		},
 
@@ -314,7 +317,7 @@ namespace
 			2888,2136, 44,8,4,0, 2816,2112, 31,1023, MOSAIC_TYPE1,
 			lsDaylight, {0.767398f,-0.227658f,-0.144213f, -0.217466f,0.669319f,0.038180f, -0.023152f,0.077743f,0.238669f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f9001B}"
 		},
 
@@ -323,7 +326,7 @@ namespace
 			3152,2340, 36,12,4,0, 3072,2304, 31,1023, MOSAIC_TYPE1, // checked
 			lsDaylight, {0.580280f,-0.172239f,-0.089707f, -0.206596f,0.634926f,0.063877f, 0.010377f,0.062053f,0.242646f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f9001C}"
 		},
 
@@ -332,7 +335,7 @@ namespace
 			2888,2136, 44,8,4,0, 2816,2112, 31,1023, MOSAIC_TYPE1,
 			lsDaylight, {0.783384f,-0.227078f,-0.127919f, -0.181247f,0.661743f,0.058868f, 0.025727f,0.043891f,0.247655f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f9001D}"
 		},
 
@@ -341,7 +344,7 @@ namespace
 			2664,1968, 6,6,46,6, 2592,1944, 31,1023, MOSAIC_TYPE1,
 			lsDaylight, {0.652279f,-0.199279f,-0.101833f, -0.159819f,0.619308f,0.078172f, -0.058827f,0.150963f,0.264216f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f9001E}"
 		},
 
@@ -350,7 +353,7 @@ namespace
 			4104,3048, 48,12,24,12, 4000,3000, 31,1023, MOSAIC_TYPE1,
 			lsDaylight, {0.764117f,-0.223884f,-0.116036f, -0.035875f,0.582534f,0.032982f, 0.010441f,0.064164f,0.198520f}, // my
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f9001F}"
 		},
 
@@ -359,7 +362,7 @@ namespace
 			2400,1766, 12,12,44,2, 2272,1704, 31, 1023, MOSAIC_TYPE1,
 			lsDaylight, {0.652674f,-0.172074f,-0.107575f, -0.139063f,0.594517f,0.060252f, -0.009088f,0.082013f,0.23808f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90020}"
 		},
 
@@ -368,7 +371,7 @@ namespace
 			2672,1968, 12,8,44,0, 2592,1944, 31,1023, MOSAIC_TYPE1, // Checked
 			lsDaylight, {0.536034f,-0.173429f,-0.089823f, -0.290416f,0.735807f,0.047894f, -0.071455f,0.114314f,0.274533f}, // is good enough
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90021}"
 		},
 
@@ -377,7 +380,7 @@ namespace
 			3336,2480, 6,6,32,4, 3264,2448, 31,1023, MOSAIC_TYPE2,
 			lsDaylight, {0.723425,-0.262760,-0.106712, -0.005402,0.476882,0.037287, 0.021408,0.039033,0.194852},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90022}"
 		},
 
@@ -386,7 +389,7 @@ namespace
 			3152,2340, 36,12,4,0, 3072,2304, 31,1023, MOSAIC_TYPE1,
 			lsDaylight, {0.673251f,-0.200684f,-0.098680f, -0.163638f,0.651247f,0.074004f, 0.014221f,0.052979f,0.265291f},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90023}"
 		},
 
@@ -395,7 +398,7 @@ namespace
 			3336,2480, 8,8,32,0, 3264,2448, 31,1023, MOSAIC_TYPE2, // checked
 			lsDaylight, {0.726857f,-0.176454f,-0.124118f, -0.071340f,0.592001f,0.075622f, 0.063222f,0.050547f,0.219582f}, // this matrix is not good
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90024}"
 		},
 
@@ -404,19 +407,27 @@ namespace
 			2672,1968, 12,8,44,0, 2592,1944, 31,1023, MOSAIC_TYPE1,
 			lsDaylight, {0.685247f,-0.204939f,-0.106531f, -0.267616f,0.790509f,0.073359f, 0.032401f,0.015655f,0.314892f}, // this matrix is not good
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90025}"
 		},
 
 		{ // Canon PowerShot A430
 			L"Canon PowerShot A430", L"PowerShot A430", // name checked
-			2392,1752, 0,8,56,4, 2272,1704, 31, 1023, MOSAIC_TYPE2, // 12,12,44,2,  2272,1704
+			2392,1752, 0,8,56,4, 2272,1704, 31, 1023, MOSAIC_TYPE2,
 			lsDaylight, {0.479627,-0.156240,-0.084926, -0.215238,0.534902,0.060219, -0.096906,0.148194,0.191583},
 			{1.0f, 1.0f, 1.0f},
-			-1, {}, {},
+			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90026}"
 		},
 
+		{ // Canon PowerShot SD870 IS
+			L"Canon PowerShot SD870 IS", L"PowerShot SD870 IS",
+			3336,2480, 8,4,32,4, 3264,2448, 31,1023, MOSAIC_TYPE2,
+			lsDaylight, {0.822147f,-0.331638f,-0.114010f, -0.052990f,0.545430f,0.035479f, 0.045255f,-0.006908f,0.222391f},
+			{1.0f, 1.0f, 1.0f},
+			-1, {}, {}, ppc_10,
+			L"{11111111-11110000-08a420c3-32f90027}"
+		},
 
 		{NULL}
 	};
@@ -437,6 +448,8 @@ namespace
 		item.black_level          = def.black_level;
 		item.white_level          = def.white_level;
 		item.mosaic               = (MosaicType)def.mosaic;
+
+		item.pixels_per_color     = def.pixel_per_color;
 
 		item.matrix1.illum = def.illum1;
 		item.matrix1.matrix.assign(def.color_matrix1, def.color_matrix1+9);
@@ -622,26 +635,21 @@ void CameraOpts::save(wxConfigBase &config, bool save_groups)
 		const CameraData &item = items_[i];
 		path.Printf(L"Camera%03d/", i);
 
-		config.Write(path+id_opt_str,                   item.id);
-		config.Write(path+name_opt_str,                 item.model_name);
-		config.Write(path+short_name_opt_str,           item.short_name);
-
-		config.Write(path+width_opt_str,                (int)item.width);
-		config.Write(path+height_opt_str,               (int)item.height);
-
-		config.Write(path+cropped_width_opt_str,        (int)item.cropped_width);
-		config.Write(path+cropped_height_opt_str,       (int)item.cropped_height);
-
-		config.Write(path+active_origin_x_opt_str,      (int)item.active_origin_x);
-		config.Write(path+active_origin_y_opt_str,      (int)item.active_origin_y);
-		config.Write(path+active_origin_right_opt_str,  (int)item.active_origin_right);
+		config.Write(path+id_opt_str,                   item.id                       );
+		config.Write(path+name_opt_str,                 item.model_name               );
+		config.Write(path+short_name_opt_str,           item.short_name               );
+		config.Write(path+width_opt_str,                (int)item.width               );
+		config.Write(path+height_opt_str,               (int)item.height              );
+		config.Write(path+cropped_width_opt_str,        (int)item.cropped_width       );
+		config.Write(path+cropped_height_opt_str,       (int)item.cropped_height      );
+		config.Write(path+active_origin_x_opt_str,      (int)item.active_origin_x     );
+		config.Write(path+active_origin_y_opt_str,      (int)item.active_origin_y     );
+		config.Write(path+active_origin_right_opt_str,  (int)item.active_origin_right );
 		config.Write(path+active_origin_bottom_opt_str, (int)item.active_origin_bottom);
-
-		config.Write(path+black_level_opt_str,          (int)item.black_level);
-		config.Write(path+white_level_opt_str,          (int)item.white_level);
-
-		config.Write(path+mosaic_opt_str,               (int)item.mosaic);
-
+		config.Write(path+black_level_opt_str,          (int)item.black_level         );
+		config.Write(path+white_level_opt_str,          (int)item.white_level         );
+		config.Write(path+mosaic_opt_str,               (int)item.mosaic              );
+		config.Write(path+ppc_str,                      (int)item.pixels_per_color    );
 		save_matrix(config, path+L"Matrix1/", item.matrix1);
 		save_matrix(config, path+L"Matrix2/", item.matrix2);
 	}
@@ -749,6 +757,7 @@ void CameraOpts::load(wxConfigBase &config)
 			item.white_level = config.Read(path+white_level_opt_str, item.white_level);
 
 			item.mosaic = (MosaicType)config.Read(path+mosaic_opt_str, (int)item.mosaic);
+			item.pixels_per_color = (PixelsPerColor)config.Read(path+ppc_str, (int)item.pixels_per_color);
 
 			if (item.id.IsEmpty() || item.model_name.IsEmpty() || (item.width == no_val) || (item.height == no_val) ||
 				(item.cropped_width == no_val) || (item.cropped_height == no_val) ||

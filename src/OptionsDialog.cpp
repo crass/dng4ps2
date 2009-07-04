@@ -974,7 +974,7 @@ void OptionsDialog::OnGetLastestClick(wxCommandEvent& event)
 	get.SetHeader(_T("Content-type"), _T("text/html; charset=utf-8"));
 	get.SetTimeout(30);
 	 
-	while (!get.Connect(_T("dng4ps2.googlecode.com"))) wxSleep(5);
+	get.Connect(_T("dng4ps2.googlecode.com"));
 	 
 	wxApp::IsMainLoopRunning();
 	 

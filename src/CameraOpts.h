@@ -16,6 +16,12 @@ struct CameraColorMatrix
 	std::vector<float> mult;
 };
 
+enum PixelsPerColor
+{
+	ppc_10 = 10,
+	ppc_12 = 12
+};
+
 struct CameraData
 {
 	wxString id;
@@ -39,6 +45,8 @@ struct CameraData
 
 	CameraColorMatrix matrix1;
 	CameraColorMatrix matrix2;
+
+	PixelsPerColor pixels_per_color;
 };
 
 class CameraOpts

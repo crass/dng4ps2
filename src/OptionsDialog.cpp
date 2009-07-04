@@ -740,10 +740,14 @@ void OptionsDialog::show_camera_opts()
 	}
 	chMosaicType->SetSelection(mosaic);
 
-	size_t bits_per_unit_size = sizeof(bits_per_unit)/sizeof(bits_per_unit[0]);
-	const BitsPerUnit *bpu = std::find(bits_per_unit, bits_per_unit+bits_per_unit_size, item->bits_per_unit);
-	if (bpu == bits_per_unit+bits_per_unit_size) chBitsPerUnit->SetSelection(0);
-	else chBitsPerUnit->SetSelection(bpu-bits_per_unit);
+	if (item != NULL)
+	{
+		size_t bits_per_unit_size = sizeof(bits_per_unit)/sizeof(bits_per_unit[0]);
+		const BitsPerUnit *bpu = std::find(bits_per_unit, bits_per_unit+bits_per_unit_size, item->bits_per_unit);
+		if (bpu == bits_per_unit+bits_per_unit_size) chBitsPerUnit->SetSelection(0);
+		else chBitsPerUnit->SetSelection(bpu-bits_per_unit);
+	}
+	else chBitsPerUnit->SetSelection(wxNOT_FOUND);
 
 	show_illum_type(chIll1, item != NULL ? item->matrix1.illum : -1);
 	txtMatr1->SetValue(item != NULL ? CameraOpts::vct_to_str(item->matrix1.matrix, L"%0.6f ") : empty);

@@ -35,7 +35,7 @@ struct CorrMNoteData
 class Utils
 {
 private:
-    static void load_raw_file(const wxString & raw_file_name, size_t file_size, std::vector<unsigned short> & data);
+    static void load_raw_file(const wxString & raw_file_name, size_t file_size, std::vector<unsigned short> & data, int bits_per_unit);
 
     static unsigned short& pixel(std::vector<unsigned short> & data, int col, int row, int width, int height)
     {

@@ -148,6 +148,8 @@ const long OptionsDialog::ID_STATICTEXT24 = wxNewId();
 const long OptionsDialog::ID_TEXTCTRL13 = wxNewId();
 const long OptionsDialog::ID_STATICTEXT25 = wxNewId();
 const long OptionsDialog::ID_CHOICE10 = wxNewId();
+const long OptionsDialog::ID_STATICTEXT9 = wxNewId();
+const long OptionsDialog::ID_CHOICE4 = wxNewId();
 const long OptionsDialog::ID_STATICTEXT31 = wxNewId();
 const long OptionsDialog::ID_STATICTEXT26 = wxNewId();
 const long OptionsDialog::ID_CHOICE11 = wxNewId();
@@ -221,6 +223,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	wxFlexGridSizer* FlexGridSizer13;
 	wxStaticText* StaticText12;
 	wxFlexGridSizer* FlexGridSizer12;
+	wxStaticText* lblBitsPerUnit;
 	wxFlexGridSizer* FlexGridSizer6;
 	wxNotebook* nbMain;
 	wxFlexGridSizer* FlexGridSizer1;
@@ -230,7 +233,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	wxStaticText* StaticText4;
 	wxButton* btnCopy;
 	wxStdDialogButtonSizer* StdDialogButtonSizer1;
-
+	
 	Create(parent, wxID_ANY, _("optsDialogCaption"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("wxID_ANY"));
 	szOptions = new wxFlexGridSizer(0, 1, 0, 0);
 	szOptions->AddGrowableCol(0);
@@ -444,11 +447,17 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	FlexGridSizer16->Add(txtWhiteLevel, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
 	FlexGridSizer11->Add(FlexGridSizer16, 1, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
 	StaticText25 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT25, _("lblMosaicType"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT25"));
-	FlexGridSizer11->Add(StaticText25, 1, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
+	FlexGridSizer11->Add(StaticText25, 1, wxTOP|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
 	chMosaicType = new wxChoice(scrlwCameraOpt, ID_CHOICE10, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE10"));
 	chMosaicType->Append(_("Red,Green Green,Blue"));
 	chMosaicType->Append(_("Green,Blue Red,Green"));
-	FlexGridSizer11->Add(chMosaicType, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
+	FlexGridSizer11->Add(chMosaicType, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
+	lblBitsPerUnit = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT9, _("lblBitsPerUnit"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT9"));
+	FlexGridSizer11->Add(lblBitsPerUnit, 1, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
+	chBitsPerUnit = new wxChoice(scrlwCameraOpt, ID_CHOICE4, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE4"));
+	chBitsPerUnit->Append(_("10 bit"));
+	chBitsPerUnit->Append(_("12 bit"));
+	FlexGridSizer11->Add(chBitsPerUnit, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
 	StaticText31 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT31, _("lblColorMatrix1"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT31"));
 	wxFont StaticText31Font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
 	if ( !StaticText31Font.Ok() ) StaticText31Font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
@@ -513,7 +522,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	szOptions->Fit(this);
 	szOptions->SetSizeHints(this);
 	Center();
-
+	
 	Connect(ID_CHECKBOX5,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&OptionsDialog::chbxUseDateForPathClick);
 	Connect(ID_CHECKBOX6,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&OptionsDialog::chkbArtistClick);
 	Connect(ID_CHOICE9,wxEVT_COMMAND_CHOICE_SELECTED,(wxObjectEventFunction)&OptionsDialog::chCameraSelectorSelect);
@@ -637,6 +646,11 @@ void OptionsDialog::chkbArtistClick(wxCommandEvent& event)
 //                                           //
 ///////////////////////////////////////////////
 
+namespace
+{
+	const BitsPerUnit bits_per_unit[] = {ppc_10, ppc_12};
+}
+
 void OptionsDialog::PnlSecretLeftDClick(wxMouseEvent& event)
 {
 	CameraOpts def_opts;
@@ -726,6 +740,11 @@ void OptionsDialog::show_camera_opts()
 	}
 	chMosaicType->SetSelection(mosaic);
 
+	size_t bits_per_unit_size = sizeof(bits_per_unit)/sizeof(bits_per_unit[0]);
+	const BitsPerUnit *bpu = std::find(bits_per_unit, bits_per_unit+bits_per_unit_size, item->bits_per_unit);
+	if (bpu == bits_per_unit+bits_per_unit_size) chBitsPerUnit->SetSelection(0);
+	else chBitsPerUnit->SetSelection(bpu-bits_per_unit);
+
 	show_illum_type(chIll1, item != NULL ? item->matrix1.illum : -1);
 	txtMatr1->SetValue(item != NULL ? CameraOpts::vct_to_str(item->matrix1.matrix, L"%0.6f ") : empty);
 	txtMatrix1Mult->SetValue(item != NULL ? CameraOpts::vct_to_str(item->matrix1.mult, L"%0.1f ") : empty);
@@ -755,6 +774,8 @@ void OptionsDialog::read_camera_opts()
 
 	CameraData item;
 
+	cam_opts_->reset_to_defaults(lastCameraId, item);
+
 	item.model_name = txtCamName->GetValue();
 	item.short_name = txtShortName->GetValue();
 
@@ -774,6 +795,8 @@ void OptionsDialog::read_camera_opts()
 
 	item.mosaic = (chMosaicType->GetSelection() == wxNOT_FOUND) ? MOSAIC_TYPE1 : mosaic_types[chMosaicType->GetSelection()];
 
+	item.bits_per_unit = (chBitsPerUnit->GetSelection() == wxNOT_FOUND) ? ppc_10 : bits_per_unit[chBitsPerUnit->GetSelection()];
+
 	item.matrix1.illum = get_illum_type(chIll1);
 	CameraOpts::str_to_vect(item.matrix1.matrix, txtMatr1->GetValue(), 9);
 	CameraOpts::str_to_vect(item.matrix1.mult, txtMatrix1Mult->GetValue(), 3);
@@ -787,13 +810,15 @@ void OptionsDialog::read_camera_opts()
 
 void OptionsDialog::txtSensWidthText(wxCommandEvent& event)
 {
+	const CameraData *camera = cam_opts_->find_by_id(lastCameraId);
+	if (camera == NULL) return;
 	int width = get_int(txtSensWidth);
 	int height = get_int(txtSensHeight);
 	int size = -1;
 	bool ok = true;
 	if ((width != -1) && (height != -1))
 	{
-		int size_in_bits = (width*height*10);
+		int size_in_bits = (width*height*(int)camera->bits_per_unit);
 		size = size_in_bits/8;
 		ok = ((size_in_bits%8) == 0);
 	}
@@ -888,7 +913,6 @@ void OptionsDialog::btnResetToDefaultsClick(wxCommandEvent& event)
 //        C A M E R A S   G R O U P S        //
 //                                           //
 ///////////////////////////////////////////////
-
 
 void OptionsDialog::show_groups()
 {

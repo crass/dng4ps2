@@ -78,6 +78,8 @@ class OptionsDialog: public wxDialog
 		static const long ID_TEXTCTRL13;
 		static const long ID_STATICTEXT25;
 		static const long ID_CHOICE10;
+		static const long ID_STATICTEXT9;
+		static const long ID_CHOICE4;
 		static const long ID_STATICTEXT31;
 		static const long ID_STATICTEXT26;
 		static const long ID_CHOICE11;
@@ -123,6 +125,7 @@ class OptionsDialog: public wxDialog
 		wxTextCtrl* txtCamName;
 		wxCheckBox* chbxAddMetadata;
 		wxFlexGridSizer* szGroupsMain;
+		wxChoice* chBitsPerUnit;
 		wxChoice* chLanguage;
 		wxTextCtrl* txtJpegHeight;
 		wxCheckBox* chbxDontOverwrite;

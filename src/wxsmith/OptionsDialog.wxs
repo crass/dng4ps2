@@ -638,7 +638,7 @@
 												<object class="wxStaticText" name="ID_STATICTEXT25" variable="StaticText25" member="no">
 													<label>lblMosaicType</label>
 												</object>
-												<flag>wxTOP|wxBOTTOM|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL</flag>
+												<flag>wxTOP|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL</flag>
 												<border>5d</border>
 												<option>1</option>
 											</object>
@@ -647,6 +647,25 @@
 													<content>
 														<item>Red,Green Green,Blue</item>
 														<item>Green,Blue Red,Green</item>
+													</content>
+												</object>
+												<flag>wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5d</border>
+												<option>1</option>
+											</object>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_STATICTEXT9" variable="lblBitsPerUnit" member="no">
+													<label>lblBitsPerUnit</label>
+												</object>
+												<flag>wxTOP|wxBOTTOM|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5d</border>
+												<option>1</option>
+											</object>
+											<object class="sizeritem">
+												<object class="wxChoice" name="ID_CHOICE4" variable="chBitsPerUnit" member="yes">
+													<content>
+														<item>10 bit</item>
+														<item>12 bit</item>
 													</content>
 												</object>
 												<flag>wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>

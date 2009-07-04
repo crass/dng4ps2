@@ -16,7 +16,7 @@ struct CameraColorMatrix
 	std::vector<float> mult;
 };
 
-enum PixelsPerColor
+enum BitsPerUnit
 {
 	ppc_10 = 10,
 	ppc_12 = 12
@@ -46,7 +46,7 @@ struct CameraData
 	CameraColorMatrix matrix1;
 	CameraColorMatrix matrix2;
 
-	PixelsPerColor pixels_per_color;
+	BitsPerUnit bits_per_unit;
 };
 
 class CameraOpts
@@ -63,6 +63,7 @@ public:
 	const CameraData* find_by_name(const wxString &name) const;
 	const CameraData* find_by_file_size(unsigned int size) const;
 	void reset_to_defaults(const wxString &id);
+	void reset_to_defaults(const wxString &id, CameraData &item);
 
 	void set_item(const wxString &id, const CameraData &item);
 

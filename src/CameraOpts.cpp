@@ -54,7 +54,7 @@ namespace
     const wchar_t *gr_count_opt_str             = L"GroupsCount";
 	const wchar_t *file_size_opt_str            = L"FileSize";
 	const wchar_t *short_name_opt_str           = L"ShortName";
-	const wchar_t *ppc_str                      = L"PixelsPerColor";
+	const wchar_t *bpu_str                      = L"BitsPerUnit";
 
 	struct CameraDefValue
 	{
@@ -77,7 +77,7 @@ namespace
 		float color_matrix2[9];
 		float color_matrix2_mult[3];
 
-		PixelsPerColor pixel_per_color;
+		BitsPerUnit bits_per_unit;
 
 		const wchar_t * id;
 	};
@@ -283,8 +283,8 @@ namespace
 			L"{11111111-11110000-08a420c3-32f90017}"
 		},
 
-		{ // Canon DIGITAL IXUS 860 IS
-			L"Canon DIGITAL IXUS 860 IS", L"IXUS 860 IS",
+		{ // Canon DIGITAL IXUS 860 IS / Canon PowerShot SD870 IS
+			L"Canon DIGITAL IXUS 860 IS / Canon PowerShot SD870 IS", L"IXUS 860 IS / PowerShot SD870 IS",
 			3336,2480, 10,8,34,6, 3264,2448, 31,1023, MOSAIC_TYPE2,
 			lsDaylight, {0.747939f, -0.268233f, -0.129266f,
 						-0.050633f, 0.515687f, 0.023509f,
@@ -321,7 +321,7 @@ namespace
 			L"{11111111-11110000-08a420c3-32f9001B}"
 		},
 
-		{ // Canon DIGITAL IXUS 750
+		{ // Canon DIGITAL IXUS 750 / Canon PowerShot SD550
 			L"Canon DIGITAL IXUS 750 / Canon PowerShot SD550", L"IXUS 750 / PowerShot SD550",
 			3152,2340, 36,12,4,0, 3072,2304, 31,1023, MOSAIC_TYPE1, // checked
 			lsDaylight, {0.580280f,-0.172239f,-0.089707f, -0.206596f,0.634926f,0.063877f, 0.010377f,0.062053f,0.242646f},
@@ -420,14 +420,14 @@ namespace
 			L"{11111111-11110000-08a420c3-32f90026}"
 		},
 
-		{ // Canon PowerShot SD870 IS
-			L"Canon PowerShot SD870 IS", L"PowerShot SD870 IS",
-			3336,2480, 8,4,32,4, 3264,2448, 31,1023, MOSAIC_TYPE2,
-			lsDaylight, {0.822147f,-0.331638f,-0.114010f, -0.052990f,0.545430f,0.035479f, 0.045255f,-0.006908f,0.222391f},
-			{1.0f, 1.0f, 1.0f},
-			-1, {}, {}, ppc_10,
+		{ // Canon DIGITAL IXUS 970 IS / Canon PowerShot SD890 IS
+			L"Canon DIGITAL IXUS 970 IS / Canon PowerShot SD890 IS", L"IXUS 970 IS / PowerShot SD890 IS",
+			3720,2772, 8,12,32,0, 3648,2736, 127,4095, MOSAIC_TYPE1,
+			17, {0.808011,-0.261330,-0.122838, -0.036763,0.600489,0.041035, 0.003414,0.067582,0.211157 }, {1.0f, 1.0f, 1.0f},
+			-1, {}, {}, ppc_12,
 			L"{11111111-11110000-08a420c3-32f90027}"
 		},
+
 
 		{NULL}
 	};
@@ -448,8 +448,7 @@ namespace
 		item.black_level          = def.black_level;
 		item.white_level          = def.white_level;
 		item.mosaic               = (MosaicType)def.mosaic;
-
-		item.pixels_per_color     = def.pixel_per_color;
+		item.bits_per_unit        = def.bits_per_unit;
 
 		item.matrix1.illum = def.illum1;
 		item.matrix1.matrix.assign(def.color_matrix1, def.color_matrix1+9);
@@ -581,6 +580,13 @@ void CameraOpts::reset_to_defaults(const wxString &id)
 		}
 }
 
+void CameraOpts::reset_to_defaults(const wxString &id, CameraData &item)
+{
+	const CameraDefValue *def = find_default(id);
+	if (def == NULL) return;
+	copy_defaults(*def, item);
+}
+
 void CameraOpts::sort_by_name()
 {
 	std::sort
@@ -593,7 +599,7 @@ void CameraOpts::sort_by_name()
 
 unsigned int CameraOpts::get_file_size(const CameraData &camera)
 {
-	return (camera.width*camera.height*10)/8;
+	return (camera.width*camera.height*(int)camera.bits_per_unit)/8;
 }
 
 void CameraOpts::enum_file_sizes(std::vector<size_t> &items)
@@ -649,7 +655,7 @@ void CameraOpts::save(wxConfigBase &config, bool save_groups)
 		config.Write(path+black_level_opt_str,          (int)item.black_level         );
 		config.Write(path+white_level_opt_str,          (int)item.white_level         );
 		config.Write(path+mosaic_opt_str,               (int)item.mosaic              );
-		config.Write(path+ppc_str,                      (int)item.pixels_per_color    );
+		config.Write(path+bpu_str,                      (int)item.bits_per_unit    );
 		save_matrix(config, path+L"Matrix1/", item.matrix1);
 		save_matrix(config, path+L"Matrix2/", item.matrix2);
 	}
@@ -737,6 +743,7 @@ void CameraOpts::load(wxConfigBase &config)
 					item.active_origin_bottom = item.black_level = item.white_level = no_val;
 
 				item.mosaic = (MosaicType)no_val;
+				item.bits_per_unit = ppc_10;
 			}
 
 			item.model_name = config.Read(path+name_opt_str, item.model_name);
@@ -757,7 +764,7 @@ void CameraOpts::load(wxConfigBase &config)
 			item.white_level = config.Read(path+white_level_opt_str, item.white_level);
 
 			item.mosaic = (MosaicType)config.Read(path+mosaic_opt_str, (int)item.mosaic);
-			item.pixels_per_color = (PixelsPerColor)config.Read(path+ppc_str, (int)item.pixels_per_color);
+			item.bits_per_unit = (BitsPerUnit)config.Read(path+bpu_str, (int)item.bits_per_unit);
 
 			if (item.id.IsEmpty() || item.model_name.IsEmpty() || (item.width == no_val) || (item.height == no_val) ||
 				(item.cropped_width == no_val) || (item.cropped_height == no_val) ||

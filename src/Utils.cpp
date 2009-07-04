@@ -727,7 +727,7 @@ void Utils::create_dng_file
 	thumbnail_render.SetMaximumSize(256);
 	thumbnail.Reset(thumbnail_render.Render());
 
-	// Writes DNG file data inti memory stream (as dng_file_stream doesn't support of unicode in file names)
+	// Writes DNG file data into memory stream (as dng_file_stream doesn't support of unicode in file names)
 	dng_image_writer writer;
 	dng_memory_stream filestream(gDefaultDNGMemoryAllocator);
 	writer.WriteDNG(host, filestream, *negative.Get(), *thumbnail.Get(), sys().options->compress_dng ? ccJPEG : ccUncompressed, jpeg_preview.Get());
@@ -759,11 +759,13 @@ inline unsigned short swap_bytes_uint16(unsigned short src)
 }
 
 // Utils::load_raw_file
-void Utils::load_raw_file(const wxString & raw_file_name, size_t file_size, std::vector<unsigned short> & data)
+void Utils::load_raw_file(const wxString & raw_file_name, size_t file_size, std::vector<unsigned short> & data, int bits_per_unit)
 {
-	size_t size = (8*file_size/5)/2;
+	size_t size = 8*file_size/bits_per_unit;
 	std::vector<unsigned char> raw_data;
 	int vbits=0, buf=0;
+
+	unsigned short mask = (1 << bits_per_unit)-1;
 
 	raw_data.resize(file_size);
 
@@ -779,11 +781,11 @@ void Utils::load_raw_file(const wxString & raw_file_name, size_t file_size, std:
 	for (size_t i = 0; i < size; i++)
 	{
 #if qDNGBigEndian
-		if (vbits < 10) buf = (vbits += 16, (buf << 16) + swap_bytes_uint16(*dp++));
+		if (vbits < bits_per_unit) buf = (vbits += 16, (buf << 16) + swap_bytes_uint16(*dp++));
 #else
-		if (vbits < 10) buf = (vbits += 16, (buf << 16) + *dp++);
+		if (vbits < bits_per_unit) buf = (vbits += 16, (buf << 16) + *dp++);
 #endif
-		data[i] = buf >> (vbits -= 10) & 0x3ff;
+		data[i] = buf >> (vbits -= bits_per_unit) & mask;
 	}
 }
 
@@ -928,7 +930,7 @@ void Utils::process_file
 
 	// Load RAW-file
 	if (on_log) on_log(L" ("+wxString(camera->model_name, wxConvLocal)+L") ... ");
-	load_raw_file(raw_file, file_size, raw_data);
+	load_raw_file(raw_file, file_size, raw_data, (int)camera->bits_per_unit);
 	remove_bad_pixels(raw_data, camera->width, camera->height, camera->black_level, camera->mosaic);
 
 	// Read original time
@@ -1234,7 +1236,7 @@ void Utils::create_raw_image(const CameraData* camera, const wxString& raw_file_
 	offset_y = camera->active_origin_y + (active_area_height - camera->cropped_height)/2;
 
 	std::vector<unsigned short> raw_data;
-	load_raw_file(raw_file_name, CameraOpts::get_file_size(*camera), raw_data);
+	load_raw_file(raw_file_name, CameraOpts::get_file_size(*camera), raw_data, (int)camera->bits_per_unit);
 	remove_bad_pixels(raw_data, camera->width, camera->height, camera->black_level, camera->mosaic);
 
 	wxBitmap bitmap(camera->cropped_width, camera->cropped_height, 24);

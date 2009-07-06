@@ -668,6 +668,20 @@ void OptionsDialog::PnlSecretLeftDClick(wxMouseEvent& event)
 
 	wxFFileOutputStream stream(file_name.GetFullPath());
 	fc.Save(stream);
+	stream.Close();
+
+	
+	file_name.SetName(L"simple_list.txt");
+
+	wxFFileOutputStream simple_list(file_name.GetFullPath());
+	
+	for (size_t i = 0; i < def_opts.get_size(); i++)
+	{
+		const CameraData &camera = def_opts.at(i);
+		simple_list.Write(" * ", 3);
+		simple_list.Write(camera.model_name.char_str(), camera.model_name.size()+1);
+		simple_list.Write("\r\n", 2);
+	}
 }
 
 void OptionsDialog::show_cameras_list(const wxString &camera_to_select)

@@ -865,6 +865,7 @@ void OptionsDialog::btnCopyClick(wxCommandEvent& event)
 	wxString new_id;
 	CameraData new_item = *item;
 	new_item.model_name = wxString::Format(_("copyOfCameraProf"), item->model_name.c_str());
+	new_item.short_name = wxString::Format(_("copyOfCameraProf"), item->short_name.c_str());
 	new_item.id = L"";
 	cam_opts_->add(new_item, &new_id);
 	show_cameras_list(new_id);

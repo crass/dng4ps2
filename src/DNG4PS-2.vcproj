@@ -19,7 +19,7 @@
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="$(SolutionDir)\src\bin\win\$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			IntermediateDirectory=".obj\vc\$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
 			>

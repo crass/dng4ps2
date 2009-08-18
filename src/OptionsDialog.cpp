@@ -682,6 +682,8 @@ void OptionsDialog::PnlSecretLeftDClick(wxMouseEvent& event)
 		simple_list.Write(camera.model_name.char_str(), camera.model_name.size()+1);
 		simple_list.Write("\r\n", 2);
 	}
+
+	wxMessageBox(_("Saved!"));
 }
 
 void OptionsDialog::show_cameras_list(const wxString &camera_to_select)

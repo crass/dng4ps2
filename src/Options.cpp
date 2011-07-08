@@ -27,20 +27,20 @@
 
 namespace
 {
-    const wchar_t * app_name_opt_str         = L"dng4ps2";
-    const wchar_t * path_opt_str             = L"LastPath";
-    const wchar_t * recursive_search_opt_str = L"RecursiveSearch";
-    const wchar_t * dont_overwrite_opt_str   = L"DontOverWrite";
-    const wchar_t * add_metadata_opt_str     = L"AddMetadata";
-    const wchar_t * compress_dng_opt_str     = L"CompressDNG";
-    const wchar_t * output_path_opt_str      = L"OutputPath";
-    const wchar_t * preview_type_opt_str     = L"PreviewMode";
-    const wchar_t * use_date_opt_str         = L"UseDateForPath";
-    const wchar_t * date_type_opt_str        = L"DateType";
-    const wchar_t * artist_opt_str           = L"Artist";
-    const wchar_t * use_artist_opt_str       = L"UseArtist";
-    const wchar_t * lang_opt_str             = L"Language";
-    const wchar_t * last_camera_id_opt_str   = L"LastCameraId";
+    const char * app_name_opt_str         = "dng4ps2";
+    const char * path_opt_str             = "LastPath";
+    const char * recursive_search_opt_str = "RecursiveSearch";
+    const char * dont_overwrite_opt_str   = "DontOverWrite";
+    const char * add_metadata_opt_str     = "AddMetadata";
+    const char * compress_dng_opt_str     = "CompressDNG";
+    const char * output_path_opt_str      = "OutputPath";
+    const char * preview_type_opt_str     = "PreviewMode";
+    const char * use_date_opt_str         = "UseDateForPath";
+    const char * date_type_opt_str        = "DateType";
+    const char * artist_opt_str           = "Artist";
+    const char * use_artist_opt_str       = "UseArtist";
+    const char * lang_opt_str             = "Language";
+    const char * last_camera_id_opt_str   = "LastCameraId";
 };
 
 Options::Options()
@@ -93,11 +93,11 @@ void Options::save() const
     config.Write(dont_overwrite_opt_str,   dont_overwrite   );
     config.Write(add_metadata_opt_str,     add_metadata     );
     config.Write(compress_dng_opt_str,     compress_dng     );
-    config.Write(preview_type_opt_str,     preview_type     );
+    config.Write(preview_type_opt_str,     (int)preview_type     );
     config.Write(use_date_opt_str,         use_date_for_path);
-    config.Write(date_type_opt_str,        date_type        );
+    config.Write(date_type_opt_str,        (int)date_type        );
     config.Write(artist_opt_str,           artist           );
     config.Write(use_artist_opt_str,       use_artist       );
-    config.Write(lang_opt_str,             lang             );
+    config.Write(lang_opt_str,             (int)lang             );
 	config.Write(last_camera_id_opt_str,   last_camera_id);
 }

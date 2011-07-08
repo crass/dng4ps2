@@ -115,19 +115,18 @@ bool DNG4PSApp::OnInit()
 
             static const wxCmdLineEntryDesc cmdLineDesc[] =
             {
-                { wxCMD_LINE_SWITCH, _T("h"), _T("help"), _T("Display this help message"),
-                wxCMD_LINE_VAL_NONE, wxCMD_LINE_OPTION_HELP },
-                { wxCMD_LINE_OPTION, _T("d"), _T("outputdir"),   _T("Base output directory") },
-                { wxCMD_LINE_SWITCH, _T("p0"), _T("nopreview"),  _T("No preview") },
-                { wxCMD_LINE_SWITCH, _T("p1"), _T("medium"),  _T("Medium Preview") },
-                { wxCMD_LINE_SWITCH, _T("p2"), _T("full"),  _T("Full preview") },
-                { wxCMD_LINE_SWITCH, _T("u"), _T("uncompressed"),   _T("Uncompressed DNG file") },
-                { wxCMD_LINE_SWITCH, _T("c"), _T("compressed"),   _T("Compressed DNG file") },
-                { wxCMD_LINE_SWITCH, _T("m"), _T("meta"),   _T("Add meta data from jpeg") },
-                { wxCMD_LINE_SWITCH, _T("n"), _T("nooverwrite"),   _T("Don't overwrite DNG files") },
-                { wxCMD_LINE_OPTION, _T("o"), _T("outputfile"),   _T("Not used. Reserved for future use") },
-                { wxCMD_LINE_PARAM,  NULL, NULL, _T("input files"),
-                    wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_MULTIPLE },
+                { wxCMD_LINE_SWITCH, "h",  "help",         "Display this help message", wxCMD_LINE_VAL_NONE, wxCMD_LINE_OPTION_HELP },
+                { wxCMD_LINE_OPTION, "d",  "outputdir",    "Base output directory" },
+                { wxCMD_LINE_SWITCH, "p0", "nopreview",    "No preview" },
+                { wxCMD_LINE_SWITCH, "p1", "medium",       "Medium Preview" },
+                { wxCMD_LINE_SWITCH, "p2", "full",         "Full preview" },
+                { wxCMD_LINE_SWITCH, "u",  "uncompressed", "Uncompressed DNG file" },
+                { wxCMD_LINE_SWITCH, "c",  "compressed",   "Compressed DNG file" },
+                { wxCMD_LINE_SWITCH, "m",  "meta",         "Add meta data from jpeg" },
+                { wxCMD_LINE_SWITCH, "n",  "nooverwrite",  "Don't overwrite DNG files" },
+                { wxCMD_LINE_OPTION, "o",  "outputfile",   "Not used. Reserved for future use" },
+
+                { wxCMD_LINE_PARAM,  NULL, NULL, "input files", wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_MULTIPLE },
                 { wxCMD_LINE_NONE }
             };
 

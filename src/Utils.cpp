@@ -929,7 +929,7 @@ void Utils::process_file
 	if (camera == NULL) throw Exception(_("wrong_camera_type"));
 
 	// Load RAW-file
-	if (on_log) on_log(L" ("+wxString(camera->model_name, wxConvLocal)+L") ... ");
+	if (on_log) on_log(L" ("+wxString(camera->model_name)+L") ... ");
 	load_raw_file(raw_file, file_size, raw_data, (int)camera->bits_per_unit);
 	remove_bad_pixels(raw_data, camera->width, camera->height, camera->black_level, camera->mosaic);
 

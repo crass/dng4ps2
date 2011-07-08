@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="external_libs">
+      <UniqueIdentifier>{cd5a66bc-203f-4901-9167-da4b64cc38d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external_libs\dng_sdk">
+      <UniqueIdentifier>{78badab0-66e9-4909-a318-c1d0312b5b48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external_libs\expat">
+      <UniqueIdentifier>{0d26acf5-989c-4ec4-a1df-da5bb5b590cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external_libs\libexif">
+      <UniqueIdentifier>{8137c6b9-3969-4b6c-be4d-190975203d92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external_libs\MD5">
+      <UniqueIdentifier>{081425e7-a0cd-4b5a-bb1a-eb793bce4bb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external_libs\xmp_sdk">
+      <UniqueIdentifier>{adeec564-dc48-4284-b128-3021cb7231fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="langs">
+      <UniqueIdentifier>{eac5a2a0-bfd4-4b09-accb-b652ee30665d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="external_libs\dng_sdk\dng_1d_function.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_1d_table.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_abort_sniffer.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_area_task.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_bottlenecks.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_camera_profile.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_color_space.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_color_spec.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_date_time.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_exceptions.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_exif.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_file_stream.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_filter_task.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_fingerprint.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_globals.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_host.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_ifd.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_image.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_image_writer.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_info.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_iptc.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_linearization_info.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_lossless_jpeg.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_matrix.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_memory.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_memory_stream.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_mosaic_info.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_mutex.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_negative.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_orientation.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_parse_utils.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_pixel_buffer.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_point.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_rational.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_read_image.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_rect.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_reference.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_render.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_resample.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_shared.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_simple_image.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_spline.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_stream.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_string.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_string_list.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_tag_types.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_temperature.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_tile_iterator.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_utils.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_xmp.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_xmp_sdk.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\dng_sdk\dng_xy_coord.cpp">
+      <Filter>external_libs\dng_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\expat\src\xmlparse.c">
+      <Filter>external_libs\expat</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\expat\src\xmlrole.c">
+      <Filter>external_libs\expat</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\expat\src\xmltok.c">
+      <Filter>external_libs\expat</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\expat\src\xmltok_impl.c">
+      <Filter>external_libs\expat</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\expat\src\xmltok_ns.c">
+      <Filter>external_libs\expat</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\exif-byte-order.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\exif-content.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\exif-data.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\exif-entry.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\exif-format.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\exif-ifd.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\exif-loader.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\exif-log.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\exif-mem.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\canon\exif-mnote-data-canon.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\olympus\exif-mnote-data-olympus.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\pentax\exif-mnote-data-pentax.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\exif-mnote-data.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\exif-tag.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\exif-utils.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\canon\mnote-canon-entry.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\canon\mnote-canon-tag.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\olympus\mnote-olympus-entry.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\olympus\mnote-olympus-tag.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\pentax\mnote-pentax-entry.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\libexif\pentax\mnote-pentax-tag.c">
+      <Filter>external_libs\libexif</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\MD5\MD5.cpp">
+      <Filter>external_libs\MD5</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\xmp_sdk\XMPCore\ExpatAdapter.cpp">
+      <Filter>external_libs\xmp_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\xmp_sdk\XMPCore\ParseRDF.cpp">
+      <Filter>external_libs\xmp_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\xmp_sdk\common\UnicodeConversions.cpp">
+      <Filter>external_libs\xmp_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\xmp_sdk\XMPCore\WXMPIterator.cpp">
+      <Filter>external_libs\xmp_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\xmp_sdk\XMPCore\WXMPMeta.cpp">
+      <Filter>external_libs\xmp_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\xmp_sdk\XMPCore\WXMPUtils.cpp">
+      <Filter>external_libs\xmp_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\xmp_sdk\XMPCore\XMPCore_Impl.cpp">
+      <Filter>external_libs\xmp_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\xmp_sdk\XMPCore\XMPIterator.cpp">
+      <Filter>external_libs\xmp_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\xmp_sdk\XMPCore\XMPMeta-GetSet.cpp">
+      <Filter>external_libs\xmp_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\xmp_sdk\XMPCore\XMPMeta-Parse.cpp">
+      <Filter>external_libs\xmp_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\xmp_sdk\XMPCore\XMPMeta-Serialize.cpp">
+      <Filter>external_libs\xmp_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\xmp_sdk\XMPCore\XMPMeta.cpp">
+      <Filter>external_libs\xmp_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\xmp_sdk\XMPCore\XMPUtils-FileInfo.cpp">
+      <Filter>external_libs\xmp_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\xmp_sdk\XMPCore\XMPUtils.cpp">
+      <Filter>external_libs\xmp_sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="AboutDialog.cpp" />
+    <ClCompile Include="CamCalibrFrame.cpp" />
+    <ClCompile Include="CameraOpts.cpp" />
+    <ClCompile Include="DNG4PSApp.cpp" />
+    <ClCompile Include="DNG4PSMain.cpp" />
+    <ClCompile Include="FileList.cpp" />
+    <ClCompile Include="FilesPathDialog.cpp" />
+    <ClCompile Include="NewFolderDialog.cpp" />
+    <ClCompile Include="Options.cpp" />
+    <ClCompile Include="OptionsDialog.cpp" />
+    <ClCompile Include="ProcessDialog.cpp" />
+    <ClCompile Include="ProgramObjects.cpp" />
+    <ClCompile Include="ScanProgressWin.cpp" />
+    <ClCompile Include="Utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="langs\de.po">
+      <Filter>langs</Filter>
+    </None>
+    <None Include="langs\en.po">
+      <Filter>langs</Filter>
+    </None>
+    <None Include="langs\es.po">
+      <Filter>langs</Filter>
+    </None>
+    <None Include="langs\fi.po">
+      <Filter>langs</Filter>
+    </None>
+    <None Include="langs\fr.po">
+      <Filter>langs</Filter>
+    </None>
+    <None Include="langs\it.po">
+      <Filter>langs</Filter>
+    </None>
+    <None Include="langs\nn.po">
+      <Filter>langs</Filter>
+    </None>
+    <None Include="langs\pl.po">
+      <Filter>langs</Filter>
+    </None>
+    <None Include="langs\ru.po">
+      <Filter>langs</Filter>
+    </None>
+    <None Include="langs\zh.po">
+      <Filter>langs</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AboutDialog.h" />
+    <ClInclude Include="CamCalibrFrame.h" />
+    <ClInclude Include="CameraOpts.h" />
+    <ClInclude Include="DNG4PSApp.h" />
+    <ClInclude Include="DNG4PSMain.h" />
+    <ClInclude Include="Exception.hpp" />
+    <ClInclude Include="FileList.h" />
+    <ClInclude Include="FilesPathDialog.h" />
+    <ClInclude Include="NewFolderDialog.h" />
+    <ClInclude Include="Options.h" />
+    <ClInclude Include="OptionsDialog.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="ProcessDialog.h" />
+    <ClInclude Include="ProgramObjects.h" />
+    <ClInclude Include="ScanProgressWin.h" />
+    <ClInclude Include="Utils.h" />
+    <ClInclude Include="version.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource_vc.rc" />
+  </ItemGroup>
+</Project>

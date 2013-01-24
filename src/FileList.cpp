@@ -32,7 +32,7 @@
 #include "Utils.h"
 
 // FileList::scan
-void FileList::scan(const wxString & dir, bool recursive, const boost::function<void(int)> & on_progress)
+void FileList::scan(const wxString & dir, bool recursive, const std::function<void(int)> & on_progress)
 {
 	wxArrayString list;
 	FileListItem item;

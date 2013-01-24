@@ -10,13 +10,11 @@
 #include <wx/filename.h>
 #include <wx/log.h>
 
+#include <algorithm>
+#include <functional>
 #include <vector>
 #include <map>
 
-#include "boost/bind.hpp"
-#include "boost/function.hpp"
-#include "boost/foreach.hpp"
-
-#define foreach BOOST_FOREACH
+using namespace std::placeholders;
 
 #endif // WX_PCH_H_INCLUDED

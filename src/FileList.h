@@ -19,7 +19,7 @@ private:
 	Items items;
 
 public:
-	void scan(const wxString & dir, bool recursive, const boost::function<void(int)> & on_progress);
+	void scan(const wxString & dir, bool recursive, const std::function<void(int)> & on_progress);
 	size_t size() const;
 	void clear();
 	void addOneFile(wxString);

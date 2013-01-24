@@ -871,7 +871,7 @@ void Utils::process_file
     const wxString & jpg_file_name,
     wxImage *resultImage,
     double matrix[3][3],
-    const boost::function<void(const wxString&)> &on_log
+    const std::function<void(const wxString&)> &on_log
 )
 {
 	wxString dng_file_name, dng_file_path;
@@ -1008,7 +1008,7 @@ void Utils::calc_errors(const std::vector<Area> &areas, const double m[3][3], st
 	double min_divider = 0.00001;
 
 	errors.clear();
-	foreach(const Area &area, areas)
+	for(const Area &area : areas)
 	{
 		grb_to_xyz(area.jpeg.r, area.jpeg.g, area.jpeg.b, jX, jY, jZ);
 
@@ -1067,7 +1067,7 @@ void Utils::calc_camera_profile
     double m[3][3],
     const std::vector<Area> &areas,
     int iterations,
-    boost::function<void (const wxString&)> on_log,
+    std::function<void (const wxString&)> on_log,
     double *result_error_max,
     double *result_aver_error
 )
@@ -1157,7 +1157,7 @@ void Utils::calc_camera_profile
 
 	if (on_log) on_log(L"Errors:");
 	int zone = 1;
-	foreach(double err, errors)
+	for (double err : errors)
 	{
 		aver_error_total += err;
 		if (err > max_error) max_error = err;

@@ -20,10 +20,12 @@
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110_xp</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110_xp</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -47,7 +49,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(wx)\include;$(boost_include);$(wx)\lib\vc_dll\mswud;external_libs\dng_sdk;external_libs\expat\src;external_libs\libexif;external_libs\libexif\canon;external_libs\libexif\olympus;external_libs\MD5;external_libs\missed_files;external_libs\xmp_sdk\include;external_libs\xmp_sdk\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(wx)\include;$(wx)\lib\vc_dll\mswud;external_libs\dng_sdk;external_libs\expat\src;external_libs\libexif;external_libs\libexif\canon;external_libs\libexif\olympus;external_libs\MD5;external_libs\missed_files;external_libs\xmp_sdk\include;external_libs\xmp_sdk\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;wxUSE_UNICODE;wxUSE_NO_MANIFEST;WIN_ENV;qDNGLittleEndian=1;qWinOS=1;qMacOS=0;HAVE_MEMMOVE;__WXDEBUG__;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -72,7 +74,7 @@
     <ClCompile>
       <Optimization>Full</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(wx)\include;$(boost_include);$(wx)\lib\vc_lib\mswu;external_libs\dng_sdk;external_libs\expat\src;external_libs\libexif;external_libs\libexif\canon;external_libs\libexif\olympus;external_libs\MD5;external_libs\missed_files;external_libs\xmp_sdk\include;external_libs\xmp_sdk\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(wx)\include;$(wx)\lib\vc_lib\mswu;external_libs\dng_sdk;external_libs\expat\src;external_libs\libexif;external_libs\libexif\canon;external_libs\libexif\olympus;external_libs\MD5;external_libs\missed_files;external_libs\xmp_sdk\include;external_libs\xmp_sdk\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;wxUSE_UNICODE;wxUSE_NO_MANIFEST;WIN_ENV;qDNGLittleEndian=1;qWinOS=1;qMacOS=0;HAVE_MEMMOVE;DISABLE_CALIBR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>

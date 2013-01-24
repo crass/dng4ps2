@@ -90,9 +90,7 @@ namespace
 		{ lsISOStudioTungsten,    L"ISO Studio Tungsten"    },
 		{ 0, NULL }
 	};
-
 }
-
 
 //(*IdInit(OptionsDialog)
 const long OptionsDialog::ID_STATICTEXT1 = wxNewId();
@@ -900,7 +898,7 @@ void OptionsDialog::btnCalibrClick(wxCommandEvent& event)
 	if (item == NULL) return;
 
 	CamCalibrFrame *frame = new CamCalibrFrame(*item, this);
-	frame->on_save_ = boost::bind(&OptionsDialog::matrix_calculated, this, _1);
+	frame->on_save_ = std::bind(&OptionsDialog::matrix_calculated, this, _1);
 	frame->Show();
 }
 
@@ -950,7 +948,7 @@ void OptionsDialog::show_groups()
 		file_sizes[file_size] = std::make_pair(item.width, item.height);
 	}
 
-	foreach(FileSizes::value_type &size_item, file_sizes)
+	for (auto &size_item : file_sizes)
 	{
 		wxString label = wxString::Format(L"%i x %i:", size_item.second.first, size_item.second.second);
 		wxStaticText *text = new wxStaticText(pnlGroups, wxNewId(), label, wxDefaultPosition, wxDefaultSize);
@@ -988,7 +986,7 @@ void OptionsDialog::read_groups()
 
 	cam_opts_->clear_groups();
 
-	foreach(GroupControls::value_type &item, group_controls_)
+	for (auto &item : group_controls_)
 	{
 		wxChoice *choice = item.second;
 		if (choice->GetCount() == 0) continue;

@@ -108,7 +108,7 @@ public:
 		const wxString & jpg_file_name,
 		wxImage *resultImage,
 		double matrix[3][3],
-		const boost::function<void(const wxString&)> &on_log
+		const std::function<void(const wxString&)> &on_log
 	);
 
 	static void calc_camera_profile
@@ -116,7 +116,7 @@ public:
 		double m[3][3],
 		const std::vector<Area> &areas,
 		int iterations,
-		boost::function<void (const wxString&)> on_log,
+		std::function<void (const wxString&)> on_log,
 		double *result_max_error,
 		double *result_aver_error
 	);

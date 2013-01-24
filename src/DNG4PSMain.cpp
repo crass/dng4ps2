@@ -245,7 +245,11 @@ void DNG4PSFrame::fill_files_list()
 
 	if (path.IsEmpty()) return;
 
-	file_list->scan(path, sys().options->recursive_search, boost::bind(&DNG4PSFrame::show_progress, this, progress_win, _1, wxDateTime::Now()));
+	file_list->scan(
+		path, 
+		sys().options->recursive_search, 
+		std::bind(&DNG4PSFrame::show_progress, this, progress_win, _1, wxDateTime::Now())
+	);
 
 	lstFileList->Hide();
 
@@ -426,7 +430,7 @@ void DNG4PSFrame::convertFiles(wxArrayString files, wxString outputDir)
 
 		try
 		{
-			Utils::process_file(item.path_and_name, item.jpeg_file_name, NULL, NULL, NULL);
+			Utils::process_file(item.path_and_name, item.jpeg_file_name, nullptr, nullptr, nullptr);
 		}
 		catch (const std::exception & e)
 		{

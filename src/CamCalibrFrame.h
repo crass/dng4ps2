@@ -41,7 +41,7 @@ class CamCalibrFrame: public wxFrame
 		CamCalibrFrame(const CameraData &camera, wxWindow* parent,wxWindowID id=wxID_ANY,const wxPoint& pos=wxDefaultPosition,const wxSize& size=wxDefaultSize);
 		virtual ~CamCalibrFrame();
 
-		boost::function<void (const std::vector<float> &matrix)> on_save_;
+		std::function<void (const std::vector<float> &matrix)> on_save_;
 
 		//(*Declarations(CamCalibrFrame)
 		wxTextCtrl* txtGamma;

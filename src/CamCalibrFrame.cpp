@@ -640,11 +640,11 @@ void CamCalibrFrame::OnProcessClick(wxCommandEvent& event)
 
 			if (log_level >= LOGLVL_VERBOSE)
 			{
-				Utils::calc_camera_profile(m, areas, iter_count, boost::bind(&CamCalibrFrame::log, this, _1), &max_error, &aver_error);
+				Utils::calc_camera_profile(m, areas, iter_count, std::bind(&CamCalibrFrame::log, this, _1), &max_error, &aver_error);
 			}
 			else
 			{
-				Utils::calc_camera_profile(m, areas, iter_count, NULL, &max_error, &aver_error);
+				Utils::calc_camera_profile(m, areas, iter_count, nullptr, &max_error, &aver_error);
 			}
 
 			if (max_error < min_error)
@@ -703,7 +703,7 @@ void CamCalibrFrame::OnProcessClick(wxCommandEvent& event)
 
 	log(L"\nRESULTS");
 
-	Utils::calc_camera_profile(m, areas, iter_count, boost::bind(&CamCalibrFrame::log, this, _1), &max_error, &aver_error);
+	Utils::calc_camera_profile(m, areas, iter_count, std::bind(&CamCalibrFrame::log, this, _1), &max_error, &aver_error);
 
 	Utils::inverse_matrix(m, inv_m);
 

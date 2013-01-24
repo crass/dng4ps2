@@ -520,7 +520,7 @@ void CameraOpts::add(const CameraData &item, wxString *new_id)
 
 void CameraOpts::erase(const wxString& id)
 {
-	Items::iterator it = std::find_if(items_.begin(), items_.end(), boost::bind(&CameraData::id, _1) == id);
+	auto it = std::find_if(items_.begin(), items_.end(), [&](const CameraData &item) { return item.id == id; });
 	if (it == items_.end()) return;
 	items_.erase(it);
 }
@@ -610,7 +610,9 @@ void CameraOpts::sort_by_name()
 	(
 		items_.begin(),
 		items_.end(),
-		boost::bind(&CameraData::model_name, _1) < boost::bind(&CameraData::model_name, _2)
+		[] (const CameraData &item1, const CameraData &item2) {
+			return item1.model_name < item2.model_name;
+		}
 	);
 }
 
@@ -622,7 +624,7 @@ unsigned int CameraOpts::get_file_size(const CameraData &camera)
 void CameraOpts::enum_file_sizes(std::vector<size_t> &items)
 {
 	items.clear();
-	foreach(const CameraData &item, items_) items.push_back(get_file_size(item));
+	for (const CameraData &item : items_) items.push_back(get_file_size(item));
 	std::sort(items.begin(), items.end());
 	items.erase(std::unique(items.begin(), items.end()), items.end());
 }
@@ -630,7 +632,7 @@ void CameraOpts::enum_file_sizes(std::vector<size_t> &items)
 wxString CameraOpts::vct_to_str(const std::vector<float> &vct, const wchar_t *format)
 {
 	wxString result;
-	foreach(float value, vct) result += wxString::Format(format, value);
+	for (float value : vct) result += wxString::Format(format, value);
 	return result.Trim();
 }
 
@@ -681,7 +683,7 @@ void CameraOpts::save(wxConfigBase &config, bool save_groups)
 	{
 		config.Write(gr_count_opt_str, (long)file_sizes_.size());
 		int idx = 0;
-		foreach(const Groups::value_type &item, file_sizes_)
+		for (const Groups::value_type &item : file_sizes_)
 		{
 			path.Printf(L"Group%03d/", idx++);
 			config.Write(path+file_size_opt_str, (long)item.first);

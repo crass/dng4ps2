@@ -5,8 +5,8 @@ class wxConfigBase;
 
 enum MosaicType
 {
-	MOSAIC_TYPE1 = 1,
-	MOSAIC_TYPE2 = 3
+	MOSAIC_RGGB = 1,
+	MOSAIC_GBRG = 3
 };
 
 struct CameraColorMatrix

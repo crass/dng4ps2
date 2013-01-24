@@ -797,11 +797,11 @@ void Utils::remove_bad_pixels(std::vector<unsigned short> & data, int width, int
 
 	switch (mosaic_type)
 	{
-	case MOSAIC_TYPE1:
+	case MOSAIC_RGGB:
 	default:
 		pattern = 0x94949494;
 		break;
-	case MOSAIC_TYPE2:
+	case MOSAIC_GBRG:
 		pattern = 0x49494949;
 		break;
 	}

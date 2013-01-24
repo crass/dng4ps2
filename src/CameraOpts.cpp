@@ -1,6 +1,6 @@
 /*=============================================================================
   DNG4PS - software for converting Canon PS RAW files to DNG ones
-  Copyright (C) 2008 Denis Artyomov
+  Copyright (C) 2008-2013 Denis Artyomov
 
   This program is free software; you can redistribute it and/or
   modify it under the terms of the GNU General Public License
@@ -67,7 +67,7 @@ namespace
 
 		unsigned int cropped_width, cropped_height;
 
-		unsigned int black_level, white_level, mosaic;
+		MosaicType mosaic;
 
 		int illum1;
 		float color_matrix1[9];
@@ -86,14 +86,14 @@ namespace
 	{
 		{	L"Canon PowerShot A610", 
 			L"PowerShot A610",
-			2672,1968, 14,10,46,2, 2592,1944, 31,1023, MOSAIC_TYPE1,
+			2672,1968, 14,10,46,2, 2592,1944,  MOSAIC_RGGB,
 			17, {15591.0f,-6402.0f,-1592.0f, -5365.0f,13198.0f,2168.0f, -1300.0f,1824.0f,5075.0f }, {1.1f, 1.0f, 0.9f},
 			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90001}" },
 
 		{	L"Canon PowerShot S2 IS", 
 			L"PowerShot S2 IS",
-			2672,1968, 14,10,46,2, 2592,1944, 31,1023, MOSAIC_TYPE1, // checked
+			2672,1968, 14,10,46,2, 2592,1944,  MOSAIC_RGGB, // checked
 			lsDaylight, {0.580618f,-0.182631f,-0.094502f, -0.192656f,0.650899f,0.058592f, -0.015379f,0.089453f,0.256275f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -101,7 +101,7 @@ namespace
 
 		{	L"Canon PowerShot A530", 
 			L"PowerShot A530",
-			2672,1968, 12,20,44,0, 2592,1944, 31,1023, MOSAIC_TYPE1, // checked
+			2672,1968, 12,20,44,0, 2592,1944,  MOSAIC_RGGB, // checked
 			lsDaylight, {0.725264f,-0.240542f,-0.122310f, -0.210248f,0.656077f,0.052390f, -0.011282f,0.070400f,0.300712f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -109,14 +109,14 @@ namespace
 
 		{	L"Canon PowerShot A620", 
 			L"PowerShot A620",
-			3152,2340, 38,14,6,2, 3072,2304, 31,1023, MOSAIC_TYPE1, // checked
+			3152,2340, 38,14,6,2, 3072,2304,  MOSAIC_RGGB, // checked
 			17, {15265.0f,-6193.0f,-1558.0f, -4125.0f,12116.0f,2010.0f, -888.0f,1639.0f,5220.0f}, {1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90004}" },
 
 		{	L"Canon PowerShot SD800 IS / Canon DIGITAL IXUS 850 IS", 
 			L"PowerShot SD800 IS / IXUS 850 IS",
-			3152,2340, 38,14,6,2, 3072,2304, 31,1023, MOSAIC_TYPE1, // checked
+			3152,2340, 38,14,6,2, 3072,2304,  MOSAIC_RGGB, // checked
 			lsDaylight, { 0.661014f,-0.189364f,-0.115797f, -0.168772f,0.661827f,0.047392f, -0.035846f,0.107148f,0.233705f },
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -124,7 +124,7 @@ namespace
 
 		{	L"Canon DIGITAL IXUS 70 / Canon PowerShot SD1000",
 			L"IXUS 70 / PowerShot SD1000",
-			3152,2340, 38,14,6,2, 3072,2304, 31,1023, MOSAIC_TYPE1, // checked
+			3152,2340, 38,14,6,2, 3072,2304,  MOSAIC_RGGB, // checked
 			lsDaylight, {0.652674f,-0.172074f,-0.107575f, -0.139063f,0.594517f,0.060252f, -0.009088f,0.082013f,0.238048f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -132,7 +132,7 @@ namespace
 
 		{	L"Canon PowerShot A710 IS", 
 			L"PowerShot A710 IS",
-			3152,2340, 38,14,6,2, 3072,2304, 31,1023, MOSAIC_TYPE1,
+			3152,2340, 38,14,6,2, 3072,2304,  MOSAIC_RGGB,
 			lsDaylight, {0.664401f,-0.206085f,-0.105935f, -0.208489f,0.655900f,0.051953f, -0.051591f,0.115760f,0.234946f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -140,14 +140,14 @@ namespace
 
 		{	L"Canon PowerShot A560", 
 			L"PowerShot A560",
-			3152,2340, 38,14,6,2, 3072,2304, 31,1023, MOSAIC_TYPE1,
+			3152,2340, 38,14,6,2, 3072,2304,  MOSAIC_RGGB,
 			17, {15265.0f,-6193.0f,-1558.0f, -4125.0f,12116.0f,2010.0f, -888.0f,1639.0f,5220.0f}, {1.0f, 1.0f, 1.0f},
 			-1,	{}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90008}" },
 
 		{	L"Canon PowerShot A570 IS", 
 			L"PowerShot A570 IS",
-			3152,2340, 38,14,6,2, 3072,2304, 31,1023, MOSAIC_TYPE1,
+			3152,2340, 38,14,6,2, 3072,2304,  MOSAIC_RGGB,
 			lsDaylight, {0.528283f,-0.144259f,-0.085966f, -0.202789f,0.736563f,0.073008f, -0.027130f,0.107702f,0.264543f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -155,7 +155,7 @@ namespace
 
 		{	L"Canon DIGITAL IXUS 700 / Canon PowerShot SD500", 
 			L"IXUS 700 / PowerShot SD500",
-			3152,2340, 38,14,6,2, 3072,2304, 31,1023, MOSAIC_TYPE1,
+			3152,2340, 38,14,6,2, 3072,2304,  MOSAIC_RGGB,
 			17, {15265.0f,-6193.0f,-1558.0f, -4125.0f,12116.0f,2010.0f, -888.0f,1639.0f,5220.0f}, // BAD!
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -163,7 +163,7 @@ namespace
 
 		{	L"Canon PowerShot A630", 
 			L"PowerShot A630",
-			3344,2484, 14,8,46,8, 3264,2448, 31,1023, MOSAIC_TYPE1, // checked
+			3344,2484, 14,8,46,8, 3264,2448,  MOSAIC_RGGB, // checked
 			lsDaylight, { 14201.0f,-5308.0f,-1757.0f, -6087.0f,14472.0f,1617.0f, -2191.0f,3105.0f,5348.0f }, // from DCRAW
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -171,7 +171,7 @@ namespace
 
 		{	L"Canon PowerShot A720 IS", 
 			L"PowerShot A720 IS",
-			3336,2480, 10,8,34,6, 3264,2448, 31,1023, MOSAIC_TYPE2, // checked
+			3336,2480, 10,8,34,6, 3264,2448,  MOSAIC_GBRG, // checked
 			lsDaylight, {14573.0f,-5482.0f,-1546.0f, -1266.0f,9799.0f,1468.0f, -1040.0f,1912.0f,3810.0f}, // from DCRAW
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -179,7 +179,7 @@ namespace
 
 		{	L"Canon PowerShot S5 IS", 
 			L"PowerShot S5 IS",
-			3336,2480, 10,8,34,6, 3264,2448, 31,1023, MOSAIC_TYPE2, // checked
+			3336,2480, 10,8,34,6, 3264,2448,  MOSAIC_GBRG, // checked
 			lsDaylight, {0.650591f,-0.199585f,-0.123118f, -0.069617f,0.583926f,0.034354f, -0.019113f,0.082163f,0.210786f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -187,7 +187,7 @@ namespace
 
 		{	L"Canon DIGITAL IXUS 950 IS / Canon PowerShot SD850 IS", 
 			L"IXUS 950 IS / PowerShot SD850 IS",
-			3336,2480, 10,8,34,6, 3264,2448, 31,1023, MOSAIC_TYPE2, // checked
+			3336,2480, 10,8,34,6, 3264,2448,  MOSAIC_GBRG, // checked
 			lsDaylight, {14573.0f,-5482.0f,-1546.0f, -1266.0f,9799.0f,1468.0f, -1040.0f,1912.0f,3810.0f},  // BAD!
 			{1.0f, 1.0f, 1.0f}, 
 			-1, {}, {}, ppc_10,
@@ -195,7 +195,7 @@ namespace
 
 		{	L"Canon PowerShot A640", 
 			L"PowerShot A640",
-			3736,2772, 14,8,54,8, 3648,2736, 31,1023, MOSAIC_TYPE1,
+			3736,2772, 14,8,54,8, 3648,2736,  MOSAIC_RGGB,
 			17, {13124.0f,-5329.0f,-1390.0f, -3602.0f,11658.0f,1944.0f, -1612.0f,2863.0f,4885.0f }, // from DCRAW
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -203,7 +203,7 @@ namespace
 
 		{	L"Canon PowerShot G7", 
 			L"PowerShot G7",
-			3736,2772, 14,8,54,8, 3648,2736, 31,1023, MOSAIC_TYPE1, // checked
+			3736,2772, 14,8,54,8, 3648,2736,  MOSAIC_RGGB, // checked
 			lsDaylight, { 0.575419f,-0.185557f,-0.077898f, -0.213702f,0.733569f,0.081514f, -0.024604f,0.131906f,0.280378f },
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -211,7 +211,7 @@ namespace
 
 		{	L"Canon PowerShot S3 IS", 
 			L"PowerShot S3 IS",
-			2888,2136, 44,8,4,0, 2816,2112, 31, 1023, MOSAIC_TYPE1, // checked
+			2888,2136, 44,8,4,0, 2816,2112,  MOSAIC_RGGB, // checked
 			17, {14062.0f,-5199.0f,-1446.0f, -4712.0f,12470.0f,2243.0f, -1286.0f,2028.0f,4836.0f }, // from DCRAW
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -219,7 +219,7 @@ namespace
 
 		{	L"Canon PowerShot A700", 
 			L"PowerShot A700",
-			2888,2136, 44,8,4,0, 2816,2112, 31,1023, MOSAIC_TYPE1,
+			2888,2136, 44,8,4,0, 2816,2112,  MOSAIC_RGGB,
 			17, {14062.0f,-5199.0f,-1446.0f, -4712.0f,12470.0f,2243.0f, -1286.0f,2028.0f,4836.0f }, // BAD!
 			{1.0f, 1.0f, 1.0f}, 
 			-1, {}, {}, ppc_10,
@@ -227,7 +227,7 @@ namespace
 
 		{	L"Canon DIGITAL IXUS 800 IS / Canon PowerShot SD700 IS", 
 			L"IXUS 800 IS / PowerShot SD700 IS",
-			2888,2136, 44,8,4,0, 2816,2112, 31,1023, MOSAIC_TYPE1,
+			2888,2136, 44,8,4,0, 2816,2112,  MOSAIC_RGGB,
 			17, {0.796464f,-0.214669f,-0.122599f, -0.182793f,0.736859f,0.075607f, 0.020593f,0.080194f,0.277992f }, 
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -235,7 +235,7 @@ namespace
 
 		{	L"Canon PowerShot A540", 
 			L"PowerShot A540",
-			2888,2136, 44,8,4,0, 2816,2112, 31,1023, MOSAIC_TYPE1,
+			2888,2136, 44,8,4,0, 2816,2112,  MOSAIC_RGGB,
 			lsDaylight, {0.687147f,-0.201964f,-0.125024f, -0.148403f,0.566810f,0.045401f, -0.009472f,0.063186f,0.208602f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -243,7 +243,7 @@ namespace
 
 		{	L"Canon PowerShot A650 IS", 
 			L"PowerShot A650 IS",
-			4104,3048, 52,14,28,18, 4000,3000, 31,1023, MOSAIC_TYPE1,
+			4104,3048, 52,14,28,18, 4000,3000,  MOSAIC_RGGB,
 			lsDaylight, {9427,-3036,-959, -2581,10671,1911, -1039,1982,4430}, // from DCRAW
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -251,7 +251,7 @@ namespace
 
 		{	L"Canon PowerShot A460", 
 			L"PowerShot A460",
-			2664,1968, 6,6,46,6, 2592,1944, 31,1023, MOSAIC_TYPE1,
+			2664,1968, 6,6,46,6, 2592,1944,  MOSAIC_RGGB,
 			lsDaylight, {0.649324f,-0.233893f,-0.088521f, -0.158955f,0.593407f,0.069775f, -0.044551f,0.136891f,0.254362f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -259,7 +259,7 @@ namespace
 
 		{	L"Canon DIGITAL IXUS 860 IS / Canon PowerShot SD870 IS", 
 			L"IXUS 860 IS / PowerShot SD870 IS",
-			3336,2480, 10,8,34,6, 3264,2448, 31,1023, MOSAIC_TYPE2,
+			3336,2480, 10,8,34,6, 3264,2448,  MOSAIC_GBRG,
 			lsDaylight, {0.747939f, -0.268233f, -0.129266f,
 						-0.050633f, 0.515687f, 0.023509f,
 						-0.021341f, 0.076495f, 0.186385f},
@@ -269,7 +269,7 @@ namespace
 
 		{	L"Canon PowerShot TX1", 
 			L"PowerShot TX1",
-			3152,2340, 12,8,44,8, 3072,2304, 31,1023, MOSAIC_TYPE1, // checked
+			3152,2340, 12,8,44,8, 3072,2304,  MOSAIC_RGGB, // checked
 			lsDaylight, {0.510370f,-0.068998f,-0.086859f, -0.279980f,0.766686f,0.067944f, -0.014382f,0.113688f,0.239853f}, // poor?
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -277,7 +277,7 @@ namespace
 
 		{	L"Canon PowerShot SX100 IS", 
 			L"PowerShot SX100 IS",
-			3336,2480, 10,8,34,6, 3264,2448, 31,1023, MOSAIC_TYPE2,
+			3336,2480, 10,8,34,6, 3264,2448,  MOSAIC_GBRG,
 			lsDaylight, {0.656793f,-0.168702f,-0.108030f, -0.002711f,0.661538f,0.037919f, 0.077255f,0.048834f,0.241797f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -286,7 +286,7 @@ namespace
 
 		{	L"Canon PowerShot SD600 / Canon Digital IXUS 60", 
 			L"PowerShot SD600 / IXUS 60",
-			2888,2136, 44,8,4,0, 2816,2112, 31,1023, MOSAIC_TYPE1,
+			2888,2136, 44,8,4,0, 2816,2112,  MOSAIC_RGGB,
 			lsDaylight, {0.767398f,-0.227658f,-0.144213f, -0.217466f,0.669319f,0.038180f, -0.023152f,0.077743f,0.238669f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -294,7 +294,7 @@ namespace
 
 		{	L"Canon DIGITAL IXUS 750 / Canon PowerShot SD550", 
 			L"IXUS 750 / PowerShot SD550",
-			3152,2340, 36,12,4,0, 3072,2304, 31,1023, MOSAIC_TYPE1, // checked
+			3152,2340, 36,12,4,0, 3072,2304,  MOSAIC_RGGB, // checked
 			lsDaylight, {0.580280f,-0.172239f,-0.089707f, -0.206596f,0.634926f,0.063877f, 0.010377f,0.062053f,0.242646f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -302,7 +302,7 @@ namespace
 
 		{	L"Canon DIGITAL IXUS 65 / Canon PowerShot SD630", 
 			L"IXUS 65 / PowerShot SD630",
-			2888,2136, 44,8,4,0, 2816,2112, 31,1023, MOSAIC_TYPE1,
+			2888,2136, 44,8,4,0, 2816,2112,  MOSAIC_RGGB,
 			lsDaylight, {0.783384f,-0.227078f,-0.127919f, -0.181247f,0.661743f,0.058868f, 0.025727f,0.043891f,0.247655f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -310,14 +310,14 @@ namespace
 
 		{	L"Canon PowerShot A450", 
 			L"PowerShot A450",
-			2664,1968, 6,6,46,6, 2592,1944, 31,1023, MOSAIC_TYPE1,
+			2664,1968, 6,6,46,6, 2592,1944,  MOSAIC_RGGB,
 			lsDaylight, {0.652279f,-0.199279f,-0.101833f, -0.159819f,0.619308f,0.078172f, -0.058827f,0.150963f,0.264216f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f9001E}" },
 
 		{	L"Canon DIGITAL IXUS 960 IS / Canon PowerShot SD950 IS", L"IXUS 960 IS / PowerShot SD950 IS",
-			4104,3048, 48,12,24,12, 4000,3000, 31,1023, MOSAIC_TYPE1,
+			4104,3048, 48,12,24,12, 4000,3000,  MOSAIC_RGGB,
 			lsDaylight, {0.764117f,-0.223884f,-0.116036f, -0.035875f,0.582534f,0.032982f, 0.010441f,0.064164f,0.198520f}, // my
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -325,7 +325,7 @@ namespace
 
 		{	L"Canon DIGITAL IXUS 40 / Canon PowerShot SD300", 
 			L"IXUS 40 / PowerShot SD300",
-			2400,1766, 12,12,44,2, 2272,1704, 31, 1023, MOSAIC_TYPE1,
+			2400,1766, 12,12,44,2, 2272,1704,  MOSAIC_RGGB,
 			lsDaylight, {0.652674f,-0.172074f,-0.107575f, -0.139063f,0.594517f,0.060252f, -0.009088f,0.082013f,0.23808f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -333,7 +333,7 @@ namespace
 
 		{	L"Canon PowerShot SD450 / Canon DIGITAL IXUS 55", 
 			L"PowerShot SD450 / IXUS 55",
-			2672,1968, 12,8,44,0, 2592,1944, 31,1023, MOSAIC_TYPE1, // Checked
+			2672,1968, 12,8,44,0, 2592,1944,  MOSAIC_RGGB, // Checked
 			lsDaylight, {0.536034f,-0.173429f,-0.089823f, -0.290416f,0.735807f,0.047894f, -0.071455f,0.114314f,0.274533f}, // is good enough
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -341,7 +341,7 @@ namespace
 
 		{	L"Canon DIGITAL IXUS 80 IS / Canon PowerShot SD1100 IS", 
 			L"IXUS 80 IS / PowerShot SD1100 IS",
-			3336,2480, 6,6,32,4, 3264,2448, 31,1023, MOSAIC_TYPE2,
+			3336,2480, 6,6,32,4, 3264,2448,  MOSAIC_GBRG,
 			lsDaylight, {0.723425f,-0.262760f,-0.106712f, -0.005402f,0.476882f,0.037287f, 0.021408f,0.039033f,0.194852f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -349,7 +349,7 @@ namespace
 
 		{	L"Canon PowerShot A550", 
 			L"PowerShot A550",
-			3152,2340, 36,12,4,0, 3072,2304, 31,1023, MOSAIC_TYPE1,
+			3152,2340, 36,12,4,0, 3072,2304,  MOSAIC_RGGB,
 			lsDaylight, {0.673251f,-0.200684f,-0.098680f, -0.163638f,0.651247f,0.074004f, 0.014221f,0.052979f,0.265291f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -357,7 +357,7 @@ namespace
 
 		{	L"Canon PowerShot A590 IS", 
 			L"PowerShot A590 IS",
-			3336,2480, 8,8,32,0, 3264,2448, 31,1023, MOSAIC_TYPE2, // checked
+			3336,2480, 8,8,32,0, 3264,2448,  MOSAIC_GBRG, // checked
 			lsDaylight, {0.726857f,-0.176454f,-0.124118f, -0.071340f,0.592001f,0.075622f, 0.063222f,0.050547f,0.219582f}, // this matrix is not good
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -365,7 +365,7 @@ namespace
 
 		{	L"Canon DIGITAL IXUS 50 / Canon PowerShot SD400", 
 			L"IXUS 50 / PowerShot SD400",
-			2672,1968, 12,8,44,0, 2592,1944, 31,1023, MOSAIC_TYPE1,
+			2672,1968, 12,8,44,0, 2592,1944,  MOSAIC_RGGB,
 			lsDaylight, {0.685247f,-0.204939f,-0.106531f, -0.267616f,0.790509f,0.073359f, 0.032401f,0.015655f,0.314892f}, // this matrix is not good
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -373,7 +373,7 @@ namespace
 
 		{	L"Canon PowerShot A430", 
 			L"PowerShot A430",
-			2392,1752, 0,8,56,4, 2272,1704, 31, 1023, MOSAIC_TYPE2,
+			2392,1752, 0,8,56,4, 2272,1704,  MOSAIC_GBRG,
 			lsDaylight, {0.479627f,-0.156240f,-0.084926f, -0.215238f,0.534902f,0.060219f, -0.096906f,0.148194f,0.191583f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -381,7 +381,7 @@ namespace
 
 		{	L"Canon DIGITAL IXUS 970 IS / Canon PowerShot SD890 IS", 
 			L"IXUS 970 IS / PowerShot SD890 IS",
-			3720,2772, 8,12,32,0, 3648,2736, 127,4095, MOSAIC_TYPE1,
+			3720,2772, 8,12,32,0, 3648,2736,  MOSAIC_RGGB,
 			17, {0.808011f,-0.261330f,-0.122838f, -0.036763f,0.600489f,0.041035f, 0.003414f,0.067582f,0.211157f }, 
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_12,
@@ -389,7 +389,7 @@ namespace
 
 		{	L"Canon PowerShot SX110 IS", 
 			L"PowerShot SX110 IS",
-			3720,2772, 8,14,32,0, 3456,2592, 127,4095, MOSAIC_TYPE1,
+			3720,2772, 8,14,32,0, 3456,2592,  MOSAIC_RGGB,
 			17, {14134,-5576,-1527, -1991,10719,1273, -1158,1929,3581 }, // from DCRAW
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_12,
@@ -397,7 +397,7 @@ namespace
 
 		{	L"Canon DIGITAL IXUS 980 IS / Canon PowerShot SD990 IS", 
 			L"IXUS 980 IS / PowerShot SD990 IS",
-			4480,3348, 12,10,36,12, 4416,3312, 127,4095, MOSAIC_TYPE2,
+			4480,3348, 12,10,36,12, 4416,3312,  MOSAIC_GBRG,
 			17, {0.836835f,-0.316442f,-0.130516f, -0.111253f,0.594589f,0.049307f, 0.010813f,0.071258f,0.206445f }, 
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_12,
@@ -405,7 +405,7 @@ namespace
 
 		{	L"Canon PowerShot A470", 
 			L"PowerShot A470",
-			3152,2346, 12,6,44,10, 3072,2304, 31,1023, MOSAIC_TYPE1, 
+			3152,2346, 12,6,44,10, 3072,2304,  MOSAIC_RGGB, 
 			17, {0.624777f,-0.212311f,-0.083575f, -0.124817f,0.493647f,0.072081f, 0.009428f,0.046533f,0.211484f}, // Not good
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
@@ -413,7 +413,7 @@ namespace
 
 		{	L"Canon PowerShot SX10 IS", 
 			L"PowerShot SX10 IS",
-			3720,2772, 4,12,28,0, 3648,2736, 127,4095, MOSAIC_TYPE1, // areas not checked!
+			3720,2772, 4,12,28,0, 3648,2736,  MOSAIC_RGGB, // areas not checked!
 			17, {13124.0f,-5329.0f,-1390.0f, -3602.0f,11658.0f,1944.0f, -1612.0f,2863.0f,4885.0f },
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_12,
@@ -421,12 +421,30 @@ namespace
 
 		{	L"Canon DIGITAL IXUS 870 IS / Canon PowerShot SD880 IS", 
 			L"IXUS 870 IS / PowerShot SD880 IS",
-			3720,2772, 4,12,24,0, 3648,2736, 127,4095, MOSAIC_TYPE1,
-			17, {0.759444f,-0.270106f,-0.111462f, -0.005098f,0.519067f,0.041750f, 0.023861f,0.044290f,0.212756f }, 
-			{1.0f, 1.0f, 1.0f},
-			-1, {}, {}, ppc_12,
+			3720,2772, 4,12,24,0, 3648,2736,  
+			MOSAIC_RGGB,
+			17, {0.759444f,-0.270106f,-0.111462f, -0.005098f,0.519067f,0.041750f, 0.023861f,0.044290f,0.212756f }, {1.0f, 1.0f, 1.0f},
+			-1, {}, {},
+			ppc_12,
 			L"{11111111-11110000-08a420c3-32f9002C}" },
 
+		{	L"Canon PowerShot A1000 IS", 
+			L"PowerShot A1000 IS",
+			3720,2772, 14,8,3682,2764, 3648,2736,
+			MOSAIC_RGGB,
+			17, {827547, -12829, 5181, -290458, 530507, 48183, -126086, 50537, 245014 }, {1.0f, 1.0f, 1.0f},
+			-1, {}, {},
+			ppc_12,
+			L"{11111111-11110000-08a420c3-32f9002D}" },
+
+		{	L"Canon PowerShot A1100 IS",
+			L"PowerShot A1100 IS",
+			4104,3048, 20,24,4020,3024, 4000,3000,
+			MOSAIC_GBRG,
+			17, {793137, -55013, 21921, -271722, 541027, 71395, -113158, 32394, 181847 }, {1.0f, 1.0f, 1.0f},
+			-1, {}, {},
+			ppc_12,
+			L"{11111111-11110000-08a420c3-32f9002E}" },
 
 		{NULL}
 	};
@@ -440,12 +458,12 @@ namespace
 		item.height               = def.height;
 		item.active_origin_x      = def.active_origin_x;
 		item.active_origin_y      = def.active_origin_y;
-		item.active_origin_right  = def.active_origin_right;
-		item.active_origin_bottom = def.active_origin_bottom;
+		item.active_origin_right  = (def.active_origin_right < 1000) ? def.active_origin_right : (def.width-def.active_origin_right);
+		item.active_origin_bottom = (def.active_origin_bottom < 1000) ? def.active_origin_bottom : (def.height-def.active_origin_bottom);
 		item.cropped_width        = def.cropped_width;
 		item.cropped_height       = def.cropped_height;
-		item.black_level          = def.black_level;
-		item.white_level          = def.white_level;
+		item.black_level          = ((1<<(def.bits_per_unit-5))-1);
+		item.white_level          = ((1<<def.bits_per_unit)-1);
 		item.mosaic               = (MosaicType)def.mosaic;
 		item.bits_per_unit        = def.bits_per_unit;
 

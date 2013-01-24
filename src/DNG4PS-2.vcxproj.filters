@@ -317,6 +317,7 @@
     <ClCompile Include="ProgramObjects.cpp" />
     <ClCompile Include="ScanProgressWin.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="pch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="langs\de.po">

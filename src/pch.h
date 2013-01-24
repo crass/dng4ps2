@@ -10,17 +10,12 @@
 #include <wx/filename.h>
 #include <wx/log.h>
 
-// STL
 #include <vector>
-#include <memory>
-#include <stdexcept>
 #include <map>
-#include <set>
 
-// boost
-#include <boost/function.hpp>
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
+#include "boost/bind.hpp"
+#include "boost/function.hpp"
+#include "boost/foreach.hpp"
 
 #define foreach BOOST_FOREACH
 

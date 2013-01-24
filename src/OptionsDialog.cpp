@@ -62,7 +62,7 @@ namespace
 		wxLANGUAGE_DEFAULT
 	};
 
-	MosaicType mosaic_types[] = {MOSAIC_TYPE1, MOSAIC_TYPE2};
+	MosaicType mosaic_types[] = {MOSAIC_RGGB, MOSAIC_GBRG};
 
 	struct IllCorr {int value; const wchar_t * text;};
 
@@ -813,7 +813,7 @@ void OptionsDialog::read_camera_opts()
 	item.black_level = get_int(txtBlackLevel);
 	item.white_level = get_int(txtWhiteLevel);
 
-	item.mosaic = (chMosaicType->GetSelection() == wxNOT_FOUND) ? MOSAIC_TYPE1 : mosaic_types[chMosaicType->GetSelection()];
+	item.mosaic = (chMosaicType->GetSelection() == wxNOT_FOUND) ? MOSAIC_RGGB : mosaic_types[chMosaicType->GetSelection()];
 
 	item.bits_per_unit = (chBitsPerUnit->GetSelection() == wxNOT_FOUND) ? ppc_10 : bits_per_unit[chBitsPerUnit->GetSelection()];
 

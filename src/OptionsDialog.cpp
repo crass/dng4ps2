@@ -924,6 +924,8 @@ void OptionsDialog::btnResetToDefaultsClick(wxCommandEvent& event)
 
 	cam_opts_->reset_to_defaults(item->id);
 	show_camera_opts();
+
+	dialog->Destroy();
 }
 
 

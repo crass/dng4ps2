@@ -47,19 +47,19 @@
 
 namespace
 {
-	static const wxLanguage langs[] =
+	static const char* langs[] =
 	{
-		wxLANGUAGE_CHINESE,
-		wxLANGUAGE_ENGLISH,
-		wxLANGUAGE_GERMAN,
-		wxLANGUAGE_ITALIAN,
-		wxLANGUAGE_FINNISH,
-		wxLANGUAGE_NORWEGIAN_NYNORSK,
-		wxLANGUAGE_POLISH,
-		wxLANGUAGE_RUSSIAN,
-		wxLANGUAGE_SPANISH,
-		wxLANGUAGE_FRENCH,
-		wxLANGUAGE_DEFAULT
+		"zh",
+		"en",
+		"de",
+		"it",
+		"fi",
+		"no",
+		"pl",
+		"ru",
+		"es",
+		"fr",
+		nullptr
 	};
 
 	MosaicType mosaic_types[] = {MOSAIC_RGGB, MOSAIC_GBRG};
@@ -581,7 +581,7 @@ bool OptionsDialog::execute()
     chkbArtist->SetValue(sys.options->use_artist);
     txtArtist->SetValue(sys.options->artist);
 
-    for (int i = 0; langs[i] != wxLANGUAGE_DEFAULT; i++)
+    for (int i = 0; langs[i]; i++)
 		if (sys.options->lang == langs[i]) chLanguage->SetSelection(i);
 
 	show_cameras_list(sys.options->last_camera_id);

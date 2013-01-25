@@ -41,7 +41,9 @@ ProgramObjects::ProgramObjects() :
 // ProgramObjects::init_language
 void ProgramObjects::init_language(const wxString & dir)
 {
-    locale_.Init(options->lang, wxLOCALE_CONV_ENCODING);
+	//wxLanguage lang = wxLANGUAGE_ENGLISH;
+
+	locale_.Init(options->lang, options->lang, options->lang);
     wxLocale::AddCatalogLookupPathPrefix(dir);
     locale_.AddCatalog(L"dng4ps-2");
 }

@@ -39,7 +39,7 @@ namespace
     const char * date_type_opt_str        = "DateType";
     const char * artist_opt_str           = "Artist";
     const char * use_artist_opt_str       = "UseArtist";
-    const char * lang_opt_str             = "Language";
+    const char * lang_opt_str             = "LanguageStr";
     const char * last_camera_id_opt_str   = "LastCameraId";
 };
 
@@ -53,7 +53,7 @@ Options::Options()
     use_date_for_path = true;
     date_type = dt_YYYY_MM_DD;
     use_artist = false;
-    lang = wxLANGUAGE_ENGLISH;
+    lang = "en";
 
 }
 
@@ -76,10 +76,13 @@ void Options::load()
     preview_type   = (PreviewType) config.Read(preview_type_opt_str, pt_Full);
 
     date_type      = (DateTypes)config.Read(date_type_opt_str, date_type);
-    lang           = (wxLanguage)config.Read(lang_opt_str, lang);
+
+    lang = config.Read(lang_opt_str, wxEmptyString);
+	if (lang.IsEmpty()) lang = "en";
 
 	last_camera_id = config.Read(last_camera_id_opt_str,   wxEmptyString   );
 
+	
 }
 
 // Options::save
@@ -93,11 +96,11 @@ void Options::save() const
     config.Write(dont_overwrite_opt_str,   dont_overwrite   );
     config.Write(add_metadata_opt_str,     add_metadata     );
     config.Write(compress_dng_opt_str,     compress_dng     );
-    config.Write(preview_type_opt_str,     (int)preview_type     );
+    config.Write(preview_type_opt_str,     (int)preview_type);
     config.Write(use_date_opt_str,         use_date_for_path);
-    config.Write(date_type_opt_str,        (int)date_type        );
+    config.Write(date_type_opt_str,        (int)date_type   );
     config.Write(artist_opt_str,           artist           );
     config.Write(use_artist_opt_str,       use_artist       );
-    config.Write(lang_opt_str,             (int)lang             );
-	config.Write(last_camera_id_opt_str,   last_camera_id);
+    config.Write(lang_opt_str,             lang             );
+	config.Write(last_camera_id_opt_str,   last_camera_id   );
 }

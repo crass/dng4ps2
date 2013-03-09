@@ -49,8 +49,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(wx)\include;$(wx)\lib\vc_dll\mswud;external_libs\dng_sdk;external_libs\expat\src;external_libs\libexif;external_libs\libexif\canon;external_libs\libexif\olympus;external_libs\MD5;external_libs\missed_files;external_libs\xmp_sdk\include;external_libs\xmp_sdk\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;wxUSE_UNICODE;wxUSE_NO_MANIFEST;WIN_ENV;qDNGLittleEndian=1;qWinOS=1;qMacOS=0;HAVE_MEMMOVE;__WXDEBUG__;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;$(wx)\include;$(wx)\lib\vc_dll\mswud;external_libs\dng_sdk;external_libs\expat\src;external_libs\libexif;external_libs\libexif\canon;external_libs\libexif\olympus;external_libs\MD5;external_libs\missed_files;external_libs\xmp_sdk\include;external_libs\xmp_sdk\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;wxUSE_UNICODE;wxUSE_NO_MANIFEST;WIN_ENV;qDNGLittleEndian=1;qWinOS=1;qMacOS=0;HAVE_MEMMOVE;__WXDEBUG__;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -72,10 +72,10 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <Optimization>Full</Optimization>
+      <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(wx)\include;$(wx)\lib\vc_lib\mswu;external_libs\dng_sdk;external_libs\expat\src;external_libs\libexif;external_libs\libexif\canon;external_libs\libexif\olympus;external_libs\MD5;external_libs\missed_files;external_libs\xmp_sdk\include;external_libs\xmp_sdk\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;wxUSE_UNICODE;wxUSE_NO_MANIFEST;WIN_ENV;qDNGLittleEndian=1;qWinOS=1;qMacOS=0;HAVE_MEMMOVE;DISABLE_CALIBR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;$(wx)\include;$(wx)\lib\vc_lib\mswu;external_libs\dng_sdk;external_libs\expat\src;external_libs\libexif;external_libs\libexif\canon;external_libs\libexif\olympus;external_libs\MD5;external_libs\missed_files;external_libs\xmp_sdk\include;external_libs\xmp_sdk\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_WINDOWS;wxUSE_UNICODE;wxUSE_NO_MANIFEST;WIN_ENV;qDNGLittleEndian=1;qWinOS=1;qMacOS=0;HAVE_MEMMOVE;DISABLE_CALIBR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -84,6 +84,8 @@
       <DebugInformationFormat>
       </DebugInformationFormat>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <SDLCheck>false</SDLCheck>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <Link>
       <AdditionalDependencies>libcmt.lib;comctl32.lib;Rpcrt4.lib;wxbase29u.lib;wxjpeg.lib;wxmsw29u_core.lib;wxbase29u_net.lib;wxpng.lib;wxzlib.lib;wxtiff.lib;wsock32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -478,7 +480,11 @@
     <ClCompile Include="DNG4PSMain.cpp" />
     <ClCompile Include="FileList.cpp" />
     <ClCompile Include="FilesPathDialog.cpp" />
-    <ClCompile Include="NewFolderDialog.cpp" />
+    <ClCompile Include="gui\NewFolderDialog.cpp" />
+    <ClCompile Include="lib\wxGUIBuilder.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Options.cpp" />
     <ClCompile Include="OptionsDialog.cpp" />
     <ClCompile Include="pch.cpp">
@@ -511,7 +517,8 @@
     <ClInclude Include="Exception.hpp" />
     <ClInclude Include="FileList.h" />
     <ClInclude Include="FilesPathDialog.h" />
-    <ClInclude Include="NewFolderDialog.h" />
+    <ClInclude Include="gui\NewFolderDialog.h" />
+    <ClInclude Include="lib\wxGUIBuilder.hpp" />
     <ClInclude Include="Options.h" />
     <ClInclude Include="OptionsDialog.h" />
     <ClInclude Include="pch.h" />

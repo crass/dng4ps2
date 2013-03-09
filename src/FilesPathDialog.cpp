@@ -22,7 +22,7 @@
 
 #include "pch.h"
 #include "FilesPathDialog.h"
-#include "NewFolderDialog.h"
+#include "gui/NewFolderDialog.h"
 
 #include <wx/filename.h>
 

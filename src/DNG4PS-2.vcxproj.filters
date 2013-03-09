@@ -22,6 +22,12 @@
     <Filter Include="langs">
       <UniqueIdentifier>{eac5a2a0-bfd4-4b09-accb-b652ee30665d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{bd399f1f-20fb-4d05-8f14-399077841392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui">
+      <UniqueIdentifier>{bcb0d97c-f67b-47e2-8042-19bdb45ef244}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="external_libs\dng_sdk\dng_1d_function.cpp">
@@ -310,7 +316,6 @@
     <ClCompile Include="DNG4PSMain.cpp" />
     <ClCompile Include="FileList.cpp" />
     <ClCompile Include="FilesPathDialog.cpp" />
-    <ClCompile Include="NewFolderDialog.cpp" />
     <ClCompile Include="Options.cpp" />
     <ClCompile Include="OptionsDialog.cpp" />
     <ClCompile Include="ProcessDialog.cpp" />
@@ -318,6 +323,12 @@
     <ClCompile Include="ScanProgressWin.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="lib\wxGUIBuilder.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\NewFolderDialog.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="langs\de.po">
@@ -360,7 +371,6 @@
     <ClInclude Include="Exception.hpp" />
     <ClInclude Include="FileList.h" />
     <ClInclude Include="FilesPathDialog.h" />
-    <ClInclude Include="NewFolderDialog.h" />
     <ClInclude Include="Options.h" />
     <ClInclude Include="OptionsDialog.h" />
     <ClInclude Include="pch.h" />
@@ -369,6 +379,12 @@
     <ClInclude Include="ScanProgressWin.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="version.h" />
+    <ClInclude Include="lib\wxGUIBuilder.hpp">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\NewFolderDialog.h">
+      <Filter>gui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource_vc.rc" />

@@ -66,6 +66,7 @@ extern const UIElemOptions stretch;
 UIElemOptions border(int border);
 UIElemOptions width(int value);
 UIElemOptions height(int value);
+UIElemOptions size(int width, int height);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -153,16 +154,24 @@ private:
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Layout grid(int cols, int rows = 0, const UIElemOptions &options = UIElemOptions(), int hgap = 5, int vgap = 5);
-Layout hbox(const UIElemOptions &options = UIElemOptions(), int gap = 5);
-Layout vbox(const UIElemOptions &options = UIElemOptions(), int gap = 5);
+Layout hbox(const UIElemOptions &options = expand, int gap = 5);
+Layout vbox(const UIElemOptions &options = expand, int gap = 5);
 Layout dlg_buttons(const UIElemOptions &options = align_right);
+UIElem dlg_buttons_ok_cancel(const UIElemOptions &options = align_right);
 
 Window frame(wxFrame *frame, const Layout &layout = vbox());
 Window dialog(wxDialog *dialog, const Layout &layout = vbox());
 
 UIElem hline(const UIElemOptions &options = expand);
+UIElem spring();
+
 UIElem text(const wxString &text, const UIElemOptions &options = UIElemOptions());
+
 UIElem edit(const UIElemOptions &options = UIElemOptions());
+
 UIElem button(const wxString &text, int id = wxID_ANY, bool is_default = false, const UIElemOptions &options = UIElemOptions());
-UIElem button_ok(const wxString &text, bool is_default = true, const UIElemOptions &options = UIElemOptions());
-UIElem button_cancel(const wxString &text, const UIElemOptions &options = UIElemOptions());
+UIElem button_ok(const wxString &text = wxEmptyString, bool is_default = true, const UIElemOptions &options = UIElemOptions());
+UIElem button_cancel(const wxString &text = wxEmptyString, const UIElemOptions &options = UIElemOptions());
+
+UIElem dir_ctrl(const UIElemOptions &options = UIElemOptions(), bool dirs_only = true);
+

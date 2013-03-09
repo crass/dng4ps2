@@ -315,7 +315,6 @@
     <ClCompile Include="DNG4PSApp.cpp" />
     <ClCompile Include="DNG4PSMain.cpp" />
     <ClCompile Include="FileList.cpp" />
-    <ClCompile Include="FilesPathDialog.cpp" />
     <ClCompile Include="Options.cpp" />
     <ClCompile Include="OptionsDialog.cpp" />
     <ClCompile Include="ProcessDialog.cpp" />
@@ -327,6 +326,9 @@
       <Filter>lib</Filter>
     </ClCompile>
     <ClCompile Include="gui\NewFolderDialog.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\FilesPathDialog.cpp">
       <Filter>gui</Filter>
     </ClCompile>
   </ItemGroup>
@@ -370,7 +372,6 @@
     <ClInclude Include="DNG4PSMain.h" />
     <ClInclude Include="Exception.hpp" />
     <ClInclude Include="FileList.h" />
-    <ClInclude Include="FilesPathDialog.h" />
     <ClInclude Include="Options.h" />
     <ClInclude Include="OptionsDialog.h" />
     <ClInclude Include="pch.h" />
@@ -383,6 +384,9 @@
       <Filter>lib</Filter>
     </ClInclude>
     <ClInclude Include="gui\NewFolderDialog.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\FilesPathDialog.h">
       <Filter>gui</Filter>
     </ClInclude>
   </ItemGroup>

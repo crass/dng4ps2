@@ -1,6 +1,9 @@
 #include <assert.h>
+
 #include <wx/wx.h>
 #include <wx/statline.h>
+#include <wx/dirctrl.h>
+
 #include "wxGUIBuilder.hpp"
 
 const UIElemOptions bord_top       = UIElemOptions(0x00000001);
@@ -47,6 +50,11 @@ UIElemOptions height(int value)
 	return UIElemOptions(0, 0, -1, value);
 }
 
+UIElemOptions size(int width, int height)
+{
+	return UIElemOptions(0, 0, width, height);
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void UIElem::set_item(const UIElem &item)
@@ -63,6 +71,7 @@ void UIElem::set_items(const UIElems &items)
 
 wxObject* UIElem::build_gui(wxObject *parent, wxSizer *sizer) const
 {
+	if (create_fun_ == nullptr) return nullptr;
 	return create_fun_(parent, sizer, sub_items_);
 }
 
@@ -154,16 +163,23 @@ void process_sizer_items(wxObject *parent, wxSizer *sizer_obj, const UIElems &it
 	for (auto &item : items)
 	{
 		wxObject *sub_item_obj = item.build_gui(parent, sizer_obj);
-		wxWindow *parent_window = dynamic_cast<wxWindow*>(parent);
-		wxWindow *sub_item_window = dynamic_cast<wxWindow*>(sub_item_obj);
-		wxSizer *sub_item_sizer = dynamic_cast<wxSizer*>(sub_item_obj);
-		assert(sub_item_window || sub_item_sizer);
-		if ((spacer_size != 0) && sizer_obj->GetItemCount()) sizer_obj->AddSpacer(spacer_size);
-		uint32_t flags = get_sizer_item_flags(item.get_options());
-		int border = parent_window->ConvertDialogToPixels(wxSize(item.get_options().get_border(), 0)).x;
-		int propoption = get_sizer_item_proportion(item.get_options());
-		if (sub_item_window) sizer_obj->Add(sub_item_window, propoption, flags, border);
-		if (sub_item_sizer) sizer_obj->Add(sub_item_sizer, propoption, flags, border);
+		if (sub_item_obj == nullptr)
+		{
+			sizer_obj->AddStretchSpacer();
+		}
+		else
+		{
+			wxWindow *parent_window = dynamic_cast<wxWindow*>(parent);
+			wxWindow *sub_item_window = dynamic_cast<wxWindow*>(sub_item_obj);
+			wxSizer *sub_item_sizer = dynamic_cast<wxSizer*>(sub_item_obj);
+			assert(sub_item_window || sub_item_sizer);
+			if ((spacer_size != 0) && sizer_obj->GetItemCount()) sizer_obj->AddSpacer(spacer_size);
+			uint32_t flags = get_sizer_item_flags(item.get_options());
+			int border = parent_window->ConvertDialogToPixels(wxSize(item.get_options().get_border(), 0)).x;
+			int propoption = get_sizer_item_proportion(item.get_options());
+			if (sub_item_window) sizer_obj->Add(sub_item_window, propoption, flags, border);
+			if (sub_item_sizer) sizer_obj->Add(sub_item_sizer, propoption, flags, border);
+		}
 	}
 }
 
@@ -225,6 +241,14 @@ Layout dlg_buttons(const UIElemOptions &options)
 	return Layout(create_fun, options);
 }
 
+UIElem dlg_buttons_ok_cancel(const UIElemOptions &options)
+{
+	return dlg_buttons(options) [
+		button_ok(), 
+		button_cancel()
+	];
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Window frame(wxFrame *frame, const Layout &layout)
@@ -283,6 +307,11 @@ UIElem hline(const UIElemOptions &options)
 	}, options);
 }
 
+UIElem spring()
+{
+	return UIElem(nullptr, UIElemOptions());
+}
+
 UIElem text(const wxString &text, const UIElemOptions &options)
 {
 	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
@@ -335,4 +364,19 @@ UIElem button_ok(const wxString &text, bool is_default, const UIElemOptions &opt
 UIElem button_cancel(const wxString &text, const UIElemOptions &options)
 {
 	return button(text, wxID_CANCEL, false, options);
+}
+
+UIElem dir_ctrl(const UIElemOptions &options, bool dirs_only)
+{
+	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+		wxGenericDirCtrl* ctrl = new wxGenericDirCtrl(
+			dynamic_cast<wxWindow*>(parent), 
+			wxID_ANY,
+			wxEmptyString,
+			wxDefaultPosition, 
+			get_widget_size(parent, options),
+			get_widget_flags(options) | (dirs_only ? wxDIRCTRL_DIR_ONLY : 0)
+		);
+		return ctrl;
+	}, options);
 }

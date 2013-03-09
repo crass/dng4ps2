@@ -22,11 +22,7 @@ NewFolderDialog::NewFolderDialog(wxWindow* parent, wxWindowID id)
 			edit(width(150)&expand) >> txtFolderName
 		],
 		hline(),
-		dlg_buttons() 
-		[
-			button_ok(_("btnOk")), 
-			button_cancel(_("btnCancel"))
-		]
+		dlg_buttons_ok_cancel()
 	]];
 
 	gui.build_gui();

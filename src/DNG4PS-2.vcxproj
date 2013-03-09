@@ -479,7 +479,7 @@
     <ClCompile Include="DNG4PSApp.cpp" />
     <ClCompile Include="DNG4PSMain.cpp" />
     <ClCompile Include="FileList.cpp" />
-    <ClCompile Include="FilesPathDialog.cpp" />
+    <ClCompile Include="gui\FilesPathDialog.cpp" />
     <ClCompile Include="gui\NewFolderDialog.cpp" />
     <ClCompile Include="lib\wxGUIBuilder.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -516,7 +516,7 @@
     <ClInclude Include="DNG4PSMain.h" />
     <ClInclude Include="Exception.hpp" />
     <ClInclude Include="FileList.h" />
-    <ClInclude Include="FilesPathDialog.h" />
+    <ClInclude Include="gui\FilesPathDialog.h" />
     <ClInclude Include="gui\NewFolderDialog.h" />
     <ClInclude Include="lib\wxGUIBuilder.hpp" />
     <ClInclude Include="Options.h" />

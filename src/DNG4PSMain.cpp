@@ -35,7 +35,7 @@
 #include "DNG4PSMain.h"
 #include "FileList.h"
 #include "ProcessDialog.h"
-#include "FilesPathDialog.h"
+#include "gui/FilesPathDialog.h"
 #include "AboutDialog.h"
 #include "OptionsDialog.h"
 #include "Options.h"

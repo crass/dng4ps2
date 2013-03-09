@@ -163,13 +163,19 @@ void process_sizer_items(wxObject *parent, wxSizer *sizer_obj, const UIElems &it
 	for (auto &item : items)
 	{
 		wxObject *sub_item_obj = item.build_gui(parent, sizer_obj);
+		wxWindow *parent_window = dynamic_cast<wxWindow*>(parent);
 		if (sub_item_obj == nullptr)
 		{
-			sizer_obj->AddStretchSpacer();
+			if (item.get_options().has_flag(stretch))
+				sizer_obj->AddStretchSpacer();
+			else
+			{
+				int spacer_size = parent_window->ConvertDialogToPixels(wxSize(item.get_options().get_width(), 0)).x;
+				sizer_obj->AddSpacer(spacer_size);
+			}
 		}
 		else
 		{
-			wxWindow *parent_window = dynamic_cast<wxWindow*>(parent);
 			wxWindow *sub_item_window = dynamic_cast<wxWindow*>(sub_item_obj);
 			wxSizer *sub_item_sizer = dynamic_cast<wxSizer*>(sub_item_obj);
 			assert(sub_item_window || sub_item_sizer);
@@ -307,9 +313,14 @@ UIElem hline(const UIElemOptions &options)
 	}, options);
 }
 
-UIElem spring()
+UIElem spacer()
 {
 	return UIElem(nullptr, UIElemOptions());
+}
+
+UIElem spring()
+{
+	return UIElem(nullptr, stretch);
 }
 
 UIElem text(const wxString &text, const UIElemOptions &options)

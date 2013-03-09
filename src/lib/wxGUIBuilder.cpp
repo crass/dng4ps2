@@ -285,6 +285,21 @@ Window dialog(wxDialog *dialog, const Layout &layout)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+void set_widgets_props(wxWindow *widget, const UIElemOptions &options)
+{
+	bool bold_font = options.has_flag(font_bold);
+	bool italic_font = options.has_flag(font_italic);
+	bool underline_font = options.has_flag(font_underline);
+	if (bold_font || italic_font || underline_font)
+	{
+		wxFont font = widget->GetFont();
+		if (bold_font) font.MakeBold();
+		if (italic_font) font.MakeItalic();
+		if (underline_font) font.MakeUnderlined();
+		widget->SetFont(font);
+	}
+}
+
 uint32_t get_widget_flags(const UIElemOptions &options)
 {
 	uint32_t result = 0;
@@ -313,9 +328,9 @@ UIElem hline(const UIElemOptions &options)
 	}, options);
 }
 
-UIElem spacer()
+UIElem spacer(int size)
 {
-	return UIElem(nullptr, UIElemOptions());
+	return UIElem(nullptr, width(size));
 }
 
 UIElem spring()
@@ -326,7 +341,7 @@ UIElem spring()
 UIElem text(const wxString &text, const UIElemOptions &options)
 {
 	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
-		return new wxStaticText(
+		wxStaticText *widget = new wxStaticText(
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY, 
 			text, 
@@ -334,13 +349,15 @@ UIElem text(const wxString &text, const UIElemOptions &options)
 			get_widget_size(parent, options),
 			get_widget_flags(options)
 		);
+		set_widgets_props(widget, options);
+		return widget;
 	}, options);
 }
 
 UIElem edit(const UIElemOptions &options)
 {
 	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
-		return new wxTextCtrl(
+		wxTextCtrl *widget = new wxTextCtrl(
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY, 
 			wxEmptyString, 
@@ -348,13 +365,15 @@ UIElem edit(const UIElemOptions &options)
 			get_widget_size(parent, options),
 			get_widget_flags(options)
 		);
+		set_widgets_props(widget, options);
+		return widget;
 	}, options);
 }
 
 UIElem button(const wxString &text, int id, bool is_default, const UIElemOptions &options)
 {
 	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
-		wxButton* button = new wxButton(
+		wxButton* widget = new wxButton(
 			dynamic_cast<wxWindow*>(parent), 
 			id, 
 			text, 
@@ -362,8 +381,9 @@ UIElem button(const wxString &text, int id, bool is_default, const UIElemOptions
 			get_widget_size(parent, options),
 			get_widget_flags(options)
 		);
-		if (is_default) button->SetDefault();
-		return button;
+		if (is_default) widget->SetDefault();
+		set_widgets_props(widget, options);
+		return widget;
 	}, options);
 }
 
@@ -380,7 +400,7 @@ UIElem button_cancel(const wxString &text, const UIElemOptions &options)
 UIElem dir_ctrl(const UIElemOptions &options, bool dirs_only)
 {
 	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
-		wxGenericDirCtrl* ctrl = new wxGenericDirCtrl(
+		wxGenericDirCtrl* widget = new wxGenericDirCtrl(
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY,
 			wxEmptyString,
@@ -388,6 +408,7 @@ UIElem dir_ctrl(const UIElemOptions &options, bool dirs_only)
 			get_widget_size(parent, options),
 			get_widget_flags(options) | (dirs_only ? wxDIRCTRL_DIR_ONLY : 0)
 		);
-		return ctrl;
+		set_widgets_props(widget, options);
+		return widget;
 	}, options);
 }

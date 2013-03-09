@@ -163,7 +163,7 @@ Window frame(wxFrame *frame, const Layout &layout = vbox());
 Window dialog(wxDialog *dialog, const Layout &layout = vbox());
 
 UIElem hline(const UIElemOptions &options = expand);
-UIElem spacer();
+UIElem spacer(int size = 0);
 UIElem spring();
 
 

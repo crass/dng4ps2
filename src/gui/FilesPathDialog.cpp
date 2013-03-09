@@ -42,16 +42,20 @@ FilesPathDialog::FilesPathDialog(const wxString& path, const wxString& descr_tex
 	wxStaticText* lblMain = nullptr;
 	dirPath = nullptr;
 
-	auto dialog_gui = dialog(this) [ vbox(bord_all&border(5)) 
-	[
-		text(_("Path")) >> lblMain,
-		dir_ctrl(size(200, 200) & expand & stretch) >> dirPath,
-		hbox() [
-			button(_("btnNewFolder")) >> btnNewFolder,
-			spring(),
-			dlg_buttons_ok_cancel()
+	auto dialog_gui = dialog(this) 
+	[ 
+		vbox(bord_all & border(5)) 
+		[
+			text(_("Path")) >> lblMain,
+			dir_ctrl(size(200, 200) & expand & stretch) >> dirPath,
+			hbox() 
+			[
+				button(_("btnNewFolder")) >> btnNewFolder,
+				spring(),
+				dlg_buttons_ok_cancel()
+			]
 		]
-	]];
+	];
 
 	dialog_gui.build_gui();
 

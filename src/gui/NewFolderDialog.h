@@ -8,16 +8,15 @@
 
 class NewFolderDialog: public wxDialog
 {
-	public:
+public:
+	NewFolderDialog(wxWindow* parent,wxWindowID id=wxID_ANY);
 
-		NewFolderDialog(wxWindow* parent,wxWindowID id=wxID_ANY);
+	bool execute(const wxString &root);
+	wxString get_path();
 
-		bool execute(const wxString &root);
-		wxString get_path();
-
-	protected:
-		wxTextCtrl* txtFolderName;
-		wxStaticText* stxtRootFolder;
+protected:
+	wxTextCtrl* txtFolderName;
+	wxStaticText* stxtRootFolder;
 };
 
 #endif

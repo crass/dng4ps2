@@ -34,7 +34,7 @@ public:
 	int get_width() const { return width_; }
 	int get_height() const { return height_; }
 
-	UIElemOptions operator | (const UIElemOptions &other) const;
+	UIElemOptions operator & (const UIElemOptions &other) const;
 
 private:
 	uint32_t flags_;

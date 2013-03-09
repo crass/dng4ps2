@@ -23,7 +23,7 @@ const UIElemOptions font_underline = UIElemOptions(0x00002000);
 const UIElemOptions expand         = UIElemOptions(0x00004000);
 const UIElemOptions stretch        = UIElemOptions(0x00008000);
 
-UIElemOptions UIElemOptions::operator | (const UIElemOptions &other) const
+UIElemOptions UIElemOptions::operator & (const UIElemOptions &other) const
 {
 	uint32_t flags = flags_ | other.flags_;
 	int border = std::max(border_, other.border_);

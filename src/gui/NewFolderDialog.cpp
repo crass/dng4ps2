@@ -14,17 +14,17 @@ NewFolderDialog::NewFolderDialog(wxWindow* parent, wxWindowID id)
 
 	auto gui = dialog(this) 
 	[ 
-		vbox(bord_all&border(5))
+		vbox (bord_all & border(5))
 		[
-			grid(2) 
+			grid (2) 
 			[
-				text(_("newfolderRootCap"), align_right),
-				text(wxEmptyString) >> stxtRootFolder,
-				text(_("newfolderName"), align_right),
-				edit(width(150)&expand) >> txtFolderName
+				text ("newfolderRootCap", align_right),
+				text (wxEmptyString) >> stxtRootFolder,
+				text ("newfolderName", align_right),
+				edit (width(150) & expand) >> txtFolderName
 			],
-			hline(),
-			dlg_buttons_ok_cancel()
+			hline (),
+			dlg_buttons_ok_cancel ()
 		]
 	];
 

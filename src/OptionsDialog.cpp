@@ -512,8 +512,8 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	nbMain->AddPage(Panel3, _("pgCamOpts"), false);
 	szOptions->Add(nbMain, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
 	StdDialogButtonSizer1 = new wxStdDialogButtonSizer();
-	StdDialogButtonSizer1->AddButton(new wxButton(this, wxID_OK, _("btnOk")));
-	StdDialogButtonSizer1->AddButton(new wxButton(this, wxID_CANCEL, _("btnCancel")));
+	StdDialogButtonSizer1->AddButton(new wxButton(this, wxID_OK, _("")));
+	StdDialogButtonSizer1->AddButton(new wxButton(this, wxID_CANCEL, _("")));
 	StdDialogButtonSizer1->Realize();
 	szOptions->Add(StdDialogButtonSizer1, 1, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(7,0)).GetWidth());
 	SetSizer(szOptions);

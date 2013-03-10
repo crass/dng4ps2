@@ -273,7 +273,8 @@ Window dialog(wxDialog *dialog, const Layout &layout)
 	auto create_fun = [=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		if (items.empty()) return dialog;
 		assert(items.size() == 1);
-		wxSizer *main_sizer = dynamic_cast<wxSizer*>(items.back().build_gui(dialog, sizer));
+		items[0].build_gui(dialog, sizer);
+		wxSizer *main_sizer = dialog->GetSizer();
 		assert(main_sizer);
 		dialog->Layout();
 		main_sizer->Fit(dialog);
@@ -344,7 +345,7 @@ UIElem text(const wxString &text, const UIElemOptions &options)
 		wxStaticText *widget = new wxStaticText(
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY, 
-			text, 
+			_(text),
 			wxDefaultPosition, 
 			get_widget_size(parent, options),
 			get_widget_flags(options)
@@ -376,7 +377,7 @@ UIElem button(const wxString &text, int id, bool is_default, const UIElemOptions
 		wxButton* widget = new wxButton(
 			dynamic_cast<wxWindow*>(parent), 
 			id, 
-			text, 
+			_(text), 
 			wxDefaultPosition, 
 			get_widget_size(parent, options),
 			get_widget_flags(options)

@@ -11,10 +11,10 @@ msgstr ""
 #            #
 ##############
 
-msgid  "btnCancel"
+msgid  "Cancel"
 msgstr "Cancelar"
 
-msgid  "btnOk"
+msgid  "OK"
 msgstr "OK"
 
 msgid  "btnExit"

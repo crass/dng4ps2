@@ -14,10 +14,10 @@ msgstr ""
 #    MAIN    #
 # "Content-Type: text/plain; charset=utf-8\n"           #
 ##############
-msgid "btnCancel"
+msgid "Cancel"
 msgstr "Peruuta"
 
-msgid "btnOk"
+msgid "OK"
 msgstr "OK"
 
 msgid "btnExit"

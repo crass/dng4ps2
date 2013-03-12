@@ -159,8 +159,7 @@ Layout vbox(const UIElemOptions &options = expand, int gap = 5);
 Layout dlg_buttons(const UIElemOptions &options = align_right);
 UIElem dlg_buttons_ok_cancel(const UIElemOptions &options = align_right);
 
-Window frame(wxFrame *frame, const Layout &layout = vbox());
-Window dialog(wxDialog *dialog, const Layout &layout = vbox());
+Window existing_window(wxWindow *window, const Layout &layout = vbox());
 
 UIElem hline(const UIElemOptions &options = expand);
 UIElem spacer(int size = 0);

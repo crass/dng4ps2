@@ -268,18 +268,13 @@ Window frame(wxFrame *frame, const Layout &layout)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Window dialog(wxDialog *dialog, const Layout &layout)
+Window existing_window(wxWindow *window, const Layout &layout)
 {
 	auto create_fun = [=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
-		if (items.empty()) return dialog;
+		if (items.empty()) return window;
 		assert(items.size() == 1);
-		items[0].build_gui(dialog, sizer);
-		wxSizer *main_sizer = dialog->GetSizer();
-		assert(main_sizer);
-		dialog->Layout();
-		main_sizer->Fit(dialog);
-		main_sizer->SetSizeHints(dialog);
-		return dialog;
+		items[0].build_gui(window, sizer);
+		return window;
 	};
 	return Window(create_fun, layout, UIElemOptions());
 }

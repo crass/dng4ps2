@@ -12,7 +12,7 @@ NewFolderDialog::NewFolderDialog(wxWindow* parent, wxWindowID id)
 {
 	Create(parent, id, _("newfolderCaption")); 
 
-	auto gui = dialog(this) 
+	auto gui = existing_window(this) 
 	[ 
 		vbox (bord_all & border(5))
 		[
@@ -29,6 +29,10 @@ NewFolderDialog::NewFolderDialog(wxWindow* parent, wxWindowID id)
 	];
 
 	gui.build_gui();
+
+	Layout();
+	GetSizer()->Fit(this);
+	GetSizer()->SetSizeHints(this);
 }
 
 bool NewFolderDialog::execute(const wxString &root)

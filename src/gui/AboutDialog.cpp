@@ -64,15 +64,18 @@ AboutDialog::AboutDialog(wxWindow* parent,wxWindowID id)
 
 	Create(parent, id, _("aboutFormCaption"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("id"));
 
-	auto gui = existing_window(this) [ vbox(border(5) | bord_all) 
-	[
-		hbox()
+	auto gui = existing_window(this) 
+	[ 
+		vbox(border(5) | bord_all) 
 		[
-			image(align_top | border(7) | bord_all) >> bmpIcon,
-			edit(size(150, 120) | noborder, multiline | autourl | rich) >> txtAboutText
-		],
-		button_ok("", align_right)
-	]];
+			hbox()
+			[
+				image(align_top | border(7) | bord_all) >> bmpIcon,
+				edit(size(150, 120) | noborder, multiline | autourl | rich) >> txtAboutText
+			],
+			button_ok("", align_right)
+		]
+	];
 
 	gui.build_gui();
 

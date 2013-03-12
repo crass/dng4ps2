@@ -319,7 +319,7 @@ msgid "aboutFormCaption"
 msgstr "A propos..."
 
 msgid "aboutMain"
-msgstr "DNG4PS-2 __VERSION__ est un outil gratuit pour la conversion des fichiers RAW des APN CANON PowerShot au format DNG.\n\nVous pouvez télécharger la dernière version et les sources ici : http://dng4ps2.chat.ru/"
+msgstr "DNG4PS-2 __VERSION__ est un outil gratuit pour la conversion des fichiers RAW des APN CANON PowerShot au format DNG.\n\nVous pouvez télécharger la dernière version et les sources ici : http://code.google.com/p/dng4ps2"
 
 msgid "lblYouLikeProgram"
 msgstr "Vous aimez cet outil? Soyez généreux:"

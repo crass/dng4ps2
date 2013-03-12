@@ -36,7 +36,7 @@
 #include "FileList.h"
 #include "ProcessDialog.h"
 #include "gui/FilesPathDialog.h"
-#include "AboutDialog.h"
+#include "gui/AboutDialog.h"
 #include "OptionsDialog.h"
 #include "Options.h"
 #include "Utils.h"

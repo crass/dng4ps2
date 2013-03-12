@@ -36,16 +36,18 @@ extern wxString path_sep;
 
 FilesPathDialog::FilesPathDialog(const wxString& path, const wxString& descr_text, wxWindow* parent,wxWindowID id)
 {
+	using namespace gb;
+
 	Create(parent, id, _("SelectDir"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("id"));
 
 	wxButton* btnNewFolder = nullptr;
 	wxStaticText* lblMain = nullptr;
 	dirPath = nullptr;
 
-	auto dialog_gui = existing_window(this) [ vbox (bord_all & border(5)) 
+	auto dialog_gui = existing_window(this) [ vbox (bord_all | border(5)) 
 	[
 		text ("Path") >> lblMain,
-		dir_ctrl (size(200, 200) & expand & stretch) >> dirPath,
+		dir_ctrl (size(200, 200) | expand | stretch) >> dirPath,
 		hbox () 
 		[
 			button ("btnNewFolder") >> btnNewFolder,

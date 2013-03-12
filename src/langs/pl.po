@@ -317,7 +317,7 @@ msgid "aboutFormCaption"
 msgstr "O programie..."
 
 msgid "aboutMain"
-msgstr "DNG4PS-2 __VERSION__ jest darmowym programem do konwertowania plików RAW z serii A kompaktów Canona do plików w formacie DNG.\n\nNajnowsze wersje i kody źródłowe tego programu możesz pobrać na http://dng4ps2.chat.ru/"
+msgstr "DNG4PS-2 __VERSION__ jest darmowym programem do konwertowania plików RAW z serii A kompaktów Canona do plików w formacie DNG.\n\nNajnowsze wersje i kody źródłowe tego programu możesz pobrać na http://code.google.com/p/dng4ps2"
 
 msgid "lblYouLikeProgram"
 msgstr "Czy ten program jest Ci pomocny? Darowizna:"

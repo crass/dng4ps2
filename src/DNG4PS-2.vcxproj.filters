@@ -309,7 +309,6 @@
     <ClCompile Include="external_libs\xmp_sdk\XMPCore\XMPUtils.cpp">
       <Filter>external_libs\xmp_sdk</Filter>
     </ClCompile>
-    <ClCompile Include="AboutDialog.cpp" />
     <ClCompile Include="CamCalibrFrame.cpp" />
     <ClCompile Include="CameraOpts.cpp" />
     <ClCompile Include="DNG4PSApp.cpp" />
@@ -329,6 +328,9 @@
       <Filter>gui</Filter>
     </ClCompile>
     <ClCompile Include="gui\FilesPathDialog.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\AboutDialog.cpp">
       <Filter>gui</Filter>
     </ClCompile>
   </ItemGroup>
@@ -365,7 +367,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AboutDialog.h" />
     <ClInclude Include="CamCalibrFrame.h" />
     <ClInclude Include="CameraOpts.h" />
     <ClInclude Include="DNG4PSApp.h" />
@@ -387,6 +388,9 @@
       <Filter>gui</Filter>
     </ClInclude>
     <ClInclude Include="gui\FilesPathDialog.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\AboutDialog.h">
       <Filter>gui</Filter>
     </ClInclude>
   </ItemGroup>

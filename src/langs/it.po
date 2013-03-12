@@ -319,7 +319,7 @@ msgid "aboutFormCaption"
 msgstr "Informazioni..."
 
 msgid "aboutMain"
-msgstr "DNG4PS-2 __VERSION__ è un programma liberamente utilizzabile (free-software) per la conversione dei file RAW delle fotocamere Canon supportate dal CHDK nel formato DNG.\n\nPuoi scaricare l'ultima versione e i sorgenti di questo programma da http://dng4ps2.chat.ru/"
+msgstr "DNG4PS-2 __VERSION__ è un programma liberamente utilizzabile (free-software) per la conversione dei file RAW delle fotocamere Canon supportate dal CHDK nel formato DNG.\n\nPuoi scaricare l'ultima versione e i sorgenti di questo programma da http://code.google.com/p/dng4ps2"
 
 msgid "lblYouLikeProgram"
 msgstr "Ti piace il programma? Dona:"

@@ -318,7 +318,7 @@ msgid "aboutFormCaption"
 msgstr "关于..."
 
 msgid "aboutMain"
-msgstr "DNG4PS-2 __VERSION__ 是一个用来将佳能A系列相机中的 RAW 文件转换成 DNG 格式的免费软件。\n\n你可以在 http://dng4ps2.chat.ru/index_en.html 下载到最新软件和源代码。"
+msgstr "DNG4PS-2 __VERSION__ 是一个用来将佳能A系列相机中的 RAW 文件转换成 DNG 格式的免费软件。\n\n你可以在 http://code.google.com/p/dng4ps2 下载到最新软件和源代码。"
 
 msgid "lblYouLikeProgram"
 msgstr "喜欢这个软件？请捐款："

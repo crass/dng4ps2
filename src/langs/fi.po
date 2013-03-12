@@ -350,7 +350,7 @@ msgid "aboutMain"
 msgstr ""
 "DNG4PS-2 __VERSION__ On ilmainen ohjelma RAW-tiedostojen muutamiseen DNG-muotoon, Canon A-sarjan kameroille.\n"
 "\n"
-"Voit ladata tämän ohjelman uusimman version ja ohjelmakoodin osoitteesta http://dng4ps2.chat.ru/"
+"Voit ladata tämän ohjelman uusimman version ja ohjelmakoodin osoitteesta http://code.google.com/p/dng4ps2"
 
 msgid "lblYouLikeProgram"
 msgstr "Like this program? Donate:"

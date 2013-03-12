@@ -318,7 +318,7 @@ msgid "aboutFormCaption"
 msgstr "Über..."
 
 msgid "aboutMain"
-msgstr "DNG4PS-2 __VERSION__ ist freie Software zum Konvertieren von RAW-Dateien der Canon A-Serie in das DNG Format.\n\nDie neuste Version und den Quellcode dieser Software können sie unter http://dng4ps2.chat.ru/ herunterladen."
+msgstr "DNG4PS-2 __VERSION__ ist freie Software zum Konvertieren von RAW-Dateien der Canon A-Serie in das DNG Format.\n\nDie neuste Version und den Quellcode dieser Software können sie unter http://code.google.com/p/dng4ps2 herunterladen."
 
 msgid "lblYouLikeProgram"
 msgstr "Like this program? Donate:"

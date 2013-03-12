@@ -6,33 +6,22 @@
 
 #include "wxGUIBuilder.hpp"
 
-const UIElemOptions bord_top       = UIElemOptions(0x00000001);
-const UIElemOptions bord_bottom    = UIElemOptions(0x00000002);
-const UIElemOptions bord_left      = UIElemOptions(0x00000004);
-const UIElemOptions bord_right     = UIElemOptions(0x00000008);
-const UIElemOptions bord_all       = UIElemOptions(0x00000010);
+namespace gb {
 
-const UIElemOptions align_left     = UIElemOptions(0x00000020);
-const UIElemOptions align_right    = UIElemOptions(0x00000040);
-const UIElemOptions align_hcenter  = UIElemOptions(0x00000080);
-const UIElemOptions align_top      = UIElemOptions(0x00000100);
-const UIElemOptions align_bottom   = UIElemOptions(0x00000200);
-const UIElemOptions align_vcenter  = UIElemOptions(0x00000400);
-
-const UIElemOptions font_bold      = UIElemOptions(0x00000800);
-const UIElemOptions font_italic    = UIElemOptions(0x00001000);
-const UIElemOptions font_underline = UIElemOptions(0x00002000);
-
-const UIElemOptions expand         = UIElemOptions(0x00004000);
-const UIElemOptions stretch        = UIElemOptions(0x00008000);
-
-UIElemOptions UIElemOptions::operator & (const UIElemOptions &other) const
+UIElemOptions UIElemOptions::operator | (const UIElemOptions &other) const
 {
 	uint32_t flags = flags_ | other.flags_;
 	int border = std::max(border_, other.border_);
 	int width = std::max(width_, other.width_);
 	int height = std::max(height_, other.height_);
 	return UIElemOptions(flags, border, width, height);
+}
+
+uint32_t UIElemOptions::get_style() const
+{
+	uint32_t result = 0;
+	if (has_flag(noborder)) result |= wxNO_BORDER;
+	return result;
 }
 
 UIElemOptions border(int border)
@@ -296,12 +285,6 @@ void set_widgets_props(wxWindow *widget, const UIElemOptions &options)
 	}
 }
 
-uint32_t get_widget_flags(const UIElemOptions &options)
-{
-	uint32_t result = 0;
-	return result;
-}
-
 wxSize get_widget_size(wxObject *parent, const UIElemOptions &options)
 {
 	wxWindow *parent_window = dynamic_cast<wxWindow*>(parent);
@@ -319,7 +302,7 @@ UIElem hline(const UIElemOptions &options)
 			wxID_ANY, 
 			wxDefaultPosition, 
 			get_widget_size(parent, options),
-			get_widget_flags(options) | wxLI_HORIZONTAL
+			options.get_style() | wxLI_HORIZONTAL
 		);
 	}, options);
 }
@@ -343,14 +326,26 @@ UIElem text(const wxString &text, const UIElemOptions &options)
 			_(text),
 			wxDefaultPosition, 
 			get_widget_size(parent, options),
-			get_widget_flags(options)
+			options.get_style()
 		);
 		set_widgets_props(widget, options);
 		return widget;
 	}, options);
 }
 
-UIElem edit(const UIElemOptions &options)
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+uint32_t EditOptions::get_style() const
+{
+	uint32_t result = 0;
+	if (has_flag(multiline)) result |= wxTE_MULTILINE;
+	if (has_flag(readonly)) result |= wxTE_READONLY;
+	if (has_flag(rich)) result |= wxTE_RICH2;
+	if (has_flag(autourl)) result |= wxTE_AUTO_URL;
+	return result;
+}
+
+UIElem edit(const UIElemOptions &options, const EditOptions &edit_options)
 {
 	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		wxTextCtrl *widget = new wxTextCtrl(
@@ -359,12 +354,14 @@ UIElem edit(const UIElemOptions &options)
 			wxEmptyString, 
 			wxDefaultPosition, 
 			get_widget_size(parent, options),
-			get_widget_flags(options)
+			options.get_style() | edit_options.get_style()
 		);
 		set_widgets_props(widget, options);
 		return widget;
 	}, options);
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 UIElem button(const wxString &text, int id, bool is_default, const UIElemOptions &options)
 {
@@ -375,7 +372,7 @@ UIElem button(const wxString &text, int id, bool is_default, const UIElemOptions
 			_(text), 
 			wxDefaultPosition, 
 			get_widget_size(parent, options),
-			get_widget_flags(options)
+			options.get_style()
 		);
 		if (is_default) widget->SetDefault();
 		set_widgets_props(widget, options);
@@ -383,9 +380,9 @@ UIElem button(const wxString &text, int id, bool is_default, const UIElemOptions
 	}, options);
 }
 
-UIElem button_ok(const wxString &text, bool is_default, const UIElemOptions &options)
+UIElem button_ok(const wxString &text, const UIElemOptions &options)
 {
-	return button(text, wxID_OK, is_default, options);
+	return button(text, wxID_OK, true, options);
 }
 
 UIElem button_cancel(const wxString &text, const UIElemOptions &options)
@@ -402,9 +399,27 @@ UIElem dir_ctrl(const UIElemOptions &options, bool dirs_only)
 			wxEmptyString,
 			wxDefaultPosition, 
 			get_widget_size(parent, options),
-			get_widget_flags(options) | (dirs_only ? wxDIRCTRL_DIR_ONLY : 0)
+			options.get_style() | (dirs_only ? wxDIRCTRL_DIR_ONLY : 0)
 		);
 		set_widgets_props(widget, options);
 		return widget;
 	}, options);
 }
+
+UIElem image(const UIElemOptions &options)
+{
+	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+		wxStaticBitmap* widget = new wxStaticBitmap(
+			dynamic_cast<wxWindow*>(parent), 
+			wxID_ANY,
+			wxNullBitmap,
+			wxDefaultPosition, 
+			get_widget_size(parent, options),
+			options.get_style()
+		);
+		set_widgets_props(widget, options);
+		return widget;
+	}, options);
+}
+
+} // namespace gb

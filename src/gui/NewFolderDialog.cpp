@@ -10,18 +10,20 @@
 
 NewFolderDialog::NewFolderDialog(wxWindow* parent, wxWindowID id)
 {
+	using namespace gb;
+
 	Create(parent, id, _("newfolderCaption")); 
 
 	auto gui = existing_window(this) 
 	[ 
-		vbox (bord_all & border(5))
+		vbox (bord_all | border(5))
 		[
 			grid (2) 
 			[
 				text ("newfolderRootCap", align_right),
 				text (wxEmptyString) >> stxtRootFolder,
 				text ("newfolderName", align_right),
-				edit (width(150) & expand) >> txtFolderName
+				edit (width(150) | expand) >> txtFolderName
 			],
 			hline (),
 			dlg_buttons_ok_cancel ()

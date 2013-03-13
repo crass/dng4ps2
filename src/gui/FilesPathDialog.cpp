@@ -44,18 +44,21 @@ FilesPathDialog::FilesPathDialog(const wxString& path, const wxString& descr_tex
 	wxStaticText* lblMain = nullptr;
 	dirPath = nullptr;
 
-	auto dialog_gui = existing_window(this) [ vbox (bord_all | border(5)) 
-	[
-		text ("Path") >> lblMain,
-		dir_ctrl (size(200, 200) | expand | stretch) >> dirPath,
-		hbox () 
+	auto dialog_gui = existing_window(this) 
+	[ 
+		vbox() 
 		[
-			button ("btnNewFolder") >> btnNewFolder,
-			spring (),
-			dlg_buttons_ok_cancel ()
+			text("Path", bord_all_exc_bottom) >> lblMain,
+			dir_ctrl(size(200, 200) | expand | stretch) >> dirPath,
+			hbox(border(0) | expand)
+			[
+				button("btnNewFolder") >> btnNewFolder,
+				spring(),
+				dlg_buttons_ok_cancel()
+			]
 		]
-	]];
-
+	];
+	
 	dialog_gui.build_gui();
 
 	dirPath->SetPath(path);

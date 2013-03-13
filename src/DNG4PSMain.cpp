@@ -25,12 +25,9 @@
 #include <wx/msgdlg.h>
 #include <wx/app.h>
 #include <wx/thread.h>
-
-//(*InternalHeaders(DNG4PSFrame)
 #include <wx/settings.h>
 #include <wx/intl.h>
 #include <wx/string.h>
-//*)
 
 #include "DNG4PSMain.h"
 #include "FileList.h"
@@ -43,132 +40,73 @@
 #include "ProgramObjects.h"
 #include "ScanProgressWin.h"
 #include "Exception.hpp"
-
-//(*IdInit(DNG4PSFrame)
-const long DNG4PSFrame::ID_STATICTEXT1 = wxNewId();
-const long DNG4PSFrame::ID_TEXTCTRL1 = wxNewId();
-const long DNG4PSFrame::ID_BUTTON1 = wxNewId();
-const long DNG4PSFrame::ID_STATICTEXT3 = wxNewId();
-const long DNG4PSFrame::ID_LISTCTRL1 = wxNewId();
-const long DNG4PSFrame::ID_BUTTON6 = wxNewId();
-const long DNG4PSFrame::ID_STATICTEXT2 = wxNewId();
-const long DNG4PSFrame::ID_TEXTCTRL2 = wxNewId();
-const long DNG4PSFrame::ID_BUTTON4 = wxNewId();
-const long DNG4PSFrame::ID_STATICTEXT4 = wxNewId();
-const long DNG4PSFrame::ID_BUTTON2 = wxNewId();
-const long DNG4PSFrame::ID_BUTTON5 = wxNewId();
-const long DNG4PSFrame::ID_BUTTON3 = wxNewId();
-const long DNG4PSFrame::ID_TIMER1 = wxNewId();
-//*)
-
-BEGIN_EVENT_TABLE(DNG4PSFrame,wxFrame)
-	//(*EventTable(DNG4PSFrame)
-	//*)
-END_EVENT_TABLE()
+#include "lib/wxGUIBuilder.hpp"
 
 extern wxIcon main_icon;
 ProcessDialog * process_dialog = NULL;
 
 DNG4PSFrame::DNG4PSFrame(wxWindow* parent,wxWindowID id) : file_list(new FileList)
 {
-	//(*Initialize(DNG4PSFrame)
-	wxFlexGridSizer* FlexGridSizer4;
-	wxButton* btnSelectOutputDir;
-	wxButton* btnAbout;
-	wxStaticText* StaticText2;
-	wxButton* btnStart;
-	wxFlexGridSizer* FlexGridSizer3;
-	wxFlexGridSizer* FlexGridSizer5;
-	wxButton* btnOptions;
-	wxStaticText* StaticText1;
-	wxStaticText* StaticText3;
-	wxFlexGridSizer* szMain;
-	wxButton* btnSelectPathToRaw;
-	wxFlexGridSizer* szSource;
-	wxFlexGridSizer* FlexGridSizer1;
-	wxStaticText* StaticText4;
+	using namespace gb;
+
+	wxButton* btnSelectOutputDir = nullptr;
+	wxButton* btnAbout = nullptr;
+	wxButton* btnStart = nullptr;
+	wxButton* btnOptions = nullptr;
+	wxButton* btnSelectPathToRaw = nullptr;
+	wxButton* btnRescan = nullptr;
 	
 	Create(parent, id, _("MainFormCaption"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL, _T("id"));
 	SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
-	szMain = new wxFlexGridSizer(0, 1, 0, 0);
-	szMain->AddGrowableCol(0);
-	szMain->AddGrowableRow(1);
-	szSource = new wxFlexGridSizer(0, 2, wxDLG_UNIT(this,wxSize(-5,0)).GetWidth(), 0);
-	szSource->AddGrowableCol(0);
-	StaticText1 = new wxStaticText(this, ID_STATICTEXT1, _("PathToRAWFiles"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT1"));
-	szSource->Add(StaticText1, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	wxSize __SpacerSize_1 = wxDLG_UNIT(this,wxSize(5,5));
-	szSource->Add(__SpacerSize_1.GetWidth(),__SpacerSize_1.GetHeight(),1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(0,0)).GetWidth());
-	txtPathToRaw = new wxTextCtrl(this, ID_TEXTCTRL1, wxEmptyString, wxDefaultPosition, wxDLG_UNIT(this,wxSize(180,10)), 0, wxDefaultValidator, _T("ID_TEXTCTRL1"));
-	szSource->Add(txtPathToRaw, 1, wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	btnSelectPathToRaw = new wxButton(this, ID_BUTTON1, _("..."), wxDefaultPosition, wxDLG_UNIT(this,wxSize(16,13)), 0, wxDefaultValidator, _T("ID_BUTTON1"));
-	btnSelectPathToRaw->SetToolTip(_("PathToRAW_Hint"));
-	szSource->Add(btnSelectPathToRaw, 1, wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	szMain->Add(szSource, 1, wxTOP|wxLEFT|wxRIGHT|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	FlexGridSizer3 = new wxFlexGridSizer(0, 1, wxDLG_UNIT(this,wxSize(-5,0)).GetWidth(), 0);
-	FlexGridSizer3->AddGrowableCol(0);
-	FlexGridSizer3->AddGrowableRow(1);
-	StaticText3 = new wxStaticText(this, ID_STATICTEXT3, _("RawFilesList"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT3"));
-	FlexGridSizer3->Add(StaticText3, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	lstFileList = new wxListCtrl(this, ID_LISTCTRL1, wxDefaultPosition, wxDLG_UNIT(this,wxSize(256,120)), wxLC_REPORT|wxLC_HRULES|wxLC_VRULES|wxLC_NO_SORT_HEADER, wxDefaultValidator, _T("ID_LISTCTRL1"));
-	lstFileList->SetToolTip(_("RawFilesList_Hint"));
-	FlexGridSizer3->Add(lstFileList, 1, wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	btnRescan = new wxButton(this, ID_BUTTON6, _("ButtonRescan"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON6"));
-	btnRescan->SetToolTip(_("ButtonRescanHint"));
-	FlexGridSizer3->Add(btnRescan, 1, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	szMain->Add(FlexGridSizer3, 1, wxTOP|wxLEFT|wxRIGHT|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	FlexGridSizer1 = new wxFlexGridSizer(0, 2, wxDLG_UNIT(this,wxSize(-5,0)).GetWidth(), 0);
-	FlexGridSizer1->AddGrowableCol(0);
-	StaticText2 = new wxStaticText(this, ID_STATICTEXT2, _("OutputDir"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT2"));
-	FlexGridSizer1->Add(StaticText2, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	FlexGridSizer1->Add(-1,-1,1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	txtOutputDir = new wxTextCtrl(this, ID_TEXTCTRL2, _("Text"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_TEXTCTRL2"));
-	FlexGridSizer1->Add(txtOutputDir, 1, wxTOP|wxBOTTOM|wxLEFT|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	btnSelectOutputDir = new wxButton(this, ID_BUTTON4, _("..."), wxDefaultPosition, wxDLG_UNIT(this,wxSize(16,13)), 0, wxDefaultValidator, _T("ID_BUTTON4"));
-	btnSelectOutputDir->SetToolTip(_("OutputDirButton_Hint"));
-	FlexGridSizer1->Add(btnSelectOutputDir, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	szMain->Add(FlexGridSizer1, 1, wxTOP|wxLEFT|wxRIGHT|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	FlexGridSizer4 = new wxFlexGridSizer(0, 1, wxDLG_UNIT(this,wxSize(-5,0)).GetWidth(), 0);
-	StaticText4 = new wxStaticText(this, ID_STATICTEXT4, _("ActionsLabel"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT4"));
-	FlexGridSizer4->Add(StaticText4, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	FlexGridSizer5 = new wxFlexGridSizer(0, 4, 0, 0);
-	btnStart = new wxButton(this, ID_BUTTON2, _("ButtonGo"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON2"));
-	btnStart->SetDefault();
-	btnStart->SetToolTip(_("ButtonGo_Hint"));
-	FlexGridSizer5->Add(btnStart, 1, wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	btnOptions = new wxButton(this, ID_BUTTON5, _("ButtonOptions"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON5"));
-	FlexGridSizer5->Add(btnOptions, 1, wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	btnAbout = new wxButton(this, ID_BUTTON3, _("ButtonAbout"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON3"));
-	FlexGridSizer5->Add(btnAbout, 1, wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	FlexGridSizer4->Add(FlexGridSizer5, 1, wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	szMain->Add(FlexGridSizer4, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	SetSizer(szMain);
-	startTimer.SetOwner(this, ID_TIMER1);
-	startTimer.Start(30, true);
-	startTimer.SetOwner(this, ID_TIMER1);
-	startTimer.Start(30, true);
-	szMain->Fit(this);
-	szMain->SetSizeHints(this);
+
+	auto gui = existing_window(this, size(400, 400)) 
+	[ 
+		vbox(stretch | expand)
+		[
+			text("PathToRAWFiles", bord_all_exc_bottom),
+			hbox(expand | border(0))
+			[
+				edit(stretch) >> txtPathToRaw,
+				button("...", width(15)) >> btnSelectPathToRaw
+			],
+			text("RawFilesList", bord_all_exc_bottom),
+			list(stretch | expand, l_report) >> lstFileList,
+			button("ButtonRescan", align_right) >> btnRescan,
+			text("OutputDir", bord_all_exc_bottom),
+			hbox(expand | border(0))
+			[
+				edit(stretch) >> txtOutputDir,
+				button("...", width(15)) >> btnSelectOutputDir
+			],
+			text("ActionsLabel", bord_all_exc_bottom),
+			hbox(expand | border(0))
+			[
+				button("ButtonGo", wxID_ANY, true) >> btnStart,
+				button("ButtonOptions") >> btnOptions,
+				button("ButtonAbout") >> btnAbout
+			]
+		]
+	];
+
+	gui.build_gui();
+
+	Layout();
+	GetSizer()->SetSizeHints(this);
 	Center();
-	
-	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DNG4PSFrame::btnSelectPathToRawClick);
-	Connect(ID_BUTTON6,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DNG4PSFrame::btnRescanClick);
-	Connect(ID_BUTTON4,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DNG4PSFrame::btnSelectOutputDirClick);
-	Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DNG4PSFrame::btnStartClick);
-	Connect(ID_BUTTON5,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DNG4PSFrame::btnOptionsClick);
-	Connect(ID_BUTTON3,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DNG4PSFrame::btnAboutClick);
-	Connect(ID_TIMER1,wxEVT_TIMER,(wxObjectEventFunction)&DNG4PSFrame::startTimerTrigger);
-	Connect(ID_TIMER1,wxEVT_TIMER,(wxObjectEventFunction)&DNG4PSFrame::startTimerTrigger);
-	Connect(wxID_ANY,wxEVT_CLOSE_WINDOW,(wxObjectEventFunction)&DNG4PSFrame::OnClose);
-	//*)
+
+	btnSelectPathToRaw->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnSelectPathToRawClick(event); });
+	btnRescan->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnRescanClick(event); });
+	btnSelectOutputDir->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnSelectOutputDirClick(event); });
+	btnStart->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnStartClick(event); });
+	btnOptions->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnOptionsClick(event); });
+	btnAbout->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnAboutClick(event); });
+	Bind(wxEVT_CLOSE_WINDOW, [this] (wxCloseEvent& event) { OnClose(event); } );
+
+	startTimer.SetOwner(this);
+	startTimer.Start(30, true);
+	Bind(wxEVT_TIMER, [this] (wxTimerEvent& event) { startTimerTrigger(event); }, startTimer.GetId());
 
 	this->SetIcon(main_icon);
-}
-
-DNG4PSFrame::~DNG4PSFrame()
-{
-	//(*Destroy(DNG4PSFrame)
-	//*)
 }
 
 // DNG4PSFrame::btnAboutClick

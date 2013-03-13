@@ -23,7 +23,7 @@ typedef std::function <wxObject* (wxObject *parent, wxSizer *sizer, const UIElem
 class UIElemOptions
 {
 public:
-	UIElemOptions(uint32_t flags = 0, int border = 0, int width = -1, int height = -1) : 
+	UIElemOptions(uint32_t flags = 0, int border = -1, int width = -1, int height = -1) : 
 		flags_(flags), 
 		border_(border),
 		width_(width),
@@ -31,7 +31,7 @@ public:
 	{}
 
 	bool has_flag(const UIElemOptions &flag) const { return (flags_ &  flag.flags_) != 0; }
-	int get_border() const { return border_; }
+	int get_border() const { return (border_  == -1) ? 2 : border_; }
 	int get_width() const { return width_; }
 	int get_height() const { return height_; }
 
@@ -51,6 +51,7 @@ const UIElemOptions bord_bottom    = UIElemOptions(0x00000002);
 const UIElemOptions bord_left      = UIElemOptions(0x00000004);
 const UIElemOptions bord_right     = UIElemOptions(0x00000008);
 const UIElemOptions bord_all       = UIElemOptions(0x00000010);
+const UIElemOptions bord_all_exc_bottom = UIElemOptions(0x00000001|0x00000004|0x00000008);
 
 const UIElemOptions align_left     = UIElemOptions(0x00000020);
 const UIElemOptions align_right    = UIElemOptions(0x00000040);
@@ -177,13 +178,13 @@ private:
 	uint32_t bits_;
 };
 
-Layout grid(int cols, int rows = 0, const UIElemOptions &options = UIElemOptions(), int hgap = 5, int vgap = 5);
-Layout hbox(const UIElemOptions &options = expand, int gap = 5);
-Layout vbox(const UIElemOptions &options = expand, int gap = 5);
+Layout grid(int cols, int rows = 0, const UIElemOptions &options = UIElemOptions(), int hgap = 0, int vgap = 0);
+Layout hbox(const UIElemOptions &options = expand);
+Layout vbox(const UIElemOptions &options = expand);
 Layout dlg_buttons(const UIElemOptions &options = align_right);
 UIElem dlg_buttons_ok_cancel(const UIElemOptions &options = align_right);
 
-Window existing_window(wxWindow *window, const Layout &layout = vbox());
+Window existing_window(wxWindow *window, const UIElemOptions &options = UIElemOptions(), const Layout &layout = vbox());
 
 UIElem hline(const UIElemOptions &options = expand);
 UIElem spacer(int size = 0);
@@ -201,16 +202,48 @@ public:
 	uint32_t get_style() const;
 };
 
-const EditOptions multiline = EditOptions(0x00000001);
-const EditOptions readonly  = EditOptions(0x00000002);
-const EditOptions rich      = EditOptions(0x00000004);
-const EditOptions autourl   = EditOptions(0x00000008);
+const EditOptions ed_multiline = EditOptions(0x00000001);
+const EditOptions ed_readonly  = EditOptions(0x00000002);
+const EditOptions ed_rich      = EditOptions(0x00000004);
+const EditOptions ed_autourl   = EditOptions(0x00000008);
+const EditOptions ed_password  = EditOptions(0x00000010);
+const EditOptions ed_left      = EditOptions(0x00000020);
+const EditOptions ed_centre    = EditOptions(0x00000040);
+const EditOptions ed_right     = EditOptions(0x00000080);
 
 UIElem edit(const UIElemOptions &options = UIElemOptions(), const EditOptions &edit_options = EditOptions());
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-UIElem button(const wxString &text, int id = wxID_ANY, bool is_default = false, const UIElemOptions &options = UIElemOptions());
+class ListOptions : public Flags<ListOptions>
+{
+public:
+	explicit ListOptions(uint32_t bits = 0) : Flags<ListOptions>(bits) {}
+	uint32_t get_style() const;
+};
+
+const ListOptions l_list            = ListOptions(0x00000001);
+const ListOptions l_report          = ListOptions(0x00000002);
+const ListOptions l_virtual         = ListOptions(0x00000004);
+const ListOptions l_icon            = ListOptions(0x00000008);
+const ListOptions l_small_icon      = ListOptions(0x00000010);
+const ListOptions l_align_top       = ListOptions(0x00000020);
+const ListOptions l_align_left      = ListOptions(0x00000040);
+const ListOptions l_autoarrange     = ListOptions(0x00000080);
+const ListOptions l_edit_labels     = ListOptions(0x00000100);
+const ListOptions l_no_header       = ListOptions(0x00000200);
+const ListOptions l_single_sel      = ListOptions(0x00000400);
+const ListOptions l_sort_ascending  = ListOptions(0x00000800);
+const ListOptions l_sort_descending = ListOptions(0x00001000);
+const ListOptions l_hrules          = ListOptions(0x00002000);
+const ListOptions l_vrules          = ListOptions(0x00004000);
+
+UIElem list(const UIElemOptions &options = UIElemOptions(), const ListOptions& list_options = ListOptions());
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+UIElem button(const wxString &text, int id, bool is_default = false, const UIElemOptions &options = UIElemOptions());
+UIElem button(const wxString &text, const UIElemOptions &options = UIElemOptions());
 UIElem button_ok(const wxString &text = wxEmptyString, const UIElemOptions &options = UIElemOptions());
 UIElem button_cancel(const wxString &text = wxEmptyString, const UIElemOptions &options = UIElemOptions());
 

@@ -200,9 +200,6 @@ msgstr " 艺术家名称 "
 msgid "optsCameraTypesLabel"
 msgstr "相机类型"
 
-msgid "optsMiscLabel"
-msgstr "杂项"
-
 msgid "optsLanguageLabel"
 msgstr "界面语言："
 msgid "optsLanguage_Hint"

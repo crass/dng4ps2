@@ -201,9 +201,6 @@ msgstr " Nombre del artista "
 msgid "optsCameraTypesLabel"
 msgstr "Modelos de cámara"
 
-msgid "optsMiscLabel"
-msgstr "Misceláneos"
-
 msgid "optsLanguageLabel"
 msgstr "Lenguaje de la interfaz:"
 msgid "optsLanguage_Hint"

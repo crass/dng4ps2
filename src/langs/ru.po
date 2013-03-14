@@ -203,9 +203,6 @@ msgstr " Имя фотографа "
 msgid "optsCameraTypesLabel"
 msgstr "Типы фотокамер"
 
-msgid "optsMiscLabel"
-msgstr "Прочее"
-
 msgid "optsLanguageLabel"
 msgstr "Язык интерфейса:"
 msgid "optsLanguage_Hint"

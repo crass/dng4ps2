@@ -9,20 +9,18 @@
 
 namespace gb {
 
-void set_widgets_props(wxWindow *widget, const UIElemOptions &options)
+class Item : public wxObject
 {
-	bool bold_font = options.has_flag(font_bold);
-	bool italic_font = options.has_flag(font_italic);
-	bool underline_font = options.has_flag(font_underline);
-	if (bold_font || italic_font || underline_font)
-	{
-		wxFont font = widget->GetFont();
-		if (bold_font) font.MakeBold();
-		if (italic_font) font.MakeItalic();
-		if (underline_font) font.MakeUnderlined();
-		widget->SetFont(font);
-	}
-}
+public:
+	Item(const wxString &text, const wxBitmap &image) : text_(text), image_(image) {}
+
+	wxString get_text() const { return text_; }
+	wxBitmap get_image() const { return image_; }
+
+private:
+	wxString text_;
+	wxBitmap image_;
+};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -76,6 +74,18 @@ void UIElem::set_items(const UIElems &items)
 	sub_items_ = items;
 }
 
+UIElem& UIElem::operator [] (const UIElem &elem)
+{
+	set_item(elem);
+	return *this;
+}
+
+UIElem& UIElem::operator [] (const UIElems &elems)
+{
+	set_items(elems);
+	return *this;
+}
+
 wxObject* UIElem::build_gui(wxObject *parent, wxSizer *sizer) const
 {
 	if (create_fun_ == nullptr) return nullptr;
@@ -104,23 +114,6 @@ UIElems& operator , (UIElems &elems1, UIElems &elems2)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-UIElem Layout::operator [] (const UIElem &elem)
-{
-	UIElem result(create_fun_, options_);
-	result.set_item(elem);
-	return result;
-}
-
-UIElem Layout::operator [] (const UIElems &elems) 
-{ 
-	UIElem result(create_fun_, options_);
-	result.set_items(elems);
-	return result;
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 UIElem Window::operator [] (const UIElem &elem)
 {
 	UIElem result(create_fun_, options_);
@@ -136,6 +129,13 @@ UIElem Window::operator [] (const UIElems &elems)
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+UIElem item(const wxString &text)
+{
+	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+		return new Item(text, wxNullBitmap);
+	}, UIElemOptions());
+}
 
 uint32_t get_sizer_item_flags(const UIElemOptions &options)
 {
@@ -201,7 +201,7 @@ void process_sizer_items(wxObject *parent, wxSizer *sizer_obj, const UIElems &it
 	}
 }
 
-Layout grid(int cols, int rows, const UIElemOptions &options, int hgap, int vgap)
+UIElem grid(int cols, int rows, const UIElemOptions &options, int hgap, int vgap)
 {
 	auto create_fun = [=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* 
 	{
@@ -214,10 +214,10 @@ Layout grid(int cols, int rows, const UIElemOptions &options, int hgap, int vgap
 		if (sizer == nullptr) parent_window->SetSizer(sizer_obj);
 		return sizer_obj;
 	};
-	return Layout(create_fun, options);
+	return UIElem(create_fun, options);
 }
 
-Layout box(const UIElemOptions &options, wxOrientation orient)
+UIElem box(const UIElemOptions &options, wxOrientation orient)
 {
 	auto create_fun = [=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* 
 	{
@@ -227,20 +227,20 @@ Layout box(const UIElemOptions &options, wxOrientation orient)
 		if (sizer == nullptr) parent_window->SetSizer(sizer_obj);
 		return sizer_obj;
 	};
-	return Layout(create_fun, options);
+	return UIElem(create_fun, options);
 }
 
-Layout hbox(const UIElemOptions &options)
+UIElem hbox(const UIElemOptions &options)
 {
 	return box(options, wxHORIZONTAL);
 }
 
-Layout vbox(const UIElemOptions &options)
+UIElem vbox(const UIElemOptions &options)
 {
 	return box(options, wxVERTICAL);
 }
 
-Layout dlg_buttons(const UIElemOptions &options)
+UIElem dlg_buttons(const UIElemOptions &options)
 {
 	auto create_fun = [=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* 
 	{
@@ -255,7 +255,7 @@ Layout dlg_buttons(const UIElemOptions &options)
 		sizer_obj->Realize();
 		return sizer_obj;
 	};
-	return Layout(create_fun, options);
+	return UIElem(create_fun, options);
 }
 
 UIElem dlg_buttons_ok_cancel(const UIElemOptions &options)
@@ -282,7 +282,24 @@ wxSize get_widget_size(wxObject *parent, const UIElemOptions &options)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Window existing_window(wxWindow *window, const UIElemOptions &options, const Layout &layout)
+void set_widgets_props(wxWindow *widget, const UIElemOptions &options)
+{
+	bool bold_font = options.has_flag(font_bold);
+	bool italic_font = options.has_flag(font_italic);
+	bool underline_font = options.has_flag(font_underline);
+	if (bold_font || italic_font || underline_font)
+	{
+		wxFont font = widget->GetFont();
+		if (bold_font) font.MakeBold();
+		if (italic_font) font.MakeItalic();
+		if (underline_font) font.MakeUnderlined();
+		widget->SetFont(font);
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Window existing_window(wxWindow *window, const UIElemOptions &options, const UIElem &layout)
 {
 	auto create_fun = [=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		set_widgets_props(window, options);
@@ -442,6 +459,45 @@ UIElem button_cancel(const wxString &text, const UIElemOptions &options)
 {
 	return button(text, wxID_CANCEL, false, options);
 }
+
+UIElem check_box(const wxString &text, const UIElemOptions &options)
+{
+	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+		wxCheckBox* widget = new wxCheckBox(
+			dynamic_cast<wxWindow*>(parent), 
+			wxID_ANY,
+			_(text), 
+			wxDefaultPosition, 
+			get_widget_size(parent, options),
+			options.get_style()
+		);
+		set_widgets_props(widget, options);
+		return widget;
+	}, options);
+}
+
+UIElem choice(const UIElemOptions &options)
+{
+	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+		wxChoice* widget = new wxChoice(
+			dynamic_cast<wxWindow*>(parent), 
+			wxID_ANY,
+			wxDefaultPosition, 
+			get_widget_size(parent, options),
+			options.get_style()
+		);
+		set_widgets_props(widget, options);
+		for (auto &item : items)
+		{
+			const Item *obj = dynamic_cast<const Item*>(item.build_gui());
+			assert(obj);
+			widget->Append(_(obj->get_text()));
+			delete obj;
+		}
+		return widget;
+	}, options);
+}
+
 
 UIElem dir_ctrl(const UIElemOptions &options, bool dirs_only)
 {

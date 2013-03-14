@@ -53,7 +53,7 @@
 #include "CameraOpts.h"
 
 //(*AppHeaders
-#include "DNG4PSMain.h"
+#include "gui/DNG4PSMain.h"
 #include <wx/image.h>
 //*)
 

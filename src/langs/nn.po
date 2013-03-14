@@ -201,9 +201,6 @@ msgstr " Artistnavn "
 msgid "optsCameraTypesLabel"
 msgstr "Kameratyper"
 
-msgid "optsMiscLabel"
-msgstr "Diverse"
-
 msgid "optsLanguageLabel"
 msgstr "Språk:"
 msgid "optsLanguage_Hint"

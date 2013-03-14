@@ -201,9 +201,6 @@ msgstr " Imię autora "
 msgid "optsCameraTypesLabel"
 msgstr "Typy aparatów"
 
-msgid "optsMiscLabel"
-msgstr "Inne"
-
 msgid "optsLanguageLabel"
 msgstr "Język programu:"
 msgid "optsLanguage_Hint"

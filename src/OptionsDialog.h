@@ -107,8 +107,6 @@ class OptionsDialog: public wxDialog
 		//(*Handlers(OptionsDialog)
 		void btnOkClick(wxCommandEvent& event);
 		void btnCancelClick(wxCommandEvent& event);
-		void chbxUseDateForPathClick(wxCommandEvent& event);
-		void chkbArtistClick(wxCommandEvent& event);
 		void chCameraSelectorSelect(wxCommandEvent& event);
 		void txtSensWidthText(wxCommandEvent& event);
 		void nbMainPageChanged(wxNotebookEvent& event);
@@ -169,6 +167,7 @@ class OptionsDialog: public wxDialog
 		typedef std::map<unsigned int, wxChoice*> GroupControls;
 		GroupControls group_controls_;
 		wxString lastCameraId;
+
 		const CameraData* get_selected_camera_id();
 
 		void correct_interface();

@@ -201,9 +201,6 @@ msgstr " Artist name "
 msgid "optsCameraTypesLabel"
 msgstr "Camera types"
 
-msgid "optsMiscLabel"
-msgstr "Misc"
-
 msgid "optsLanguageLabel"
 msgstr "Interface language:"
 msgid "optsLanguage_Hint"

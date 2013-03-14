@@ -3,6 +3,7 @@
 #include <vector>
 #include <functional>
 #include <stdint.h>
+#include <wx/string.h>
 
 // fwd.
 class wxObject;
@@ -52,6 +53,7 @@ const UIElemOptions bord_left      = UIElemOptions(0x00000004);
 const UIElemOptions bord_right     = UIElemOptions(0x00000008);
 const UIElemOptions bord_all       = UIElemOptions(0x00000010);
 const UIElemOptions bord_all_exc_bottom = UIElemOptions(0x00000001|0x00000004|0x00000008);
+const UIElemOptions bord_all_exc_top = UIElemOptions(0x00000002|0x00000004|0x00000008);
 
 const UIElemOptions align_left     = UIElemOptions(0x00000020);
 const UIElemOptions align_right    = UIElemOptions(0x00000040);
@@ -92,6 +94,9 @@ public:
 
 	const UIElemOptions& get_options() const { return options_; }
 
+	UIElem& operator [] (const UIElem &elem);
+	UIElem& operator [] (const UIElems &elems);
+
 private:
 	UIElems sub_items_;
 	CreateWidgetFun create_fun_;
@@ -120,28 +125,10 @@ UIElems& operator , (UIElems &elems1, UIElems &elems2);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class Layout
-{
-public:
-	Layout(const CreateWidgetFun &create_fun, const UIElemOptions &options) :
-		create_fun_(create_fun),
-		options_(options)
-	{}
-
-	UIElem operator [] (const UIElem &elem);
-	UIElem operator [] (const UIElems &elems);
-
-private:
-	const CreateWidgetFun create_fun_;
-	UIElemOptions options_;
-};
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 class Window
 {
 public:
-	Window(const CreateWidgetFun &create_fun, const Layout &layout, const UIElemOptions &options) : 
+	Window(const CreateWidgetFun &create_fun, const UIElem &layout, const UIElemOptions &options) : 
 		create_fun_(create_fun), 
 		layout_(layout),
 		options_(options)
@@ -151,7 +138,7 @@ public:
 	UIElem operator [] (const UIElems &elems);
 
 private:
-	Layout layout_;
+	UIElem layout_;
 	const CreateWidgetFun create_fun_;
 	UIElemOptions options_;
 };
@@ -178,13 +165,17 @@ private:
 	uint32_t bits_;
 };
 
-Layout grid(int cols, int rows = 0, const UIElemOptions &options = UIElemOptions(), int hgap = 0, int vgap = 0);
-Layout hbox(const UIElemOptions &options = expand);
-Layout vbox(const UIElemOptions &options = expand);
-Layout dlg_buttons(const UIElemOptions &options = align_right);
+UIElem item(const wxString &text);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+UIElem grid(int cols, int rows = 0, const UIElemOptions &options = UIElemOptions(), int hgap = 0, int vgap = 0);
+UIElem hbox(const UIElemOptions &options = expand);
+UIElem vbox(const UIElemOptions &options = expand);
+UIElem dlg_buttons(const UIElemOptions &options = align_right);
 UIElem dlg_buttons_ok_cancel(const UIElemOptions &options = align_right);
 
-Window existing_window(wxWindow *window, const UIElemOptions &options = UIElemOptions(), const Layout &layout = vbox());
+Window existing_window(wxWindow *window, const UIElemOptions &options = UIElemOptions(), const UIElem &layout = vbox());
 
 UIElem hline(const UIElemOptions &options = expand);
 UIElem spacer(int size = 0);
@@ -246,6 +237,10 @@ UIElem button(const wxString &text, int id, bool is_default = false, const UIEle
 UIElem button(const wxString &text, const UIElemOptions &options = UIElemOptions());
 UIElem button_ok(const wxString &text = wxEmptyString, const UIElemOptions &options = UIElemOptions());
 UIElem button_cancel(const wxString &text = wxEmptyString, const UIElemOptions &options = UIElemOptions());
+
+UIElem check_box(const wxString &text, const UIElemOptions &options = UIElemOptions());
+
+UIElem choice(const UIElemOptions &options = UIElemOptions());
 
 UIElem dir_ctrl(const UIElemOptions &options = UIElemOptions(), bool dirs_only = true);
 

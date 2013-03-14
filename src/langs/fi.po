@@ -227,9 +227,6 @@ msgstr " Esittäjän nimi"
 msgid "optsCameraTypesLabel"
 msgstr "Kameratyypit"
 
-msgid "optsMiscLabel"
-msgstr "Muita"
-
 msgid "optsLanguageLabel"
 msgstr "Ohjelman kieli"
 

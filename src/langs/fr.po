@@ -202,9 +202,6 @@ msgstr " Entrez le nom de l'artiste dans ce champ. "
 msgid "optsCameraTypesLabel"
 msgstr "Types d'APN"
 
-msgid "optsMiscLabel"
-msgstr "Divers"
-
 msgid "optsLanguageLabel"
 msgstr "Langue du programme:"
 msgid "optsLanguage_Hint"

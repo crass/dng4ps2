@@ -312,7 +312,6 @@
     <ClCompile Include="CamCalibrFrame.cpp" />
     <ClCompile Include="CameraOpts.cpp" />
     <ClCompile Include="DNG4PSApp.cpp" />
-    <ClCompile Include="DNG4PSMain.cpp" />
     <ClCompile Include="FileList.cpp" />
     <ClCompile Include="Options.cpp" />
     <ClCompile Include="OptionsDialog.cpp" />
@@ -331,6 +330,9 @@
       <Filter>gui</Filter>
     </ClCompile>
     <ClCompile Include="gui\AboutDialog.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\DNG4PSMain.cpp">
       <Filter>gui</Filter>
     </ClCompile>
   </ItemGroup>
@@ -370,7 +372,6 @@
     <ClInclude Include="CamCalibrFrame.h" />
     <ClInclude Include="CameraOpts.h" />
     <ClInclude Include="DNG4PSApp.h" />
-    <ClInclude Include="DNG4PSMain.h" />
     <ClInclude Include="Exception.hpp" />
     <ClInclude Include="FileList.h" />
     <ClInclude Include="Options.h" />
@@ -391,6 +392,9 @@
       <Filter>gui</Filter>
     </ClInclude>
     <ClInclude Include="gui\AboutDialog.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\DNG4PSMain.h">
       <Filter>gui</Filter>
     </ClInclude>
   </ItemGroup>

@@ -45,6 +45,8 @@
 #include <wx/string.h>
 //*)
 
+#include "lib/wxGUIBuilder.hpp"
+
 namespace
 {
 	static const char* langs[] =
@@ -237,97 +239,80 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	szOptions->AddGrowableCol(0);
 	nbMain = new wxNotebook(this, ID_NOTEBOOK1, wxDefaultPosition, wxDefaultSize, 0, _T("ID_NOTEBOOK1"));
 	Panel1 = new wxPanel(nbMain, ID_PANEL1, wxPoint(20,48), wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL1"));
-	FlexGridSizer1 = new wxFlexGridSizer(0, 1, 0, 0);
-	StaticText1 = new wxStaticText(Panel1, ID_STATICTEXT1, _("optsMainLabel"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT1"));
-	wxFont StaticText1Font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
-	if ( !StaticText1Font.Ok() ) StaticText1Font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
-	StaticText1Font.SetPointSize((int)(StaticText1Font.GetPointSize() * 1.000000));
-	StaticText1Font.SetWeight(wxBOLD);
-	StaticText1->SetFont(StaticText1Font);
-	FlexGridSizer1->Add(StaticText1, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	FlexGridSizer4 = new wxFlexGridSizer(0, 1, 0, 0);
-	chbxIncludeSubfilders = new wxCheckBox(Panel1, ID_CHECKBOX1, _("optsIncludeSubfolders"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_CHECKBOX1"));
-	chbxIncludeSubfilders->SetValue(false);
-	chbxIncludeSubfilders->SetToolTip(_("optsIncludeSubfolders_Hint"));
-	FlexGridSizer4->Add(chbxIncludeSubfilders, 1, wxBOTTOM|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	chbxDontOverwrite = new wxCheckBox(Panel1, ID_CHECKBOX2, _("optsDontOverwrite"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_CHECKBOX2"));
-	chbxDontOverwrite->SetValue(false);
-	chbxDontOverwrite->SetToolTip(_("optsDontOverwrite_Hint"));
-	FlexGridSizer4->Add(chbxDontOverwrite, 1, wxBOTTOM|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	FlexGridSizer1->Add(FlexGridSizer4, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	StaticText2 = new wxStaticText(Panel1, ID_STATICTEXT2, _("optsDngFormatLabel"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT2"));
-	wxFont StaticText2Font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
-	if ( !StaticText2Font.Ok() ) StaticText2Font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
-	StaticText2Font.SetPointSize((int)(StaticText2Font.GetPointSize() * 1.000000));
-	StaticText2Font.SetWeight(wxBOLD);
-	StaticText2->SetFont(StaticText2Font);
-	FlexGridSizer1->Add(StaticText2, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	FlexGridSizer3 = new wxFlexGridSizer(0, 1, 0, 0);
-	chbxCompressDng = new wxCheckBox(Panel1, ID_CHECKBOX3, _("optsCompressDng"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_CHECKBOX3"));
-	chbxCompressDng->SetValue(false);
-	chbxCompressDng->SetToolTip(_("optsCompressDng_Hint"));
-	FlexGridSizer3->Add(chbxCompressDng, 1, wxBOTTOM|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	chbxAddMetadata = new wxCheckBox(Panel1, ID_CHECKBOX4, _("optsAddMetadata"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_CHECKBOX4"));
-	chbxAddMetadata->SetValue(false);
-	chbxAddMetadata->SetToolTip(_("optsAddMetadata_Hint"));
-	FlexGridSizer3->Add(chbxAddMetadata, 1, wxBOTTOM|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	FlexGridSizer1->Add(FlexGridSizer3, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	FlexGridSizer5 = new wxFlexGridSizer(0, 2, 0, 0);
-	StaticText3 = new wxStaticText(Panel1, ID_STATICTEXT3, _("optsPreviewLabel"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT3"));
-	FlexGridSizer5->Add(StaticText3, 1, wxBOTTOM|wxLEFT|wxRIGHT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	chPreview = new wxChoice(Panel1, ID_CHOICE1, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE1"));
-	chPreview->Append(_("optsPreviewNone"));
-	chPreview->Append(_("optsPreviewMedium"));
-	chPreview->Append(_("optsPreviewBig"));
-	chPreview->SetToolTip(_("optsPreview_Hint"));
-	FlexGridSizer5->Add(chPreview, 1, wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	chbxUseDateForPath = new wxCheckBox(Panel1, ID_CHECKBOX5, _("optsRegulating"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_CHECKBOX5"));
-	chbxUseDateForPath->SetValue(false);
-	chbxUseDateForPath->SetToolTip(_("optsRegulating_Hint"));
-	FlexGridSizer5->Add(chbxUseDateForPath, 1, wxBOTTOM|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	chDateType = new wxChoice(Panel1, ID_CHOICE2, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE2"));
-	chDateType->Append(_("optsDateFormat1"));
-	chDateType->Append(_("optsDateFormat2"));
-	chDateType->Append(_("optsDateFormat3"));
-	chDateType->Append(_("optsDateFormat4"));
-	chDateType->SetToolTip(_("optsDateFormat_Hint"));
-	FlexGridSizer5->Add(chDateType, 1, wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	chkbArtist = new wxCheckBox(Panel1, ID_CHECKBOX6, _("optsArtistChk"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_CHECKBOX6"));
-	chkbArtist->SetValue(false);
-	chkbArtist->SetToolTip(_("optsArtistChk_Hint"));
-	FlexGridSizer5->Add(chkbArtist, 1, wxBOTTOM|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	txtArtist = new wxTextCtrl(Panel1, ID_TEXTCTRL1, _("Text"), wxDefaultPosition, wxDLG_UNIT(Panel1,wxSize(143,12)), 0, wxDefaultValidator, _T("ID_TEXTCTRL1"));
-	txtArtist->SetToolTip(_("optsArtist_Hint"));
-	FlexGridSizer5->Add(txtArtist, 1, wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	FlexGridSizer1->Add(FlexGridSizer5, 1, wxBOTTOM|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	StaticText5 = new wxStaticText(Panel1, ID_STATICTEXT5, _("optsMiscLabel"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT5"));
-	wxFont StaticText5Font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
-	if ( !StaticText5Font.Ok() ) StaticText5Font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
-	StaticText5Font.SetPointSize((int)(StaticText5Font.GetPointSize() * 1.000000));
-	StaticText5Font.SetWeight(wxBOLD);
-	StaticText5->SetFont(StaticText5Font);
-	FlexGridSizer1->Add(StaticText5, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	FlexGridSizer6 = new wxFlexGridSizer(0, 2, -2, wxDLG_UNIT(Panel1,wxSize(-5,0)).GetWidth());
-	FlexGridSizer6->AddGrowableCol(0);
-	StaticText6 = new wxStaticText(Panel1, ID_STATICTEXT6, _("optsLanguageLabel"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT6"));
-	FlexGridSizer6->Add(StaticText6, 1, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	chLanguage = new wxChoice(Panel1, ID_CHOICE3, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE3"));
-	chLanguage->Append(_("Chinese"));
-	chLanguage->Append(_("English"));
-	chLanguage->Append(_("German"));
-	chLanguage->Append(_("Italian"));
-	chLanguage->Append(_("Finnish"));
-	chLanguage->Append(_("Norwegian"));
-	chLanguage->Append(_("Polish"));
-	chLanguage->Append(_("Russian"));
-	chLanguage->Append(_("Spanish"));
-	chLanguage->Append(_("French"));
-	chLanguage->SetToolTip(_("optsLanguage_Hint"));
-	FlexGridSizer6->Add(chLanguage, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	FlexGridSizer1->Add(FlexGridSizer6, 1, wxBOTTOM|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel1,wxSize(5,0)).GetWidth());
-	Panel1->SetSizer(FlexGridSizer1);
-	FlexGridSizer1->Fit(Panel1);
-	FlexGridSizer1->SetSizeHints(Panel1);
+
+	using namespace gb;
+
+	// TODO: growable cols and rows for grid!!!
+
+	auto main_page_gui = existing_window(Panel1) 
+	[
+		vbox()
+		[
+			text("optsMainLabel", font_bold),
+			vbox(border(8) | bord_all_exc_top | expand)
+			[
+				check_box("optsIncludeSubfolders") >> chbxIncludeSubfilders,
+				check_box("optsDontOverwrite") >> chbxDontOverwrite,
+
+				grid(2, 0, border(0) | expand)
+				[
+					check_box("optsRegulating") >> chbxUseDateForPath,
+					choice() 
+					[
+						item("optsDateFormat1"),
+						item("optsDateFormat2"),
+						item("optsDateFormat3"),
+						item("optsDateFormat4")
+					] >> chDateType,
+					text("optsLanguageLabel"),
+					choice() 
+					[
+						item("Chinese"),
+						item("English"),
+						item("German"),
+						item("Italian"),
+						item("Finnish"),
+						item("Norwegian"),
+						item("Polish"),
+						item("Russian"),
+						item("Spanish"),
+						item("French")
+					] >> chLanguage
+				]
+			],
+			text("optsDngFormatLabel", font_bold),
+			vbox(border(8) | bord_all_exc_top | expand)
+			[
+				check_box("optsCompressDng") >> chbxCompressDng,
+				check_box("optsAddMetadata") >> chbxAddMetadata,
+				spacer(3),
+				grid(2, 0, border(0) | expand)
+				[
+					text("optsPreviewLabel"),
+					choice()
+					[
+						item("optsPreviewNone"), 
+						item("optsPreviewMedium"), 
+						item("optsPreviewBig")
+					] >> chPreview,
+					check_box("optsArtistChk") >> chkbArtist,
+					edit(expand | width(100)) >> txtArtist
+				]
+			]
+		]
+	];
+
+
+	main_page_gui.build_gui();
+
+	Panel1->GetSizer()->Fit(Panel1);
+	Panel1->GetSizer()->SetSizeHints(Panel1);
+
+	chbxUseDateForPath->Bind(wxEVT_COMMAND_CHECKBOX_CLICKED, [this] (wxCommandEvent&) { correct_interface(); } );
+	chkbArtist->Bind(wxEVT_COMMAND_CHECKBOX_CLICKED, [this] (wxCommandEvent&) { correct_interface(); } );
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	pnlGroups = new wxPanel(nbMain, ID_PANEL2, wxPoint(88,5), wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL2"));
 	szGroupsMain = new wxFlexGridSizer(0, 1, 0, 0);
 	szGroups = new wxFlexGridSizer(0, 2, -2, wxDLG_UNIT(pnlGroups,wxSize(-5,0)).GetWidth());
@@ -521,8 +506,6 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	szOptions->SetSizeHints(this);
 	Center();
 	
-	Connect(ID_CHECKBOX5,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&OptionsDialog::chbxUseDateForPathClick);
-	Connect(ID_CHECKBOX6,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&OptionsDialog::chkbArtistClick);
 	Connect(ID_CHOICE9,wxEVT_COMMAND_CHOICE_SELECTED,(wxObjectEventFunction)&OptionsDialog::chCameraSelectorSelect);
 	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&OptionsDialog::OnGetLastestClick);
 	SecretPanel->Connect(wxEVT_MIDDLE_DOWN,(wxObjectEventFunction)&OptionsDialog::PnlSecretLeftDClick,0,this);
@@ -627,16 +610,6 @@ void OptionsDialog::correct_interface()
     txtArtist->Enable(chkbArtist->GetValue());
 }
 
-// OptionsDialog::chbxUseDateForPathClick
-void OptionsDialog::chbxUseDateForPathClick(wxCommandEvent& event)
-{
-    correct_interface();
-}
-
-void OptionsDialog::chkbArtistClick(wxCommandEvent& event)
-{
-    correct_interface();
-}
 
 ///////////////////////////////////////////////
 //                                           //
@@ -935,8 +908,11 @@ void OptionsDialog::btnResetToDefaultsClick(wxCommandEvent& event)
 //                                           //
 ///////////////////////////////////////////////
 
+// TODO: Show item only if there are several cameras for same sensor size
 void OptionsDialog::show_groups()
 {
+	Freeze();
+
 	szGroups->Clear(true);
 	group_controls_.clear();
 
@@ -980,6 +956,8 @@ void OptionsDialog::show_groups()
 
 	lblGroupNotice->Wrap(lblGroupNotice->GetSize().GetWidth());
 	szGroupsMain->Layout();
+
+	Thaw();
 }
 
 void OptionsDialog::read_groups()

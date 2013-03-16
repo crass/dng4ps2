@@ -201,7 +201,52 @@ void process_sizer_items(wxObject *parent, wxSizer *sizer_obj, const UIElems &it
 	}
 }
 
-UIElem grid(int cols, int rows, const UIElemOptions &options, int hgap, int vgap)
+GridOptions growable_cols(int col1)
+{
+	GridOptions options;
+	options.add_col(col1);
+	return options;
+}
+
+GridOptions growable_cols(int col1, int col2)
+{
+	GridOptions options;
+	options.add_col(col1);
+	options.add_col(col2);
+	return options;
+}
+
+GridOptions growable_cols(int col1, int col2, int col3)
+{
+	GridOptions options;
+	options.add_col(col1);
+	options.add_col(col2);
+	options.add_col(col3);
+	return options;
+}
+
+GridOptions growable_cols(int col1, int col2, int col3, int col4)
+{
+	GridOptions options;
+	options.add_col(col1);
+	options.add_col(col2);
+	options.add_col(col3);
+	options.add_col(col4);
+	return options;
+}
+
+GridOptions growable_cols(int col1, int col2, int col3, int col4, int col5)
+{
+	GridOptions options;
+	options.add_col(col1);
+	options.add_col(col2);
+	options.add_col(col3);
+	options.add_col(col4);
+	options.add_col(col5);
+	return options;
+}
+
+UIElem grid(int cols, int rows, const UIElemOptions &options, const GridOptions &grid_options, int hgap, int vgap)
 {
 	auto create_fun = [=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* 
 	{
@@ -210,6 +255,8 @@ UIElem grid(int cols, int rows, const UIElemOptions &options, int hgap, int vgap
 		wxFlexGridSizer *sizer_obj = new wxFlexGridSizer(rows, cols, gap_pt.x, gap_pt.y);
 		sizer_obj->SetFlexibleDirection(wxBOTH);
 		sizer_obj->SetNonFlexibleGrowMode(wxFLEX_GROWMODE_SPECIFIED);
+		for (int col : grid_options.get_growable_cols()) sizer_obj->AddGrowableCol(col);
+		for (int row : grid_options.get_growable_rows()) sizer_obj->AddGrowableRow(row);
 		process_sizer_items(parent, sizer_obj, items);
 		if (sizer == nullptr) parent_window->SetSizer(sizer_obj);
 		return sizer_obj;
@@ -309,7 +356,7 @@ Window existing_window(wxWindow *window, const UIElemOptions &options, const UIE
 		window->SetSize(cvt_dialog_size_into_pixels_size(window, options.get_width(), options.get_height()));
 		return window;
 	};
-	return Window(create_fun, layout, UIElemOptions());
+	return Window(create_fun, layout, options);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -529,6 +576,33 @@ UIElem image(const UIElemOptions &options)
 		set_widgets_props(widget, options);
 		return widget;
 	}, options);
+}
+
+Window scroll_box(const UIElemOptions &options, const UIElem &layout)
+{
+	auto create_fun = [=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+		wxScrolledWindow* widget = new wxScrolledWindow(
+			dynamic_cast<wxWindow*>(parent), 
+			wxID_ANY,
+			wxDefaultPosition, 
+			get_widget_size(parent, options),
+			options.get_style()
+		);
+
+		widget->SetMaxSize(get_widget_size(parent, options));
+		set_widgets_props(widget, options);
+
+		if (items.empty()) return widget;
+		assert(items.size() == 1);
+		wxSizer* internal_sizer = dynamic_cast<wxSizer*>(items[0].build_gui(widget, sizer));
+		assert(internal_sizer);
+		widget->SetSizer(internal_sizer);
+		internal_sizer->Fit(widget);
+		internal_sizer->SetSizeHints(widget);
+
+		return widget;
+	};
+	return Window(create_fun, layout, options);
 }
 
 } // namespace gb

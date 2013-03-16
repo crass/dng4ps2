@@ -94,155 +94,56 @@ namespace
 	};
 }
 
-//(*IdInit(OptionsDialog)
-const long OptionsDialog::ID_STATICTEXT1 = wxNewId();
-const long OptionsDialog::ID_CHECKBOX1 = wxNewId();
-const long OptionsDialog::ID_CHECKBOX2 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT2 = wxNewId();
-const long OptionsDialog::ID_CHECKBOX3 = wxNewId();
-const long OptionsDialog::ID_CHECKBOX4 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT3 = wxNewId();
-const long OptionsDialog::ID_CHOICE1 = wxNewId();
-const long OptionsDialog::ID_CHECKBOX5 = wxNewId();
-const long OptionsDialog::ID_CHOICE2 = wxNewId();
-const long OptionsDialog::ID_CHECKBOX6 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL1 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT5 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT6 = wxNewId();
-const long OptionsDialog::ID_CHOICE3 = wxNewId();
-const long OptionsDialog::ID_PANEL1 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT4 = wxNewId();
-const long OptionsDialog::ID_PANEL2 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT12 = wxNewId();
-const long OptionsDialog::ID_CHOICE9 = wxNewId();
-const long OptionsDialog::ID_BUTTON1 = wxNewId();
-const long OptionsDialog::ID_PANEL3 = wxNewId();
-const long OptionsDialog::ID_BUTTON3 = wxNewId();
-const long OptionsDialog::ID_BUTTON2 = wxNewId();
-const long OptionsDialog::ID_BUTTON5 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT13 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL2 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT8 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL5 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT30 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT14 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL3 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT15 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL4 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT7 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT17 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL6 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT18 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL7 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT19 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL8 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT20 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL9 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT21 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL10 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT22 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL11 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT23 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL12 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT24 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL13 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT25 = wxNewId();
-const long OptionsDialog::ID_CHOICE10 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT9 = wxNewId();
-const long OptionsDialog::ID_CHOICE4 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT31 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT26 = wxNewId();
-const long OptionsDialog::ID_CHOICE11 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT27 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL15 = wxNewId();
-const long OptionsDialog::ID_BUTTON4 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT28 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL16 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT32 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT29 = wxNewId();
-const long OptionsDialog::ID_CHOICE12 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT33 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL18 = wxNewId();
-const long OptionsDialog::ID_STATICTEXT34 = wxNewId();
-const long OptionsDialog::ID_TEXTCTRL19 = wxNewId();
-const long OptionsDialog::ID_SCROLLEDWINDOW1 = wxNewId();
-const long OptionsDialog::ID_PNL_CAM_OPTS = wxNewId();
-const long OptionsDialog::ID_NOTEBOOK1 = wxNewId();
-//*)
-
-BEGIN_EVENT_TABLE(OptionsDialog,wxDialog)
-	//(*EventTable(OptionsDialog)
-	//*)
-END_EVENT_TABLE()
-
 OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new CameraOpts)
 {
 	//(*Initialize(OptionsDialog)
-	wxStaticText* StaticText22;
-	wxButton* btnGetLastest;
-	wxStaticText* StaticText20;
-	wxFlexGridSizer* FlexGridSizer4;
-	wxFlexGridSizer* szOptions;
-	wxFlexGridSizer* FlexGridSizer16;
-	wxScrolledWindow* scrlwCameraOpt;
-	wxStaticText* StaticText29;
-	wxStaticText* StaticText33;
-	wxStaticText* StaticText13;
-	wxStaticText* StaticText2;
-	wxStaticText* StaticText14;
-	wxStaticText* StaticText30;
-	wxFlexGridSizer* FlexGridSizer10;
-	wxFlexGridSizer* FlexGridSizer3;
-	wxStaticText* StaticText26;
-	wxStaticText* StaticText6;
-	wxButton* btnResetToDefaults;
-	wxFlexGridSizer* FlexGridSizer5;
-	wxStaticText* StaticText32;
-	wxStaticText* StaticText19;
-	wxButton* btnDelete;
-	wxStaticText* StaticText18;
-	wxFlexGridSizer* FlexGridSizer9;
-	wxStaticText* StaticText31;
-	wxPanel* Panel1;
-	wxFlexGridSizer* FlexGridSizer2;
-	wxStaticText* StaticText1;
-	wxStaticText* StaticText27;
-	wxStaticText* StaticText3;
-	wxPanel* Panel3;
-	wxStaticText* StaticText21;
-	wxStaticText* StaticText23;
-	wxStaticText* StaticText24;
-	wxStaticText* StaticText34;
-	wxStaticText* StaticText5;
-	wxFlexGridSizer* FlexGridSizer15;
-	wxFlexGridSizer* FlexGridSizer8;
-	wxFlexGridSizer* FlexGridSizer14;
-	wxButton* btnCalibr;
-	wxStaticText* StaticText28;
-	wxStaticText* StaticText15;
-	wxFlexGridSizer* FlexGridSizer13;
-	wxStaticText* StaticText12;
-	wxFlexGridSizer* FlexGridSizer12;
-	wxStaticText* lblBitsPerUnit;
-	wxFlexGridSizer* FlexGridSizer6;
-	wxNotebook* nbMain;
-	wxFlexGridSizer* FlexGridSizer1;
-	wxStaticText* StaticText25;
-	wxFlexGridSizer* FlexGridSizer11;
-	wxStaticText* StaticText17;
-	wxStaticText* StaticText4;
-	wxButton* btnCopy;
-	wxStdDialogButtonSizer* StdDialogButtonSizer1;
+	wxButton* btnGetLastest = nullptr;
+	wxFlexGridSizer* szOptions = nullptr;
+	wxScrolledWindow* scrlwCameraOpt = nullptr;
+	wxButton* btnResetToDefaults = nullptr;
+	wxButton* btnDelete = nullptr;
+	wxPanel* Panel1 = nullptr;
+	wxPanel* Panel3 = nullptr;
+	wxButton* btnCalibr = nullptr;
+	wxNotebook* nbMain = nullptr;
+	wxButton* btnCopy = nullptr;
+	wxStdDialogButtonSizer* StdDialogButtonSizer1 = nullptr;
 	
 	Create(parent, wxID_ANY, _("optsDialogCaption"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("wxID_ANY"));
 	szOptions = new wxFlexGridSizer(0, 1, 0, 0);
 	szOptions->AddGrowableCol(0);
-	nbMain = new wxNotebook(this, ID_NOTEBOOK1, wxDefaultPosition, wxDefaultSize, 0, _T("ID_NOTEBOOK1"));
-	Panel1 = new wxPanel(nbMain, ID_PANEL1, wxPoint(20,48), wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL1"));
+	nbMain = new wxNotebook(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, _T("ID_NOTEBOOK1"));
+	Panel1 = new wxPanel(nbMain, wxID_ANY, wxPoint(20,48), wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL1"));
 
 	using namespace gb;
 
 	// TODO: growable cols and rows for grid!!!
+
+	auto chDateType_GUI = choice() [
+		item("optsDateFormat1"),
+		item("optsDateFormat2"),
+		item("optsDateFormat3"),
+		item("optsDateFormat4")
+	];
+
+	auto chLanguage_GUI = choice() [
+		item("Chinese"),
+		item("English"),
+		item("German"),
+		item("Italian"),
+		item("Finnish"),
+		item("Norwegian"),
+		item("Polish"),
+		item("Russian"),
+		item("Spanish"),
+		item("French")
+	];
+
+	auto chPreview_GUI = choice() [
+		item("optsPreviewNone"), 
+		item("optsPreviewMedium"), 
+		item("optsPreviewBig")
+	];
 
 	auto main_page_gui = existing_window(Panel1) 
 	[
@@ -253,31 +154,12 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 			[
 				check_box("optsIncludeSubfolders") >> chbxIncludeSubfilders,
 				check_box("optsDontOverwrite") >> chbxDontOverwrite,
-
-				grid(2, 0, border(0) | expand)
+				grid(2, 0, border(0) | expand, growable_cols(1))
 				[
 					check_box("optsRegulating") >> chbxUseDateForPath,
-					choice() 
-					[
-						item("optsDateFormat1"),
-						item("optsDateFormat2"),
-						item("optsDateFormat3"),
-						item("optsDateFormat4")
-					] >> chDateType,
+					chDateType_GUI >> chDateType,
 					text("optsLanguageLabel"),
-					choice() 
-					[
-						item("Chinese"),
-						item("English"),
-						item("German"),
-						item("Italian"),
-						item("Finnish"),
-						item("Norwegian"),
-						item("Polish"),
-						item("Russian"),
-						item("Spanish"),
-						item("French")
-					] >> chLanguage
+					chLanguage_GUI >> chLanguage
 				]
 			],
 			text("optsDngFormatLabel", font_bold),
@@ -285,213 +167,139 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 			[
 				check_box("optsCompressDng") >> chbxCompressDng,
 				check_box("optsAddMetadata") >> chbxAddMetadata,
-				spacer(3),
-				grid(2, 0, border(0) | expand)
+				spacer(5),
+				grid(2, 0, border(0) | expand, growable_cols(1))
 				[
 					text("optsPreviewLabel"),
-					choice()
-					[
-						item("optsPreviewNone"), 
-						item("optsPreviewMedium"), 
-						item("optsPreviewBig")
-					] >> chPreview,
+					chPreview_GUI >> chPreview,
 					check_box("optsArtistChk") >> chkbArtist,
-					edit(expand | width(100)) >> txtArtist
+					edit(expand) >> txtArtist
 				]
 			]
 		]
 	];
 
-
 	main_page_gui.build_gui();
-
 	Panel1->GetSizer()->Fit(Panel1);
 	Panel1->GetSizer()->SetSizeHints(Panel1);
-
 	chbxUseDateForPath->Bind(wxEVT_COMMAND_CHECKBOX_CLICKED, [this] (wxCommandEvent&) { correct_interface(); } );
 	chkbArtist->Bind(wxEVT_COMMAND_CHECKBOX_CLICKED, [this] (wxCommandEvent&) { correct_interface(); } );
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	pnlGroups = new wxPanel(nbMain, ID_PANEL2, wxPoint(88,5), wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL2"));
+	pnlGroups = new wxPanel(nbMain, wxID_ANY, wxPoint(88,5), wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL2"));
 	szGroupsMain = new wxFlexGridSizer(0, 1, 0, 0);
 	szGroups = new wxFlexGridSizer(0, 2, -2, wxDLG_UNIT(pnlGroups,wxSize(-5,0)).GetWidth());
 	szGroupsMain->Add(szGroups, 0, wxALIGN_LEFT|wxALIGN_TOP, 0);
 	szGroupsMain->Add(-1,-1,1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(pnlGroups,wxSize(5,0)).GetWidth());
-	lblGroupNotice = new wxStaticText(pnlGroups, ID_STATICTEXT4, _("lblGroupNotice"), wxDefaultPosition, wxDLG_UNIT(pnlGroups,wxSize(150,-1)), 0, _T("ID_STATICTEXT4"));
+	lblGroupNotice = new wxStaticText(pnlGroups, wxID_ANY, _("lblGroupNotice"), wxDefaultPosition, wxDLG_UNIT(pnlGroups,wxSize(150,-1)), 0, _T("ID_STATICTEXT4"));
 	szGroupsMain->Add(lblGroupNotice, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(pnlGroups,wxSize(5,0)).GetWidth());
 	pnlGroups->SetSizer(szGroupsMain);
 	szGroupsMain->Fit(pnlGroups);
 	szGroupsMain->SetSizeHints(pnlGroups);
-	Panel3 = new wxPanel(nbMain, ID_PNL_CAM_OPTS, wxPoint(177,10), wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PNL_CAM_OPTS"));
-	FlexGridSizer8 = new wxFlexGridSizer(0, 1, 0, 0);
-	FlexGridSizer8->AddGrowableCol(0);
-	FlexGridSizer9 = new wxFlexGridSizer(0, 1, wxDLG_UNIT(Panel3,wxSize(-7,0)).GetWidth(), 0);
-	FlexGridSizer9->AddGrowableCol(0);
-	StaticText12 = new wxStaticText(Panel3, ID_STATICTEXT12, _("optsCamera"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT12"));
-	wxFont StaticText12Font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
-	if ( !StaticText12Font.Ok() ) StaticText12Font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
-	StaticText12Font.SetPointSize((int)(StaticText12Font.GetPointSize() * 1.000000));
-	StaticText12Font.SetWeight(wxBOLD);
-	StaticText12->SetFont(StaticText12Font);
-	FlexGridSizer9->Add(StaticText12, 1, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
-	chCameraSelector = new wxChoice(Panel3, ID_CHOICE9, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE9"));
-	FlexGridSizer9->Add(chCameraSelector, 1, wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
-	FlexGridSizer10 = new wxFlexGridSizer(0, 4, 0, wxDLG_UNIT(Panel3,wxSize(0,0)).GetWidth());
-	FlexGridSizer10->AddGrowableCol(1);
-	btnGetLastest = new wxButton(Panel3, ID_BUTTON1, _("btnGetLastest"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON1"));
-	FlexGridSizer10->Add(btnGetLastest, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
-	FlexGridSizer2 = new wxFlexGridSizer(0, 3, 0, 0);
-	SecretPanel = new wxPanel(Panel3, ID_PANEL3, wxDefaultPosition, wxSize(40,20), wxTAB_TRAVERSAL, _T("ID_PANEL3"));
-	FlexGridSizer2->Add(SecretPanel, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
-	btnCopy = new wxButton(Panel3, ID_BUTTON3, _("btnCopy"), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT, wxDefaultValidator, _T("ID_BUTTON3"));
-	FlexGridSizer2->Add(btnCopy, 1, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_RIGHT|wxALIGN_TOP, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
-	btnDelete = new wxButton(Panel3, ID_BUTTON2, _("btnDelete"), wxDefaultPosition, wxSize(-1,-1), wxBU_EXACTFIT, wxDefaultValidator, _T("ID_BUTTON2"));
-	FlexGridSizer2->Add(btnDelete, 1, wxALL|wxALIGN_RIGHT|wxALIGN_TOP, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
-	FlexGridSizer10->Add(FlexGridSizer2, 1, wxALIGN_RIGHT|wxALIGN_TOP, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
-	FlexGridSizer9->Add(FlexGridSizer10, 1, wxBOTTOM|wxEXPAND|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
-	FlexGridSizer8->Add(FlexGridSizer9, 1, wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
-	scrlwCameraOpt = new wxScrolledWindow(Panel3, ID_SCROLLEDWINDOW1, wxDefaultPosition, wxDefaultSize, wxVSCROLL, _T("ID_SCROLLEDWINDOW1"));
-	scrlwCameraOpt->SetMaxSize(wxDLG_UNIT(Panel3,wxSize(-1,190)));
-	scrlwCameraOpt->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOW));
-	FlexGridSizer11 = new wxFlexGridSizer(0, 2, 0, 0);
-	FlexGridSizer11->AddGrowableCol(1);
-	wxSize __SpacerSize_1 = wxDLG_UNIT(scrlwCameraOpt,wxSize(5,5));
-	FlexGridSizer11->Add(__SpacerSize_1.GetWidth(),__SpacerSize_1.GetHeight(),1, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	btnResetToDefaults = new wxButton(scrlwCameraOpt, ID_BUTTON5, _("btnResetToDefaults"), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT, wxDefaultValidator, _T("ID_BUTTON5"));
-	btnResetToDefaults->SetToolTip(_("btnResetToDefaultsHint"));
-	FlexGridSizer11->Add(btnResetToDefaults, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText13 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT13, _("lblCameraName"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT13"));
-	FlexGridSizer11->Add(StaticText13, 1, wxTOP|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	txtCamName = new wxTextCtrl(scrlwCameraOpt, ID_TEXTCTRL2, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_TEXTCTRL2"));
-	FlexGridSizer11->Add(txtCamName, 1, wxTOP|wxLEFT|wxRIGHT|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText4 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT8, _("lblShortName"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT8"));
-	FlexGridSizer11->Add(StaticText4, 1, wxTOP|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	txtShortName = new wxTextCtrl(scrlwCameraOpt, ID_TEXTCTRL5, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_TEXTCTRL5"));
-	FlexGridSizer11->Add(txtShortName, 1, wxTOP|wxLEFT|wxRIGHT|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText30 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT30, _("lblGeometry"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT30"));
-	wxFont StaticText30Font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
-	if ( !StaticText30Font.Ok() ) StaticText30Font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
-	StaticText30Font.SetPointSize((int)(StaticText30Font.GetPointSize() * 1.000000));
-	StaticText30Font.SetWeight(wxBOLD);
-	StaticText30->SetFont(StaticText30Font);
-	FlexGridSizer11->Add(StaticText30, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	FlexGridSizer11->Add(-1,-1,1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText14 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT14, _("lblRawSize"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT14"));
-	FlexGridSizer11->Add(StaticText14, 1, wxTOP|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	FlexGridSizer12 = new wxFlexGridSizer(0, 4, 0, wxDLG_UNIT(scrlwCameraOpt,wxSize(-2,0)).GetWidth());
-	txtSensWidth = new wxTextCtrl(scrlwCameraOpt, ID_TEXTCTRL3, wxEmptyString, wxDefaultPosition, wxDLG_UNIT(scrlwCameraOpt,wxSize(30,-1)), 0, wxDefaultValidator, _T("ID_TEXTCTRL3"));
-	FlexGridSizer12->Add(txtSensWidth, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText15 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT15, _("x"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT15"));
-	FlexGridSizer12->Add(StaticText15, 1, wxTOP|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	txtSensHeight = new wxTextCtrl(scrlwCameraOpt, ID_TEXTCTRL4, wxEmptyString, wxDefaultPosition, wxDLG_UNIT(scrlwCameraOpt,wxSize(30,-1)), 0, wxDefaultValidator, _T("ID_TEXTCTRL4"));
-	FlexGridSizer12->Add(txtSensHeight, 1, wxTOP|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	lblFileSize = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT7, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT7"));
-	FlexGridSizer12->Add(lblFileSize, 1, wxTOP|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	FlexGridSizer11->Add(FlexGridSizer12, 1, wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText17 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT17, _("lblJpegSize"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT17"));
-	FlexGridSizer11->Add(StaticText17, 1, wxTOP|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	FlexGridSizer13 = new wxFlexGridSizer(0, 3, 0, wxDLG_UNIT(scrlwCameraOpt,wxSize(-2,0)).GetWidth());
-	txtJpegWidth = new wxTextCtrl(scrlwCameraOpt, ID_TEXTCTRL6, wxEmptyString, wxDefaultPosition, wxDLG_UNIT(scrlwCameraOpt,wxSize(30,-1)), 0, wxDefaultValidator, _T("ID_TEXTCTRL6"));
-	FlexGridSizer13->Add(txtJpegWidth, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText18 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT18, _("x"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT18"));
-	FlexGridSizer13->Add(StaticText18, 1, wxTOP|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	txtJpegHeight = new wxTextCtrl(scrlwCameraOpt, ID_TEXTCTRL7, wxEmptyString, wxDefaultPosition, wxDLG_UNIT(scrlwCameraOpt,wxSize(30,-1)), 0, wxDefaultValidator, _T("ID_TEXTCTRL7"));
-	FlexGridSizer13->Add(txtJpegHeight, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	FlexGridSizer11->Add(FlexGridSizer13, 1, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText19 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT19, _("lblActiveX1Y1"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT19"));
-	FlexGridSizer11->Add(StaticText19, 1, wxTOP|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	FlexGridSizer14 = new wxFlexGridSizer(0, 3, 0, wxDLG_UNIT(scrlwCameraOpt,wxSize(-2,0)).GetWidth());
-	txtActiveX1 = new wxTextCtrl(scrlwCameraOpt, ID_TEXTCTRL8, wxEmptyString, wxDefaultPosition, wxDLG_UNIT(scrlwCameraOpt,wxSize(30,-1)), 0, wxDefaultValidator, _T("ID_TEXTCTRL8"));
-	FlexGridSizer14->Add(txtActiveX1, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText20 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT20, _(","), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT20"));
-	FlexGridSizer14->Add(StaticText20, 1, wxTOP|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	txtActiveY1 = new wxTextCtrl(scrlwCameraOpt, ID_TEXTCTRL9, wxEmptyString, wxDefaultPosition, wxDLG_UNIT(scrlwCameraOpt,wxSize(30,-1)), 0, wxDefaultValidator, _T("ID_TEXTCTRL9"));
-	FlexGridSizer14->Add(txtActiveY1, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	FlexGridSizer11->Add(FlexGridSizer14, 1, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText21 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT21, _("lblActiveX2Y2"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT21"));
-	FlexGridSizer11->Add(StaticText21, 1, wxTOP|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	FlexGridSizer15 = new wxFlexGridSizer(0, 3, 0, wxDLG_UNIT(scrlwCameraOpt,wxSize(-2,0)).GetWidth());
-	txtActiveX2 = new wxTextCtrl(scrlwCameraOpt, ID_TEXTCTRL10, wxEmptyString, wxDefaultPosition, wxDLG_UNIT(scrlwCameraOpt,wxSize(30,-1)), 0, wxDefaultValidator, _T("ID_TEXTCTRL10"));
-	FlexGridSizer15->Add(txtActiveX2, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText22 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT22, _(","), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT22"));
-	FlexGridSizer15->Add(StaticText22, 1, wxTOP|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	txtActiveY2 = new wxTextCtrl(scrlwCameraOpt, ID_TEXTCTRL11, wxEmptyString, wxDefaultPosition, wxDLG_UNIT(scrlwCameraOpt,wxSize(30,-1)), 0, wxDefaultValidator, _T("ID_TEXTCTRL11"));
-	FlexGridSizer15->Add(txtActiveY2, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	FlexGridSizer11->Add(FlexGridSizer15, 1, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText23 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT23, _("lblBlackWhileLevels"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT23"));
-	FlexGridSizer11->Add(StaticText23, 1, wxTOP|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	FlexGridSizer16 = new wxFlexGridSizer(0, 3, 0, wxDLG_UNIT(scrlwCameraOpt,wxSize(-2,0)).GetWidth());
-	txtBlackLevel = new wxTextCtrl(scrlwCameraOpt, ID_TEXTCTRL12, wxEmptyString, wxDefaultPosition, wxDLG_UNIT(scrlwCameraOpt,wxSize(30,-1)), 0, wxDefaultValidator, _T("ID_TEXTCTRL12"));
-	FlexGridSizer16->Add(txtBlackLevel, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText24 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT24, _("-"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT24"));
-	FlexGridSizer16->Add(StaticText24, 1, wxTOP|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	txtWhiteLevel = new wxTextCtrl(scrlwCameraOpt, ID_TEXTCTRL13, wxEmptyString, wxDefaultPosition, wxDLG_UNIT(scrlwCameraOpt,wxSize(30,-1)), 0, wxDefaultValidator, _T("ID_TEXTCTRL13"));
-	FlexGridSizer16->Add(txtWhiteLevel, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	FlexGridSizer11->Add(FlexGridSizer16, 1, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText25 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT25, _("lblMosaicType"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT25"));
-	FlexGridSizer11->Add(StaticText25, 1, wxTOP|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	chMosaicType = new wxChoice(scrlwCameraOpt, ID_CHOICE10, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE10"));
-	chMosaicType->Append(_("Red,Green Green,Blue"));
-	chMosaicType->Append(_("Green,Blue Red,Green"));
-	FlexGridSizer11->Add(chMosaicType, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	lblBitsPerUnit = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT9, _("lblBitsPerUnit"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT9"));
-	FlexGridSizer11->Add(lblBitsPerUnit, 1, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	chBitsPerUnit = new wxChoice(scrlwCameraOpt, ID_CHOICE4, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE4"));
-	chBitsPerUnit->Append(_("10 bit"));
-	chBitsPerUnit->Append(_("12 bit"));
-	FlexGridSizer11->Add(chBitsPerUnit, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText31 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT31, _("lblColorMatrix1"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT31"));
-	wxFont StaticText31Font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
-	if ( !StaticText31Font.Ok() ) StaticText31Font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
-	StaticText31Font.SetPointSize((int)(StaticText31Font.GetPointSize() * 1.000000));
-	StaticText31Font.SetWeight(wxBOLD);
-	StaticText31->SetFont(StaticText31Font);
-	FlexGridSizer11->Add(StaticText31, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	FlexGridSizer11->Add(-1,-1,1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText26 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT26, _("lblMatrIll"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT26"));
-	FlexGridSizer11->Add(StaticText26, 1, wxTOP|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	chIll1 = new wxChoice(scrlwCameraOpt, ID_CHOICE11, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE11"));
-	FlexGridSizer11->Add(chIll1, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText27 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT27, _("lblMatr"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT27"));
-	FlexGridSizer11->Add(StaticText27, 1, wxTOP|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	txtMatr1 = new wxTextCtrl(scrlwCameraOpt, ID_TEXTCTRL15, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_TEXTCTRL15"));
-	FlexGridSizer11->Add(txtMatr1, 1, wxTOP|wxLEFT|wxRIGHT|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	wxSize __SpacerSize_2 = wxDLG_UNIT(scrlwCameraOpt,wxSize(5,5));
-	FlexGridSizer11->Add(__SpacerSize_2.GetWidth(),__SpacerSize_2.GetHeight(),1, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	btnCalibr = new wxButton(scrlwCameraOpt, ID_BUTTON4, _("btnCalibr"), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT, wxDefaultValidator, _T("ID_BUTTON4"));
-	FlexGridSizer11->Add(btnCalibr, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText28 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT28, _("lblMatrixMult"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT28"));
-	FlexGridSizer11->Add(StaticText28, 1, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	txtMatrix1Mult = new wxTextCtrl(scrlwCameraOpt, ID_TEXTCTRL16, wxEmptyString, wxDefaultPosition, wxDLG_UNIT(scrlwCameraOpt,wxSize(64,-1)), 0, wxDefaultValidator, _T("ID_TEXTCTRL16"));
-	FlexGridSizer11->Add(txtMatrix1Mult, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText32 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT32, _("lblColorMatrix2"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT32"));
-	wxFont StaticText32Font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
-	if ( !StaticText32Font.Ok() ) StaticText32Font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
-	StaticText32Font.SetPointSize((int)(StaticText32Font.GetPointSize() * 1.000000));
-	StaticText32Font.SetWeight(wxBOLD);
-	StaticText32->SetFont(StaticText32Font);
-	FlexGridSizer11->Add(StaticText32, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	FlexGridSizer11->Add(-1,-1,1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText29 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT29, _("lblMatrIll"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT29"));
-	FlexGridSizer11->Add(StaticText29, 1, wxTOP|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	chIll2 = new wxChoice(scrlwCameraOpt, ID_CHOICE12, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE12"));
-	FlexGridSizer11->Add(chIll2, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText33 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT33, _("lblMatr"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT33"));
-	FlexGridSizer11->Add(StaticText33, 1, wxTOP|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	txtMatr2 = new wxTextCtrl(scrlwCameraOpt, ID_TEXTCTRL18, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_TEXTCTRL18"));
-	FlexGridSizer11->Add(txtMatr2, 1, wxTOP|wxLEFT|wxRIGHT|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	StaticText34 = new wxStaticText(scrlwCameraOpt, ID_STATICTEXT34, _("lblMatrixMult"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT34"));
-	FlexGridSizer11->Add(StaticText34, 1, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	txtMatrix2Mult = new wxTextCtrl(scrlwCameraOpt, ID_TEXTCTRL19, wxEmptyString, wxDefaultPosition, wxDLG_UNIT(scrlwCameraOpt,wxSize(64,-1)), 0, wxDefaultValidator, _T("ID_TEXTCTRL19"));
-	FlexGridSizer11->Add(txtMatrix2Mult, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(scrlwCameraOpt,wxSize(5,0)).GetWidth());
-	scrlwCameraOpt->SetSizer(FlexGridSizer11);
-	FlexGridSizer11->Fit(scrlwCameraOpt);
-	FlexGridSizer11->SetSizeHints(scrlwCameraOpt);
-	FlexGridSizer8->Add(scrlwCameraOpt, 1, wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(Panel3,wxSize(5,0)).GetWidth());
-	Panel3->SetSizer(FlexGridSizer8);
-	FlexGridSizer8->Fit(Panel3);
-	FlexGridSizer8->SetSizeHints(Panel3);
+	Panel3 = new wxPanel(nbMain, wxID_ANY, wxPoint(177,10), wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PNL_CAM_OPTS"));
+
+	auto name = [] (const char* name_text) { return text(name_text, align_right); };
+
+	auto camera_option_gui = existing_window(Panel3)
+	[
+		vbox(expand)
+		[
+			text("optsCamera", font_bold | bord_all_exc_bottom), // cameras work
+			choice(expand) >> chCameraSelector,
+			hbox(border(0) | expand)
+			[
+				button("btnGetLastest") >> btnGetLastest,
+				spring(),
+				button("btnCopy") >> btnCopy,
+				button("btnDelete") >> btnDelete
+			],
+			hline(),
+			scroll_box(expand | stretch | height(190)) // selected camera options
+			[
+				grid(2, 0, expand | border(0), growable_cols(1))
+				[
+					name("lblCameraName"),
+					edit(expand) >> txtCamName,
+					name("lblShortName"), 
+					edit(expand) >> txtShortName,
+					text("lblGeometry", font_bold), // geometry
+					spacer(),
+					name("lblRawSize"),
+					hbox(border(0)) 
+					[
+						edit(width(30)) >> txtSensWidth,
+						text("x"),
+						edit(width(30)) >> txtSensHeight,
+						text("00000000000") >> lblFileSize
+					],
+					name("lblJpegSize"),
+					hbox(border(0))
+					[
+						edit(width(30)) >> txtJpegWidth,
+						text("x"),
+						edit(width(30)) >> txtJpegHeight
+					],
+					name("lblActiveX1Y1"),
+					hbox(border(0))
+					[
+						edit(width(30)) >> txtActiveX1,
+						text(","),
+						edit(width(30)) >> txtActiveY1
+					],
+					name("lblActiveX2Y2"),
+					hbox(border(0))
+					[
+						edit(width(30)) >> txtActiveX2,
+						text(","),
+						edit(width(30)) >> txtActiveY2
+					],
+					name("lblBlackWhileLevels"),
+					hbox(border(0))
+					[
+						edit(width(30)) >> txtBlackLevel,
+						text("-"),
+						edit(width(30)) >> txtWhiteLevel
+					],
+					name("lblMosaicType"),
+					choice()
+					[
+						item("Red,Green Green,Blue"),
+						item("Green,Blue Red,Green")
+					] >> chMosaicType,
+					name("lblBitsPerUnit"),
+					choice() 
+					[
+						item("10 bit"),
+						item("12 bit")
+					] >> chBitsPerUnit,
+					text("lblColorMatrix1", font_bold), // Color matrix 1
+					spacer(),
+					name("lblMatrIll"),
+					choice() >> chIll1,
+					name("lblMatr"),
+					edit(expand) >> txtMatr1,
+					spacer(),
+					button("btnCalibr", bord_all_exc_top) >> btnCalibr,
+					name("lblMatrixMult"),
+					edit() >> txtMatrix1Mult,
+					text("lblColorMatrix2", font_bold),
+					spacer(),
+					name("lblMatrIll"),
+					choice() >> chIll2,
+					name("lblMatr"),
+					edit(expand) >> txtMatr2,
+					name("lblMatrixMult"),
+					edit(expand) >> txtMatrix2Mult,
+					spacer(),
+					button("btnResetToDefaults") >> btnResetToDefaults
+				]
+			] >> scrlwCameraOpt
+		]
+	];
+
+	camera_option_gui.build_gui();
+
 	nbMain->AddPage(Panel1, _("pgMain"), false);
 	nbMain->AddPage(pnlGroups, _("optsCameraTypesLabel"), false);
 	nbMain->AddPage(Panel3, _("pgCamOpts"), false);
@@ -504,46 +312,25 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	SetSizer(szOptions);
 	szOptions->Fit(this);
 	szOptions->SetSizeHints(this);
-	Center();
-	
-	Connect(ID_CHOICE9,wxEVT_COMMAND_CHOICE_SELECTED,(wxObjectEventFunction)&OptionsDialog::chCameraSelectorSelect);
-	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&OptionsDialog::OnGetLastestClick);
-	SecretPanel->Connect(wxEVT_MIDDLE_DOWN,(wxObjectEventFunction)&OptionsDialog::PnlSecretLeftDClick,0,this);
-	Connect(ID_BUTTON3,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&OptionsDialog::btnCopyClick);
-	Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&OptionsDialog::btnDeleteClick);
-	Connect(ID_BUTTON5,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&OptionsDialog::btnResetToDefaultsClick);
-	Connect(ID_TEXTCTRL3,wxEVT_COMMAND_TEXT_UPDATED,(wxObjectEventFunction)&OptionsDialog::txtSensWidthText);
-	Connect(ID_TEXTCTRL4,wxEVT_COMMAND_TEXT_UPDATED,(wxObjectEventFunction)&OptionsDialog::txtSensWidthText);
-	Connect(ID_BUTTON4,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&OptionsDialog::btnCalibrClick);
-	Connect(ID_NOTEBOOK1,wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED,(wxObjectEventFunction)&OptionsDialog::nbMainPageChanged);
-	Connect(ID_NOTEBOOK1,wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING,(wxObjectEventFunction)&OptionsDialog::nbMainPageChanging);
-	//*)
 
+	Center();
+
+	// Connecting events
+	chCameraSelector  ->Bind(wxEVT_COMMAND_CHOICE_SELECTED,        [this] (wxCommandEvent& event)  { chCameraSelectorSelect(event);  });
+	chCameraSelector  ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { OnGetLastestClick(event);       });
+	btnCopy           ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { btnCopyClick(event);            });
+	btnDelete         ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { btnDeleteClick(event);          });
+	btnResetToDefaults->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { btnResetToDefaultsClick(event); });
+	txtSensWidth      ->Bind(wxEVT_COMMAND_TEXT_UPDATED,           [this] (wxCommandEvent& event)  { txtSensWidthText(event);        });
+	txtSensHeight     ->Bind(wxEVT_COMMAND_TEXT_UPDATED,           [this] (wxCommandEvent& event)  { txtSensWidthText(event);        });
+	btnCalibr         ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { btnCalibrClick(event);          });
+	nbMain            ->Bind(wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED,  [this] (wxNotebookEvent& event) { nbMainPageChanged(event);       });
+	nbMain            ->Bind(wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING, [this] (wxNotebookEvent& event) { nbMainPageChanging(event);      });
 
 	scrlwCameraOpt->SetScrollRate(16, 16);
 
 	fill_illum_strings(chIll1);
 	fill_illum_strings(chIll2);
-
-	FlexGridSizer11->Layout();
-}
-
-OptionsDialog::~OptionsDialog()
-{
-	//(*Destroy(OptionsDialog)
-	//*)
-}
-
-// OptionsDialog::btnOkClick
-void OptionsDialog::btnOkClick(wxCommandEvent& event)
-{
-    this->EndModal(1);
-}
-
-// OptionsDialog::btnCancelClick
-void OptionsDialog::btnCancelClick(wxCommandEvent& event)
-{
-    this->EndModal(0);
 }
 
 // OptionsDialog::execute
@@ -620,41 +407,6 @@ void OptionsDialog::correct_interface()
 namespace
 {
 	const BitsPerUnit bits_per_unit[] = {ppc_10, ppc_12};
-}
-
-void OptionsDialog::PnlSecretLeftDClick(wxMouseEvent& event)
-{
-	CameraOpts def_opts;
-	wxFileConfig fc;
-
-	def_opts.set_defaults(true);
-	def_opts.save(fc, false);
-
-	wxFileName file_name;
-
-	file_name.SetPath(wxStandardPaths::Get().GetUserDataDir());
-	wxFileName::Mkdir(file_name.GetFullPath(), 0777, wxPATH_MKDIR_FULL);
-
-	file_name.SetName(L"cameras.txt");
-
-	wxFFileOutputStream stream(file_name.GetFullPath());
-	fc.Save(stream);
-	stream.Close();
-
-	
-	file_name.SetName(L"simple_list.txt");
-
-	wxFFileOutputStream simple_list(file_name.GetFullPath());
-	
-	for (size_t i = 0; i < def_opts.get_size(); i++)
-	{
-		const CameraData &camera = def_opts.at(i);
-		simple_list.Write(" * ", 3);
-		simple_list.Write(camera.model_name.char_str(), camera.model_name.size()+1);
-		simple_list.Write("\r\n", 2);
-	}
-
-	wxMessageBox(_("Saved!"));
 }
 
 void OptionsDialog::show_cameras_list(const wxString &camera_to_select)

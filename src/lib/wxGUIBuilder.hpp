@@ -169,7 +169,30 @@ UIElem item(const wxString &text);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-UIElem grid(int cols, int rows = 0, const UIElemOptions &options = UIElemOptions(), int hgap = 0, int vgap = 0);
+class GridOptions
+{
+public:
+	void add_col(int col) { growable_cols_.push_back(col); }
+
+	const std::vector<int>& get_growable_cols() const { return growable_cols_; }
+	const std::vector<int>& get_growable_rows() const { return growable_rows_; }
+
+private:
+	std::vector<int> growable_cols_;
+	std::vector<int> growable_rows_;
+};
+
+GridOptions growable_cols(int col1);
+GridOptions growable_cols(int col1, int col2);
+GridOptions growable_cols(int col1, int col2, int col3);
+GridOptions growable_cols(int col1, int col2, int col3, int col4);
+GridOptions growable_cols(int col1, int col2, int col3, int col4, int col5);
+
+UIElem grid(int cols, int rows = 0, const UIElemOptions &options = expand, const GridOptions &grid_options = GridOptions(), int hgap = 0, int vgap = 0);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 UIElem hbox(const UIElemOptions &options = expand);
 UIElem vbox(const UIElemOptions &options = expand);
 UIElem dlg_buttons(const UIElemOptions &options = align_right);
@@ -245,6 +268,8 @@ UIElem choice(const UIElemOptions &options = UIElemOptions());
 UIElem dir_ctrl(const UIElemOptions &options = UIElemOptions(), bool dirs_only = true);
 
 UIElem image(const UIElemOptions &options = UIElemOptions());
+
+Window scroll_box(const UIElemOptions &options = UIElemOptions(), const UIElem &layout = vbox());
 
 
 } // namespace gb

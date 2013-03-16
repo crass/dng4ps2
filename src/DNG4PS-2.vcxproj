@@ -60,7 +60,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>wxbase29ud.lib;wxmsw29ud_core.lib;wxbase29ud_net.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxtiffd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxbase29ud.lib;wxmsw29ud_core.lib;wxmsw29ud_adv.lib;wxbase29ud_net.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxtiffd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(wx)\lib\vc_dll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -88,7 +88,7 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libcmt.lib;comctl32.lib;Rpcrt4.lib;wxbase29u.lib;wxjpeg.lib;wxmsw29u_core.lib;wxbase29u_net.lib;wxpng.lib;wxzlib.lib;wxtiff.lib;wsock32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libcmt.lib;comctl32.lib;Rpcrt4.lib;wxbase29u.lib;wxjpeg.lib;wxmsw29u_core.lib;wxmsw29u_adv.lib;wxbase29u_net.lib;wxpng.lib;wxzlib.lib;wxtiff.lib;wsock32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(wx)\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>

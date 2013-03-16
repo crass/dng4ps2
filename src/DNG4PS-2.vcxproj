@@ -25,7 +25,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v110_xp</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -481,12 +481,12 @@
     <ClCompile Include="gui\DNG4PSMain.cpp" />
     <ClCompile Include="gui\FilesPathDialog.cpp" />
     <ClCompile Include="gui\NewFolderDialog.cpp" />
+    <ClCompile Include="gui\OptionsDialog.cpp" />
     <ClCompile Include="lib\wxGUIBuilder.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Options.cpp" />
-    <ClCompile Include="OptionsDialog.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -518,9 +518,9 @@
     <ClInclude Include="gui\DNG4PSMain.h" />
     <ClInclude Include="gui\FilesPathDialog.h" />
     <ClInclude Include="gui\NewFolderDialog.h" />
+    <ClInclude Include="gui\OptionsDialog.h" />
     <ClInclude Include="lib\wxGUIBuilder.hpp" />
     <ClInclude Include="Options.h" />
-    <ClInclude Include="OptionsDialog.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="ProcessDialog.h" />
     <ClInclude Include="ProgramObjects.h" />

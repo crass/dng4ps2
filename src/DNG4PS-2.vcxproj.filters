@@ -314,7 +314,6 @@
     <ClCompile Include="DNG4PSApp.cpp" />
     <ClCompile Include="FileList.cpp" />
     <ClCompile Include="Options.cpp" />
-    <ClCompile Include="OptionsDialog.cpp" />
     <ClCompile Include="ProcessDialog.cpp" />
     <ClCompile Include="ProgramObjects.cpp" />
     <ClCompile Include="ScanProgressWin.cpp" />
@@ -333,6 +332,9 @@
       <Filter>gui</Filter>
     </ClCompile>
     <ClCompile Include="gui\DNG4PSMain.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\OptionsDialog.cpp">
       <Filter>gui</Filter>
     </ClCompile>
   </ItemGroup>
@@ -375,7 +377,6 @@
     <ClInclude Include="Exception.hpp" />
     <ClInclude Include="FileList.h" />
     <ClInclude Include="Options.h" />
-    <ClInclude Include="OptionsDialog.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="ProcessDialog.h" />
     <ClInclude Include="ProgramObjects.h" />
@@ -395,6 +396,9 @@
       <Filter>gui</Filter>
     </ClInclude>
     <ClInclude Include="gui\DNG4PSMain.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\OptionsDialog.h">
       <Filter>gui</Filter>
     </ClInclude>
   </ItemGroup>

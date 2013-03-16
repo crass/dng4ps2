@@ -29,6 +29,10 @@
 #include <wx/stdpaths.h>
 #include <wx/wfstream.h>
 #include <wx/protocol/http.h>
+#include <wx/settings.h>
+#include <wx/font.h>
+#include <wx/intl.h>
+#include <wx/string.h>
 
 #include "OptionsDialog.h"
 #include "Options.h"
@@ -38,31 +42,12 @@
 
 #include "dng_tag_values.h"
 
-//(*InternalHeaders(OptionsDialog)
-#include <wx/settings.h>
-#include <wx/font.h>
-#include <wx/intl.h>
-#include <wx/string.h>
-//*)
 
 #include "lib/wxGUIBuilder.hpp"
 
 namespace
 {
-	static const char* langs[] =
-	{
-		"zh",
-		"en",
-		"de",
-		"it",
-		"fi",
-		"no",
-		"pl",
-		"ru",
-		"es",
-		"fr",
-		nullptr
-	};
+	static const char* langs[] = { "zh", "en", "de", "it", "fi", "no", "pl", "ru", "es", "fr", nullptr };
 
 	MosaicType mosaic_types[] = {MOSAIC_RGGB, MOSAIC_GBRG};
 
@@ -96,18 +81,13 @@ namespace
 
 OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new CameraOpts)
 {
-	//(*Initialize(OptionsDialog)
 	wxButton* btnGetLastest = nullptr;
-	wxFlexGridSizer* szOptions = nullptr;
 	wxScrolledWindow* scrlwCameraOpt = nullptr;
 	wxButton* btnResetToDefaults = nullptr;
 	wxButton* btnDelete = nullptr;
-	wxPanel* Panel1 = nullptr;
-	wxPanel* Panel3 = nullptr;
 	wxButton* btnCalibr = nullptr;
 	wxNotebook* nbMain = nullptr;
 	wxButton* btnCopy = nullptr;
-	wxStdDialogButtonSizer* StdDialogButtonSizer1 = nullptr;
 	
 	Create(parent, wxID_ANY, _("optsDialogCaption"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("wxID_ANY"));
 

@@ -4,6 +4,7 @@
 #include <wx/statline.h>
 #include <wx/dirctrl.h>
 #include <wx/listctrl.h>
+#include <wx/notebook.h>
 
 #include "wxGUIBuilder.hpp"
 
@@ -116,14 +117,14 @@ UIElems& operator , (UIElems &elems1, UIElems &elems2)
 
 UIElem Window::operator [] (const UIElem &elem)
 {
-	UIElem result(create_fun_, options_);
+	UIElem result(create_fun_, options_, name_);
 	result.set_item(layout_[elem]);
 	return result;
 }
 
 UIElem Window::operator [] (const UIElems &elems)
 {
-	UIElem result(create_fun_, options_);
+	UIElem result(create_fun_, options_, name_);
 	result.set_item(layout_[elems]);
 	return result;
 }
@@ -342,6 +343,17 @@ void set_widgets_props(wxWindow *widget, const UIElemOptions &options)
 		if (underline_font) font.MakeUnderlined();
 		widget->SetFont(font);
 	}
+}
+
+void build_window_child_items(wxWindow *window, wxSizer *sizer, const UIElems &items)
+{
+	if (items.empty()) return;
+	assert(items.size() == 1);
+	wxSizer* internal_sizer = dynamic_cast<wxSizer*>(items[0].build_gui(window, sizer));
+	assert(internal_sizer);
+	window->SetSizer(internal_sizer);
+	internal_sizer->Fit(window);
+	internal_sizer->SetSizeHints(window);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -588,21 +600,49 @@ Window scroll_box(const UIElemOptions &options, const UIElem &layout)
 			get_widget_size(parent, options),
 			options.get_style()
 		);
-
-		widget->SetMaxSize(get_widget_size(parent, options));
+		widget->SetMaxSize(get_widget_size(parent, options)); // TODO: make 'maxsize' options
 		set_widgets_props(widget, options);
-
-		if (items.empty()) return widget;
-		assert(items.size() == 1);
-		wxSizer* internal_sizer = dynamic_cast<wxSizer*>(items[0].build_gui(widget, sizer));
-		assert(internal_sizer);
-		widget->SetSizer(internal_sizer);
-		internal_sizer->Fit(widget);
-		internal_sizer->SetSizeHints(widget);
-
+		build_window_child_items(widget, sizer, items);
 		return widget;
 	};
 	return Window(create_fun, layout, options);
+}
+
+UIElem notebook(const UIElemOptions &options, const UIElem &layout)
+{
+	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+		wxNotebook* widget = new wxNotebook(
+			dynamic_cast<wxWindow*>(parent), 
+			wxID_ANY,
+			wxDefaultPosition, 
+			get_widget_size(parent, options),
+			options.get_style()
+		);
+		set_widgets_props(widget, options);
+		for (auto &page : items)
+		{
+			wxWindow *page_ctrl = dynamic_cast<wxWindow*>(page.build_gui(widget));
+			widget->AddPage(page_ctrl, _(page.get_name()));
+		}
+		return widget;
+	}, options);
+}
+
+Window page(const wxString &name, const UIElemOptions &options, const UIElem &layout)
+{
+	auto create_fun = [=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+		wxPanel* widget = new wxPanel(
+			dynamic_cast<wxWindow*>(parent), 
+			wxID_ANY,
+			wxDefaultPosition, 
+			get_widget_size(parent, options),
+			options.get_style()
+		);
+		set_widgets_props(widget, options);
+		build_window_child_items(widget, sizer, items);
+		return widget;
+	};
+	return Window(create_fun, layout, options, name);
 }
 
 } // namespace gb

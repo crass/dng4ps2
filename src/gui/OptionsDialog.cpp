@@ -110,14 +110,10 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	wxStdDialogButtonSizer* StdDialogButtonSizer1 = nullptr;
 	
 	Create(parent, wxID_ANY, _("optsDialogCaption"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("wxID_ANY"));
-	szOptions = new wxFlexGridSizer(0, 1, 0, 0);
-	szOptions->AddGrowableCol(0);
-	nbMain = new wxNotebook(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, _T("ID_NOTEBOOK1"));
-	Panel1 = new wxPanel(nbMain, wxID_ANY, wxPoint(20,48), wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL1"));
 
 	using namespace gb;
 
-	// TODO: growable cols and rows for grid!!!
+	auto name = [] (const char* name_text) { return text(name_text, align_right); };
 
 	auto chDateType_GUI = choice() [
 		item("optsDateFormat1"),
@@ -145,7 +141,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 		item("optsPreviewBig")
 	];
 
-	auto main_page_gui = existing_window(Panel1) 
+	auto main_page = page("pgMain")
 	[
 		vbox()
 		[
@@ -179,29 +175,13 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 		]
 	];
 
-	main_page_gui.build_gui();
-	Panel1->GetSizer()->Fit(Panel1);
-	Panel1->GetSizer()->SetSizeHints(Panel1);
-	chbxUseDateForPath->Bind(wxEVT_COMMAND_CHECKBOX_CLICKED, [this] (wxCommandEvent&) { correct_interface(); } );
-	chkbArtist->Bind(wxEVT_COMMAND_CHECKBOX_CLICKED, [this] (wxCommandEvent&) { correct_interface(); } );
+	auto cameras_types_page = page("optsCameraTypesLabel") 
+	[
+		text("lblGroupNotice", width(150)) >> lblGroupNotice,
+		grid(2, 0, expand, growable_cols(1)) >> szGroups
+	] >> pnlGroups;
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	pnlGroups = new wxPanel(nbMain, wxID_ANY, wxPoint(88,5), wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL2"));
-	szGroupsMain = new wxFlexGridSizer(0, 1, 0, 0);
-	szGroups = new wxFlexGridSizer(0, 2, -2, wxDLG_UNIT(pnlGroups,wxSize(-5,0)).GetWidth());
-	szGroupsMain->Add(szGroups, 0, wxALIGN_LEFT|wxALIGN_TOP, 0);
-	szGroupsMain->Add(-1,-1,1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(pnlGroups,wxSize(5,0)).GetWidth());
-	lblGroupNotice = new wxStaticText(pnlGroups, wxID_ANY, _("lblGroupNotice"), wxDefaultPosition, wxDLG_UNIT(pnlGroups,wxSize(150,-1)), 0, _T("ID_STATICTEXT4"));
-	szGroupsMain->Add(lblGroupNotice, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(pnlGroups,wxSize(5,0)).GetWidth());
-	pnlGroups->SetSizer(szGroupsMain);
-	szGroupsMain->Fit(pnlGroups);
-	szGroupsMain->SetSizeHints(pnlGroups);
-	Panel3 = new wxPanel(nbMain, wxID_ANY, wxPoint(177,10), wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PNL_CAM_OPTS"));
-
-	auto name = [] (const char* name_text) { return text(name_text, align_right); };
-
-	auto camera_option_gui = existing_window(Panel3)
+	auto camera_option_page = page("pgCamOpts")
 	[
 		vbox(expand)
 		[
@@ -298,24 +278,29 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 		]
 	];
 
-	camera_option_gui.build_gui();
+	auto all_gui = existing_window(this) 
+	[
+		notebook()
+		[
+			main_page,
+			cameras_types_page,
+			camera_option_page
+		] >> nbMain,
+		dlg_buttons_ok_cancel()
+	];
 
-	nbMain->AddPage(Panel1, _("pgMain"), false);
-	nbMain->AddPage(pnlGroups, _("optsCameraTypesLabel"), false);
-	nbMain->AddPage(Panel3, _("pgCamOpts"), false);
-	szOptions->Add(nbMain, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	StdDialogButtonSizer1 = new wxStdDialogButtonSizer();
-	StdDialogButtonSizer1->AddButton(new wxButton(this, wxID_OK, _("")));
-	StdDialogButtonSizer1->AddButton(new wxButton(this, wxID_CANCEL, _("")));
-	StdDialogButtonSizer1->Realize();
-	szOptions->Add(StdDialogButtonSizer1, 1, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(7,0)).GetWidth());
-	SetSizer(szOptions);
-	szOptions->Fit(this);
-	szOptions->SetSizeHints(this);
+	all_gui.build_gui();
 
+	Layout();
+	GetSizer()->Fit(this);
+	GetSizer()->SetSizeHints(this);
 	Center();
 
+	szGroupsMain = pnlGroups->GetSizer();
+
 	// Connecting events
+	chbxUseDateForPath->Bind(wxEVT_COMMAND_CHECKBOX_CLICKED,       [this] (wxCommandEvent&)        { correct_interface();            });
+	chkbArtist        ->Bind(wxEVT_COMMAND_CHECKBOX_CLICKED,       [this] (wxCommandEvent&)        { correct_interface();            });
 	chCameraSelector  ->Bind(wxEVT_COMMAND_CHOICE_SELECTED,        [this] (wxCommandEvent& event)  { chCameraSelectorSelect(event);  });
 	chCameraSelector  ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { OnGetLastestClick(event);       });
 	btnCopy           ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { btnCopyClick(event);            });

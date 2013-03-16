@@ -38,7 +38,7 @@ protected:
 
 	wxTextCtrl* txtCamName;
 	wxCheckBox* chbxAddMetadata;
-	wxFlexGridSizer* szGroupsMain;
+	wxSizer* szGroupsMain;
 	wxChoice* chBitsPerUnit;
 	wxChoice* chLanguage;
 	wxTextCtrl* txtJpegHeight;

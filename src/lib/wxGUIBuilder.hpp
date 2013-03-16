@@ -81,16 +81,17 @@ UIElemOptions size(int width, int height);
 class UIElem
 {
 public:
-	UIElem(const CreateWidgetFun &create_fun, const UIElemOptions &options) : 
+	UIElem(const CreateWidgetFun &create_fun, const UIElemOptions &options, const wxString &name = wxEmptyString) : 
 		create_fun_(create_fun),
-		options_(options)
+		options_(options),
+		name_(name)
 	{}
 
 	template <typename T> UIElem& operator >> (T & var);
 	void set_item(const UIElem &item);
 	void set_items(const UIElems &items);
-
 	wxObject* build_gui(wxObject *parent = nullptr, wxSizer *sizer = nullptr) const;
+	wxString get_name() const { return name_; }
 
 	const UIElemOptions& get_options() const { return options_; }
 
@@ -101,6 +102,7 @@ private:
 	UIElems sub_items_;
 	CreateWidgetFun create_fun_;
 	UIElemOptions options_;
+	wxString name_;
 };
 
 
@@ -128,10 +130,11 @@ UIElems& operator , (UIElems &elems1, UIElems &elems2);
 class Window
 {
 public:
-	Window(const CreateWidgetFun &create_fun, const UIElem &layout, const UIElemOptions &options) : 
+	Window(const CreateWidgetFun &create_fun, const UIElem &layout, const UIElemOptions &options, const wxString &name = wxEmptyString) : 
 		create_fun_(create_fun), 
 		layout_(layout),
-		options_(options)
+		options_(options),
+		name_(name)
 	{}
 
 	UIElem operator [] (const UIElem &elem);
@@ -141,6 +144,7 @@ private:
 	UIElem layout_;
 	const CreateWidgetFun create_fun_;
 	UIElemOptions options_;
+	wxString name_;
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -270,6 +274,10 @@ UIElem dir_ctrl(const UIElemOptions &options = UIElemOptions(), bool dirs_only =
 UIElem image(const UIElemOptions &options = UIElemOptions());
 
 Window scroll_box(const UIElemOptions &options = UIElemOptions(), const UIElem &layout = vbox());
+
+UIElem notebook(const UIElemOptions &options = UIElemOptions(), const UIElem &layout = vbox());
+
+Window page(const wxString &name, const UIElemOptions &options = UIElemOptions(), const UIElem &layout = vbox());
 
 
 } // namespace gb

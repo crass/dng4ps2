@@ -95,12 +95,12 @@ DNG4PSFrame::DNG4PSFrame(wxWindow* parent,wxWindowID id) : file_list(new FileLis
 	Center();
 
 	btnSelectPathToRaw->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnSelectPathToRawClick(event); });
-	btnRescan->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnRescanClick(event); });
+	btnRescan         ->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnRescanClick(event);          });
 	btnSelectOutputDir->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnSelectOutputDirClick(event); });
-	btnStart->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnStartClick(event); });
-	btnOptions->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnOptionsClick(event); });
-	btnAbout->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnAboutClick(event); });
-	Bind(wxEVT_CLOSE_WINDOW, [this] (wxCloseEvent& event) { OnClose(event); } );
+	btnStart          ->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnStartClick(event);           });
+	btnOptions        ->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnOptionsClick(event);         });
+	btnAbout          ->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnAboutClick(event);           });
+	Bind                    (wxEVT_CLOSE_WINDOW,           [this] (wxCloseEvent& event)   { OnClose(event);                 });
 
 	startTimer.SetOwner(this);
 	startTimer.Start(30, true);

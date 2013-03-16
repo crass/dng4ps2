@@ -633,24 +633,42 @@ void OptionsDialog::show_groups()
 	szGroups->Clear(true);
 	group_controls_.clear();
 
-	typedef std::map<unsigned int, std::pair<unsigned int, unsigned int> > FileSizes;
+	struct Tmp
+	{
+		unsigned width;
+		unsigned height;
+		unsigned count;
+
+		Tmp() : width(0), height(0), count(0) {}
+	};
+
+	typedef std::map<unsigned int, Tmp> FileSizes;
 	FileSizes file_sizes;
 	const size_t count = cam_opts_->get_size();
 	for (size_t i = 0; i < count; i++)
 	{
 		const CameraData &item = cam_opts_->at(i);
 		unsigned int file_size = CameraOpts::get_file_size(item);
-		file_sizes[file_size] = std::make_pair(item.width, item.height);
+		auto existing = file_sizes.find(file_size);
+		if (existing == file_sizes.end())
+		{
+			file_sizes[file_size].width = item.width;
+			file_sizes[file_size].height = item.height;
+			file_sizes[file_size].count = 1;
+		}
+		else existing->second.count++;
 	}
 
 	for (auto &size_item : file_sizes)
 	{
-		wxString label = wxString::Format(L"%i x %i:", size_item.second.first, size_item.second.second);
+		if (size_item.second.count == 1) continue;
+
+		wxString label = wxString::Format(L"%i x %i:", size_item.second.width, size_item.second.height);
 		wxStaticText *text = new wxStaticText(pnlGroups, wxNewId(), label, wxDefaultPosition, wxDefaultSize);
-		szGroups->Add(text, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(pnlGroups,wxSize(5,0)).GetWidth());
+		szGroups->Add(text, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(pnlGroups,wxSize(2,0)).GetWidth());
 
 		wxChoice *choice = new wxChoice(pnlGroups, wxNewId(), wxDefaultPosition, wxDefaultSize);
-		szGroups->Add(choice, 1, wxTOP|wxLEFT|wxRIGHT|wxEXPAND|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(pnlGroups,wxSize(5,0)).GetWidth());
+		szGroups->Add(choice, 1, wxTOP|wxLEFT|wxRIGHT|wxEXPAND|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(pnlGroups,wxSize(2,0)).GetWidth());
 
 		wxString cur_croup_id = cam_opts_->get_group(size_item.first);
 

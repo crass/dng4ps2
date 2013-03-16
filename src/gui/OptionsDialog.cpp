@@ -33,6 +33,7 @@
 #include <wx/font.h>
 #include <wx/intl.h>
 #include <wx/string.h>
+#include <wx/notebook.h>
 
 #include "OptionsDialog.h"
 #include "Options.h"
@@ -86,7 +87,6 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	wxButton* btnResetToDefaults = nullptr;
 	wxButton* btnDelete = nullptr;
 	wxButton* btnCalibr = nullptr;
-	wxNotebook* nbMain = nullptr;
 	wxButton* btnCopy = nullptr;
 	
 	Create(parent, wxID_ANY, _("optsDialogCaption"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("wxID_ANY"));
@@ -696,7 +696,7 @@ void OptionsDialog::read_groups()
 
 void OptionsDialog::nbMainPageChanged(wxNotebookEvent& event)
 {
-	if (event.GetSelection() == 1)
+	if (nbMain->GetPage(event.GetSelection()) == pnlGroups)
 	{
 		read_camera_opts();
 		show_groups();
@@ -705,7 +705,7 @@ void OptionsDialog::nbMainPageChanged(wxNotebookEvent& event)
 
 void OptionsDialog::nbMainPageChanging(wxNotebookEvent& event)
 {
-	if (event.GetSelection() == 1) read_groups();
+	if (nbMain->GetPage(event.GetSelection()) == pnlGroups) read_groups();
 }
 
 void OptionsDialog::OnGetLastestClick(wxCommandEvent& event)

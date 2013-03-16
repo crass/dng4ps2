@@ -1,16 +1,17 @@
 #ifndef OPTIONSDIALOG_H
 #define OPTIONSDIALOG_H
 
-#include <wx/scrolwin.h>
-#include <wx/notebook.h>
-#include <wx/sizer.h>
-#include <wx/stattext.h>
-#include <wx/textctrl.h>
-#include <wx/checkbox.h>
-#include <wx/panel.h>
-#include <wx/choice.h>
-#include <wx/button.h>
 #include <wx/dialog.h>
+
+class wxNotebookEvent;
+class wxNotebook;
+class wxTextCtrl;
+class wxCheckBox;
+class wxSizer;
+class wxChoice;
+class wxCheckBox;
+class wxFlexGridSizer;
+class wxPanel;
 
 class CameraOpts;
 struct CameraData;
@@ -36,6 +37,7 @@ protected:
 	void btnResetToDefaultsClick(wxCommandEvent& event);
 	void OnGetLastestClick(wxCommandEvent& event);
 
+	wxNotebook* nbMain;
 	wxTextCtrl* txtCamName;
 	wxCheckBox* chbxAddMetadata;
 	wxSizer* szGroupsMain;

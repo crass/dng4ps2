@@ -93,7 +93,7 @@ public:
 	template <typename T> UIElem& operator >> (T & var);
 	void set_item(const UIElem &item);
 	void set_items(const UIElems &items);
-	wxObject* build_gui(wxObject *parent = nullptr, wxSizer *sizer = nullptr) const;
+	wxObject* build(wxObject *parent = nullptr, wxSizer *sizer = nullptr) const;
 	wxString get_name() const { return name_; }
 
 	const UIElemOptions& get_options() const { return options_; }

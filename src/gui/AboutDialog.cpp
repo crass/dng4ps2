@@ -77,7 +77,7 @@ AboutDialog::AboutDialog(wxWindow* parent,wxWindowID id)
 		]
 	];
 
-	gui.build_gui();
+	gui.build();
 
 	bmpIcon->SetIcon(main_icon);
 

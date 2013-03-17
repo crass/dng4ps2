@@ -269,7 +269,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 		dlg_buttons_ok_cancel()
 	];
 
-	all_gui.build_gui();
+	all_gui.build();
 
 	GetSizer()->Fit(this);
 	GetSizer()->SetSizeHints(this);

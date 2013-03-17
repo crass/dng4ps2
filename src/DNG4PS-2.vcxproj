@@ -483,6 +483,7 @@
     <ClCompile Include="gui\NewFolderDialog.cpp" />
     <ClCompile Include="gui\OptionsDialog.cpp" />
     <ClCompile Include="gui\ProcessDialog.cpp" />
+    <ClCompile Include="gui\ScanProgressWin.cpp" />
     <ClCompile Include="lib\wxGUIBuilder.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -493,7 +494,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="ProgramObjects.cpp" />
-    <ClCompile Include="ScanProgressWin.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -520,11 +520,11 @@
     <ClInclude Include="gui\NewFolderDialog.h" />
     <ClInclude Include="gui\OptionsDialog.h" />
     <ClInclude Include="gui\ProcessDialog.h" />
+    <ClInclude Include="gui\ScanProgressWin.h" />
     <ClInclude Include="lib\wxGUIBuilder.hpp" />
     <ClInclude Include="Options.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="ProgramObjects.h" />
-    <ClInclude Include="ScanProgressWin.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="version.h" />
   </ItemGroup>

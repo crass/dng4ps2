@@ -59,7 +59,7 @@ ProcessDialog::ProcessDialog(wxWindow* parent, wxFrame * frame, wxWindowID id)
 		]
 	];
 
-	gui.build_gui();
+	gui.build();
 
 	GetSizer()->Fit(this);
 	GetSizer()->SetSizeHints(this);

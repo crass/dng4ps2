@@ -88,7 +88,7 @@ DNG4PSFrame::DNG4PSFrame(wxWindow* parent,wxWindowID id) : file_list(new FileLis
 		]
 	];
 
-	gui.build_gui();
+	gui.build();
 
 	Layout();
 	GetSizer()->SetSizeHints(this);

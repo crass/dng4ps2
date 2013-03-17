@@ -59,7 +59,7 @@ FilesPathDialog::FilesPathDialog(const wxString& path, const wxString& descr_tex
 		]
 	];
 	
-	dialog_gui.build_gui();
+	dialog_gui.build();
 
 	dirPath->SetPath(path);
 	dirPath->SetFocus();

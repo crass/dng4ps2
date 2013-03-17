@@ -88,7 +88,7 @@ UIElem& UIElem::operator [] (const UIElems &elems)
 	return *this;
 }
 
-wxObject* UIElem::build_gui(wxObject *parent, wxSizer *sizer) const
+wxObject* UIElem::build(wxObject *parent, wxSizer *sizer) const
 {
 	if (create_fun_ == nullptr) return nullptr;
 	return create_fun_(parent, sizer, sub_items_);
@@ -179,7 +179,7 @@ void process_sizer_items(wxObject *parent, wxSizer *sizer_obj, const UIElems &it
 {
 	for (auto &item : items)
 	{
-		wxObject *sub_item_obj = item.build_gui(parent, sizer_obj);
+		wxObject *sub_item_obj = item.build(parent, sizer_obj);
 		wxWindow *parent_window = dynamic_cast<wxWindow*>(parent);
 		if (sub_item_obj == nullptr)
 		{
@@ -299,7 +299,7 @@ UIElem dlg_buttons(const UIElemOptions &options)
 		wxStdDialogButtonSizer *sizer_obj = new wxStdDialogButtonSizer();
 		for (auto &item : items)
 		{
-			wxButton *btn = dynamic_cast<wxButton*>(item.build_gui(parent, sizer_obj));
+			wxButton *btn = dynamic_cast<wxButton*>(item.build(parent, sizer_obj));
 			assert(btn);
 			sizer_obj->AddButton(btn);
 		}
@@ -352,7 +352,7 @@ void build_window_child_items(wxWindow *window, wxSizer *sizer, const UIElems &i
 {
 	if (items.empty()) return;
 	assert(items.size() == 1);
-	wxSizer* internal_sizer = dynamic_cast<wxSizer*>(items[0].build_gui(window, sizer));
+	wxSizer* internal_sizer = dynamic_cast<wxSizer*>(items[0].build(window, sizer));
 	assert(internal_sizer);
 
 	if (do_layout) window->SetSizerAndFit(internal_sizer);
@@ -367,7 +367,7 @@ Window existing_window(wxWindow *window, const UIElemOptions &options, const UIE
 		set_widgets_props(window, options);
 		if (items.empty()) return window;
 		assert(items.size() == 1);
-		items[0].build_gui(window, sizer);
+		items[0].build(window, sizer);
 		window->SetSize(cvt_dialog_size_into_pixels_size(window, options.get_width(), options.get_height()));
 		return window;
 	};
@@ -551,7 +551,7 @@ UIElem choice(const UIElemOptions &options)
 		set_widgets_props(widget, options);
 		for (auto &item : items)
 		{
-			const Item *obj = dynamic_cast<const Item*>(item.build_gui());
+			const Item *obj = dynamic_cast<const Item*>(item.build());
 			assert(obj);
 			widget->Append(_(obj->get_text()));
 			delete obj;
@@ -624,7 +624,7 @@ UIElem notebook(const UIElemOptions &options, const UIElem &layout)
 		set_widgets_props(widget, options);
 		for (auto &page : items)
 		{
-			wxWindow *page_ctrl = dynamic_cast<wxWindow*>(page.build_gui(widget));
+			wxWindow *page_ctrl = dynamic_cast<wxWindow*>(page.build(widget));
 			widget->AddPage(page_ctrl, _(page.get_name()));
 		}
 		return widget;

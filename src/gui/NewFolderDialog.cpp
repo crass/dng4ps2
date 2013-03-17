@@ -30,7 +30,7 @@ NewFolderDialog::NewFolderDialog(wxWindow* parent, wxWindowID id)
 		]
 	];
 
-	gui.build_gui();
+	gui.build();
 
 	Layout();
 	GetSizer()->Fit(this);

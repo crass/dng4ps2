@@ -315,7 +315,6 @@
     <ClCompile Include="FileList.cpp" />
     <ClCompile Include="Options.cpp" />
     <ClCompile Include="ProgramObjects.cpp" />
-    <ClCompile Include="ScanProgressWin.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="lib\wxGUIBuilder.cpp">
@@ -337,6 +336,9 @@
       <Filter>gui</Filter>
     </ClCompile>
     <ClCompile Include="gui\ProcessDialog.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ScanProgressWin.cpp">
       <Filter>gui</Filter>
     </ClCompile>
   </ItemGroup>
@@ -381,7 +383,6 @@
     <ClInclude Include="Options.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="ProgramObjects.h" />
-    <ClInclude Include="ScanProgressWin.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="version.h" />
     <ClInclude Include="lib\wxGUIBuilder.hpp">
@@ -403,6 +404,9 @@
       <Filter>gui</Filter>
     </ClInclude>
     <ClInclude Include="gui\ProcessDialog.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ScanProgressWin.h">
       <Filter>gui</Filter>
     </ClInclude>
   </ItemGroup>

@@ -89,7 +89,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	wxButton* btnCalibr = nullptr;
 	wxButton* btnCopy = nullptr;
 	
-	Create(parent, wxID_ANY, _("optsDialogCaption"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("wxID_ANY"));
+	Create(parent, wxID_ANY, _("optsDialogCaption"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, _T("wxID_ANY"));
 
 	using namespace gb;
 
@@ -163,7 +163,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 
 	auto camera_option_page = page("pgCamOpts")
 	[
-		vbox(expand)
+		vbox(expand | stretch)
 		[
 			text("optsCamera", font_bold | bord_all_exc_bottom), // cameras work
 			choice(expand) >> chCameraSelector,
@@ -177,7 +177,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 			hline(),
 			scroll_box(expand | stretch | height(190)) // selected camera options
 			[
-				grid(2, 0, expand | border(0), growable_cols(1))
+				grid(2, 0, expand | stretch | border(0), growable_cols(1))
 				[
 					name("lblCameraName"),
 					edit(expand) >> txtCamName,
@@ -191,7 +191,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 						edit(width(30)) >> txtSensWidth,
 						text("x"),
 						edit(width(30)) >> txtSensHeight,
-						text("00000000000") >> lblFileSize
+						text("000000000000000") >> lblFileSize
 					],
 					name("lblJpegSize"),
 					hbox(border(0))
@@ -260,7 +260,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 
 	auto all_gui = existing_window(this) 
 	[
-		notebook()
+		notebook(stretch | expand)
 		[
 			main_page,
 			cameras_types_page,
@@ -271,7 +271,6 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 
 	all_gui.build_gui();
 
-	Layout();
 	GetSizer()->Fit(this);
 	GetSizer()->SetSizeHints(this);
 	Center();
@@ -282,7 +281,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	chbxUseDateForPath->Bind(wxEVT_COMMAND_CHECKBOX_CLICKED,       [this] (wxCommandEvent&)        { correct_interface();            });
 	chkbArtist        ->Bind(wxEVT_COMMAND_CHECKBOX_CLICKED,       [this] (wxCommandEvent&)        { correct_interface();            });
 	chCameraSelector  ->Bind(wxEVT_COMMAND_CHOICE_SELECTED,        [this] (wxCommandEvent& event)  { chCameraSelectorSelect(event);  });
-	chCameraSelector  ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { OnGetLastestClick(event);       });
+	btnGetLastest     ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { OnGetLastestClick(event);       });
 	btnCopy           ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { btnCopyClick(event);            });
 	btnDelete         ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { btnDeleteClick(event);          });
 	btnResetToDefaults->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { btnResetToDefaultsClick(event); });

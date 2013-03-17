@@ -70,6 +70,9 @@ const UIElemOptions expand         = UIElemOptions(0x00004000);
 const UIElemOptions stretch        = UIElemOptions(0x00008000);
 const UIElemOptions noborder       = UIElemOptions(0x00010000);
 
+const UIElemOptions vscroll        = UIElemOptions(0x00020000);
+const UIElemOptions hscroll        = UIElemOptions(0x00040000);
+
 UIElemOptions border(int border);
 UIElemOptions width(int value);
 UIElemOptions height(int value);

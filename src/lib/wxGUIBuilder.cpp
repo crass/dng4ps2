@@ -153,6 +153,8 @@ uint32_t get_sizer_item_flags(const UIElemOptions &options)
 	if (options.has_flag(bord_bottom))   result |= wxBOTTOM;
 	if (options.has_flag(bord_all))      result |= wxALL;
 	if (options.has_flag(expand))        result |= wxEXPAND;
+	if (options.has_flag(vscroll))       result |= wxVSCROLL;
+	if (options.has_flag(hscroll))       result |= wxHSCROLL;
 
 	if (!options.has_flag(bord_left) && 
 		!options.has_flag(bord_right) && 
@@ -345,15 +347,15 @@ void set_widgets_props(wxWindow *widget, const UIElemOptions &options)
 	}
 }
 
-void build_window_child_items(wxWindow *window, wxSizer *sizer, const UIElems &items)
+void build_window_child_items(wxWindow *window, wxSizer *sizer, const UIElems &items, bool do_layout)
 {
 	if (items.empty()) return;
 	assert(items.size() == 1);
 	wxSizer* internal_sizer = dynamic_cast<wxSizer*>(items[0].build_gui(window, sizer));
 	assert(internal_sizer);
-	window->SetSizer(internal_sizer);
-	internal_sizer->Fit(window);
-	internal_sizer->SetSizeHints(window);
+
+	if (do_layout) window->SetSizerAndFit(internal_sizer);
+	else window->SetSizer(internal_sizer);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -600,9 +602,9 @@ Window scroll_box(const UIElemOptions &options, const UIElem &layout)
 			get_widget_size(parent, options),
 			options.get_style()
 		);
-		widget->SetMaxSize(get_widget_size(parent, options)); // TODO: make 'maxsize' options
 		set_widgets_props(widget, options);
-		build_window_child_items(widget, sizer, items);
+		widget->ShowScrollbars(wxSHOW_SB_NEVER, wxSHOW_SB_DEFAULT);
+		build_window_child_items(widget, sizer, items, false);
 		return widget;
 	};
 	return Window(create_fun, layout, options);
@@ -639,7 +641,7 @@ Window page(const wxString &name, const UIElemOptions &options, const UIElem &la
 			options.get_style()
 		);
 		set_widgets_props(widget, options);
-		build_window_child_items(widget, sizer, items);
+		build_window_child_items(widget, sizer, items, true);
 		return widget;
 	};
 	return Window(create_fun, layout, options, name);

@@ -121,6 +121,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 		item("optsPreviewBig")
 	];
 
+	// "Common" page
 	auto main_page = page("pgMain")
 	[
 		vbox()
@@ -155,17 +156,19 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 		]
 	];
 
+	// "Cameras types" page
 	auto cameras_types_page = page("optsCameraTypesLabel") 
 	[
 		text("lblGroupNotice", width(150)) >> lblGroupNotice,
 		grid(2, 0, expand, growable_cols(1)) >> szGroups
 	] >> pnlGroups;
 
+	// "Camera options" page
 	auto camera_option_page = page("pgCamOpts")
 	[
 		vbox(expand | stretch)
 		[
-			text("optsCamera", font_bold | bord_all_exc_bottom), // cameras work
+			text("optsCamera", font_bold | bord_all_exc_bottom), // cameras
 			choice(expand) >> chCameraSelector,
 			hbox(border(0) | expand)
 			[
@@ -243,7 +246,7 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 					button("btnCalibr", bord_all_exc_top) >> btnCalibr,
 					name("lblMatrixMult"),
 					edit() >> txtMatrix1Mult,
-					text("lblColorMatrix2", font_bold),
+					text("lblColorMatrix2", font_bold), // Color matrix 2
 					spacer(),
 					name("lblMatrIll"),
 					choice() >> chIll2,

@@ -26,20 +26,18 @@ public:
 	void set_percent(int percent);
 	void show_time(int current, int total);
 
-protected:
+private:
 	void btnExitClick(wxCommandEvent& event);
 	void btnStopClick(wxCommandEvent& event);
 	void OnClose(wxCloseEvent& event);
 
 	wxButton* btnStop;
-	wxFlexGridSizer* sizerMain;
 	wxTextCtrl* txtLog;
 	wxGauge* gaPercent;
 	wxStaticText* stxtPercent;
 	wxButton* btnExit;
 	wxStaticText* stxtTime;
 
-private:
     wxFrame * parent;
 };
 

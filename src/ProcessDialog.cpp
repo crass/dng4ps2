@@ -136,7 +136,7 @@ void ProcessDialog::show_time(int current, int total)
 
 	buffer << _("procPass1") << L" " << wxTimeSpan::Seconds(current).Format(L"%H:%M:%S") << L" "<< _("procPass2") << L" " << wxTimeSpan::Seconds(total).Format(L"%H:%M:%S");
 	stxtTime->SetLabel(buffer);
-	sizerMain->RecalcSizes();
+	GetSizer()->RecalcSizes();
 }
 
 // ProcessDialog::OnClose

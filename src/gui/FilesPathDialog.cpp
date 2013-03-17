@@ -38,7 +38,7 @@ FilesPathDialog::FilesPathDialog(const wxString& path, const wxString& descr_tex
 {
 	using namespace gb;
 
-	Create(parent, id, _("SelectDir"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("id"));
+	Create(parent, id, _("SelectDir"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
 
 	wxButton* btnNewFolder = nullptr;
 	wxStaticText* lblMain = nullptr;
@@ -46,7 +46,7 @@ FilesPathDialog::FilesPathDialog(const wxString& path, const wxString& descr_tex
 
 	auto dialog_gui = existing_window(this) 
 	[ 
-		vbox() 
+		vbox(expand | stretch) 
 		[
 			text("Path", bord_all_exc_bottom) >> lblMain,
 			dir_ctrl(size(200, 200) | expand | stretch) >> dirPath,
@@ -66,9 +66,7 @@ FilesPathDialog::FilesPathDialog(const wxString& path, const wxString& descr_tex
 	dirPath->SetFocusFromKbd();
 	lblMain->SetLabel(descr_text);
 
-	Layout();
 	GetSizer()->Fit(this);
-	GetSizer()->SetSizeHints(this);
 	Center();
 
 	btnNewFolder->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnNewFolderClick(event); }  );

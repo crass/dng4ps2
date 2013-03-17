@@ -1,16 +1,12 @@
 #ifndef DNG4PSMAIN_H
 #define DNG4PSMAIN_H
 
-#include <wx/listctrl.h>
-#include <wx/timer.h>
-
 class FileList;
 class ScanProgressWin;
 
 class DNG4PSFrame: public wxFrame
 {
 public:
-
 	DNG4PSFrame(wxWindow* parent,wxWindowID id = -1);
 	void convertFiles(wxArrayString files, wxString outputDir); //for command line version
 

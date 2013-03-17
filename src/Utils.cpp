@@ -20,19 +20,7 @@
   Author(s): Denis Artyomov (denis.artyomov@gmail.com)
   ===========================================================================*/
 
-// wx
 #include "pch.h"
-#include <wx/filename.h>
-#include <wx/file.h>
-#include <wx/mstream.h>
-#include <wx/tokenzr.h>
-
-// STL
-#include <fstream>
-#include <vector>
-
-// misc
-#include <stdlib.h>
 
 // DNG SDK
 #include "dng_color_space.h"

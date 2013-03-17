@@ -22,12 +22,6 @@
   ===========================================================================*/
 
 #include "pch.h"
-#include <wx/msgdlg.h>
-#include <wx/app.h>
-#include <wx/thread.h>
-#include <wx/settings.h>
-#include <wx/intl.h>
-#include <wx/string.h>
 
 #include "DNG4PSMain.h"
 #include "FileList.h"

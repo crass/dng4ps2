@@ -23,11 +23,6 @@
 #include "pch.h"
 #include "FilesPathDialog.h"
 #include "gui/NewFolderDialog.h"
-#include <wx/filename.h>
-
-#include <wx/settings.h>
-#include <wx/intl.h>
-#include <wx/string.h>
 
 #include "lib/wxGUIBuilder.hpp"
 

@@ -22,10 +22,6 @@
 
 #include "pch.h"
 
-#include <wx/filename.h>
-#include <wx/dir.h>
-#include <wx/file.h>
-
 #include "ProgramObjects.h"
 #include "CameraOpts.h"
 #include "FileList.h"

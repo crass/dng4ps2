@@ -3,7 +3,6 @@
 
 #include "dng_date_time.h"
 
-class wxImage;
 class dng_negative;
 class dng_string;
 class dng_urational;

@@ -22,7 +22,6 @@
   ===========================================================================*/
 
 #include "pch.h"
-#include <wx/config.h>
 #include "Options.h"
 
 namespace

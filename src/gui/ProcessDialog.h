@@ -1,13 +1,6 @@
 #ifndef PROCESSDIALOG_H
 #define PROCESSDIALOG_H
 
-#include <wx/sizer.h>
-#include <wx/stattext.h>
-#include <wx/textctrl.h>
-#include <wx/button.h>
-#include <wx/dialog.h>
-#include <wx/gauge.h>
-
 enum PD_States
 {
     PD_Work,
@@ -37,7 +30,6 @@ private:
 	wxStaticText* stxtPercent;
 	wxButton* btnExit;
 	wxStaticText* stxtTime;
-
     wxFrame * parent;
 };
 

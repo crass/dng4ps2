@@ -44,22 +44,14 @@
   */
 
 #include "pch.h"
-#include <wx/filename.h>
-#include <wx/log.h>
 
 #include "DNG4PSApp.h"
 #include "ProgramObjects.h"
 #include "Options.h"
 #include "CameraOpts.h"
 
-//(*AppHeaders
 #include "gui/DNG4PSMain.h"
-#include <wx/image.h>
-//*)
 
-
-//for command wx line parser
-#include <wx/cmdline.h>
 #include <iostream>
 #include <iterator>
 // -----------------

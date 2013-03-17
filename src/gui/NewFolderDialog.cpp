@@ -1,10 +1,6 @@
 #include "pch.h"
 #include "NewFolderDialog.h"
 
-#include <wx/intl.h>
-#include <wx/button.h>
-#include <wx/string.h>
-
 #include "lib/wxGUIBuilder.hpp"
 
 

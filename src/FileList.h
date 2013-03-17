@@ -1,8 +1,6 @@
 #ifndef FILELIST_H_INCLUDED
 #define FILELIST_H_INCLUDED
 
-#include <vector>
-
 class wxFileName;
 
 struct FileListItem

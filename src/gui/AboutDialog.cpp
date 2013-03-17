@@ -21,16 +21,9 @@
   ===========================================================================*/
 
 #include "pch.h"
-#include "AboutDialog.h"
 
 #include "./version.h"
-
-#include <wx/settings.h>
-#include <wx/font.h>
-#include <wx/intl.h>
-#include <wx/button.h>
-#include <wx/string.h>
-
+#include "AboutDialog.h"
 #include "lib/wxGUIBuilder.hpp"
 
 extern wxIcon main_icon;

@@ -23,9 +23,6 @@
 
 #include "pch.h"
 
-#include <wx/config.h>
-#include <wx/tokenzr.h>
-
 #include <stdlib.h>
 
 #include "CameraOpts.h"

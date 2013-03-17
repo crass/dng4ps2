@@ -1,11 +1,6 @@
 #ifndef NEWFOLDERDIALOG_H
 #define NEWFOLDERDIALOG_H
 
-#include <wx/sizer.h>
-#include <wx/stattext.h>
-#include <wx/textctrl.h>
-#include <wx/dialog.h>
-
 class NewFolderDialog: public wxDialog
 {
 public:

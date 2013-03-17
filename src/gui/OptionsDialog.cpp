@@ -23,27 +23,12 @@
 
 #include "pch.h"
 
-#include <wx/msgdlg.h>
-#include <wx/fileconf.h>
-#include <wx/wfstream.h>
-#include <wx/stdpaths.h>
-#include <wx/wfstream.h>
-#include <wx/protocol/http.h>
-#include <wx/settings.h>
-#include <wx/font.h>
-#include <wx/intl.h>
-#include <wx/string.h>
-#include <wx/notebook.h>
-
 #include "OptionsDialog.h"
 #include "Options.h"
 #include "ProgramObjects.h"
 #include "CameraOpts.h"
 #include "CamCalibrFrame.h"
-
 #include "dng_tag_values.h"
-
-
 #include "lib/wxGUIBuilder.hpp"
 
 namespace

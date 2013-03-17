@@ -24,10 +24,6 @@
 #include "ProcessDialog.h"
 #include "lib/wxGUIBuilder.hpp"
 
-#include <wx/settings.h>
-#include <wx/intl.h>
-#include <wx/string.h>
-
 extern wxThread* work_thread;
 
 ProcessDialog::ProcessDialog(wxWindow* parent, wxFrame * frame, wxWindowID id)

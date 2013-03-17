@@ -1,8 +1,6 @@
 #include "pch.h"
-#include "ScanProgressWin.h"
 
-#include <wx/intl.h>
-#include <wx/string.h>
+#include "ScanProgressWin.h"
 #include "lib/wxGUIBuilder.hpp"
 
 

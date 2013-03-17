@@ -1,18 +1,6 @@
 #ifndef OPTIONSDIALOG_H
 #define OPTIONSDIALOG_H
 
-#include <wx/dialog.h>
-
-class wxNotebookEvent;
-class wxNotebook;
-class wxTextCtrl;
-class wxCheckBox;
-class wxSizer;
-class wxChoice;
-class wxCheckBox;
-class wxFlexGridSizer;
-class wxPanel;
-
 class CameraOpts;
 struct CameraData;
 

@@ -71,7 +71,7 @@
 #include "ProgramObjects.h"
 #include "Utils.h"
 #include "Options.h"
-#include "ProcessDialog.h"
+#include "gui/ProcessDialog.h"
 #include "CameraOpts.h"
 
 const int medium_preview_size = 1280;

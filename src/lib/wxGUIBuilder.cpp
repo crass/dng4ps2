@@ -5,6 +5,7 @@
 #include <wx/dirctrl.h>
 #include <wx/listctrl.h>
 #include <wx/notebook.h>
+#include <wx/gauge.h>
 
 #include "wxGUIBuilder.hpp"
 
@@ -645,6 +646,22 @@ Window page(const wxString &name, const UIElemOptions &options, const UIElem &la
 		return widget;
 	};
 	return Window(create_fun, layout, options, name);
+}
+
+UIElem gauge(int range, const UIElemOptions &options)
+{
+	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+		wxGauge* widget = new wxGauge(
+			dynamic_cast<wxWindow*>(parent), 
+			wxID_ANY,
+			range,
+			wxDefaultPosition, 
+			get_widget_size(parent, options),
+			options.get_style()
+		);
+		set_widgets_props(widget, options);
+		return widget;
+	}, options);
 }
 
 } // namespace gb

@@ -22,78 +22,56 @@
 
 #include "pch.h"
 #include "ProcessDialog.h"
+#include "lib/wxGUIBuilder.hpp"
 
-//(*InternalHeaders(ProcessDialog)
 #include <wx/settings.h>
 #include <wx/intl.h>
 #include <wx/string.h>
-//*)
-
-//(*IdInit(ProcessDialog)
-const long ProcessDialog::ID_STATICTEXT1 = wxNewId();
-const long ProcessDialog::ID_TEXTCTRL1 = wxNewId();
-const long ProcessDialog::ID_STATICTEXT2 = wxNewId();
-const long ProcessDialog::ID_STATICTEXT3 = wxNewId();
-const long ProcessDialog::ID_GAUGE1 = wxNewId();
-const long ProcessDialog::ID_BUTTON1 = wxNewId();
-const long ProcessDialog::ID_BUTTON2 = wxNewId();
-//*)
 
 extern wxThread* work_thread;
 
-BEGIN_EVENT_TABLE(ProcessDialog,wxDialog)
-	//(*EventTable(ProcessDialog)
-	//*)
-END_EVENT_TABLE()
-
 ProcessDialog::ProcessDialog(wxWindow* parent, wxFrame * frame, wxWindowID id)
 {
-	//(*Initialize(ProcessDialog)
-	wxFlexGridSizer* sizerInfo;
-	wxFlexGridSizer* FlexGridSizer2;
-	wxStaticText* StaticText1;
+	using namespace gb;
 
-	Create(parent, id, _("procFormCaption"), wxDefaultPosition, wxDefaultSize, wxCAPTION, _T("id"));
+	Create(parent, id, _("procFormCaption"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
 	SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
-	sizerMain = new wxFlexGridSizer(0, 1, 0, 0);
-	StaticText1 = new wxStaticText(this, ID_STATICTEXT1, _("procLogLabel"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT1"));
-	sizerMain->Add(StaticText1, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	txtLog = new wxTextCtrl(this, ID_TEXTCTRL1, wxEmptyString, wxDefaultPosition, wxDLG_UNIT(this,wxSize(245,151)), wxTE_MULTILINE|wxTE_READONLY, wxDefaultValidator, _T("ID_TEXTCTRL1"));
-	sizerMain->Add(txtLog, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	sizerInfo = new wxFlexGridSizer(0, 2, 0, 0);
-	sizerInfo->AddGrowableCol(1);
-	stxtPercent = new wxStaticText(this, ID_STATICTEXT2, _("procExecPercent1"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT2"));
-	sizerInfo->Add(stxtPercent, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	stxtTime = new wxStaticText(this, ID_STATICTEXT3, _("Label"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT3"));
-	stxtTime->SetToolTip(_("procPass_Hint"));
-	sizerInfo->Add(stxtTime, 1, wxTOP|wxLEFT|wxRIGHT|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	sizerMain->Add(sizerInfo, 1, wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	gaPercent = new wxGauge(this, ID_GAUGE1, 100, wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_GAUGE1"));
-	sizerMain->Add(gaPercent, 1, wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	FlexGridSizer2 = new wxFlexGridSizer(0, 3, 0, wxDLG_UNIT(this,wxSize(-5,0)).GetWidth());
-	btnStop = new wxButton(this, ID_BUTTON1, _("btnCancel"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON1"));
-	FlexGridSizer2->Add(btnStop, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	btnExit = new wxButton(this, ID_BUTTON2, _("btnExit"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON2"));
-	FlexGridSizer2->Add(btnExit, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(5,0)).GetWidth());
-	sizerMain->Add(FlexGridSizer2, 1, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, wxDLG_UNIT(this,wxSize(0,0)).GetWidth());
-	SetSizer(sizerMain);
-	sizerMain->Fit(this);
-	sizerMain->SetSizeHints(this);
+
+	auto gui = existing_window(this)
+	[
+		vbox(expand | stretch)
+		[
+			text("procLogLabel"),
+			edit(size(250,150) | expand | stretch, ed_multiline | ed_readonly) >> txtLog,
+			hbox(border(0) | expand)
+			[
+				text("procExecPercent1") >> stxtPercent,
+				spring(),
+				text("") >> stxtTime
+			],
+			gauge(100, expand) >> gaPercent
+		],
+		hbox(border(0) | expand)
+		[
+			spring(),
+			button("Cancel") >> btnStop,
+			button("btnExit") >> btnExit
+		]
+	];
+
+	gui.build_gui();
+
+	GetSizer()->Fit(this);
+	GetSizer()->SetSizeHints(this);
 	Center();
 
-	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ProcessDialog::btnStopClick);
-	Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ProcessDialog::btnExitClick);
-	Connect(wxID_ANY,wxEVT_CLOSE_WINDOW,(wxObjectEventFunction)&ProcessDialog::OnClose);
-	//*)
+	btnStop->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnStopClick(event); });
+	btnExit->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnExitClick(event); });
+	this   ->Bind(wxEVT_CLOSE_WINDOW,           [this] (wxCloseEvent&   event) { OnClose(event);      });
 
 	this->parent = frame;
 }
 
-ProcessDialog::~ProcessDialog()
-{
-	//(*Destroy(ProcessDialog)
-	//*)
-}
 
 // ProcessDialog::add_text
 void ProcessDialog::add_text(const wxString & text)
@@ -165,5 +143,9 @@ void ProcessDialog::show_time(int current, int total)
 void ProcessDialog::OnClose(wxCloseEvent& event)
 {
 	if ( !btnExit->IsEnabled() ) event.Veto();
-	else event.Skip();
+	else 
+	{
+		parent->Enable();
+		event.Skip();
+	}
 }

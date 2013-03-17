@@ -100,7 +100,7 @@ DNG4PSFrame::DNG4PSFrame(wxWindow* parent,wxWindowID id) : file_list(new FileLis
 	btnStart          ->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnStartClick(event);           });
 	btnOptions        ->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnOptionsClick(event);         });
 	btnAbout          ->Bind(wxEVT_COMMAND_BUTTON_CLICKED, [this] (wxCommandEvent& event) { btnAboutClick(event);           });
-	Bind                    (wxEVT_CLOSE_WINDOW,           [this] (wxCloseEvent& event)   { OnClose(event);                 });
+	this              ->Bind(wxEVT_CLOSE_WINDOW,           [this] (wxCloseEvent&   event) { OnClose(event);                 });
 
 	startTimer.SetOwner(this);
 	startTimer.Start(30, true);

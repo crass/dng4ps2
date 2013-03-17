@@ -282,5 +282,7 @@ UIElem notebook(const UIElemOptions &options = UIElemOptions(), const UIElem &la
 
 Window page(const wxString &name, const UIElemOptions &options = UIElemOptions(), const UIElem &layout = vbox());
 
+UIElem gauge(int range, const UIElemOptions &options = UIElemOptions());
+
 
 } // namespace gb

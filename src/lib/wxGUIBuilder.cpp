@@ -6,6 +6,7 @@
 #include <wx/listctrl.h>
 #include <wx/notebook.h>
 #include <wx/gauge.h>
+#include <wx/slider.h>
 
 #include "wxGUIBuilder.hpp"
 
@@ -418,74 +419,81 @@ UIElem text(const wxString &text, const UIElemOptions &options)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-uint32_t EditOptions::get_style() const
-{
-	uint32_t result = 0;
-	if (has_flag(ed_multiline)) result |= wxTE_MULTILINE;
-	if (has_flag(ed_readonly))  result |= wxTE_READONLY;
-	if (has_flag(ed_rich))      result |= wxTE_RICH2;
-	if (has_flag(ed_autourl))   result |= wxTE_AUTO_URL;
-	if (has_flag(ed_password))  result |= wxTE_PASSWORD;
-	if (has_flag(ed_left))      result |= wxTE_LEFT;
-	if (has_flag(ed_centre))    result |= wxTE_CENTRE;
-	if (has_flag(ed_right))     result |= wxTE_RIGHT;
-	return result;
-}
-
-UIElem edit(const UIElemOptions &options, const EditOptions &edit_options)
+UIElem edit(const EditOptions &edit_options)
 {
 	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+		uint32_t style = edit_options.get_elem_options().get_style();
+
+		if (edit_options.has_flag(ed_multiline)) style |= wxTE_MULTILINE;
+		if (edit_options.has_flag(ed_readonly))  style |= wxTE_READONLY;
+		if (edit_options.has_flag(ed_rich))      style |= wxTE_RICH2;
+		if (edit_options.has_flag(ed_autourl))   style |= wxTE_AUTO_URL;
+		if (edit_options.has_flag(ed_password))  style |= wxTE_PASSWORD;
+		if (edit_options.has_flag(ed_left))      style |= wxTE_LEFT;
+		if (edit_options.has_flag(ed_centre))    style |= wxTE_CENTRE;
+		if (edit_options.has_flag(ed_right))     style |= wxTE_RIGHT;
+
 		wxTextCtrl *widget = new wxTextCtrl(
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY, 
 			wxEmptyString, 
 			wxDefaultPosition, 
-			get_widget_size(parent, options),
-			options.get_style() | edit_options.get_style()
+			get_widget_size(parent, edit_options.get_elem_options()),
+			style
 		);
-		set_widgets_props(widget, options);
+		set_widgets_props(widget, edit_options.get_elem_options());
 		return widget;
-	}, options);
+	}, edit_options.get_elem_options());
+}
+
+UIElem edit(const UIElemOptions &options = UIElemOptions())
+{
+	return edit(EditOptions(options));
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-uint32_t ListOptions::get_style() const
-{
-	uint32_t result = 0;
-	if (has_flag(l_list))            result |= wxLC_LIST;
-	if (has_flag(l_report))          result |= wxLC_REPORT;
-	if (has_flag(l_virtual))         result |= wxLC_VIRTUAL;
-	if (has_flag(l_icon))            result |= wxLC_ICON;
-	if (has_flag(l_small_icon))      result |= wxLC_SMALL_ICON;
-	if (has_flag(l_align_top))       result |= wxLC_ALIGN_TOP;
-	if (has_flag(l_align_left))      result |= wxLC_ALIGN_LEFT;
-	if (has_flag(l_autoarrange))     result |= wxLC_AUTOARRANGE;
-	if (has_flag(l_edit_labels))     result |= wxLC_EDIT_LABELS;
-	if (has_flag(l_no_header))       result |= wxLC_NO_HEADER;
-	if (has_flag(l_single_sel))      result |= wxLC_SINGLE_SEL;
-	if (has_flag(l_sort_ascending))  result |= wxLC_SORT_ASCENDING;
-	if (has_flag(l_sort_descending)) result |= wxLC_SORT_DESCENDING;
-	if (has_flag(l_hrules))          result |= wxLC_HRULES;
-	if (has_flag(l_vrules))          result |= wxLC_VRULES;
-
-	if (!has_flag(l_list) && !has_flag(l_report) && !has_flag(l_virtual) && !has_flag(l_icon)) result |= wxLC_ICON;
-	return result;
-}
-
-UIElem list(const UIElemOptions &options, const ListOptions& list_options)
+UIElem list(const ListOptions& list_options)
 {
 	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+		uint32_t style = list_options.get_elem_options().get_style();
+
+		if (list_options.has_flag(l_list))            style |= wxLC_LIST;
+		if (list_options.has_flag(l_report))          style |= wxLC_REPORT;
+		if (list_options.has_flag(l_virtual))         style |= wxLC_VIRTUAL;
+		if (list_options.has_flag(l_icon))            style |= wxLC_ICON;
+		if (list_options.has_flag(l_small_icon))      style |= wxLC_SMALL_ICON;
+		if (list_options.has_flag(l_align_top))       style |= wxLC_ALIGN_TOP;
+		if (list_options.has_flag(l_align_left))      style |= wxLC_ALIGN_LEFT;
+		if (list_options.has_flag(l_autoarrange))     style |= wxLC_AUTOARRANGE;
+		if (list_options.has_flag(l_edit_labels))     style |= wxLC_EDIT_LABELS;
+		if (list_options.has_flag(l_no_header))       style |= wxLC_NO_HEADER;
+		if (list_options.has_flag(l_single_sel))      style |= wxLC_SINGLE_SEL;
+		if (list_options.has_flag(l_sort_ascending))  style |= wxLC_SORT_ASCENDING;
+		if (list_options.has_flag(l_sort_descending)) style |= wxLC_SORT_DESCENDING;
+		if (list_options.has_flag(l_hrules))          style |= wxLC_HRULES;
+		if (list_options.has_flag(l_vrules))          style |= wxLC_VRULES;
+
+		if (!list_options.has_flag(l_list)    && 
+			!list_options.has_flag(l_report)  && 
+			!list_options.has_flag(l_virtual) && 
+			!list_options.has_flag(l_icon)) style |= wxLC_ICON;
+
 		wxListCtrl  *widget = new wxListCtrl (
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY, 
 			wxDefaultPosition, 
-			get_widget_size(parent, options),
-			options.get_style() | list_options.get_style()
+			get_widget_size(parent, list_options.get_elem_options()),
+			style
 		);
-		set_widgets_props(widget, options);
+		set_widgets_props(widget, list_options.get_elem_options());
 		return widget;
-	}, options);
+	}, list_options.get_elem_options());
+}
+
+UIElem list(const UIElemOptions &options)
+{
+	return list(ListOptions(options));
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -655,6 +663,24 @@ UIElem gauge(int range, const UIElemOptions &options)
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY,
 			range,
+			wxDefaultPosition, 
+			get_widget_size(parent, options),
+			options.get_style()
+		);
+		set_widgets_props(widget, options);
+		return widget;
+	}, options);
+}
+
+UIElem slider(int min, int max, const UIElemOptions &options)
+{
+	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+		wxSlider* widget = new wxSlider(
+			dynamic_cast<wxWindow*>(parent), 
+			wxID_ANY,
+			0,
+			min,
+			max,
 			wxDefaultPosition, 
 			get_widget_size(parent, options),
 			options.get_style()

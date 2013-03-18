@@ -64,7 +64,7 @@ AboutDialog::AboutDialog(wxWindow* parent,wxWindowID id)
 			hbox()
 			[
 				image(align_top | border(7) | bord_all) >> bmpIcon,
-				edit(size(150, 120) | noborder, ed_multiline | ed_autourl | ed_rich | ed_readonly) >> txtAboutText
+				edit(size(150, 120) | noborder | ed_multiline | ed_autourl | ed_rich | ed_readonly) >> txtAboutText
 			],
 			button_ok("", align_right)
 		]

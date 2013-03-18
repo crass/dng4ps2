@@ -64,7 +64,7 @@ DNG4PSFrame::DNG4PSFrame(wxWindow* parent,wxWindowID id) : file_list(new FileLis
 				button("...", width(15)) >> btnSelectPathToRaw
 			],
 			text("RawFilesList", bord_all_exc_bottom),
-			list(stretch | expand, l_report) >> lstFileList,
+			list(stretch | expand | l_report) >> lstFileList,
 			button("ButtonRescan", align_right) >> btnRescan,
 			text("OutputDir", bord_all_exc_bottom),
 			hbox(expand | border(0))

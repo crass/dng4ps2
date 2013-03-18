@@ -153,26 +153,39 @@ private:
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 template <typename T>
-class Flags
+class ExtraFlagsOptions
 {
 public:
-	explicit Flags(uint32_t bits = 0) : bits_(bits) {}
+	ExtraFlagsOptions(const uint32_t &flags = 0) : flags_(flags) {}
+	explicit ExtraFlagsOptions(const UIElemOptions &elem_options) : elem_options_(elem_options), flags_(0) {}
+	explicit ExtraFlagsOptions(const UIElemOptions &elem_options, uint32_t flags) : elem_options_(elem_options), flags_(flags) {}
 
-	bool has_flag(const Flags &flag) const
-	{
-		return (bits_ & flag.bits_) != 0;
-	}
+	uint32_t get_flags() const { return flags_; }
+	bool has_flag(const ExtraFlagsOptions<T> &flag) const { return (flags_ & flag.flags_) != 0; }
+	const UIElemOptions& get_elem_options() const { return elem_options_; }
 
-	T operator | (const T &other) const
-	{
-		return T(bits_ | other.bits_);
-	}
-
-private:
-	uint32_t bits_;
+protected:
+	uint32_t flags_;
+	UIElemOptions elem_options_;
 };
 
-UIElem item(const wxString &text);
+template <typename T>
+ExtraFlagsOptions<T> operator | (const ExtraFlagsOptions<T> &opt1, const ExtraFlagsOptions<T> &opt2)
+{
+	return ExtraFlagsOptions<T>(opt1.get_elem_options() | opt2.get_elem_options(), opt1.get_flags() | opt2.get_flags());
+}
+
+template <typename T>
+ExtraFlagsOptions<T> operator | (const UIElemOptions &opt1, const ExtraFlagsOptions<T> &opt2)
+{
+	return ExtraFlagsOptions<T>(opt1 | opt2.get_elem_options(), opt2.get_flags());
+}
+
+template <typename T>
+ExtraFlagsOptions<T> operator | (const ExtraFlagsOptions<T> &opt1, const UIElemOptions &opt2)
+{
+	return ExtraFlagsOptions<T>(opt1.get_elem_options() | opt2, opt1.get_flags());
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -199,6 +212,7 @@ UIElem grid(int cols, int rows = 0, const UIElemOptions &options = expand, const
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+UIElem item(const wxString &text);
 
 UIElem hbox(const UIElemOptions &options = expand);
 UIElem vbox(const UIElemOptions &options = expand);
@@ -211,55 +225,48 @@ UIElem hline(const UIElemOptions &options = expand);
 UIElem spacer(int size = 0);
 UIElem spring();
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 UIElem text(const wxString &text, const UIElemOptions &options = UIElemOptions());
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class EditOptions : public Flags<EditOptions>
-{
-public:
-	explicit EditOptions(uint32_t bits = 0) : Flags<EditOptions>(bits) {}
-	uint32_t get_style() const;
-};
+struct EditOptionsWrapper{}; typedef ExtraFlagsOptions<EditOptionsWrapper> EditOptions;
 
-const EditOptions ed_multiline = EditOptions(0x00000001);
-const EditOptions ed_readonly  = EditOptions(0x00000002);
-const EditOptions ed_rich      = EditOptions(0x00000004);
-const EditOptions ed_autourl   = EditOptions(0x00000008);
-const EditOptions ed_password  = EditOptions(0x00000010);
-const EditOptions ed_left      = EditOptions(0x00000020);
-const EditOptions ed_centre    = EditOptions(0x00000040);
-const EditOptions ed_right     = EditOptions(0x00000080);
+const auto ed_multiline = EditOptions(0x00000001);
+const auto ed_readonly  = EditOptions(0x00000002);
+const auto ed_rich      = EditOptions(0x00000004);
+const auto ed_autourl   = EditOptions(0x00000008);
+const auto ed_password  = EditOptions(0x00000010);
+const auto ed_left      = EditOptions(0x00000020);
+const auto ed_centre    = EditOptions(0x00000040);
+const auto ed_right     = EditOptions(0x00000080);
 
-UIElem edit(const UIElemOptions &options = UIElemOptions(), const EditOptions &edit_options = EditOptions());
+UIElem edit(const EditOptions &edit_options = EditOptions());
+UIElem edit(const UIElemOptions &options);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class ListOptions : public Flags<ListOptions>
-{
-public:
-	explicit ListOptions(uint32_t bits = 0) : Flags<ListOptions>(bits) {}
-	uint32_t get_style() const;
-};
+struct ListOptionsWrapper{}; typedef ExtraFlagsOptions<ListOptionsWrapper> ListOptions;
 
-const ListOptions l_list            = ListOptions(0x00000001);
-const ListOptions l_report          = ListOptions(0x00000002);
-const ListOptions l_virtual         = ListOptions(0x00000004);
-const ListOptions l_icon            = ListOptions(0x00000008);
-const ListOptions l_small_icon      = ListOptions(0x00000010);
-const ListOptions l_align_top       = ListOptions(0x00000020);
-const ListOptions l_align_left      = ListOptions(0x00000040);
-const ListOptions l_autoarrange     = ListOptions(0x00000080);
-const ListOptions l_edit_labels     = ListOptions(0x00000100);
-const ListOptions l_no_header       = ListOptions(0x00000200);
-const ListOptions l_single_sel      = ListOptions(0x00000400);
-const ListOptions l_sort_ascending  = ListOptions(0x00000800);
-const ListOptions l_sort_descending = ListOptions(0x00001000);
-const ListOptions l_hrules          = ListOptions(0x00002000);
-const ListOptions l_vrules          = ListOptions(0x00004000);
+const auto l_list            = ListOptions(0x00000001);
+const auto l_report          = ListOptions(0x00000002);
+const auto l_virtual         = ListOptions(0x00000004);
+const auto l_icon            = ListOptions(0x00000008);
+const auto l_small_icon      = ListOptions(0x00000010);
+const auto l_align_top       = ListOptions(0x00000020);
+const auto l_align_left      = ListOptions(0x00000040);
+const auto l_autoarrange     = ListOptions(0x00000080);
+const auto l_edit_labels     = ListOptions(0x00000100);
+const auto l_no_header       = ListOptions(0x00000200);
+const auto l_single_sel      = ListOptions(0x00000400);
+const auto l_sort_ascending  = ListOptions(0x00000800);
+const auto l_sort_descending = ListOptions(0x00001000);
+const auto l_hrules          = ListOptions(0x00002000);
+const auto l_vrules          = ListOptions(0x00004000);
 
-UIElem list(const UIElemOptions &options = UIElemOptions(), const ListOptions& list_options = ListOptions());
+UIElem list(const ListOptions& list_options = ListOptions());
+UIElem list(const UIElemOptions &options);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -268,21 +275,43 @@ UIElem button(const wxString &text, const UIElemOptions &options = UIElemOptions
 UIElem button_ok(const wxString &text = wxEmptyString, const UIElemOptions &options = UIElemOptions());
 UIElem button_cancel(const wxString &text = wxEmptyString, const UIElemOptions &options = UIElemOptions());
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 UIElem check_box(const wxString &text, const UIElemOptions &options = UIElemOptions());
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 UIElem choice(const UIElemOptions &options = UIElemOptions());
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 UIElem dir_ctrl(const UIElemOptions &options = UIElemOptions(), bool dirs_only = true);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 UIElem image(const UIElemOptions &options = UIElemOptions());
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 Window scroll_box(const UIElemOptions &options = UIElemOptions(), const UIElem &layout = vbox());
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 UIElem notebook(const UIElemOptions &options = UIElemOptions(), const UIElem &layout = vbox());
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 Window page(const wxString &name, const UIElemOptions &options = UIElemOptions(), const UIElem &layout = vbox());
 
-UIElem gauge(int range, const UIElemOptions &options = UIElemOptions());
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+UIElem gauge(int range, const UIElemOptions &options = UIElemOptions()); // TODO: gauge options
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+UIElem slider(int min, int max, const UIElemOptions &options = UIElemOptions()); // TODO: slider options
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 } // namespace gb

@@ -38,7 +38,7 @@ ProcessDialog::ProcessDialog(wxWindow* parent, wxFrame * frame, wxWindowID id)
 		vbox(expand | stretch)
 		[
 			text("procLogLabel"),
-			edit(size(250,150) | expand | stretch, ed_multiline | ed_readonly) >> txtLog,
+			edit(size(250,150) | expand | stretch | ed_multiline | ed_readonly) >> txtLog,
 			hbox(border(0) | expand)
 			[
 				text("procExecPercent1") >> stxtPercent,

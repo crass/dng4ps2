@@ -24,6 +24,7 @@
 #include <wx/protocol/http.h>
 #include <wx/settings.h>
 #include <wx/sizer.h>
+#include <wx/slider.h>
 #include <wx/stattext.h>
 #include <wx/stdpaths.h>
 #include <wx/string.h>

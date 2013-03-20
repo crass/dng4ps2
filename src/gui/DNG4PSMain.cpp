@@ -61,7 +61,7 @@ DNG4PSFrame::DNG4PSFrame(wxWindow* parent,wxWindowID id) : file_list(new FileLis
 			hbox(expand | border(0))
 			[
 				edit(stretch) >> txtPathToRaw,
-				button("...", width(15)) >> btnSelectPathToRaw
+				button("...", bu_exactfit) >> btnSelectPathToRaw
 			],
 			text("RawFilesList", bord_all_exc_bottom),
 			list(stretch | expand | l_report) >> lstFileList,
@@ -70,7 +70,7 @@ DNG4PSFrame::DNG4PSFrame(wxWindow* parent,wxWindowID id) : file_list(new FileLis
 			hbox(expand | border(0))
 			[
 				edit(stretch) >> txtOutputDir,
-				button("...", width(15)) >> btnSelectOutputDir
+				button("...", bu_exactfit) >> btnSelectOutputDir
 			],
 			text("ActionsLabel", bord_all_exc_bottom),
 			hbox(expand | border(0))

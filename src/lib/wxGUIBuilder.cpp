@@ -7,6 +7,9 @@
 #include <wx/notebook.h>
 #include <wx/gauge.h>
 #include <wx/slider.h>
+#include <wx/listbox.h>
+#include <wx/radiobut.h>
+#include <wx/spinctrl.h>
 
 #include "wxGUIBuilder.hpp"
 
@@ -89,10 +92,10 @@ UIElem& UIElem::operator [] (const UIElems &elems)
 	return *this;
 }
 
-wxObject* UIElem::build(wxObject *parent, wxSizer *sizer) const
+wxObject* UIElem::build(int default_border, wxObject *parent, wxSizer *sizer) const
 {
 	if (create_fun_ == nullptr) return nullptr;
-	return create_fun_(parent, sizer, sub_items_);
+	return create_fun_(default_border, parent, sizer, sub_items_);
 }
 
 UIElems operator , (UIElem &elem1, UIElem &elem2)
@@ -135,7 +138,7 @@ UIElem Window::operator [] (const UIElems &elems)
 
 UIElem item(const wxString &text)
 {
-	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+	return UIElem([=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		return new Item(text, wxNullBitmap);
 	}, UIElemOptions());
 }
@@ -176,11 +179,11 @@ int get_sizer_item_proportion(const UIElemOptions &options)
 	return options.has_flag(stretch) ? 1 : 0;
 }
 
-void process_sizer_items(wxObject *parent, wxSizer *sizer_obj, const UIElems &items)
+void process_sizer_items(int default_border, wxObject *parent, wxSizer *sizer_obj, const UIElems &items)
 {
 	for (auto &item : items)
 	{
-		wxObject *sub_item_obj = item.build(parent, sizer_obj);
+		wxObject *sub_item_obj = item.build(default_border, parent, sizer_obj);
 		wxWindow *parent_window = dynamic_cast<wxWindow*>(parent);
 		if (sub_item_obj == nullptr)
 		{
@@ -198,7 +201,7 @@ void process_sizer_items(wxObject *parent, wxSizer *sizer_obj, const UIElems &it
 			wxSizer *sub_item_sizer = dynamic_cast<wxSizer*>(sub_item_obj);
 			assert(sub_item_window || sub_item_sizer);
 			uint32_t flags = get_sizer_item_flags(item.get_options());
-			int border = parent_window->ConvertDialogToPixels(wxSize(item.get_options().get_border(), 0)).x;
+			int border = parent_window->ConvertDialogToPixels(wxSize(item.get_options().get_border(default_border), 0)).x;
 			int propoption = get_sizer_item_proportion(item.get_options());
 			if (sub_item_window) sizer_obj->Add(sub_item_window, propoption, flags, border);
 			if (sub_item_sizer) sizer_obj->Add(sub_item_sizer, propoption, flags, border);
@@ -253,16 +256,14 @@ GridOptions growable_cols(int col1, int col2, int col3, int col4, int col5)
 
 UIElem grid(int cols, int rows, const UIElemOptions &options, const GridOptions &grid_options, int hgap, int vgap)
 {
-	auto create_fun = [=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* 
+	auto create_fun = [=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* 
 	{
 		wxWindow *parent_window = dynamic_cast<wxWindow*>(parent);
 		wxPoint gap_pt = parent_window->ConvertDialogToPixels(wxPoint(hgap, vgap));
 		wxFlexGridSizer *sizer_obj = new wxFlexGridSizer(rows, cols, gap_pt.x, gap_pt.y);
-		sizer_obj->SetFlexibleDirection(wxBOTH);
-		sizer_obj->SetNonFlexibleGrowMode(wxFLEX_GROWMODE_SPECIFIED);
 		for (int col : grid_options.get_growable_cols()) sizer_obj->AddGrowableCol(col);
 		for (int row : grid_options.get_growable_rows()) sizer_obj->AddGrowableRow(row);
-		process_sizer_items(parent, sizer_obj, items);
+		process_sizer_items(default_border, parent, sizer_obj, items);
 		if (sizer == nullptr) parent_window->SetSizer(sizer_obj);
 		return sizer_obj;
 	};
@@ -271,11 +272,11 @@ UIElem grid(int cols, int rows, const UIElemOptions &options, const GridOptions 
 
 UIElem box(const UIElemOptions &options, wxOrientation orient)
 {
-	auto create_fun = [=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* 
+	auto create_fun = [=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* 
 	{
 		wxWindow *parent_window = dynamic_cast<wxWindow*>(parent);
 		wxBoxSizer *sizer_obj = new wxBoxSizer(orient);
-		process_sizer_items(parent, sizer_obj, items);
+		process_sizer_items(default_border, parent, sizer_obj, items);
 		if (sizer == nullptr) parent_window->SetSizer(sizer_obj);
 		return sizer_obj;
 	};
@@ -294,13 +295,13 @@ UIElem vbox(const UIElemOptions &options)
 
 UIElem dlg_buttons(const UIElemOptions &options)
 {
-	auto create_fun = [=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* 
+	auto create_fun = [=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* 
 	{
 		wxWindow *parent_window = dynamic_cast<wxWindow*>(parent);
 		wxStdDialogButtonSizer *sizer_obj = new wxStdDialogButtonSizer();
 		for (auto &item : items)
 		{
-			wxButton *btn = dynamic_cast<wxButton*>(item.build(parent, sizer_obj));
+			wxButton *btn = dynamic_cast<wxButton*>(item.build(default_border, parent, sizer_obj));
 			assert(btn);
 			sizer_obj->AddButton(btn);
 		}
@@ -349,11 +350,11 @@ void set_widgets_props(wxWindow *widget, const UIElemOptions &options)
 	}
 }
 
-void build_window_child_items(wxWindow *window, wxSizer *sizer, const UIElems &items, bool do_layout)
+void build_window_child_items(int default_border, wxWindow *window, wxSizer *sizer, const UIElems &items, bool do_layout)
 {
 	if (items.empty()) return;
 	assert(items.size() == 1);
-	wxSizer* internal_sizer = dynamic_cast<wxSizer*>(items[0].build(window, sizer));
+	wxSizer* internal_sizer = dynamic_cast<wxSizer*>(items[0].build(default_border, window, sizer));
 	assert(internal_sizer);
 
 	if (do_layout) window->SetSizerAndFit(internal_sizer);
@@ -364,11 +365,11 @@ void build_window_child_items(wxWindow *window, wxSizer *sizer, const UIElems &i
 
 Window existing_window(wxWindow *window, const UIElemOptions &options, const UIElem &layout)
 {
-	auto create_fun = [=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+	auto create_fun = [=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		set_widgets_props(window, options);
 		if (items.empty()) return window;
 		assert(items.size() == 1);
-		items[0].build(window, sizer);
+		items[0].build(default_border, window, sizer);
 		window->SetSize(cvt_dialog_size_into_pixels_size(window, options.get_width(), options.get_height()));
 		return window;
 	};
@@ -380,7 +381,7 @@ Window existing_window(wxWindow *window, const UIElemOptions &options, const UIE
 
 UIElem hline(const UIElemOptions &options)
 {
-	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+	return UIElem([=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		return new wxStaticLine(
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY, 
@@ -403,7 +404,7 @@ UIElem spring()
 
 UIElem text(const wxString &text, const UIElemOptions &options)
 {
-	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+	return UIElem([=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		wxStaticText *widget = new wxStaticText(
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY, 
@@ -421,7 +422,7 @@ UIElem text(const wxString &text, const UIElemOptions &options)
 
 UIElem edit(const EditOptions &edit_options)
 {
-	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+	return UIElem([=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		uint32_t style = edit_options.get_elem_options().get_style();
 
 		if (edit_options.has_flag(ed_multiline)) style |= wxTE_MULTILINE;
@@ -455,7 +456,7 @@ UIElem edit(const UIElemOptions &options = UIElemOptions())
 
 UIElem list(const ListOptions& list_options)
 {
-	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+	return UIElem([=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		uint32_t style = list_options.get_elem_options().get_style();
 
 		if (list_options.has_flag(l_list))            style |= wxLC_LIST;
@@ -479,7 +480,7 @@ UIElem list(const ListOptions& list_options)
 			!list_options.has_flag(l_virtual) && 
 			!list_options.has_flag(l_icon)) style |= wxLC_ICON;
 
-		wxListCtrl  *widget = new wxListCtrl (
+		wxListCtrl *widget = new wxListCtrl (
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY, 
 			wxDefaultPosition, 
@@ -498,41 +499,57 @@ UIElem list(const UIElemOptions &options)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-UIElem button(const wxString &text, int id, bool is_default, const UIElemOptions &options)
+UIElem button(const wxString &text, int id, bool is_default, const ButtonOptions &options)
 {
-	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+	return UIElem([=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+		uint32_t style = options.get_elem_options().get_style();
+
+		if (options.has_flag(bu_left))     style |= wxBU_LEFT;
+		if (options.has_flag(bu_right))    style |= wxBU_RIGHT;
+		if (options.has_flag(bu_top))      style |= wxBU_TOP;
+		if (options.has_flag(bu_bottom))   style |= wxBU_BOTTOM;
+		if (options.has_flag(bu_exactfit)) style |= wxBU_EXACTFIT;
+		if (options.has_flag(bu_notext))   style |= wxBU_NOTEXT;
+
 		wxButton* widget = new wxButton(
 			dynamic_cast<wxWindow*>(parent), 
 			id, 
 			_(text), 
 			wxDefaultPosition, 
-			get_widget_size(parent, options),
-			options.get_style()
+			get_widget_size(parent, options.get_elem_options()),
+			style
 		);
 		if (is_default) widget->SetDefault();
-		set_widgets_props(widget, options);
+		set_widgets_props(widget, options.get_elem_options());
 		return widget;
-	}, options);
+	}, options.get_elem_options());
 }
 
 UIElem button(const wxString &text, const UIElemOptions &options)
 {
-	return button(text, wxID_ANY, false, options);
+	return button(text, wxID_ANY, false, ButtonOptions(options));
 }
 
 UIElem button_ok(const wxString &text, const UIElemOptions &options)
 {
-	return button(text, wxID_OK, true, options);
+	return button(text, wxID_OK, true, ButtonOptions(options));
+}
+
+UIElem button(const wxString &text, const ButtonOptions &options)
+{
+	return button(text, wxID_ANY, false, options);
 }
 
 UIElem button_cancel(const wxString &text, const UIElemOptions &options)
 {
-	return button(text, wxID_CANCEL, false, options);
+	return button(text, wxID_CANCEL, false, ButtonOptions(options));
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 UIElem check_box(const wxString &text, const UIElemOptions &options)
 {
-	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+	return UIElem([=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		wxCheckBox* widget = new wxCheckBox(
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY,
@@ -546,9 +563,11 @@ UIElem check_box(const wxString &text, const UIElemOptions &options)
 	}, options);
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 UIElem choice(const UIElemOptions &options)
 {
-	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+	return UIElem([=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		wxChoice* widget = new wxChoice(
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY,
@@ -559,7 +578,7 @@ UIElem choice(const UIElemOptions &options)
 		set_widgets_props(widget, options);
 		for (auto &item : items)
 		{
-			const Item *obj = dynamic_cast<const Item*>(item.build());
+			const Item *obj = dynamic_cast<const Item*>(item.build(default_border));
 			assert(obj);
 			widget->Append(_(obj->get_text()));
 			delete obj;
@@ -571,7 +590,7 @@ UIElem choice(const UIElemOptions &options)
 
 UIElem dir_ctrl(const UIElemOptions &options, bool dirs_only)
 {
-	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+	return UIElem([=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		wxGenericDirCtrl* widget = new wxGenericDirCtrl(
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY,
@@ -587,7 +606,7 @@ UIElem dir_ctrl(const UIElemOptions &options, bool dirs_only)
 
 UIElem image(const UIElemOptions &options)
 {
-	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+	return UIElem([=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		wxStaticBitmap* widget = new wxStaticBitmap(
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY,
@@ -603,7 +622,7 @@ UIElem image(const UIElemOptions &options)
 
 Window scroll_box(const UIElemOptions &options, const UIElem &layout)
 {
-	auto create_fun = [=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+	auto create_fun = [=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		wxScrolledWindow* widget = new wxScrolledWindow(
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY,
@@ -613,7 +632,7 @@ Window scroll_box(const UIElemOptions &options, const UIElem &layout)
 		);
 		set_widgets_props(widget, options);
 		widget->ShowScrollbars(wxSHOW_SB_NEVER, wxSHOW_SB_DEFAULT);
-		build_window_child_items(widget, sizer, items, false);
+		build_window_child_items(default_border, widget, sizer, items, false);
 		return widget;
 	};
 	return Window(create_fun, layout, options);
@@ -621,7 +640,7 @@ Window scroll_box(const UIElemOptions &options, const UIElem &layout)
 
 UIElem notebook(const UIElemOptions &options, const UIElem &layout)
 {
-	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+	return UIElem([=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		wxNotebook* widget = new wxNotebook(
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY,
@@ -632,7 +651,7 @@ UIElem notebook(const UIElemOptions &options, const UIElem &layout)
 		set_widgets_props(widget, options);
 		for (auto &page : items)
 		{
-			wxWindow *page_ctrl = dynamic_cast<wxWindow*>(page.build(widget));
+			wxWindow *page_ctrl = dynamic_cast<wxWindow*>(page.build(default_border, widget));
 			widget->AddPage(page_ctrl, _(page.get_name()));
 		}
 		return widget;
@@ -641,7 +660,7 @@ UIElem notebook(const UIElemOptions &options, const UIElem &layout)
 
 Window page(const wxString &name, const UIElemOptions &options, const UIElem &layout)
 {
-	auto create_fun = [=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+	auto create_fun = [=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		wxPanel* widget = new wxPanel(
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY,
@@ -650,7 +669,7 @@ Window page(const wxString &name, const UIElemOptions &options, const UIElem &la
 			options.get_style()
 		);
 		set_widgets_props(widget, options);
-		build_window_child_items(widget, sizer, items, true);
+		build_window_child_items(default_border, widget, sizer, items, true);
 		return widget;
 	};
 	return Window(create_fun, layout, options, name);
@@ -658,7 +677,7 @@ Window page(const wxString &name, const UIElemOptions &options, const UIElem &la
 
 UIElem gauge(int range, const UIElemOptions &options)
 {
-	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+	return UIElem([=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		wxGauge* widget = new wxGauge(
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY,
@@ -674,7 +693,7 @@ UIElem gauge(int range, const UIElemOptions &options)
 
 UIElem slider(int min, int max, const UIElemOptions &options)
 {
-	return UIElem([=] (wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+	return UIElem([=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
 		wxSlider* widget = new wxSlider(
 			dynamic_cast<wxWindow*>(parent), 
 			wxID_ANY,
@@ -689,5 +708,98 @@ UIElem slider(int min, int max, const UIElemOptions &options)
 		return widget;
 	}, options);
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+UIElem listbox(const ListboxOptions &options)
+{
+	return UIElem([=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+		uint32_t style = options.get_elem_options().get_style();
+
+		if (options.has_flag(lb_single))    style |= wxLB_SINGLE;
+		if (options.has_flag(lb_multiple))  style |= wxLB_MULTIPLE;
+		if (options.has_flag(lb_extended))  style |= wxLB_EXTENDED;
+		if (options.has_flag(lb_hscroll))   style |= wxLB_HSCROLL;
+		if (options.has_flag(lb_always_sb)) style |= wxLB_ALWAYS_SB;
+		if (options.has_flag(lb_needed_sb)) style |= wxLB_NEEDED_SB;
+		if (options.has_flag(lb_no_sb))     style |= wxLB_NO_SB;
+		if (options.has_flag(lb_sort))      style |= wxLB_SORT;
+
+		wxListBox *widget = new wxListBox(
+			dynamic_cast<wxWindow*>(parent), 
+			wxID_ANY, 
+			wxDefaultPosition, 
+			get_widget_size(parent, options.get_elem_options()),
+			style
+		);
+		set_widgets_props(widget, options.get_elem_options());
+		return widget;
+	}, options.get_elem_options());
+}
+
+UIElem listbox(const UIElemOptions &options)
+{
+	return listbox(ListboxOptions(options));
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+UIElem radio(const wxString &text, bool group_start, const UIElemOptions &options)
+{
+	return UIElem([=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+		uint32_t style = options.get_style();
+
+		if (group_start) style |= wxRB_GROUP;
+
+		wxRadioButton *widget = new wxRadioButton(
+			dynamic_cast<wxWindow*>(parent), 
+			wxID_ANY, 
+			text,
+			wxDefaultPosition, 
+			get_widget_size(parent, options),
+			style
+		);
+		set_widgets_props(widget, options);
+		return widget;
+	}, options);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+UIElem spin(int min, int max, const SpinOptions &options)
+{
+	return UIElem([=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* {
+		uint32_t style = options.get_elem_options().get_style();
+
+		if (options.has_flag(sp_arrow_keys))    style |= wxSP_ARROW_KEYS;
+		if (options.has_flag(sp_wrap))          style |= wxSP_WRAP;
+		if (options.has_flag(sp_process_enter)) style |= wxTE_PROCESS_ENTER;
+		if (options.has_flag(sp_align_left))    style |= wxALIGN_LEFT;
+		if (options.has_flag(sp_align_centre))  style |= wxALIGN_CENTRE;
+		if (options.has_flag(sp_align_right))   style |= wxALIGN_RIGHT;
+
+		wxSpinCtrl *widget = new wxSpinCtrl(
+			dynamic_cast<wxWindow*>(parent), 
+			wxID_ANY, 
+			wxEmptyString,
+			wxDefaultPosition, 
+			get_widget_size(parent, options.get_elem_options()),
+			style,
+			min,
+			max,
+			min
+		);
+		set_widgets_props(widget, options.get_elem_options());
+		return widget;
+	}, options.get_elem_options());
+}
+
+UIElem spin(int min, int max, const UIElemOptions &options)
+{
+	return spin(min, max, SpinOptions(options));
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 } // namespace gb

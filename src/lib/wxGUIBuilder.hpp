@@ -16,8 +16,7 @@ namespace gb {
 class UIElem; typedef std::vector<UIElem> UIElems;
 class Layout;
 
-typedef std::function <wxObject* (wxObject *parent, wxSizer *sizer, const UIElems &items)> CreateWidgetFun;
-
+typedef std::function <wxObject* (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items)> CreateWidgetFun;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -32,7 +31,7 @@ public:
 	{}
 
 	bool has_flag(const UIElemOptions &flag) const { return (flags_ &  flag.flags_) != 0; }
-	int get_border() const { return (border_  == -1) ? 2 : border_; }
+	int get_border(int default_value) const { return (border_  == -1) ? default_value : border_; }
 	int get_width() const { return width_; }
 	int get_height() const { return height_; }
 
@@ -93,7 +92,7 @@ public:
 	template <typename T> UIElem& operator >> (T & var);
 	void set_item(const UIElem &item);
 	void set_items(const UIElems &items);
-	wxObject* build(wxObject *parent = nullptr, wxSizer *sizer = nullptr) const;
+	wxObject* build(int default_border = 2, wxObject *parent = nullptr, wxSizer *sizer = nullptr) const;
 	wxString get_name() const { return name_; }
 
 	const UIElemOptions& get_options() const { return options_; }
@@ -114,9 +113,9 @@ UIElem& UIElem::operator >> (T & var)
 { 
 	auto old_create_object_fun = create_fun_;
 	auto *var_ptr = &var;
-	create_fun_ = [=] (wxObject *parent, wxSizer *sizer, const UIElems &items) 
+	create_fun_ = [=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) 
 	{
-		auto obj = old_create_object_fun(parent, sizer, items);
+		auto obj = old_create_object_fun(default_border, parent, sizer, items);
 		*var_ptr = dynamic_cast<T>(obj);
 		assert(*var_ptr);
 		return obj;
@@ -270,8 +269,19 @@ UIElem list(const UIElemOptions &options);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-UIElem button(const wxString &text, int id, bool is_default = false, const UIElemOptions &options = UIElemOptions());
-UIElem button(const wxString &text, const UIElemOptions &options = UIElemOptions());
+struct ButtonOptionsWrapper{}; typedef ExtraFlagsOptions<ButtonOptionsWrapper> ButtonOptions;
+
+auto const bu_left     = ButtonOptions(0x00000001);
+auto const bu_right    = ButtonOptions(0x00000002);
+auto const bu_top      = ButtonOptions(0x00000004);
+auto const bu_bottom   = ButtonOptions(0x00000008);
+auto const bu_exactfit = ButtonOptions(0x00000010);
+auto const bu_notext   = ButtonOptions(0x00000020);
+
+UIElem button(const wxString &text, int id, bool is_default = false, const ButtonOptions &options = ButtonOptions());
+UIElem button(const wxString &text, const ButtonOptions &options = ButtonOptions());
+UIElem button(const wxString &text, const UIElemOptions &options);
+
 UIElem button_ok(const wxString &text = wxEmptyString, const UIElemOptions &options = UIElemOptions());
 UIElem button_cancel(const wxString &text = wxEmptyString, const UIElemOptions &options = UIElemOptions());
 
@@ -313,5 +323,36 @@ UIElem slider(int min, int max, const UIElemOptions &options = UIElemOptions());
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+struct ListboxOptionsWrapper{}; typedef ExtraFlagsOptions<ListboxOptionsWrapper> ListboxOptions;
+
+const auto lb_single    = ListboxOptions(0x00000001);
+const auto lb_multiple  = ListboxOptions(0x00000002);
+const auto lb_extended  = ListboxOptions(0x00000004);
+const auto lb_hscroll   = ListboxOptions(0x00000008);
+const auto lb_always_sb = ListboxOptions(0x00000010);
+const auto lb_needed_sb = ListboxOptions(0x00000020);
+const auto lb_no_sb     = ListboxOptions(0x00000040);
+const auto lb_sort      = ListboxOptions(0x00000080);
+
+UIElem listbox(const ListboxOptions &options = ListboxOptions());
+UIElem listbox(const UIElemOptions &options);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+UIElem radio(const wxString &text, bool group_start = false, const UIElemOptions &options = UIElemOptions());
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+struct SpinOptionsWrapper{}; typedef ExtraFlagsOptions<SpinOptionsWrapper> SpinOptions;
+
+const auto sp_arrow_keys    = SpinOptions(0x0001);
+const auto sp_wrap          = SpinOptions(0x0002);
+const auto sp_process_enter	= SpinOptions(0x0004);
+const auto sp_align_left	= SpinOptions(0x0008);
+const auto sp_align_centre	= SpinOptions(0x0010);
+const auto sp_align_right	= SpinOptions(0x0020);
+
+UIElem spin(int min, int max, const SpinOptions &options = SpinOptions());
+UIElem spin(int min, int max, const UIElemOptions &options);
 
 } // namespace gb

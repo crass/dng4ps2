@@ -309,7 +309,6 @@
     <ClCompile Include="external_libs\xmp_sdk\XMPCore\XMPUtils.cpp">
       <Filter>external_libs\xmp_sdk</Filter>
     </ClCompile>
-    <ClCompile Include="CamCalibrFrame.cpp" />
     <ClCompile Include="CameraOpts.cpp" />
     <ClCompile Include="DNG4PSApp.cpp" />
     <ClCompile Include="FileList.cpp" />
@@ -339,6 +338,9 @@
       <Filter>gui</Filter>
     </ClCompile>
     <ClCompile Include="gui\ScanProgressWin.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\CamCalibrFrame.cpp">
       <Filter>gui</Filter>
     </ClCompile>
   </ItemGroup>
@@ -375,7 +377,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CamCalibrFrame.h" />
     <ClInclude Include="CameraOpts.h" />
     <ClInclude Include="DNG4PSApp.h" />
     <ClInclude Include="Exception.hpp" />
@@ -407,6 +408,9 @@
       <Filter>gui</Filter>
     </ClInclude>
     <ClInclude Include="gui\ScanProgressWin.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\CamCalibrFrame.h">
       <Filter>gui</Filter>
     </ClInclude>
   </ItemGroup>

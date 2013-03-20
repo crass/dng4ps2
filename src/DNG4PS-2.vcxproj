@@ -473,11 +473,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="CamCalibrFrame.cpp" />
     <ClCompile Include="CameraOpts.cpp" />
     <ClCompile Include="DNG4PSApp.cpp" />
     <ClCompile Include="FileList.cpp" />
     <ClCompile Include="gui\AboutDialog.cpp" />
+    <ClCompile Include="gui\CamCalibrFrame.cpp" />
     <ClCompile Include="gui\DNG4PSMain.cpp" />
     <ClCompile Include="gui\FilesPathDialog.cpp" />
     <ClCompile Include="gui\NewFolderDialog.cpp" />
@@ -509,12 +509,12 @@
     <None Include="langs\zh.po" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CamCalibrFrame.h" />
     <ClInclude Include="CameraOpts.h" />
     <ClInclude Include="DNG4PSApp.h" />
     <ClInclude Include="Exception.hpp" />
     <ClInclude Include="FileList.h" />
     <ClInclude Include="gui\AboutDialog.h" />
+    <ClInclude Include="gui\CamCalibrFrame.h" />
     <ClInclude Include="gui\DNG4PSMain.h" />
     <ClInclude Include="gui\FilesPathDialog.h" />
     <ClInclude Include="gui\NewFolderDialog.h" />

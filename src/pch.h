@@ -25,6 +25,8 @@
 #include <wx/settings.h>
 #include <wx/sizer.h>
 #include <wx/slider.h>
+#include <wx/spinctrl.h>
+#include <wx/statline.h>
 #include <wx/stattext.h>
 #include <wx/stdpaths.h>
 #include <wx/string.h>

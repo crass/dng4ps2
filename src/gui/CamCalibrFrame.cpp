@@ -154,7 +154,7 @@ CamCalibrFrame::CamCalibrFrame(const CameraData &camera, wxWindow* parent) : cam
 		]
 	];
 
-	gui.build(1);
+	gui.build(BuildOptions(1));
 
 	btnSaveAreas->Disable();
 	btnLoad->Disable();

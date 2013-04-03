@@ -16,7 +16,9 @@ namespace gb {
 class UIElem; typedef std::vector<UIElem> UIElems;
 class Layout;
 
-typedef std::function <wxObject* (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items)> CreateWidgetFun;
+class BuildOptions;
+
+typedef std::function <wxObject* (const BuildOptions &build_obptions, wxObject *parent, wxSizer *sizer, const UIElems &items)> CreateWidgetFun;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -77,6 +79,18 @@ UIElemOptions width(int value);
 UIElemOptions height(int value);
 UIElemOptions size(int width, int height);
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class BuildOptions
+{
+public:
+	explicit BuildOptions(int default_border = 2) : default_border_(default_border) {}
+
+	int get_default_border() const { return default_border_; }
+
+private:
+	int default_border_;
+};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -92,7 +106,7 @@ public:
 	template <typename T> UIElem& operator >> (T & var);
 	void set_item(const UIElem &item);
 	void set_items(const UIElems &items);
-	wxObject* build(int default_border = 2, wxObject *parent = nullptr, wxSizer *sizer = nullptr) const;
+	wxObject* build(const BuildOptions &build_options = BuildOptions(), wxObject *parent = nullptr, wxSizer *sizer = nullptr) const;
 	wxString get_name() const { return name_; }
 
 	const UIElemOptions& get_options() const { return options_; }
@@ -113,9 +127,9 @@ UIElem& UIElem::operator >> (T & var)
 { 
 	auto old_create_object_fun = create_fun_;
 	auto *var_ptr = &var;
-	create_fun_ = [=] (int default_border, wxObject *parent, wxSizer *sizer, const UIElems &items) 
+	create_fun_ = [=] (const BuildOptions &build_options, wxObject *parent, wxSizer *sizer, const UIElems &items) 
 	{
-		auto obj = old_create_object_fun(default_border, parent, sizer, items);
+		auto obj = old_create_object_fun(build_options, parent, sizer, items);
 		*var_ptr = dynamic_cast<T>(obj);
 		assert(*var_ptr);
 		return obj;

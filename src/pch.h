@@ -43,6 +43,7 @@
 #include <vector>
 #include <map>
 #include <fstream>
+#include <memory>
 
 // misc
 #include <stdlib.h>

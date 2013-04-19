@@ -52,7 +52,6 @@
 #include "exif-loader.h"
 #include "exif-tag.h"
 #include "exif-utils.h"
-#include "exif-mnote-data-priv.h"
 #include "exif-mnote-data.h"
 
 #include "Exception.hpp"

@@ -60,7 +60,7 @@ void FileList::scan(const wxString & dir, bool recursive, const std::function<vo
 			wxFile file(file_name);
 			if (file.Error()) continue;
 			char buffer[3] = {0, 0, 0};
-			static const char jpg_hdr[] = {0xFF, 0xD8, 0xFF};
+			static const char jpg_hdr[] = {'\xFF', '\xD8', '\xFF'};
 			file.Read(buffer, 3);
 			if (memcmp(buffer, jpg_hdr, 3) == 0) continue;
 		}
@@ -105,7 +105,7 @@ void FileList::addOneFile(wxString full_path)
 		wxFile file(full_path);
 		if (file.Error()) return;
 		char buffer[3] = {0, 0, 0};
-		static const char jpg_hdr[] = {0xFF, 0xD8, 0xFF};
+		static const char jpg_hdr[] = {'\xFF', '\xD8', '\xFF'};
 		file.Read(buffer, 3);
 		if (memcmp(buffer, jpg_hdr, 3) == 0) return;
 	}

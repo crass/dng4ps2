@@ -64,8 +64,6 @@ IMPLEMENT_APP(DNG4PSApp);
 wxIcon main_icon;
 wxString exe_dir, path_sep;
 
-int num_args;
-
 bool DNG4PSApp::OnInit()
 {
 	 srand((unsigned)time(NULL));
@@ -78,7 +76,7 @@ bool DNG4PSApp::OnInit()
 #endif
 
 	exe_dir = wxFileName(argv[0]).GetPath();
-	num_args = argc;
+	commandLineMode = (argc > 1);
 
 	wxFileName lang_path(exe_dir, L"langs");
 
@@ -94,8 +92,7 @@ bool DNG4PSApp::OnInit()
 	wxInitAllImageHandlers();
 	if ( wxsOK )
 	{
-        DNG4PSFrame* Frame = new DNG4PSFrame(0);
-        if (num_args > 1) //Are we running the command line version?
+        if (commandLineMode) //Are we running the command line version?
         {
 
             wxCmdLineParser parser(argc, argv);
@@ -192,10 +189,10 @@ bool DNG4PSApp::OnInit()
             {
                 wxsOK = false;
             }
-            Frame->Destroy(); //get out of here
         }
         else //otherwise use GUI version
         {
+            DNG4PSFrame* Frame = new DNG4PSFrame(0);
             Frame->Show();
             SetTopWindow(Frame);
         }
@@ -203,4 +200,14 @@ bool DNG4PSApp::OnInit()
 	//*)
 
 	return wxsOK;
+}
+
+int DNG4PSApp::OnRun()
+{
+    // If run in commandline mode, then we're already done processing the
+    // files.  So don't enter into main loop.
+    if (commandLineMode)
+        return 0;
+    
+    return wxApp::OnRun();
 }

@@ -394,10 +394,11 @@ void OptionsDialog::fill_illum_strings(wxChoice *coice)
 
 const CameraData* OptionsDialog::get_selected_camera_id()
 {
+	int selection = chCameraSelector->GetSelection();
 	const wxStringClientData *data =
-		(chCameraSelector->GetCount() == 0)
+		(chCameraSelector->GetCount() == 0 || selection == wxNOT_FOUND)
 		? NULL
-		: dynamic_cast<wxStringClientData*>(chCameraSelector->GetClientObject(chCameraSelector->GetSelection()));
+		: dynamic_cast<wxStringClientData*>(chCameraSelector->GetClientObject(selection));
 
 	return (data != NULL) ? cam_opts_->find_by_id(data->GetData()) : NULL;
 }

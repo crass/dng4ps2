@@ -137,9 +137,9 @@ UIElem& UIElem::operator >> (T & var)
 	return *this; 
 }
 
-UIElems operator , (UIElem &elem1, UIElem &elem2);
-UIElems& operator , (UIElems &elems, UIElem &elem);
-UIElems& operator , (UIElems &elems1, UIElems &elems2);
+UIElems operator , (UIElem elem1, UIElem elem2);
+UIElems& operator , (UIElems elems, UIElem elem);
+UIElems& operator , (UIElems elems1, UIElems elems2);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

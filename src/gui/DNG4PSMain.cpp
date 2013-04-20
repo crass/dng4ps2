@@ -338,12 +338,9 @@ void DNG4PSFrame::startTimerTrigger(wxTimerEvent& event)
 // for command line, does not use threads
 void DNG4PSFrame::convertFiles(wxArrayString files, wxString outputDir)
 {
-    file_list->clear();
+    std::auto_ptr<FileList> file_list (new FileList());
     if( !outputDir.IsEmpty() )
-    {
-        txtOutputDir->SetValue(outputDir);
-        sys().options->output_path = txtOutputDir->GetValue();
-    }
+        sys().options->output_path = outputDir;
 
     for ( size_t num = 0; num < files.GetCount(); num++ )
     {

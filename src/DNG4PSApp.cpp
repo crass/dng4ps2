@@ -37,9 +37,10 @@
   If an option is not specified, then the default is take from the users dng4ps2 settings as set in the GUI
 
   Note: Where possible using the same parameter spec as Adobe DNG Converter are used
-  http://www.adobe.com/products/dng/pdfs/dng_commandline.pdf
+  http://www.adobe.com/content/dam/Adobe/en/products/photoshop/pdfs/dng_commandline.pdf
 
   TODO: Better error handling and logging
+  TODO: Support -dng1.1, -dng1.3, -e, and -l options
 
   */
 
@@ -180,7 +181,7 @@ bool DNG4PSApp::OnInit()
                     }
 
                     wxLogMessage(s);
-                    Frame->convertFiles(files, output_dir);
+                    DNG4PSFrame::convertFiles(files, output_dir);
                 }
                 else
                 {

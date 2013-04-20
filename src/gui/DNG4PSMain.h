@@ -8,7 +8,7 @@ class DNG4PSFrame: public wxFrame
 {
 public:
 	DNG4PSFrame(wxWindow* parent,wxWindowID id = -1);
-	void convertFiles(wxArrayString files, wxString outputDir); //for command line version
+	static void convertFiles(wxArrayString files, wxString outputDir); //for command line version
 
 private:
 	void btnAboutClick(wxCommandEvent& event);

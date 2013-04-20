@@ -96,19 +96,12 @@ void FileList::addOneFile(wxString full_path)
 {
 	wxFileName name(full_path);
 	size_t file_size = name.GetSize().ToULong();
-    FileListItem item;
+	FileListItem item;
 	std::vector<size_t> sizes;
 
-	wxString ext = name.GetExt().Lower();
-	if (ext == L"jpg")
-	{
-		wxFile file(full_path);
-		if (file.Error()) return;
-		char buffer[3] = {0, 0, 0};
-		static const char jpg_hdr[] = {'\xFF', '\xD8', '\xFF'};
-		file.Read(buffer, 3);
-		if (memcmp(buffer, jpg_hdr, 3) == 0) return;
-	}
+	// The extension indicates JPEG, but is it really?
+	if (name.GetExt().Lower() == L"jpg" && Utils::is_jpeg(full_path))
+		return;
 
 	item.path_and_name = name.GetFullPath();
 	item.name = name.GetFullName();

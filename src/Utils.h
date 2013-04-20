@@ -132,6 +132,8 @@ public:
 
 	static bool get_jpeg_name(const wxFileName& name, wxFileName & result);
 
+	static bool is_jpeg(const wxString& full_path);
+
 	static void create_raw_image
 	(
 		const CameraData* camera,

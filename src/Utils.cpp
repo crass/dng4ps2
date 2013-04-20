@@ -976,6 +976,17 @@ bool Utils::get_jpeg_name(const wxFileName& file_name, wxFileName & result)
 	return (result.FileExists() && (file_name != result));
 }
 
+bool Utils::is_jpeg(const wxString& full_path)
+{
+	wxFile file(full_path);
+	if (file.Error()) return false;
+	char buffer[3] = {0, 0, 0};
+	static const char jpg_hdr[] = {'\xFF', '\xD8', '\xFF'};
+	file.Read(buffer, 3);
+	if (memcmp(buffer, jpg_hdr, 3) == 0) return true;
+        return false;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////

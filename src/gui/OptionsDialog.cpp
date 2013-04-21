@@ -268,22 +268,34 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 	// Connecting events
 	chbxUseDateForPath->Bind(wxEVT_COMMAND_CHECKBOX_CLICKED,       [this] (wxCommandEvent&)        { correct_interface();            });
 	chkbArtist        ->Bind(wxEVT_COMMAND_CHECKBOX_CLICKED,       [this] (wxCommandEvent&)        { correct_interface();            });
-	chCameraSelector  ->Bind(wxEVT_COMMAND_CHOICE_SELECTED,        [this] (wxCommandEvent& event)  { chCameraSelectorSelect(event);  });
-	btnGetLastest     ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { OnGetLastestClick(event);       });
-	btnCopy           ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { btnCopyClick(event);            });
-	btnDelete         ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { btnDeleteClick(event);          });
-	btnResetToDefaults->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { btnResetToDefaultsClick(event); });
-	txtSensWidth      ->Bind(wxEVT_COMMAND_TEXT_UPDATED,           [this] (wxCommandEvent& event)  { txtSensWidthText(event);        });
-	txtSensHeight     ->Bind(wxEVT_COMMAND_TEXT_UPDATED,           [this] (wxCommandEvent& event)  { txtSensWidthText(event);        });
-	btnCalibr         ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         [this] (wxCommandEvent& event)  { btnCalibrClick(event);          });
-	nbMain            ->Bind(wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED,  [this] (wxNotebookEvent& event) { nbMainPageChanged(event);       });
-	nbMain            ->Bind(wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING, [this] (wxNotebookEvent& event) { nbMainPageChanging(event);      });
+	chCameraSelector  ->Bind(wxEVT_COMMAND_CHOICE_SELECTED,        &OptionsDialog::chCameraSelectorSelect, this  );
+	btnGetLastest     ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         &OptionsDialog::OnGetLastestClick, this       );
+	btnCopy           ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         &OptionsDialog::btnCopyClick, this            );
+	btnDelete         ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         &OptionsDialog::btnDeleteClick, this          );
+	btnResetToDefaults->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         &OptionsDialog::btnResetToDefaultsClick, this );
+	txtSensWidth      ->Bind(wxEVT_COMMAND_TEXT_UPDATED,           &OptionsDialog::txtSensWidthText, this        );
+	txtSensHeight     ->Bind(wxEVT_COMMAND_TEXT_UPDATED,           &OptionsDialog::txtSensWidthText, this        );
+	btnCalibr         ->Bind(wxEVT_COMMAND_BUTTON_CLICKED,         &OptionsDialog::btnCalibrClick, this          );
+	nbMain            ->Bind(wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED,  &OptionsDialog::nbMainPageChanged, this       );
+	nbMain            ->Bind(wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING, &OptionsDialog::nbMainPageChanging, this      );
 
 	scrlwCameraOpt->SetScrollRate(16, 16);
 
 	fill_illum_strings(chIll1);
 	fill_illum_strings(chIll2);
 }
+
+OptionsDialog::~OptionsDialog() {
+    // Occasionally a child gets an event after we're destroyed where
+    // the event handler function references this object.  Make sure children
+    // receive no events after we're deleted.
+    for (wxWindow *win: GetChildren())
+    {
+        // This should be functionally equivalent to Disconnect(), without
+        // extra processing.
+        win->SetEvtHandlerEnabled(false);
+    }
+};
 
 // OptionsDialog::execute
 bool OptionsDialog::execute()
@@ -702,6 +714,7 @@ void OptionsDialog::read_groups()
 
 void OptionsDialog::nbMainPageChanged(wxNotebookEvent& event)
 {
+    std::cout << "nbMainPageChanged type: " << event.GetEventType() << std::endl;
 	if (nbMain->GetPage(event.GetSelection()) == pnlGroups)
 	{
 		read_camera_opts();

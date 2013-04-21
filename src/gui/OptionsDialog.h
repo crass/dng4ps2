@@ -9,6 +9,7 @@ class OptionsDialog: public wxDialog
 public:
 
 	OptionsDialog(wxWindow* parent,wxWindowID id = -1);
+	~OptionsDialog();
 
 	bool execute();
 

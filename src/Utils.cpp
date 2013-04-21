@@ -66,6 +66,79 @@ const int medium_preview_size = 1280;
 extern wxString exe_dir, path_sep;
 extern ProcessDialog * process_dialog;
 
+class RawJpegFinder : public wxDirTraverser {
+public:
+    RawJpegFinder(const wxString& raw_path):raw_filename(raw_path)
+    {
+        wxString name = raw_filename.GetName();
+        number = parse_number(name);
+    }
+    
+    RawJpegFinder(const wxFileName& raw_filename):raw_filename(raw_filename)
+    {
+        wxString name = raw_filename.GetName();
+        number = parse_number(name);
+    }
+    
+    wxDirTraverseResult OnFile(const wxString& filename)
+    {
+        wxString path, name, ext;
+        
+        wxFileName::SplitPath(filename, NULL, &path, &name, &ext);
+        
+        if (!number.IsEmpty() && (number == parse_number(name)))
+        {
+            // Got a path with filename that matches our number, now check
+            // if the rest looks like a relevant jpeg
+            if (name.Mid(0, 4).Upper() == L"IMG_" &&
+                ext.Upper() == L"JPG" &&
+                Utils::is_jpeg(filename))
+            {
+                jpeg_filename = wxFileName(filename);
+                return wxDIR_CONTINUE;
+            }
+        }
+        else if (number.IsEmpty())
+        {
+            // Couldn't find the image number in the filename, so just search
+            // for a filename that has our extension replace with 'jpg'.
+            if ((raw_filename.GetName().Upper() + L".JPG") == name.Upper())
+            {
+                jpeg_filename = wxFileName(filename);
+                return wxDIR_CONTINUE;
+            }
+        }
+        
+        return wxDIR_STOP;
+    }
+    
+    wxDirTraverseResult OnDir(const wxString& dirname)
+    {
+        // go down every directory, unless already found a match
+        if (jpeg_filename.IsOk())
+            return wxDIR_STOP;
+        return wxDIR_CONTINUE;
+    }
+    
+    wxFileName get_jpeg_filename()
+    {
+        return jpeg_filename;
+    }
+    
+    static wxString parse_number(const wxString& name)
+    {
+	int pos = name.Find(L'_');
+	if (pos != wxNOT_FOUND)
+		return name.SubString(pos+1, name.Len()-1);
+        return wxEmptyString;
+    }
+    
+private:
+    const wxFileName raw_filename;
+    wxFileName jpeg_filename;
+    wxString number;
+};
+
 struct ExifDataAgr
 {
 	ExifData *ed;
@@ -946,34 +1019,31 @@ void Utils::process_file
 
 bool Utils::get_jpeg_name(const wxFileName& file_name, wxFileName & result)
 {
-	wxString name = file_name.GetName();
-	result.Clear();
+    wxString name = file_name.GetName();
+    result.Clear();
 
-	int pos = name.Find(L'_');
-	if (pos != wxNOT_FOUND)
-	{
-		wxString number = name.SubString(pos+1, name.Len()-1);
-		wxString path = file_name.GetPath();
-
-		wxFileName new_name;
-		result.SetPath(path);
-
-		result.SetName(L"IMG_"+number+L".JPG");
+    RawJpegFinder finder(file_name);
+    wxString jpeg_filename_pattern = L"*_" + RawJpegFinder::parse_number(name) + L".*";
+    
+    size_t num_found = wxDir(file_name.GetPath()).Traverse(finder, jpeg_filename_pattern);
+    if (num_found > 0)
+    {
+        result = finder.get_jpeg_filename();
         if (result.FileExists()) return true;
-
-		result.SetName(L"img_"+number+L".JPG");
-		if (result.FileExists()) return true;
-
-		result.SetName(L"IMG_"+number+L".jpg");
-		if (result.FileExists()) return true;
-
-		result.SetName(L"img_"+number+L".jpg");
-		if (result.FileExists()) return true;
     }
+    
+    wxFileName parent(file_name);
+    parent.RemoveLastDir();
 
-	result = file_name;
-	result.SetExt(L"JPG");
-	return (result.FileExists() && (file_name != result));
+    // TODO: Don't look through directories already looked through above
+    num_found = wxDir(parent.GetPath()).Traverse(finder, jpeg_filename_pattern);
+    if (num_found > 0)
+    {
+        result = finder.get_jpeg_filename();
+        if (result.FileExists()) return true;
+    }
+    
+    return false;
 }
 
 bool Utils::is_jpeg(const wxString& full_path)

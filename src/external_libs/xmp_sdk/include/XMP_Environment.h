@@ -67,6 +67,8 @@
     #define XMP_WinBuild  0
     #define XMP_UNIXBuild 1
 
+    #include <cstring> // some source assume this is in <string>
+
 #else
 
     #error "XMP environment error - must define one of MAC_ENV, WIN_ENV, or UNIX_ENV"

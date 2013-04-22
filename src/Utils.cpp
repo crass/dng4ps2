@@ -1178,7 +1178,7 @@ void Utils::calc_camera_profile
 (
     double m[3][3],
     const std::vector<Area> &areas,
-    int iterations,
+    size_t iterations,
     std::function<void (const wxString&)> on_log,
     double *result_error_max,
     double *result_aver_error
@@ -1210,7 +1210,7 @@ void Utils::calc_camera_profile
 		double camera_r = areas[zone].camera.r;
 		double camera_g = areas[zone].camera.g;
 		double camera_b = areas[zone].camera.b;
-		double new_m1, new_m2, new_m3;
+		// double new_m1, new_m2, new_m3;
 		int col;
 
 		for (int x = 0; x < 3; x++) for (int y = 0; y < 3; y++) diff_matrix[x][y] = m[x][y];
@@ -1254,7 +1254,7 @@ void Utils::calc_camera_profile
 			diff_matrix[col][2] = (Z - m[0][2]*camera_r - m[1][2]*camera_g)/camera_b;
 		}
 
-		int modify_coeff = (zone == white_area) ? areas.size()/10 : areas.size();
+		int modify_coeff = ((int)zone == white_area) ? areas.size()/10 : areas.size();
 		if (modify_coeff < 2) modify_coeff = 2;
 
 		for (int x = 0; x < 3; x++) for (int y = 0; y < 3; y++) m[x][y] =
@@ -1424,7 +1424,7 @@ void Utils::create_raw_image(const CameraData* camera, const wxString& raw_file_
 				{
 					int real_x = x-offset_x+i;
 					int real_y = y-offset_y+j;
-					if ((real_x >= 0) && (real_y >= 0) && (real_x < camera->cropped_width) && (real_y < camera->cropped_height))
+					if ((real_x >= 0) && (real_y >= 0) && (real_x < (int)camera->cropped_width) && (real_y < (int)camera->cropped_height))
 						result.SetRGB(real_x, real_y, r, g, b);
 				}
 		}

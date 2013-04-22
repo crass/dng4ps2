@@ -116,7 +116,7 @@ public:
 	(
 		double m[3][3],
 		const std::vector<Area> &areas,
-		int iterations,
+		size_t iterations,
 		std::function<void (const wxString&)> on_log,
 		double *result_max_error,
 		double *result_aver_error

@@ -125,6 +125,9 @@ bool DNG4PSApp::OnInit()
             if( parser.Parse() == 0 )
             {
                 files.clear();
+                // Default to overwriting DNG because we only have a commandline
+                // option for "not" overwriting DNG files.
+                sys().options->dont_overwrite = false;
 
                 wxString s = _T("DNG4PS-2 command line mode:\nInput files: ");  //message string
 

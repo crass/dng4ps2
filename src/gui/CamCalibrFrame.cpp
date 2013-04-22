@@ -425,7 +425,7 @@ void CamCalibrFrame::OnProcessClick(wxCommandEvent& event)
 	double max_error, aver_error;
 	static const double max_val = 0.90;
 	static const double acceptable_error = 0.15;
-	const int iter_count = 10000;
+	const size_t iter_count = 10000;
 
 	btnSave->Enable(false);
 

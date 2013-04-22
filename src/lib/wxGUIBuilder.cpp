@@ -106,13 +106,13 @@ UIElems operator , (UIElem elem1, UIElem elem2)
 	return res;
 }
 
-UIElems& operator , (UIElems elems, UIElem elem)
+UIElems operator , (UIElems elems, UIElem elem)
 {
 	elems.push_back(elem);
 	return elems;
 }
 
-UIElems& operator , (UIElems elems1, UIElems elems2)
+UIElems operator , (UIElems elems1, UIElems elems2)
 {
 	elems1.insert(elems1.end(), elems2.begin(), elems2.end());
 	return elems1;

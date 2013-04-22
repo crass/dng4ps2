@@ -138,8 +138,8 @@ UIElem& UIElem::operator >> (T & var)
 }
 
 UIElems operator , (UIElem elem1, UIElem elem2);
-UIElems& operator , (UIElems elems, UIElem elem);
-UIElems& operator , (UIElems elems1, UIElems elems2);
+UIElems operator , (UIElems elems, UIElem elem);
+UIElems operator , (UIElems elems1, UIElems elems2);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

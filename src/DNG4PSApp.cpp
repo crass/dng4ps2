@@ -59,7 +59,7 @@
 using namespace std;
 
 
-IMPLEMENT_APP(DNG4PSApp);
+wxIMPLEMENT_APP(DNG4PSApp);
 
 wxIcon main_icon;
 wxString exe_dir, path_sep;
@@ -77,6 +77,9 @@ bool DNG4PSApp::OnInit()
 
 	exe_dir = wxFileName(argv[0]).GetPath();
 	commandLineMode = (argc > 1);
+
+	wxLog *logger=new wxLogStderr();
+	wxLog::SetActiveTarget(logger);
 
 	wxFileName lang_path(exe_dir, L"langs");
 
@@ -99,9 +102,6 @@ bool DNG4PSApp::OnInit()
             wxString output_dir = _T("");
             wxString output_filename = _T("");
             wxArrayString files;
-
-            wxLog *logger=new wxLogStderr();
-            wxLog::SetActiveTarget(logger);
 
             static const wxCmdLineEntryDesc cmdLineDesc[] =
             {
@@ -192,6 +192,11 @@ bool DNG4PSApp::OnInit()
         }
         else //otherwise use GUI version
         {
+            wxLog *logger=new wxLogGui();
+            wxLog *oldlogger = wxLog::SetActiveTarget(logger);
+            if (oldlogger)
+                delete oldlogger;
+            
             DNG4PSFrame* Frame = new DNG4PSFrame(0);
             Frame->Show();
             SetTopWindow(Frame);

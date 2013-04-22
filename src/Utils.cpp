@@ -176,8 +176,8 @@ void Utils::copy_exif(ExifData* ed, unsigned int tag, dng_string & str, bool for
 	ExifEntry * entry = get_exif_entry(ed, tag);
 	if (!entry) return;
 	char buffer[1024];
-	memset(buffer, 0, 1024);
-	exif_entry_get_value(entry, buffer, 1024);
+	memset(buffer, 0, sizeof(buffer));
+	exif_entry_get_value(entry, buffer, sizeof(buffer));
 	str.Set(buffer);
 }
 
@@ -188,7 +188,7 @@ wxString Utils::get_str_exif(ExifData* ed, unsigned int tag)
 	if (!entry) return wxString();
 	char buffer[1024];
 	memset(buffer, 0, sizeof(buffer));
-	exif_entry_get_value(entry, buffer, 1024);
+	exif_entry_get_value(entry, buffer, sizeof(buffer));
 	return wxString(buffer, wxConvLocal);
 }
 
@@ -206,8 +206,8 @@ bool Utils::copy_exif(ExifData* ed, unsigned int tag, dng_date_time & value)
 	ExifEntry * entry = get_exif_entry(ed, tag);
 	if (!entry) return false;
 	char buffer[1024];
-	memset(buffer, 0, 1024);
-	exif_entry_get_value(entry, buffer, 1024);
+	memset(buffer, 0, sizeof(buffer));
+	exif_entry_get_value(entry, buffer, sizeof(buffer));
 
 	wxString date_time_string(buffer, wxConvLibc);
 
@@ -241,8 +241,8 @@ bool Utils::copy_exif(ExifData* ed, unsigned int tag, dng_date_time_info & value
 	ExifEntry * entry = get_exif_entry(ed, tag);
 	if (!entry) return false;
 	char buffer[1024];
-	memset(buffer, 0, 1024);
-	exif_entry_get_value(entry, buffer, 1024);
+	memset(buffer, 0, sizeof(buffer));
+	exif_entry_get_value(entry, buffer, sizeof(buffer));
 
 	wxString date_time_string(buffer, wxConvLibc);
 

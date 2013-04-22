@@ -82,6 +82,8 @@ private:
 
     static bool copy_exif(ExifData* ed, unsigned int tag, dng_date_time & value);
 
+    static bool copy_exif(ExifData* ed, unsigned int tag, dng_date_time_info & value);
+
     static void create_dng_file
     (
         const wxString& new_file,

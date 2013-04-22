@@ -34,6 +34,7 @@
 #include "dng_linearization_info.h"
 #include "dng_mosaic_info.h"
 #include "dng_negative.h"
+#include "dng_preview.h"
 #include "dng_render.h"
 #include "dng_simple_image.h"
 #include "dng_tag_codes.h"
@@ -235,6 +236,36 @@ bool Utils::copy_exif(ExifData* ed, unsigned int tag, dng_date_time & value)
 }
 
 // Utils::copy_exif
+bool Utils::copy_exif(ExifData* ed, unsigned int tag, dng_date_time_info & value)
+{
+	ExifEntry * entry = get_exif_entry(ed, tag);
+	if (!entry) return false;
+	char buffer[1024];
+	memset(buffer, 0, 1024);
+	exif_entry_get_value(entry, buffer, 1024);
+
+	wxString date_time_string(buffer, wxConvLibc);
+
+	wxStringTokenizer date_time_string2(date_time_string, L" ");
+
+	wxStringTokenizer date_items(date_time_string2.GetNextToken(), L":");
+	wxStringTokenizer time_items(date_time_string2.GetNextToken(), L":");
+
+	long year = 0, month = 0, day = 0, hour = 0, minute = 0, second = 0;
+
+	date_items.GetNextToken().ToLong(&year);
+	date_items.GetNextToken().ToLong(&month);
+	date_items.GetNextToken().ToLong(&day);
+	time_items.GetNextToken().ToLong(&hour);
+	time_items.GetNextToken().ToLong(&minute);
+	time_items.GetNextToken().ToLong(&second);
+
+	value.SetDateTime(dng_date_time(year, month, day, hour, minute, second));
+
+	return true;
+}
+
+// Utils::copy_exif
 void Utils::copy_exif(ExifData* ed, unsigned int tag, dng_urational & value)
 {
 	ExifEntry * entry = get_exif_entry(ed, tag);
@@ -416,9 +447,9 @@ void Utils::add_metadata_from_jpeg(dng_host & host, dng_negative* negative, cons
 		copy_exif(jpeg.ed, EXIF_TAG_DATE_TIME_DIGITIZED,      exif->fDateTimeDigitized);     // DateTime Digitized
 		copy_exif(jpeg.ed, EXIF_TAG_DATE_TIME_ORIGINAL,       exif->fDateTimeOriginal);      // DateTime Original
 
-		dng_date_time dt_shot;
+		dng_date_time_info dt_shot;
 		copy_exif(jpeg.ed, EXIF_TAG_DATE_TIME,                dt_shot);              // DateTime
-		negative->UpdateDateTime(dt_shot, 0);
+		negative->UpdateDateTime(dt_shot);
 
 		copy_exif(jpeg.ed, EXIF_TAG_MODEL,                    exif->fModel, true);           // Model
 		copy_exif(jpeg.ed, EXIF_TAG_MAKE,                     exif->fMake, true);            // Manufacturer
@@ -514,9 +545,9 @@ void Utils::create_dng_file
 
 	dng_host host(&memalloc);
 
-	host.SetKeepStage1(true);
+	//~ host.SetKeepStage1(true);
 
-	AutoPtr<dng_image> image(new dng_simple_image(dng_rect(camera_data->height, camera_data->width), 1, ttShort, 1<<10, memalloc));
+	AutoPtr<dng_image> image(new dng_simple_image(dng_rect(camera_data->height, camera_data->width), 1, ttShort, memalloc));
 
 	AutoPtr<dng_camera_profile> camprofile(new dng_camera_profile);
 	camprofile->SetName(camera_data->model_name.char_str());
@@ -665,7 +696,8 @@ void Utils::create_dng_file
 
 	negative->SetAnalogBalance(dng_vector_3(1.0,1.0,1.0));
 
-	negative->SetEmbeddedCameraProfile(camprofile);
+	//~ negative->SetEmbeddedCameraProfile(camprofile);
+	negative->AddProfile(camprofile);
 
 	// Add EXIF data from JPEG
 	if (sys().options->add_metadata && jpeg_exists) add_metadata_from_jpeg(host, negative.Get(), jpeg);
@@ -676,16 +708,18 @@ void Utils::create_dng_file
 
 		// Time from original shot
 		dng_date_time dt;
+		dng_date_time_info dt_info;
 		dt.fYear = date_time.GetYear();
 		dt.fMonth = date_time.GetMonth()+1;
 		dt.fDay = date_time.GetDay();
 		dt.fHour = date_time.GetHour();
 		dt.fMinute = date_time.GetMinute();
 		dt.fSecond = date_time.GetSecond();
+		dt_info.SetDateTime(dt);
 
-		negative->GetExif()->fDateTimeOriginal = dt;
-		negative->GetExif()->fDateTimeDigitized = dt;
-		negative->UpdateDateTime(dt, 0);
+		negative->GetExif()->fDateTimeOriginal = dt_info;
+		negative->GetExif()->fDateTimeDigitized = dt_info;
+		negative->UpdateDateTime(dt_info);
 	}
 
 	// Artist
@@ -699,7 +733,7 @@ void Utils::create_dng_file
 	negative->BuildStage3Image(host, -1);
 
 	negative->SynchronizeMetadata();
-	negative->RebuildIPTC();
+	negative->RebuildIPTC(true);
 
 	// Preview image
 	AutoPtr<dng_jpeg_preview> jpeg_preview;
@@ -780,17 +814,27 @@ void Utils::create_dng_file
 	}
 
 	// Build thumbnail image.
-	AutoPtr<dng_image> thumbnail;
+	dng_image_preview *thumbnail = new dng_image_preview();
 	dng_render thumbnail_render(host, *negative);
 	thumbnail_render.SetFinalSpace(dng_space_sRGB::Get());
 	thumbnail_render.SetFinalPixelType(ttByte);
 	thumbnail_render.SetMaximumSize(256);
-	thumbnail.Reset(thumbnail_render.Render());
+	thumbnail->fImage.Reset(thumbnail_render.Render());
+
+	// Create List of preview images
+	dng_preview_list preview_list;
+        AutoPtr<dng_preview> preview_image1(dynamic_cast<dng_preview*>(thumbnail));
+	preview_list.Append(preview_image1);
+        preview_image1.Release();
+	AutoPtr<dng_preview> preview_image2(dynamic_cast<dng_preview*>(jpeg_preview.Release()));
+	preview_list.Append(preview_image2);
 
 	// Writes DNG file data into memory stream (as dng_file_stream doesn't support of unicode in file names)
 	dng_image_writer writer;
 	dng_memory_stream filestream(gDefaultDNGMemoryAllocator);
-	writer.WriteDNG(host, filestream, *negative.Get(), *thumbnail.Get(), sys().options->compress_dng ? ccJPEG : ccUncompressed, jpeg_preview.Get());
+	//~ writer.WriteDNG(host, filestream, *negative.Get(), *thumbnail.Get(), sys().options->compress_dng ? ccJPEG : ccUncompressed, jpeg_preview.Get());
+	writer.WriteDNG(host, filestream, *negative.Get(), &preview_list, dngVersion_1_1_0_0, sys().options->compress_dng);
+	//~ writer.WriteTIFF(host, filestream, *negative.Get(), *thumbnail.Get(), sys().options->compress_dng ? ccJPEG : ccUncompressed, jpeg_preview.Get());
 
 	// Writes memory stream into file
 	wxFile dng_file(new_file.c_str(), wxFile::write);

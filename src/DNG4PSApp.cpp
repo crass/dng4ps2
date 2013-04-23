@@ -66,7 +66,8 @@ wxString exe_dir, path_sep;
 
 bool DNG4PSApp::OnInit()
 {
-	 srand((unsigned)time(NULL));
+	ProgramObjects &sys = ::sys();
+	srand((unsigned)time(NULL));
 
 #if defined(__WIN32__)
 	main_icon.LoadFile(L"main_icon", wxBITMAP_TYPE_ICO_RESOURCE);
@@ -81,13 +82,14 @@ bool DNG4PSApp::OnInit()
 	wxLog *logger=new wxLogStderr();
 	wxLog::SetActiveTarget(logger);
 
-	wxFileName lang_path(exe_dir, L"langs");
+	wxFileName lang_path(exe_dir, wxT("langs"));
 
-	sys().options->load();
-	sys().init_language(lang_path.GetFullPath());
+	sys.langs_path = lang_path.GetFullPath();
+	sys.options->load();
+	sys.init_language();
 
-	sys().cameras->load();
-	sys().cameras->set_defaults(false);
+	sys.cameras->load();
+	sys.cameras->set_defaults(false);
 
 
 	//(*AppInitialize
@@ -127,7 +129,7 @@ bool DNG4PSApp::OnInit()
                 files.clear();
                 // Default to overwriting DNG because we only have a commandline
                 // option for "not" overwriting DNG files.
-                sys().options->dont_overwrite = false;
+                sys.options->dont_overwrite = false;
 
                 wxString s = _T("DNG4PS-2 command line mode:\nInput files: ");  //message string
 
@@ -153,31 +155,31 @@ bool DNG4PSApp::OnInit()
 
                     if ( parser.Found(_T("p0")))
                     {
-                        sys().options->preview_type=pt_None;
+                        sys.options->preview_type=pt_None;
                     } else if ( parser.Found(_T("p1")))
                     {
-                        sys().options->preview_type=pt_Medium;
+                        sys.options->preview_type=pt_Medium;
                     } else if ( parser.Found(_T("p2")))
                     {
-                        sys().options->preview_type=pt_Full;
+                        sys.options->preview_type=pt_Full;
                     }
 
                     if ( parser.Found(_T("u")))
                     {
-                        sys().options->compress_dng=false;
+                        sys.options->compress_dng=false;
                     } else if ( parser.Found(_T("c")))
                     {
-                        sys().options->compress_dng=true;
+                        sys.options->compress_dng=true;
                     }
 
                     if ( parser.Found(_T("m")))
                     {
-                        sys().options->add_metadata = true;
+                        sys.options->add_metadata = true;
                     }
 
                     if ( parser.Found(_T("n")))
                     {
-                        sys().options->dont_overwrite = true;
+                        sys.options->dont_overwrite = true;
                     }
 
                     wxLogMessage(s);

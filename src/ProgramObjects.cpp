@@ -34,16 +34,47 @@ ProgramObjects& sys()
 
 ProgramObjects::ProgramObjects() :
     options(new Options   ),
-    cameras(new CameraOpts)
+    cameras(new CameraOpts),
+    locale_(nullptr)
 {
 }
 
 // ProgramObjects::init_language
-void ProgramObjects::init_language(const wxString & dir)
+void ProgramObjects::init_language()
 {
-	//wxLanguage lang = wxLANGUAGE_ENGLISH;
+    if (locale_)
+        delete locale_;
+    locale_ = new wxLocale();
+    
+    if ( !locale_->Init(options->lang, wxLOCALE_DONT_LOAD_DEFAULT) )
+    {
+        wxLogWarning(_("This language is not supported by the system."));
+        // continue nevertheless
+    }
 
-	locale_.Init(options->lang, options->lang, options->lang);
-    wxLocale::AddCatalogLookupPathPrefix(dir);
-    locale_.AddCatalog(L"dng4ps-2");
+    wxLocale::AddCatalogLookupPathPrefix(langs_path);
+    
+    // Initialize the catalogs we'll be using
+    const wxLanguageInfo* pInfo = wxLocale::GetLanguageInfo(options->lang);
+    if (!locale_->AddCatalog(wxT("dng4ps-2")))
+    {
+        wxLogError(_("Couldn't find/load the 'internat' catalog for locale '%s'."),
+                   pInfo ? pInfo->GetLocaleName() : _("unknown"));
+    }
+    
+    // Now try to add wxstd.mo so that loading "NOTEXIST.ING" file will produce
+    // a localized error message:
+    locale_->AddCatalog("wxstd");
+        // NOTE: it's not an error if we couldn't find it!
+
+    // this catalog is installed in standard location on Linux systems and
+    // shows that you may make use of the standard message catalogs as well
+    //
+    // if it's not installed on your system, it is just silently ignored
+#if UNIX_ENV
+    {
+        wxLogNull noLog;
+        locale_->AddCatalog("fileutils");
+    }
+#endif
 }

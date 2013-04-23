@@ -30,7 +30,7 @@ public:
     bool use_date_for_path;
     PreviewType preview_type;
     DateTypes date_type;
-    wxString lang;
+    wxLanguage lang;
 
     wxString last_camera_id;
 

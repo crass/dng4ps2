@@ -23,6 +23,7 @@
 
 #include "pch.h"
 #include "Options.h"
+#include "Languages.h"
 
 namespace
 {
@@ -52,7 +53,7 @@ Options::Options()
     use_date_for_path = true;
     date_type = dt_YYYY_MM_DD;
     use_artist = false;
-    lang = "en";
+    lang = DEFAULT_LANG;
 
 }
 
@@ -76,12 +77,17 @@ void Options::load()
 
     date_type      = (DateTypes)config.Read(date_type_opt_str, date_type);
 
-    lang = config.Read(lang_opt_str, wxEmptyString);
-	if (lang.IsEmpty()) lang = "en";
+    wxString conf_lang = config.Read(lang_opt_str, wxEmptyString);
 
-	last_camera_id = config.Read(last_camera_id_opt_str,   wxEmptyString   );
+    auto langinfo = wxLocale::FindLanguageInfo(conf_lang);
+    if ( !langinfo )
+    {
+        wxLogError(_("Locale \"%s\" is unknown."), conf_lang);
+        langinfo = wxLocale::GetLanguageInfo(wxLocale::GetSystemLanguage());
+    }
+    lang = static_cast<wxLanguage>(langinfo->Language);
 
-	
+    last_camera_id = config.Read(last_camera_id_opt_str,   wxEmptyString   );
 }
 
 // Options::save
@@ -100,6 +106,6 @@ void Options::save() const
     config.Write(date_type_opt_str,        (int)date_type   );
     config.Write(artist_opt_str,           artist           );
     config.Write(use_artist_opt_str,       use_artist       );
-    config.Write(lang_opt_str,             lang             );
-	config.Write(last_camera_id_opt_str,   last_camera_id   );
+    config.Write(lang_opt_str,             wxLocale::GetLanguageCanonicalName(lang));
+    config.Write(last_camera_id_opt_str,   last_camera_id   );
 }

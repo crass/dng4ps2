@@ -205,6 +205,8 @@ msgid "optsLanguageLabel"
 msgstr "Interface language:"
 msgid "optsLanguage_Hint"
 msgstr " Interface language "
+msgid "optsLanguageChangeWarning"
+msgstr "(Note: Languages changes require an application restart to take effect.)"
 
 # camera selection page
 msgid "lblGroupNotice"

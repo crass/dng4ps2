@@ -16,6 +16,7 @@
 #include <wx/gauge.h>
 #include <wx/image.h>
 #include <wx/intl.h>
+#include <wx/language.h>
 #include <wx/listctrl.h>
 #include <wx/log.h>
 #include <wx/msgdlg.h>
@@ -47,6 +48,8 @@
 
 // misc
 #include <stdlib.h>
+
+#define UNUSED(x) (void)(x)
 
 using namespace std::placeholders;
 

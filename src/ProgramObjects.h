@@ -9,15 +9,16 @@ class ProgramObjects
 public:
     std::auto_ptr<Options> options;
     std::auto_ptr<CameraOpts> cameras;
+    wxString langs_path;
 
-    void init_language(const wxString & dir);
+    void init_language();
 
 private:
-	friend ProgramObjects& sys();
+    friend ProgramObjects& sys();
 
     ProgramObjects();
 
-    wxLocale locale_;
+    wxLocale * locale_;
 };
 
 ProgramObjects& sys();

@@ -27,14 +27,13 @@
 #include "Options.h"
 #include "ProgramObjects.h"
 #include "CameraOpts.h"
+#include "Languages.h"
 #include "CamCalibrFrame.h"
 #include "dng_tag_values.h"
 #include "lib/wxGUIBuilder.hpp"
 
 namespace
 {
-	static const char* langs[] = { "zh", "en", "de", "it", "fi", "no", "pl", "ru", "es", "fr", nullptr };
-
 	MosaicType mosaic_types[] = {MOSAIC_RGGB, MOSAIC_GBRG};
 
 	struct IllCorr {int value; const wchar_t * text;};
@@ -87,18 +86,10 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 		item("optsDateFormat4")
 	];
 
-	auto chLanguage_GUI = choice() [
-		item("Chinese"),
-		item("English"),
-		item("German"),
-		item("Italian"),
-		item("Finnish"),
-		item("Norwegian"),
-		item("Polish"),
-		item("Russian"),
-		item("Spanish"),
-		item("French")
-	];
+        UIElems lang_choices;
+        for (auto i: langs)
+            lang_choices.push_back(item(i.langinfo->Description));
+	auto chLanguage_GUI = choice() [ lang_choices ];
 
 	auto chPreview_GUI = choice() [
 		item("optsPreviewNone"), 
@@ -122,7 +113,8 @@ OptionsDialog::OptionsDialog(wxWindow* parent,wxWindowID id) : cam_opts_(new Cam
 					chDateType_GUI >> chDateType,
 					text("optsLanguageLabel"),
 					chLanguage_GUI >> chLanguage
-				]
+				],
+				text("optsLanguageChangeWarning")
 			],
 			text("optsDngFormatLabel", font_bold),
 			vbox(border(8) | bord_all_exc_top | expand)
@@ -315,10 +307,11 @@ bool OptionsDialog::execute()
     chkbArtist->SetValue(sys.options->use_artist);
     txtArtist->SetValue(sys.options->artist);
 
-    for (int i = 0; langs[i]; i++)
-		if (sys.options->lang == langs[i]) chLanguage->SetSelection(i);
+    auto it = langs.begin();
+    for (int c = 0; it != langs.end(); c++, it++)
+        if (sys.options->lang == it->langinfo->Language) chLanguage->SetSelection(c);
 
-	show_cameras_list(sys.options->last_camera_id);
+    show_cameras_list(sys.options->last_camera_id);
 
     correct_interface();
 
@@ -336,14 +329,23 @@ bool OptionsDialog::execute()
     sys.options->use_artist         = chkbArtist->GetValue();
     sys.options->artist             = txtArtist->GetValue();
 
-    int lang = chLanguage->GetSelection();
-    if (lang == -1) lang = 0;
-    sys.options->lang = langs[lang];
+    int lang_sel_id = chLanguage->GetSelection();
+    wxLanguage lang = wxLANGUAGE_UNKNOWN;
+    if (lang > -1)
+        lang = static_cast<wxLanguage>(langs[lang_sel_id].langinfo->Language);
+    if (lang != sys.options->lang)
+    {
+        sys.options->lang = lang;
+        // TODO: On the fly locale changing, unfortunately existing widgets
+        //       will not be updated.  The main frame will have to be re-created.
+        //       Or perhaps a lot of code to update each label.
+	//~ sys.init_language();
+    }
 
     read_camera_opts();
     read_groups();
 
-	const CameraData* cur_camera = get_selected_camera_id();
+    const CameraData* cur_camera = get_selected_camera_id();
     if (cur_camera != NULL) sys.options->last_camera_id = cur_camera->id;
 
     *sys.cameras = *cam_opts_;

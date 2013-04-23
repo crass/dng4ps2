@@ -47,6 +47,7 @@
 #include "pch.h"
 
 #include "DNG4PSApp.h"
+#include "Languages.h"
 #include "ProgramObjects.h"
 #include "Options.h"
 #include "CameraOpts.h"
@@ -82,7 +83,7 @@ bool DNG4PSApp::OnInit()
 	wxLog *logger=new wxLogStderr();
 	wxLog::SetActiveTarget(logger);
 
-	wxFileName lang_path(exe_dir, wxT("langs"));
+	wxFileName lang_path(exe_dir, wxT(LANGUAGES_SUBDIRECTORY));
 
 	sys.langs_path = lang_path.GetFullPath();
 	sys.options->load();

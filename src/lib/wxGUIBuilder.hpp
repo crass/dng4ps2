@@ -126,7 +126,7 @@ template <typename T>
 UIElem& UIElem::operator >> (T & var) 
 { 
 	auto old_create_object_fun = create_fun_;
-	auto *var_ptr = &var;
+	T *var_ptr = &var;
 	create_fun_ = [=] (const BuildOptions &build_options, wxObject *parent, wxSizer *sizer, const UIElems &items) 
 	{
 		auto obj = old_create_object_fun(build_options, parent, sizer, items);

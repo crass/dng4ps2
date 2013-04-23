@@ -748,7 +748,7 @@ void CameraOpts::save(wxConfigBase &config, bool save_groups)
 	for (size_t i = 0; i < items_.size(); i++)
 	{
 		const CameraData &item = items_[i];
-		path.Printf(L"Camera%03d/", i);
+		path.Printf(wxT("Camera%03d/"), (int)i);
 
 		config.Write(path+id_opt_str,                   item.id                       );
 		config.Write(path+name_opt_str,                 item.model_name               );
@@ -765,8 +765,8 @@ void CameraOpts::save(wxConfigBase &config, bool save_groups)
 		config.Write(path+white_level_opt_str,          (int)item.white_level         );
 		config.Write(path+mosaic_opt_str,               (int)item.mosaic              );
 		config.Write(path+bpu_str,                      (int)item.bits_per_unit    );
-		save_matrix(config, path+L"Matrix1/", item.matrix1);
-		save_matrix(config, path+L"Matrix2/", item.matrix2);
+		save_matrix(config, path+wxT("Matrix1/"), item.matrix1);
+		save_matrix(config, path+wxT("Matrix2/"), item.matrix2);
 	}
 
 	if (save_groups)

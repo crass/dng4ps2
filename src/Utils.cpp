@@ -547,7 +547,7 @@ void Utils::create_dng_file
 
 	//~ host.SetKeepStage1(true);
 
-	host.SetKeepOriginalFile(sys().options->embed_original);
+	host.SetKeepOriginalFile(sys.options->embed_original);
 
 	AutoPtr<dng_image> image(new dng_simple_image(dng_rect(camera_data->height, camera_data->width), 1, ttShort, memalloc));
 
@@ -702,7 +702,7 @@ void Utils::create_dng_file
 	negative->AddProfile(camprofile);
 
 	// Add EXIF data from JPEG
-	if (sys().options->add_metadata && jpeg_exists) add_metadata_from_jpeg(host, negative.Get(), jpeg);
+	if (sys.options->add_metadata && jpeg_exists) add_metadata_from_jpeg(host, negative.Get(), jpeg);
 	else
 	{
 		negative->GetExif()->fModel.Set_ASCII(camera_data->model_name.char_str());
@@ -725,7 +725,7 @@ void Utils::create_dng_file
 	}
 
 	// Artist
-	if (sys().options->use_artist) negative->GetExif()->fArtist.Set_SystemEncoding(sys().options->artist.char_str());
+	if (sys.options->use_artist) negative->GetExif()->fArtist.Set_SystemEncoding(sys.options->artist.char_str());
 
 	// Clear "Camera WhiteXY"
 	negative->SetCameraWhiteXY(dng_xy_coord());
@@ -739,7 +739,7 @@ void Utils::create_dng_file
 
 	// Preview image
 	AutoPtr<dng_jpeg_preview> jpeg_preview;
-	if ((sys().options->preview_type == pt_Medium) || (sys().options->preview_type == pt_Full))
+	if ((sys.options->preview_type == pt_Medium) || (sys.options->preview_type == pt_Full))
 	{
 		wxImage pre_image;
 		jpeg_preview.Reset(new dng_jpeg_preview);
@@ -750,7 +750,7 @@ void Utils::create_dng_file
 			dng_render tiff_render(host, *negative);
 			tiff_render.SetFinalSpace(dng_space_sRGB::Get());
 			tiff_render.SetFinalPixelType(ttByte);
-			if (sys().options->preview_type == pt_Medium) tiff_render.SetMaximumSize(1280);
+			if (sys.options->preview_type == pt_Medium) tiff_render.SetMaximumSize(1280);
 			finalImage.Reset(tiff_render.Render());
 
 			dng_image_writer tiff_writer;
@@ -779,7 +779,7 @@ void Utils::create_dng_file
 		else
 		{
 			pre_image.LoadFile(real_jpeg);
-			if (sys().options->preview_type == pt_Medium)
+			if (sys.options->preview_type == pt_Medium)
 			{
 				int width = pre_image.GetWidth();
 				int height = pre_image.GetHeight();
@@ -834,9 +834,9 @@ void Utils::create_dng_file
 	// Writes DNG file data into memory stream (as dng_file_stream doesn't support of unicode in file names)
 	dng_image_writer writer;
 	dng_memory_stream filestream(gDefaultDNGMemoryAllocator);
-	//~ writer.WriteDNG(host, filestream, *negative.Get(), *thumbnail.Get(), sys().options->compress_dng ? ccJPEG : ccUncompressed, jpeg_preview.Get());
-	writer.WriteDNG(host, filestream, *negative.Get(), &preview_list, dngVersion_1_1_0_0, sys().options->compress_dng);
-	//~ writer.WriteTIFF(host, filestream, *negative.Get(), *thumbnail.Get(), sys().options->compress_dng ? ccJPEG : ccUncompressed, jpeg_preview.Get());
+	//~ writer.WriteDNG(host, filestream, *negative.Get(), *thumbnail.Get(), sys.options->compress_dng ? ccJPEG : ccUncompressed, jpeg_preview.Get());
+	writer.WriteDNG(host, filestream, *negative.Get(), &preview_list, dngVersion_1_1_0_0, sys.options->compress_dng);
+	//~ writer.WriteTIFF(host, filestream, *negative.Get(), *thumbnail.Get(), sys.options->compress_dng ? ccJPEG : ccUncompressed, jpeg_preview.Get());
 
 	// Writes memory stream into file
 	wxFile dng_file(new_file.c_str(), wxFile::write);
@@ -936,10 +936,10 @@ void Utils::get_dng_path_and_name(const wxString& raw_file_name, wxString& path,
 {
 	wxFileName dng_fn = raw_file_name;
 
-	dng_fn.SetPath(sys().options->output_path.IsEmpty() ? sys().options->path_to_files : sys().options->output_path);
+	dng_fn.SetPath(sys.options->output_path.IsEmpty() ? sys.options->path_to_files : sys.options->output_path);
 	dng_fn.SetExt(L"DNG");
 
-	if (sys().options->use_date_for_path)
+	if (sys.options->use_date_for_path)
 	{
 		wxFileName raw_fn = raw_file_name;
 		wxDateTime date;
@@ -947,7 +947,7 @@ void Utils::get_dng_path_and_name(const wxString& raw_file_name, wxString& path,
 		if (ok)
 		{
 			const wchar_t *format = NULL;
-			switch (sys().options->date_type)
+			switch (sys.options->date_type)
 			{
 			case dt_YYYY_MM_DD:
 				format = L"%Y-%m-%d";
@@ -994,7 +994,7 @@ void Utils::process_file
 		jpeg_exists = wxFileExists(jpg_file_name) && (jpg_file_name.Lower() != raw_file.Lower());
 
 		// Pass file if need
-		if (sys().options->dont_overwrite && wxFileExists(dng_file_name)) return;
+		if (sys.options->dont_overwrite && wxFileExists(dng_file_name)) return;
 
 		// Create directory
 		if (!wxFileName::DirExists(dng_file_path)) wxFileName::Mkdir(dng_file_path);
@@ -1019,7 +1019,7 @@ void Utils::process_file
 		jpeg_exif.n = exif_data_get_mnote_data(jpeg_exif.ed);
 		exif_loader_unref(l);
 		wxString camera_name = get_str_exif(jpeg_exif.ed, EXIF_TAG_MODEL);
-		camera = sys().cameras->find_by_name(camera_name);
+		camera = sys.cameras->find_by_name(camera_name);
 		if (camera != NULL)
 		{
 			unsigned int camera_file_size = CameraOpts::get_file_size(*camera);
@@ -1029,7 +1029,7 @@ void Utils::process_file
 	}
 	else
 	{
-		camera = sys().cameras->find_by_file_size(file_size);
+		camera = sys.cameras->find_by_file_size(file_size);
 	}
 
 	if (camera == NULL) throw Exception(_("wrong_camera_type"));

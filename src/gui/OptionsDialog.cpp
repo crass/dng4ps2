@@ -292,8 +292,6 @@ OptionsDialog::~OptionsDialog() {
 // OptionsDialog::execute
 bool OptionsDialog::execute()
 {
-    ProgramObjects &sys = ::sys();
-
     *cam_opts_ = *sys.cameras;
 
     chbxIncludeSubfilders->SetValue(sys.options->recursive_search);
@@ -758,7 +756,7 @@ void OptionsDialog::OnGetLastestClick(wxCommandEvent& event)
 
 		wxMessageBox(_T("Success!"));
 
-		show_cameras_list(sys().options->last_camera_id);
+		show_cameras_list(sys.options->last_camera_id);
 		correct_interface();
 	}
 	else

@@ -34,7 +34,7 @@ void FileList::scan(const wxString & dir, bool recursive, const std::function<vo
 	FileListItem item;
 	std::vector<size_t> sizes;
 
-	sys().cameras->enum_file_sizes(sizes);
+	sys.cameras->enum_file_sizes(sizes);
 
 	items.clear();
 

@@ -26,11 +26,12 @@
 #include "CameraOpts.h"
 #include "ProgramObjects.h"
 
-ProgramObjects& sys()
+ProgramObjects& _sys()
 {
     static ProgramObjects obj;
     return obj;
 }
+ProgramObjects& sys = _sys();
 
 ProgramObjects::ProgramObjects() :
     options(new Options   ),

@@ -67,7 +67,6 @@ wxString exe_dir, path_sep;
 
 bool DNG4PSApp::OnInit()
 {
-	ProgramObjects &sys = ::sys();
 	srand((unsigned)time(NULL));
 
 #if defined(__WIN32__)

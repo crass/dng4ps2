@@ -116,11 +116,11 @@ void DNG4PSFrame::btnOptionsClick(wxCommandEvent& event)
 {
 	OptionsDialog * dialog = new OptionsDialog(this);
 
-	bool last_recursive = sys().options->recursive_search;
+	bool last_recursive = sys.options->recursive_search;
 	bool ok = dialog->execute();
 	if (ok)
 	{
-		if (last_recursive != sys().options->recursive_search) fill_files_list();
+		if (last_recursive != sys.options->recursive_search) fill_files_list();
 	}
 	dialog->Destroy();
 }
@@ -142,15 +142,15 @@ void DNG4PSFrame::btnSelectPathToRawClick(wxCommandEvent& event)
 void DNG4PSFrame::OnClose(wxCloseEvent& event)
 {
 	read_some_options();
-	sys().options->save();
+	sys.options->save();
 	event.Skip();
 }
 
 // DNG4PSFrame::read_some_options
 void DNG4PSFrame::read_some_options()
 {
-	sys().options->path_to_files = txtPathToRaw->GetValue();
-	sys().options->output_path = txtOutputDir->GetValue();
+	sys.options->path_to_files = txtPathToRaw->GetValue();
+	sys.options->output_path = txtOutputDir->GetValue();
 }
 
 // DNG4PSFrame::show_progress
@@ -179,7 +179,7 @@ void DNG4PSFrame::fill_files_list()
 
 	file_list->scan(
 		path, 
-		sys().options->recursive_search, 
+		sys.options->recursive_search, 
 		std::bind(&DNG4PSFrame::show_progress, this, progress_win, _1, wxDateTime::Now())
 	);
 
@@ -329,8 +329,8 @@ void DNG4PSFrame::btnStartClick(wxCommandEvent& event)
 // DNG4PSFrame::startTimerTrigger
 void DNG4PSFrame::startTimerTrigger(wxTimerEvent& event)
 {
-  	txtOutputDir->SetValue(sys().options->output_path);
-	txtPathToRaw->SetValue(sys().options->path_to_files);
+  	txtOutputDir->SetValue(sys.options->output_path);
+	txtPathToRaw->SetValue(sys.options->path_to_files);
     fill_files_list();
 }
 
@@ -340,7 +340,7 @@ void DNG4PSFrame::convertFiles(wxArrayString files, wxString outputDir)
 {
     std::auto_ptr<FileList> file_list (new FileList());
     if( !outputDir.IsEmpty() )
-        sys().options->output_path = outputDir;
+        sys.options->output_path = outputDir;
 
     for ( size_t num = 0; num < files.GetCount(); num++ )
     {

@@ -14,13 +14,13 @@ public:
     void init_language();
 
 private:
-    friend ProgramObjects& sys();
+    friend ProgramObjects& _sys();
 
     ProgramObjects();
 
     wxLocale * locale_;
 };
 
-ProgramObjects& sys();
+extern ProgramObjects& sys;
 
 #endif // PROGRAM_OBJECTS_H_INCLUDED

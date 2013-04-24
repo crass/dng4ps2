@@ -117,6 +117,7 @@ bool DNG4PSApp::OnInit()
                 { wxCMD_LINE_SWITCH, "c",  "compressed",   "Compressed DNG file" },
                 { wxCMD_LINE_SWITCH, "m",  "meta",         "Add meta data from jpeg" },
                 { wxCMD_LINE_SWITCH, "n",  "nooverwrite",  "Don't overwrite DNG files" },
+                { wxCMD_LINE_SWITCH, "e",  "embed",        "Embed original raw file inside DNG files." },
                 { wxCMD_LINE_OPTION, "o",  "outputfile",   "Not used. Reserved for future use" },
 
                 { wxCMD_LINE_PARAM,  NULL, NULL, "input files", wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_MULTIPLE },
@@ -181,6 +182,11 @@ bool DNG4PSApp::OnInit()
                     if ( parser.Found(_T("n")))
                     {
                         sys.options->dont_overwrite = true;
+                    }
+
+                    if ( parser.Found(_T("e")))
+                    {
+                        sys.options->embed_original = true;
                     }
 
                     wxLogMessage(s);

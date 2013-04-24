@@ -547,6 +547,8 @@ void Utils::create_dng_file
 
 	//~ host.SetKeepStage1(true);
 
+	host.SetKeepOriginalFile(sys().options->embed_original);
+
 	AutoPtr<dng_image> image(new dng_simple_image(dng_rect(camera_data->height, camera_data->width), 1, ttShort, memalloc));
 
 	AutoPtr<dng_camera_profile> camprofile(new dng_camera_profile);

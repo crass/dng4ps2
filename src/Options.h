@@ -28,6 +28,7 @@ public:
     bool add_metadata;
     bool compress_dng;
     bool use_date_for_path;
+    bool embed_original;
     PreviewType preview_type;
     DateTypes date_type;
     wxLanguage lang;

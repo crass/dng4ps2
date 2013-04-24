@@ -35,6 +35,7 @@ namespace
     const char * compress_dng_opt_str     = "CompressDNG";
     const char * output_path_opt_str      = "OutputPath";
     const char * preview_type_opt_str     = "PreviewMode";
+    const char * embed_original_opt_str   = "EmbedOriginal";
     const char * use_date_opt_str         = "UseDateForPath";
     const char * date_type_opt_str        = "DateType";
     const char * artist_opt_str           = "Artist";
@@ -53,6 +54,7 @@ Options::Options()
     use_date_for_path = true;
     date_type = dt_YYYY_MM_DD;
     use_artist = false;
+    embed_original = false;
     lang = DEFAULT_LANG;
 
 }
@@ -68,6 +70,7 @@ void Options::load()
     config.Read(compress_dng_opt_str,     &compress_dng,      compress_dng);
     config.Read(use_date_opt_str,         &use_date_for_path, use_date_for_path);
     config.Read(use_artist_opt_str,       &use_artist,        use_artist);
+    config.Read(embed_original_opt_str,   &embed_original,    embed_original);
 
     path_to_files  = config.Read(path_opt_str,             wxEmptyString   );
     output_path    = config.Read(output_path_opt_str,      wxEmptyString   );
@@ -106,6 +109,7 @@ void Options::save() const
     config.Write(date_type_opt_str,        (int)date_type   );
     config.Write(artist_opt_str,           artist           );
     config.Write(use_artist_opt_str,       use_artist       );
+    config.Write(embed_original_opt_str,   embed_original   );
     config.Write(lang_opt_str,             wxLocale::GetLanguageCanonicalName(lang));
     config.Write(last_camera_id_opt_str,   last_camera_id   );
 }

@@ -16,7 +16,7 @@ INCLUDES := -I. $(shell $(WXCONFIG) --cppflags --cflags) -I./external_libs/dng_s
 
 # dng_sdk 4.1 will not compile without qDNGThreadSafe
 WX_DEFINES := -DWX_PRECOMP -DwxUSE_UNICODE
-DNG_SDK_DEFINES := -DqWinOS=0 -DqMacOS=0 -DqLinux=1 -DqDNGLittleEndian=1 -DqDNGThreadSafe=1
+DNG_SDK_DEFINES += -DqWinOS=0 -DqMacOS=0 -DqLinux=1 -DqDNGLittleEndian=1 -DqDNGThreadSafe=1
 # Comment out for 32-bit builds
 #~ DNG_SDK_DEFINES += -DqDNG64Bit
 # Can't find where SXMPDocOps is declared in the xmp_sdk sources

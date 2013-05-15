@@ -28,8 +28,8 @@ XMP_SDK_DEFINES += -D__USE_FILE_OFFSET64
 DEFINES := $(WX_DEFINES) $(DNG_SDK_DEFINES) $(XMP_SDK_DEFINES) -DDISABLE_CALIBR
 
 CPPFLAGS := -std=c++0x $(DEBUG) $(DEFINES) $(INCLUDES)
-LDFLAGS = $(shell $(WXCONFIG) --libs) $(shell pkg-config --libs libexif) -lexpat
-LDFLAGS_DBG = --sysroot=/usr/lib/debug \$(shell $(WXCONFIG) --prefix=/usr/lib/debug/usr --libs) $(shell pkg-config --libs libexif) -lexpat
+LDFLAGS = $(shell $(WXCONFIG) --libs) $(shell pkg-config --libs libexif) -lexpat -lm
+LDFLAGS_DBG = --sysroot=/usr/lib/debug \$(shell $(WXCONFIG) --prefix=/usr/lib/debug/usr --libs) $(shell pkg-config --libs libexif) -lexpat -lm
 BINDIR := bin/lin
 
 SOURCES = $(wildcard *.cpp gui/*.cpp lib/*.cpp)

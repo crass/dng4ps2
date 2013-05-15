@@ -82,8 +82,8 @@ install:
 	mkdir -p $(DESTDIR)/usr/bin
 	cp dng4ps2 $(DESTDIR)/usr/bin/
 	for LANG in bin/lin/langs/*; do \
-	  mkdir -p $(DESTDIR)/usr/share/locale/$(basename $$LANG)/LC_MESSAGES; \
-	  cp $$LANG/dng4ps-2.mo $(DESTDIR)/usr/share/locale/$(basename $$LANG)/LC_MESSAGES/dng4ps-2.mo; \
+	  mkdir -p $(DESTDIR)/usr/share/locale/$$(basename $$LANG)/LC_MESSAGES; \
+	  cp $$LANG/dng4ps-2.mo $(DESTDIR)/usr/share/locale/$$(basename $$LANG)/LC_MESSAGES/dng4ps-2.mo; \
 	done
 
 dng4ps2-clean:

@@ -1,5 +1,6 @@
 CC := gcc-4.8
 CXX := g++-4.8
+ARCH ?= 64
 
 DEBUG := -g -Wall
 #~ DEBUG := -g -Wall -D__WXDEBUG__
@@ -16,14 +17,14 @@ INCLUDES := -I. $(shell $(WXCONFIG) --cppflags --cflags) -I./external_libs/dng_s
 
 # dng_sdk 4.1 will not compile without qDNGThreadSafe
 WX_DEFINES := -DWX_PRECOMP -DwxUSE_UNICODE
-DNG_SDK_DEFINES += -DqWinOS=0 -DqMacOS=0 -DqLinux=1 -DqDNGLittleEndian=1 -DqDNGThreadSafe=1
+DNG_SDK_DEFINES += -DqDNG$(ARCH)Bit -DqWinOS=0 -DqMacOS=0 -DqLinux=1 -DqDNGLittleEndian=1 -DqDNGThreadSafe=1
 # Comment out for 32-bit builds
 #~ DNG_SDK_DEFINES += -DqDNG64Bit
 # Can't find where SXMPDocOps is declared in the xmp_sdk sources
 DNG_SDK_DEFINES += -DqDNGXMPDocOps=0
 XMP_SDK_DEFINES := -DUNIX_ENV=1
 # Needed to have off_t defined as 64-bit
-XMP_SDK_DEFINES := -D__USE_FILE_OFFSET64
+XMP_SDK_DEFINES += -D__USE_FILE_OFFSET64
 DEFINES := $(WX_DEFINES) $(DNG_SDK_DEFINES) $(XMP_SDK_DEFINES) -DDISABLE_CALIBR
 
 CPPFLAGS := -std=c++0x $(DEBUG) $(DEFINES) $(INCLUDES)

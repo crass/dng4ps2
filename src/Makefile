@@ -46,16 +46,16 @@ CPPFLAGS += -MMD
 
 #~ dng4ps2: langs deps $(addsuffix .o,$(basename $(wildcard *.cpp gui/*.cpp lib/*.cpp ))) $(wildcard *.h gui/*.h lib/*.h) $(wildcard *.hpp gui/*.hpp lib/*.hpp)
 dng4ps2: langs deps $(SOURCES:cpp=o)
-	@#~ $(CC) -o $@ $(wildcard *.o) $(LDFLAGS)
+	@#~ $(CXX) -o $@ $(wildcard *.o) $(LDFLAGS)
 	@#~ echo $(SOURCES:cpp=o)
-	$(CC) -o $@ $(SOURCES:.cpp=.o) $(DNG_SOURCES:.cpp=.o) \
+	$(CXX) -o $@ $(SOURCES:.cpp=.o) $(DNG_SOURCES:.cpp=.o) \
 	    $(XMP_SOURCES:.cpp=.o) $(OTHER_SOURCES:.cpp=.o) $(LDFLAGS)
 	ln -f $@ $(BINDIR)
 
 dng4ps2-dbg: langs deps $(SOURCES:cpp=o)
-	@#~ $(CC) -o $@ $(wildcard *.o) $(LDFLAGS)
+	@#~ $(CXX) -o $@ $(wildcard *.o) $(LDFLAGS)
 	@#~ echo $(SOURCES:cpp=o)
-	$(CC) -o $@ $(SOURCES:.cpp=.o) $(DNG_SOURCES:.cpp=.o) \
+	$(CXX) -o $@ $(SOURCES:.cpp=.o) $(DNG_SOURCES:.cpp=.o) \
 	    $(XMP_SOURCES:.cpp=.o) $(OTHER_SOURCES:.cpp=.o) $(LDFLAGS_DBG)
 	ln -f $@ $(BINDIR)
 

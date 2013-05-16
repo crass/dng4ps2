@@ -6,9 +6,15 @@ Digital Negative (DNG) format.
 
 *** BUILDING FROM SOURCES ***
 
-You have to install some software for building dng4ps-2 from sources:
+There are 3 separate projects in sources:
 
-  1. wxWidgets library (http://www.wxwidgets.org/).
+  DNG4PS-2.cbp - for MS Windows
+  dng4ps2li.cbp - For Linux
+  src/Makefile - For Linux
+
+For the first two projects the following software must be installed to build:
+
+  1. wxWidgets 2.9.x library (http://www.wxwidgets.org/).
 
   2. Boost library (http://www.boost.org/)
 
@@ -18,13 +24,23 @@ You have to install some software for building dng4ps-2 from sources:
   4. If you want to compile under MS Windows, install MinGW (CGG compiler for 
      Windows) with gettext module (http://www.mingw.org/).
 
-There are 2 separate projects in sources:
+If compiling via Makefile the following is required:
 
-  DNG4PS-2.cbp - for MS Windows
-  dng4ps2li.cbp - For Linux
+  1. wxWidgets 2.9.x library (http://www.wxwidgets.org/).
 
+  2. g++ >= 4.8
+  
+  3. development headers for libc, zlib, libwxgtk, libexif, libexpat1
+  
+  4. gettext utilties
+
+  eg. make -C src ARCH=64
 
 *** LINKS ***
 
-Project's web page: http://dng4ps2.chat.ru/
+Project's web page: http://code.google.com/p/dng4ps2
 Author's email:     denis.artyomov@gmail.com
+Developer's email:  glenn.washburn@efficientek.com
+git:                https://github.com/crass/dng4ps2
+PPA:                https://code.launchpad.net/~crass/+archive/dng4ps2
+

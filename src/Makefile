@@ -1,15 +1,11 @@
-CC := gcc-4.8
-CXX := g++-4.8
 ARCH ?= 64
 
-DEBUG := -g -Wall
-#~ DEBUG := -g -Wall -D__WXDEBUG__
-#~ DEBUG := -g -Wall -fdump-translation-unit -fdump-tree-all
+DEBUG += -g -Wall
+#~ DEBUG += -D__WXDEBUG__
+#~ DEBUG += -fdump-translation-unit -fdump-tree-all
 
 # Need wxwidgets 2.9
-#~ WXCONFIG := wx-config
-#~ WXCONFIG := /usr/lib/wx/config/gtk2-unicode-2.9
-WXCONFIG := /usr/lib/wx/config/gtk2-unicode-2.9-unofficial
+WXCONFIG ?= wx-config
 
 #~ INCLUDES := $(shell $(WXCONFIG) --cppflags --cflags) $(shell ls external_libs -1 | grep -v missed | sed 's|^|-I./external_libs/|')
 #~ INCLUDES := -I. $(shell $(WXCONFIG) --cppflags --cflags) -I./external_libs/dng_sdk -I./external_libs/MD5 -I./external_libs/xmp_sdk/public/include -I./external_libs/xmp_sdk/include -I./external_libs/xmp_sdk/common $(shell pkg-config --cflags libexif)
@@ -25,6 +21,8 @@ DNG_SDK_DEFINES += -DqDNGXMPDocOps=0
 XMP_SDK_DEFINES := -DUNIX_ENV=1
 # Needed to have off_t defined as 64-bit
 XMP_SDK_DEFINES += -D__USE_FILE_OFFSET64
+# Default is the home grown lock, should we assume pthread here (hence *nix)?
+#~ XMP_SDK_DEFINES += -DUsePThreadLock
 DEFINES := $(WX_DEFINES) $(DNG_SDK_DEFINES) $(XMP_SDK_DEFINES) -DDISABLE_CALIBR
 
 CPPFLAGS := -std=c++0x $(DEBUG) $(DEFINES) $(INCLUDES)
@@ -74,9 +72,9 @@ langs: $(wildcard langs/*.po)
 
 #~ %.o: %.cpp
 	#~ echo $(<:cpp=h): $(wildcard $(<:cpp=hpp))
-	#~ $(CC) $(CPPFLAGS) $(DEFINES) $(DEBUG) $(INCLUDES) -M -MM -MF .deps -c $<
-	#~ $(CC) $(CPPFLAGS) $(DEFINES) $(DEBUG) $(INCLUDES) -o $@ -c $<
-	#~ @#~ $(CC) $(CPPFLAGS) $(DEFINES) $(DEBUG) $(INCLUDES) -E -c $< > $<.E
+	#~ $(CXX) $(CPPFLAGS) $(DEFINES) $(DEBUG) $(INCLUDES) -M -MM -MF .deps -c $<
+	#~ $(CXX) $(CPPFLAGS) $(DEFINES) $(DEBUG) $(INCLUDES) -o $@ -c $<
+	#~ @#~ $(CXX) $(CPPFLAGS) $(DEFINES) $(DEBUG) $(INCLUDES) -E -c $< > $<.E
 
 install:
 	mkdir -p $(DESTDIR)/usr/bin

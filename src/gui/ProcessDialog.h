@@ -19,11 +19,12 @@ public:
 	void set_percent(int percent);
 	void show_time(int current, int total);
 
-private:
+protected:
 	void btnExitClick(wxCommandEvent& event);
-	void btnStopClick(wxCommandEvent& event);
+	virtual void btnStopClick(wxCommandEvent& event);
 	void OnClose(wxCloseEvent& event);
 
+private:
 	wxButton* btnStop;
 	wxTextCtrl* txtLog;
 	wxGauge* gaPercent;

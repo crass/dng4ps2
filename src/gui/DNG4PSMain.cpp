@@ -37,7 +37,6 @@
 #include "lib/wxGUIBuilder.hpp"
 
 extern wxIcon main_icon;
-ProcessDialog * process_dialog = NULL;
 
 DNG4PSFrame::DNG4PSFrame(wxWindow* parent,wxWindowID id) : file_list(new FileList)
 {
@@ -226,38 +225,75 @@ void DNG4PSFrame::btnSelectOutputDirClick(wxCommandEvent& event)
 	dialog->Destroy();
 }
 
-// class WorkThread //
-class WorkThread : public wxThread
+wxDEFINE_EVENT(EVT_THREAD_UPDATE, wxThreadEvent);
+
+// class WorkerProgress //
+class WorkerProgress : public ProcessDialog, public wxThreadHelper
 {
 private:
 	FileList file_list;
 	DNG4PSFrame * frame;
 	virtual void* Entry();
-	virtual void OnExit();
+	void OnThreadUpdate(wxThreadEvent&);
+	void btnStopClick(wxCommandEvent& event);
 
 public:
-	WorkThread(const FileList & fl, DNG4PSFrame * fr) : file_list(fl), frame(fr)
-	{ }
+	WorkerProgress(const FileList & fl, DNG4PSFrame * fr) : file_list(fl), frame(fr), ProcessDialog(fr, fr)
+	{ Bind(EVT_THREAD_UPDATE, &WorkerProgress::OnThreadUpdate, this); }
+
+	void RunInGui(std::function<void()>);
 };
+
+// By using two pointers to the same object, it should be more clear in which
+// role the object is being used in, thread or progress dialog.
+WorkerProgress* work_thread = NULL, *&process_dialog = work_thread;
 
 void show_log_text(const wxString & text)
 {
-	wxMutexGuiEnter();
-	process_dialog->add_text(text);
-	wxMutexGuiLeave();
+	work_thread->RunInGui([text](){
+		process_dialog->add_text(text);
+	});
 }
 
-wxThread* work_thread = NULL;
-
-// WorkThread::Entry
-void* WorkThread::Entry()
+// WorkerProgress::RunInGui
+void WorkerProgress::RunInGui(std::function<void()> func)
 {
+	// If this is run from the main thread there should be no issue
+	// with executing function now, but that sort of defeats the purpose.
+	if (wxIsMainThread())
+            return func();
+	wxThreadEvent *event = new wxThreadEvent(EVT_THREAD_UPDATE);
+	event->SetPayload<std::function<void()>>(func);
+	wxQueueEvent(this, event);
+}
+
+// WorkerProgress::OnThreadUpdate
+void WorkerProgress::OnThreadUpdate(wxThreadEvent &event)
+{
+	// This should always be run from the main thread.
+	// The payload of the ThreadEvent should be a function with no return
+	// value or arguments.
+	assert(wxIsMainThread());
+	event.GetPayload<std::function<void()>>()();
+}
+
+// WorkerProgress::btnStopClick
+void WorkerProgress::btnStopClick(wxCommandEvent& event)
+{
+	ProcessDialog::btnStopClick(event);
+	GetThread()->Delete();
+}
+
+// WorkerProgress::Entry
+void* WorkerProgress::Entry()
+{
+	bool canceled;
 	size_t count = file_list.size();
 	wxDateTime start_time = wxDateTime::Now();
 
 	for (size_t i = 0; i < count; i++)
 	{
-		if (TestDestroy()) break;
+		if (canceled = GetThread()->TestDestroy()) break;
 		const FileListItem & item = file_list[i];
 
 		wxString err_text = L"";
@@ -283,47 +319,41 @@ void* WorkThread::Entry()
 		int seconds = diff.GetSeconds().GetLo();
 		int total_seconds = seconds*count/(i+1);
 
-		wxMutexGuiEnter();
-		process_dialog->set_percent(100*(i+1)/count);
-		if (i >= 2) process_dialog->show_time(seconds, total_seconds);
-		if (err_text.Length() != 0) process_dialog->add_text(wxString() << L"\n" << _("Error") << L": " << err_text << L"\n");
-		wxMutexGuiLeave();
+		RunInGui([i,count,seconds,total_seconds,err_text](){
+			process_dialog->set_percent(100*(i+1)/count);
+			if (i >= 2) process_dialog->show_time(seconds, total_seconds);
+			if (err_text.Length() != 0) process_dialog->add_text(wxString() << L"\n" << _("Error") << L": " << err_text << L"\n");
+		});
 	}
 
-	wxMutexGuiEnter();
-	process_dialog->add_text(L"\n==================\n");
-	process_dialog->add_text(TestDestroy() ? _("Stopped") : _("Finished"));
-	process_dialog->add_text(L"\n");
-	process_dialog->set_state(PD_Done);
-	wxMutexGuiLeave();
+	RunInGui([canceled](){
+		process_dialog->add_text(L"\n==================\n");
+		process_dialog->add_text(canceled ? _("Stopped") : _("Finished"));
+		process_dialog->add_text(L"\n");
+		process_dialog->set_state(PD_Done);
+	});
 
 	return NULL;
-}
-
-// WorkThread::OnExit
-void WorkThread::OnExit()
-{
-	wxMutexGuiEnter();
-	work_thread = NULL;
-	wxMutexGuiLeave();
 }
 
 // DNG4PSFrame::btnStartClick
 void DNG4PSFrame::btnStartClick(wxCommandEvent& event)
 {
-	if (work_thread != NULL) return;
-	if (process_dialog == NULL) process_dialog = new ProcessDialog(this, this);
+	// If the worker thread is running, do nothing
+	if (work_thread != NULL && work_thread->GetThread()->IsRunning())
+		return;
 
 	read_some_options();
 	fill_files_list();
 
+	// Setting work_thread also sets process_dialog.
+	work_thread = new WorkerProgress(*file_list, this);
 	process_dialog->set_state(PD_Work);
 	process_dialog->clear();
 	process_dialog->Show();
 	Disable();
-	work_thread = new WorkThread(*file_list, this);
-	work_thread->Create();
-	work_thread->Run();
+	work_thread->CreateThread();
+	work_thread->GetThread()->Run();
 }
 
 // DNG4PSFrame::startTimerTrigger

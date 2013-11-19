@@ -12,7 +12,7 @@ WXCONFIG ?= wx-config
 INCLUDES := -I. $(shell $(WXCONFIG) --cppflags --cflags) -I./external_libs/dng_sdk -I./external_libs/MD5 $(shell find ./external_libs/xmp_sdk -type d | sed 's|^|-I|') $(shell pkg-config --cflags libexif)
 
 # dng_sdk 4.1 will not compile without qDNGThreadSafe
-WX_DEFINES := -DWX_PRECOMP -DwxUSE_UNICODE
+WX_DEFINES := -DWX_PRECOMP -DwxUSE_UNICODE -DwxUSE_THREADS
 DNG_SDK_DEFINES += -DqDNG$(ARCH)Bit -DqWinOS=0 -DqMacOS=0 -DqLinux=1 -DqDNGLittleEndian=1 -DqDNGThreadSafe=1
 # Comment out for 32-bit builds
 #~ DNG_SDK_DEFINES += -DqDNG64Bit

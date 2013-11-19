@@ -24,8 +24,6 @@
 #include "ProcessDialog.h"
 #include "lib/wxGUIBuilder.hpp"
 
-extern wxThread* work_thread;
-
 ProcessDialog::ProcessDialog(wxWindow* parent, wxFrame * frame, wxWindowID id)
 {
 	using namespace gb;
@@ -104,7 +102,6 @@ void ProcessDialog::btnExitClick(wxCommandEvent& event)
 void ProcessDialog::btnStopClick(wxCommandEvent& event)
 {
 	btnStop->Disable();
-	if (work_thread) work_thread->Delete();
 }
 
 // ProcessDialog::clear

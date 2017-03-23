@@ -25,8 +25,8 @@ XMP_SDK_DEFINES += -D__USE_FILE_OFFSET64
 #~ XMP_SDK_DEFINES += -DUsePThreadLock
 DEFINES := $(WX_DEFINES) $(DNG_SDK_DEFINES) $(XMP_SDK_DEFINES) -DDISABLE_CALIBR
 
-CPPFLAGS := -std=c++0x $(DEBUG) $(DEFINES) $(INCLUDES)
-LDFLAGS = $(shell $(WXCONFIG) --libs) $(shell pkg-config --libs libexif) -lexpat -lz -lm
+CPPFLAGS := -std=c++0x $(CPPFLAGS) $(DEBUG) $(DEFINES) $(INCLUDES)
+LDFLAGS := $(LDFLAGS) $(shell $(WXCONFIG) --libs) $(shell pkg-config --libs libexif) -lexpat -lz -lm
 LDFLAGS_DBG = --sysroot=/usr/lib/debug \$(shell $(WXCONFIG) --prefix=/usr/lib/debug/usr --libs) $(shell pkg-config --libs libexif) -lexpat -lz -lm
 BINDIR := bin/lin
 

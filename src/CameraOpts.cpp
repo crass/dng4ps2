@@ -542,6 +542,15 @@ namespace
 			ppc_10,
 			L"{11111111-11110000-08a420c3-32f90039}" },
 
+		{	L"Canon DIGITAL IXUS 105 IS / Canon PowerShot SD1300 IS / Canon DIGITAL IXY 200F", 
+			L"IXUS 105 / PowerShot SD1300 IS / IXY 200F",
+			4104,3048, 6,12,28,18, 4000,3000,
+			MOSAIC_GBRG,
+			17, {1.405200f,-0.522900f,-0.115600f, -0.132500f,0.942000f,0.225200f, -0.049800f,0.195700f,0.411600f}, {1.0f, 1.0f, 1.0f},
+			-1, {}, {},
+			ppc_12,
+			L"{11111111-11110000-08a420c3-32f9003A}" },
+
 	};
 
 	void copy_defaults(const CameraDefValue &def, CameraData &item)

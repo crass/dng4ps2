@@ -1,4 +1,4 @@
-CameraCount=43
+CameraCount=57
 [Camera000]
 Id={11111111-11110000-08a420c3-32f90020}
 Name=Canon DIGITAL IXUS 40 / Canon PowerShot SD300
@@ -48,6 +48,54 @@ Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
 [Camera002]
+Id={11111111-11110000-08a420c3-32f90021}
+Name=Canon DIGITAL IXUS 55 / Canon PowerShot SD450
+ShortName=IXUS 55 / PowerShot SD450
+SensorWidth=2672
+SensorHeight=1968
+CroppedWidth=2592
+CroppedHeight=1944
+ActiveOriginX=12
+ActiveOriginY=8
+ActiveOriginRight=44
+ActiveOriginBottom=0
+BlackLevel=31
+WhiteLevel=1023
+Mosaic=1
+BitsPerUnit=10
+[Camera002/Matrix1]
+Illuminant=1
+Matrix=0,536034 -0,173429 -0,089823 -0,290416 0,735807 0,047894 -0,071455 0,114314 0,274533
+Mult=1,0 1,0 1,0
+[Camera002/Matrix2]
+Illuminant=-1
+Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
+Mult=0,0 0,0 0,0
+[Camera003]
+Id={11111111-11110000-08a420c3-32f9001B}
+Name=Canon Digital IXUS 60 / Canon PowerShot SD600
+ShortName=IXUS 60 / PowerShot SD600
+SensorWidth=2888
+SensorHeight=2136
+CroppedWidth=2816
+CroppedHeight=2112
+ActiveOriginX=44
+ActiveOriginY=8
+ActiveOriginRight=4
+ActiveOriginBottom=0
+BlackLevel=31
+WhiteLevel=1023
+Mosaic=1
+BitsPerUnit=10
+[Camera003/Matrix1]
+Illuminant=1
+Matrix=0,767398 -0,227658 -0,144213 -0,217466 0,669319 0,038180 -0,023152 0,077743 0,238669
+Mult=1,0 1,0 1,0
+[Camera003/Matrix2]
+Illuminant=-1
+Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
+Mult=0,0 0,0 0,0
+[Camera004]
 Id={11111111-11110000-08a420c3-32f9001D}
 Name=Canon DIGITAL IXUS 65 / Canon PowerShot SD630
 ShortName=IXUS 65 / PowerShot SD630
@@ -63,15 +111,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera002/Matrix1]
+[Camera004/Matrix1]
 Illuminant=1
 Matrix=0,783384 -0,227078 -0,127919 -0,181247 0,661743 0,058868 0,025727 0,043891 0,247655
 Mult=1,0 1,0 1,0
-[Camera002/Matrix2]
+[Camera004/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera003]
+[Camera005]
 Id={11111111-11110000-08a420c3-32f90006}
 Name=Canon DIGITAL IXUS 70 / Canon PowerShot SD1000
 ShortName=IXUS 70 / PowerShot SD1000
@@ -87,15 +135,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera003/Matrix1]
+[Camera005/Matrix1]
 Illuminant=1
 Matrix=0,652674 -0,172074 -0,107575 -0,139063 0,594517 0,060252 -0,009088 0,082013 0,238048
 Mult=1,0 1,0 1,0
-[Camera003/Matrix2]
+[Camera005/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera004]
+[Camera006]
 Id={11111111-11110000-08a420c3-32f9000A}
 Name=Canon DIGITAL IXUS 700 / Canon PowerShot SD500
 ShortName=IXUS 700 / PowerShot SD500
@@ -111,15 +159,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera004/Matrix1]
+[Camera006/Matrix1]
 Illuminant=17
 Matrix=15265,000000 -6193,000000 -1558,000000 -4125,000000 12116,000000 2010,000000 -888,000000 1639,000000 5220,000000
 Mult=1,0 1,0 1,0
-[Camera004/Matrix2]
+[Camera006/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera005]
+[Camera007]
 Id={11111111-11110000-08a420c3-32f9001C}
 Name=Canon DIGITAL IXUS 750 / Canon PowerShot SD550
 ShortName=IXUS 750 / PowerShot SD550
@@ -135,15 +183,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera005/Matrix1]
+[Camera007/Matrix1]
 Illuminant=1
 Matrix=0,580280 -0,172239 -0,089707 -0,206596 0,634926 0,063877 0,010377 0,062053 0,242646
 Mult=1,0 1,0 1,0
-[Camera005/Matrix2]
+[Camera007/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera006]
+[Camera008]
 Id={11111111-11110000-08a420c3-32f90022}
 Name=Canon DIGITAL IXUS 80 IS / Canon PowerShot SD1100 IS
 ShortName=IXUS 80 IS / PowerShot SD1100 IS
@@ -159,15 +207,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=3
 BitsPerUnit=10
-[Camera006/Matrix1]
+[Camera008/Matrix1]
 Illuminant=1
 Matrix=0,723425 -0,262760 -0,106712 -0,005402 0,476882 0,037287 0,021408 0,039033 0,194852
 Mult=1,0 1,0 1,0
-[Camera006/Matrix2]
+[Camera008/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera007]
+[Camera009]
 Id={11111111-11110000-08a420c3-32f90013}
 Name=Canon DIGITAL IXUS 800 IS / Canon PowerShot SD700 IS
 ShortName=IXUS 800 IS / PowerShot SD700 IS
@@ -183,15 +231,39 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera007/Matrix1]
+[Camera009/Matrix1]
 Illuminant=17
 Matrix=0,796464 -0,214669 -0,122599 -0,182793 0,736859 0,075607 0,020593 0,080194 0,277992
 Mult=1,0 1,0 1,0
-[Camera007/Matrix2]
+[Camera009/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera008]
+[Camera010]
+Id={11111111-11110000-08a420c3-32f90005}
+Name=Canon DIGITAL IXUS 850 IS / Canon PowerShot SD800 IS
+ShortName=IXUS 850 IS / PowerShot SD800 IS
+SensorWidth=3152
+SensorHeight=2340
+CroppedWidth=3072
+CroppedHeight=2304
+ActiveOriginX=38
+ActiveOriginY=14
+ActiveOriginRight=6
+ActiveOriginBottom=2
+BlackLevel=31
+WhiteLevel=1023
+Mosaic=1
+BitsPerUnit=10
+[Camera010/Matrix1]
+Illuminant=1
+Matrix=0,661014 -0,189364 -0,115797 -0,168772 0,661827 0,047392 -0,035846 0,107148 0,233705
+Mult=1,0 1,0 1,0
+[Camera010/Matrix2]
+Illuminant=-1
+Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
+Mult=0,0 0,0 0,0
+[Camera011]
 Id={11111111-11110000-08a420c3-32f90018}
 Name=Canon DIGITAL IXUS 860 IS / Canon PowerShot SD870 IS
 ShortName=IXUS 860 IS / PowerShot SD870 IS
@@ -207,15 +279,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=3
 BitsPerUnit=10
-[Camera008/Matrix1]
+[Camera011/Matrix1]
 Illuminant=1
 Matrix=0,747939 -0,268233 -0,129266 -0,050633 0,515687 0,023509 -0,021341 0,076495 0,186385
 Mult=1,0 1,0 1,0
-[Camera008/Matrix2]
+[Camera011/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera009]
+[Camera012]
 Id={11111111-11110000-08a420c3-32f9002C}
 Name=Canon DIGITAL IXUS 870 IS / Canon PowerShot SD880 IS
 ShortName=IXUS 870 IS / PowerShot SD880 IS
@@ -231,15 +303,15 @@ BlackLevel=127
 WhiteLevel=4095
 Mosaic=1
 BitsPerUnit=12
-[Camera009/Matrix1]
+[Camera012/Matrix1]
 Illuminant=17
 Matrix=0,759444 -0,270106 -0,111462 -0,005098 0,519067 0,041750 0,023861 0,044290 0,212756
 Mult=1,0 1,0 1,0
-[Camera009/Matrix2]
+[Camera012/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera010]
+[Camera013]
 Id={11111111-11110000-08a420c3-32f9000E}
 Name=Canon DIGITAL IXUS 950 IS / Canon PowerShot SD850 IS
 ShortName=IXUS 950 IS / PowerShot SD850 IS
@@ -255,15 +327,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=3
 BitsPerUnit=10
-[Camera010/Matrix1]
+[Camera013/Matrix1]
 Illuminant=1
 Matrix=14573,000000 -5482,000000 -1546,000000 -1266,000000 9799,000000 1468,000000 -1040,000000 1912,000000 3810,000000
 Mult=1,0 1,0 1,0
-[Camera010/Matrix2]
+[Camera013/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera011]
+[Camera014]
 Id={11111111-11110000-08a420c3-32f9001F}
 Name=Canon DIGITAL IXUS 960 IS / Canon PowerShot SD950 IS
 ShortName=IXUS 960 IS / PowerShot SD950 IS
@@ -279,15 +351,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera011/Matrix1]
+[Camera014/Matrix1]
 Illuminant=1
 Matrix=0,764117 -0,223884 -0,116036 -0,035875 0,582534 0,032982 0,010441 0,064164 0,198520
 Mult=1,0 1,0 1,0
-[Camera011/Matrix2]
+[Camera014/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera012]
+[Camera015]
 Id={11111111-11110000-08a420c3-32f90027}
 Name=Canon DIGITAL IXUS 970 IS / Canon PowerShot SD890 IS
 ShortName=IXUS 970 IS / PowerShot SD890 IS
@@ -303,15 +375,15 @@ BlackLevel=127
 WhiteLevel=4095
 Mosaic=1
 BitsPerUnit=12
-[Camera012/Matrix1]
+[Camera015/Matrix1]
 Illuminant=17
 Matrix=0,808011 -0,261330 -0,122838 -0,036763 0,600489 0,041035 0,003414 0,067582 0,211157
 Mult=1,0 1,0 1,0
-[Camera012/Matrix2]
+[Camera015/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera013]
+[Camera016]
 Id={11111111-11110000-08a420c3-32f90029}
 Name=Canon DIGITAL IXUS 980 IS / Canon PowerShot SD990 IS
 ShortName=IXUS 980 IS / PowerShot SD990 IS
@@ -327,15 +399,351 @@ BlackLevel=127
 WhiteLevel=4095
 Mosaic=3
 BitsPerUnit=12
-[Camera013/Matrix1]
+[Camera016/Matrix1]
 Illuminant=17
 Matrix=0,836835 -0,316442 -0,130516 -0,111253 0,594589 0,049307 0,010813 0,071258 0,206445
 Mult=1,0 1,0 1,0
-[Camera013/Matrix2]
+[Camera016/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera014]
+[Camera017]
+Id={98a05c8f-25966cc4-f0da75c0-30fdf225}
+Name=Canon DIGITAL IXUS 105 IS / Canon PowerShot SD1300 IS / Canon DIGITAL IXY 200F
+ShortName=IXUS 105 / PowerShot SD1300 IS / IXY 200F
+SensorWidth=4104
+SensorHeight=3048
+CroppedWidth=4000
+CroppedHeight=3000
+ActiveOriginX=6
+ActiveOriginY=12
+ActiveOriginRight=28
+ActiveOriginBottom=18
+BlackLevel=127
+WhiteLevel=4095
+Mosaic=3
+BitsPerUnit=12
+[Camera017/Matrix1]
+Illuminant=17
+Matrix=1.405200 -0.522900 -0.115600 -0.132500 0.942000 0.225200 -0.049800 0.195700 0.411600
+Mult=1.0 1.0 1.0
+[Camera017/Matrix2]
+Illuminant=-1
+Matrix=0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+Mult=0.0 0.0 0.0
+[Camera018]
+Id={11111111-11110000-08a420c3-32f9002D}
+Name=Canon PowerShot A1000 IS
+ShortName=PowerShot A1000 IS
+SensorWidth=3720
+SensorHeight=2772
+CroppedWidth=3648
+CroppedHeight=2736
+ActiveOriginX=14
+ActiveOriginY=8
+ActiveOriginRight=38
+ActiveOriginBottom=8
+BlackLevel=127
+WhiteLevel=4095
+Mosaic=1
+BitsPerUnit=12
+[Camera018/Matrix1]
+Illuminant=17
+Matrix=827547.000000 -290458.000000 -126086.000000 -12829.000000 530507.000000 50537.000000 5181.000000 48183.000000 245014.000000
+Mult=1.0 1.0 1.0
+[Camera018/Matrix2]
+Illuminant=-1
+Matrix=0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+Mult=0.0 0.0 0.0
+[Camera019]
+Id={11111111-11110000-08a420c3-32f9002E}
+Name=Canon PowerShot A1100 IS
+ShortName=PowerShot A1100 IS
+SensorWidth=4104
+SensorHeight=3048
+CroppedWidth=4000
+CroppedHeight=3000
+ActiveOriginX=20
+ActiveOriginY=24
+ActiveOriginRight=84
+ActiveOriginBottom=24
+BlackLevel=127
+WhiteLevel=4095
+Mosaic=3
+BitsPerUnit=12
+[Camera019/Matrix1]
+Illuminant=17
+Matrix=793137.000000 -271722.000000 -113158.000000 -55013.000000 541027.000000 32394.000000 21921.000000 71395.000000 181847.000000
+Mult=1.0 1.0 1.0
+[Camera019/Matrix2]
+Illuminant=-1
+Matrix=0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+Mult=0.0 0.0 0.0
+[Camera020]
+Id={11111111-11110000-08a420c3-32f9002F}
+Name=Canon PowerShot A1200
+ShortName=PowerShot A1200
+SensorWidth=4104
+SensorHeight=3048
+CroppedWidth=4000
+CroppedHeight=3000
+ActiveOriginX=0
+ActiveOriginY=10
+ActiveOriginRight=32
+ActiveOriginBottom=8
+BlackLevel=127
+WhiteLevel=4095
+Mosaic=3
+BitsPerUnit=12
+[Camera020/Matrix1]
+Illuminant=17
+Matrix=827547.000000 -290458.000000 -126086.000000 -12829.000000 530507.000000 50537.000000 5181.000000 48183.000000 245014.000000
+Mult=1.0 1.0 1.0
+[Camera020/Matrix2]
+Illuminant=-1
+Matrix=0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+Mult=0.0 0.0 0.0
+[Camera021]
+Id={11111111-11110000-08a420c3-32f90030}
+Name=Canon PowerShot A1300
+ShortName=PowerShot A1300
+SensorWidth=4704
+SensorHeight=3504
+CroppedWidth=4608
+CroppedHeight=3456
+ActiveOriginX=16
+ActiveOriginY=26
+ActiveOriginRight=64
+ActiveOriginBottom=18
+BlackLevel=127
+WhiteLevel=4095
+Mosaic=3
+BitsPerUnit=12
+[Camera021/Matrix1]
+Illuminant=17
+Matrix=827547.000000 -290458.000000 -126086.000000 -12829.000000 530507.000000 50537.000000 5181.000000 48183.000000 245014.000000
+Mult=1.0 1.0 1.0
+[Camera021/Matrix2]
+Illuminant=-1
+Matrix=0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+Mult=0.0 0.0 0.0
+[Camera022]
+Id={11111111-11110000-08a420c3-32f90031}
+Name=Canon PowerShot A2000 IS
+ShortName=PowerShot A2000 IS
+SensorWidth=3720
+SensorHeight=2772
+CroppedWidth=3648
+CroppedHeight=2736
+ActiveOriginX=14
+ActiveOriginY=8
+ActiveOriginRight=38
+ActiveOriginBottom=8
+BlackLevel=127
+WhiteLevel=4095
+Mosaic=1
+BitsPerUnit=12
+[Camera022/Matrix1]
+Illuminant=17
+Matrix=827547.000000 -290458.000000 -126086.000000 -12829.000000 530507.000000 50537.000000 5181.000000 48183.000000 245014.000000
+Mult=1.0 1.0 1.0
+[Camera022/Matrix2]
+Illuminant=-1
+Matrix=0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+Mult=0.0 0.0 0.0
+[Camera023]
+Id={11111111-11110000-08a420c3-32f90032}
+Name=Canon PowerShot A2100 IS
+ShortName=PowerShot A2100 IS
+SensorWidth=4104
+SensorHeight=3048
+CroppedWidth=4000
+CroppedHeight=3000
+ActiveOriginX=20
+ActiveOriginY=24
+ActiveOriginRight=84
+ActiveOriginBottom=24
+BlackLevel=127
+WhiteLevel=4095
+Mosaic=3
+BitsPerUnit=12
+[Camera023/Matrix1]
+Illuminant=17
+Matrix=793137.000000 -271722.000000 -113158.000000 -55013.000000 541027.000000 32394.000000 21921.000000 71395.000000 181847.000000
+Mult=1.0 1.0 1.0
+[Camera023/Matrix2]
+Illuminant=-1
+Matrix=0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+Mult=0.0 0.0 0.0
+[Camera024]
+Id={11111111-11110000-08a420c3-32f90033}
+Name=Canon PowerShot A2200
+ShortName=PowerShot A2200
+SensorWidth=4416
+SensorHeight=3296
+CroppedWidth=4320
+CroppedHeight=3240
+ActiveOriginX=16
+ActiveOriginY=29
+ActiveOriginRight=64
+ActiveOriginBottom=21
+BlackLevel=127
+WhiteLevel=4095
+Mosaic=3
+BitsPerUnit=12
+[Camera024/Matrix1]
+Illuminant=17
+Matrix=827547.000000 -290458.000000 -126086.000000 -12829.000000 530507.000000 50537.000000 5181.000000 48183.000000 245014.000000
+Mult=1.0 1.0 1.0
+[Camera024/Matrix2]
+Illuminant=-1
+Matrix=0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+Mult=0.0 0.0 0.0
+[Camera025]
+Id={11111111-11110000-08a420c3-32f90034}
+Name=Canon PowerShot A3000 IS
+ShortName=PowerShot A3000 IS
+SensorWidth=3720
+SensorHeight=2772
+CroppedWidth=3648
+CroppedHeight=2736
+ActiveOriginX=0
+ActiveOriginY=0
+ActiveOriginRight=20
+ActiveOriginBottom=0
+BlackLevel=127
+WhiteLevel=4095
+Mosaic=3
+BitsPerUnit=12
+[Camera025/Matrix1]
+Illuminant=17
+Matrix=587459.000000 -200837.000000 -96560.000000 -64810.000000 513113.000000 42843.000000 10036.000000 78911.000000 231962.000000
+Mult=1.0 1.0 1.0
+[Camera025/Matrix2]
+Illuminant=-1
+Matrix=0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+Mult=0.0 0.0 0.0
+[Camera026]
+Id={11111111-11110000-08a420c3-32f90035}
+Name=Canon PowerShot A3100 IS
+ShortName=PowerShot A3100 IS
+SensorWidth=4080
+SensorHeight=3048
+CroppedWidth=4000
+CroppedHeight=3000
+ActiveOriginX=20
+ActiveOriginY=12
+ActiveOriginRight=24
+ActiveOriginBottom=10
+BlackLevel=127
+WhiteLevel=4095
+Mosaic=1
+BitsPerUnit=12
+[Camera026/Matrix1]
+Illuminant=17
+Matrix=827547.000000 -290458.000000 -126086.000000 -12829.000000 530507.000000 50537.000000 5181.000000 48183.000000 245014.000000
+Mult=1.0 1.0 1.0
+[Camera026/Matrix2]
+Illuminant=-1
+Matrix=0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+Mult=0.0 0.0 0.0
+[Camera027]
+Id={11111111-11110000-08a420c3-32f90036}
+Name=Canon PowerShot A3200 IS
+ShortName=PowerShot A3200 IS
+SensorWidth=4416
+SensorHeight=3296
+CroppedWidth=4320
+CroppedHeight=3240
+ActiveOriginX=96
+ActiveOriginY=56
+ActiveOriginRight=0
+ActiveOriginBottom=0
+BlackLevel=127
+WhiteLevel=4095
+Mosaic=1
+BitsPerUnit=12
+[Camera027/Matrix1]
+Illuminant=17
+Matrix=827547.000000 -290458.000000 -126086.000000 -12829.000000 530507.000000 50537.000000 5181.000000 48183.000000 245014.000000
+Mult=1.0 1.0 1.0
+[Camera027/Matrix2]
+Illuminant=-1
+Matrix=0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+Mult=0.0 0.0 0.0
+[Camera028]
+Id={11111111-11110000-08a420c3-32f90037}
+Name=Canon PowerShot A3300 IS
+ShortName=PowerShot A3300 IS
+SensorWidth=4704
+SensorHeight=3504
+CroppedWidth=4608
+CroppedHeight=3456
+ActiveOriginX=16
+ActiveOriginY=26
+ActiveOriginRight=64
+ActiveOriginBottom=18
+BlackLevel=127
+WhiteLevel=4095
+Mosaic=1
+BitsPerUnit=12
+[Camera028/Matrix1]
+Illuminant=17
+Matrix=827547.000000 -290458.000000 -126086.000000 -12829.000000 530507.000000 50537.000000 5181.000000 48183.000000 245014.000000
+Mult=1.0 1.0 1.0
+[Camera028/Matrix2]
+Illuminant=-1
+Matrix=0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+Mult=0.0 0.0 0.0
+[Camera029]
+Id={11111111-11110000-08a420c3-32f90038}
+Name=Canon PowerShot A3400 IS
+ShortName=PowerShot A3400 IS
+SensorWidth=4704
+SensorHeight=3504
+CroppedWidth=4608
+CroppedHeight=3456
+ActiveOriginX=16
+ActiveOriginY=26
+ActiveOriginRight=64
+ActiveOriginBottom=18
+BlackLevel=127
+WhiteLevel=4095
+Mosaic=3
+BitsPerUnit=12
+[Camera029/Matrix1]
+Illuminant=17
+Matrix=827547.000000 -290458.000000 -126086.000000 -12829.000000 530507.000000 50537.000000 5181.000000 48183.000000 245014.000000
+Mult=1.0 1.0 1.0
+[Camera029/Matrix2]
+Illuminant=-1
+Matrix=0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+Mult=0.0 0.0 0.0
+[Camera030]
+Id={11111111-11110000-08a420c3-32f90039}
+Name=Canon PowerShot A410
+ShortName=PowerShot A410
+SensorWidth=2144
+SensorHeight=1560
+CroppedWidth=2048
+CroppedHeight=1536
+ActiveOriginX=2
+ActiveOriginY=6
+ActiveOriginRight=54
+ActiveOriginBottom=2
+BlackLevel=31
+WhiteLevel=1023
+Mosaic=1
+BitsPerUnit=10
+[Camera030/Matrix1]
+Illuminant=17
+Matrix=270041.000000 -110546.000000 -43914.000000 -121712.000000 256251.000000 12623.000000 -27956.000000 36119.000000 104654.000000
+Mult=1.0 1.0 1.0
+[Camera030/Matrix2]
+Illuminant=-1
+Matrix=0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+Mult=0.0 0.0 0.0
+[Camera031]
 Id={11111111-11110000-08a420c3-32f90026}
 Name=Canon PowerShot A430
 ShortName=PowerShot A430
@@ -351,15 +759,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=3
 BitsPerUnit=10
-[Camera014/Matrix1]
+[Camera031/Matrix1]
 Illuminant=1
 Matrix=0,479627 -0,156240 -0,084926 -0,215238 0,534902 0,060219 -0,096906 0,148194 0,191583
 Mult=1,0 1,0 1,0
-[Camera014/Matrix2]
+[Camera031/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera015]
+[Camera032]
 Id={11111111-11110000-08a420c3-32f9001E}
 Name=Canon PowerShot A450
 ShortName=PowerShot A450
@@ -375,15 +783,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera015/Matrix1]
+[Camera032/Matrix1]
 Illuminant=1
 Matrix=0,652279 -0,199279 -0,101833 -0,159819 0,619308 0,078172 -0,058827 0,150963 0,264216
 Mult=1,0 1,0 1,0
-[Camera015/Matrix2]
+[Camera032/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera016]
+[Camera033]
 Id={11111111-11110000-08a420c3-32f90017}
 Name=Canon PowerShot A460
 ShortName=PowerShot A460
@@ -399,15 +807,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera016/Matrix1]
+[Camera033/Matrix1]
 Illuminant=1
 Matrix=0,649324 -0,233893 -0,088521 -0,158955 0,593407 0,069775 -0,044551 0,136891 0,254362
 Mult=1,0 1,0 1,0
-[Camera016/Matrix2]
+[Camera033/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera017]
+[Camera034]
 Id={11111111-11110000-08a420c3-32f9002A}
 Name=Canon PowerShot A470
 ShortName=PowerShot A470
@@ -423,15 +831,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera017/Matrix1]
+[Camera034/Matrix1]
 Illuminant=17
 Matrix=0,624777 -0,212311 -0,083575 -0,124817 0,493647 0,072081 0,009428 0,046533 0,211484
 Mult=1,0 1,0 1,0
-[Camera017/Matrix2]
+[Camera034/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera018]
+[Camera035]
 Id={11111111-11110000-08a420c3-32f90003}
 Name=Canon PowerShot A530
 ShortName=PowerShot A530
@@ -447,15 +855,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera018/Matrix1]
+[Camera035/Matrix1]
 Illuminant=1
 Matrix=0,725264 -0,240542 -0,122310 -0,210248 0,656077 0,052390 -0,011282 0,070400 0,300712
 Mult=1,0 1,0 1,0
-[Camera018/Matrix2]
+[Camera035/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera019]
+[Camera036]
 Id={11111111-11110000-08a420c3-32f90015}
 Name=Canon PowerShot A540
 ShortName=PowerShot A540
@@ -471,15 +879,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera019/Matrix1]
+[Camera036/Matrix1]
 Illuminant=1
 Matrix=0,687147 -0,201964 -0,125024 -0,148403 0,566810 0,045401 -0,009472 0,063186 0,208602
 Mult=1,0 1,0 1,0
-[Camera019/Matrix2]
+[Camera036/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera020]
+[Camera037]
 Id={11111111-11110000-08a420c3-32f90023}
 Name=Canon PowerShot A550
 ShortName=PowerShot A550
@@ -495,15 +903,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera020/Matrix1]
+[Camera037/Matrix1]
 Illuminant=1
 Matrix=0,673251 -0,200684 -0,098680 -0,163638 0,651247 0,074004 0,014221 0,052979 0,265291
 Mult=1,0 1,0 1,0
-[Camera020/Matrix2]
+[Camera037/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera021]
+[Camera038]
 Id={11111111-11110000-08a420c3-32f90008}
 Name=Canon PowerShot A560
 ShortName=PowerShot A560
@@ -519,15 +927,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera021/Matrix1]
+[Camera038/Matrix1]
 Illuminant=17
 Matrix=15265,000000 -6193,000000 -1558,000000 -4125,000000 12116,000000 2010,000000 -888,000000 1639,000000 5220,000000
 Mult=1,0 1,0 1,0
-[Camera021/Matrix2]
+[Camera038/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera022]
+[Camera039]
 Id={11111111-11110000-08a420c3-32f90009}
 Name=Canon PowerShot A570 IS
 ShortName=PowerShot A570 IS
@@ -543,15 +951,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera022/Matrix1]
+[Camera039/Matrix1]
 Illuminant=1
 Matrix=0,528283 -0,144259 -0,085966 -0,202789 0,736563 0,073008 -0,027130 0,107702 0,264543
 Mult=1,0 1,0 1,0
-[Camera022/Matrix2]
+[Camera039/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera023]
+[Camera040]
 Id={11111111-11110000-08a420c3-32f90024}
 Name=Canon PowerShot A590 IS
 ShortName=PowerShot A590 IS
@@ -567,15 +975,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=3
 BitsPerUnit=10
-[Camera023/Matrix1]
+[Camera040/Matrix1]
 Illuminant=1
 Matrix=0,726857 -0,176454 -0,124118 -0,071340 0,592001 0,075622 0,063222 0,050547 0,219582
 Mult=1,0 1,0 1,0
-[Camera023/Matrix2]
+[Camera040/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera024]
+[Camera041]
 Id={11111111-11110000-08a420c3-32f90001}
 Name=Canon PowerShot A610
 ShortName=PowerShot A610
@@ -591,15 +999,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera024/Matrix1]
+[Camera041/Matrix1]
 Illuminant=17
 Matrix=15591,000000 -6402,000000 -1592,000000 -5365,000000 13198,000000 2168,000000 -1300,000000 1824,000000 5075,000000
 Mult=1,1 1,0 0,9
-[Camera024/Matrix2]
+[Camera041/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera025]
+[Camera042]
 Id={11111111-11110000-08a420c3-32f90004}
 Name=Canon PowerShot A620
 ShortName=PowerShot A620
@@ -615,15 +1023,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera025/Matrix1]
+[Camera042/Matrix1]
 Illuminant=17
 Matrix=15265,000000 -6193,000000 -1558,000000 -4125,000000 12116,000000 2010,000000 -888,000000 1639,000000 5220,000000
 Mult=1,0 1,0 1,0
-[Camera025/Matrix2]
+[Camera042/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera026]
+[Camera043]
 Id={11111111-11110000-08a420c3-32f9000B}
 Name=Canon PowerShot A630
 ShortName=PowerShot A630
@@ -639,15 +1047,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera026/Matrix1]
+[Camera043/Matrix1]
 Illuminant=1
 Matrix=14201,000000 -5308,000000 -1757,000000 -6087,000000 14472,000000 1617,000000 -2191,000000 3105,000000 5348,000000
 Mult=1,0 1,0 1,0
-[Camera026/Matrix2]
+[Camera043/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera027]
+[Camera044]
 Id={11111111-11110000-08a420c3-32f9000F}
 Name=Canon PowerShot A640
 ShortName=PowerShot A640
@@ -663,15 +1071,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera027/Matrix1]
+[Camera044/Matrix1]
 Illuminant=17
 Matrix=13124,000000 -5329,000000 -1390,000000 -3602,000000 11658,000000 1944,000000 -1612,000000 2863,000000 4885,000000
 Mult=1,0 1,0 1,0
-[Camera027/Matrix2]
+[Camera044/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera028]
+[Camera045]
 Id={11111111-11110000-08a420c3-32f90016}
 Name=Canon PowerShot A650 IS
 ShortName=PowerShot A650 IS
@@ -687,15 +1095,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera028/Matrix1]
+[Camera045/Matrix1]
 Illuminant=1
 Matrix=9427,000000 -3036,000000 -959,000000 -2581,000000 10671,000000 1911,000000 -1039,000000 1982,000000 4430,000000
 Mult=1,0 1,0 1,0
-[Camera028/Matrix2]
+[Camera045/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera029]
+[Camera046]
 Id={11111111-11110000-08a420c3-32f90012}
 Name=Canon PowerShot A700
 ShortName=PowerShot A700
@@ -711,15 +1119,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera029/Matrix1]
+[Camera046/Matrix1]
 Illuminant=17
 Matrix=14062,000000 -5199,000000 -1446,000000 -4712,000000 12470,000000 2243,000000 -1286,000000 2028,000000 4836,000000
 Mult=1,0 1,0 1,0
-[Camera029/Matrix2]
+[Camera046/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera030]
+[Camera047]
 Id={11111111-11110000-08a420c3-32f90007}
 Name=Canon PowerShot A710 IS
 ShortName=PowerShot A710 IS
@@ -735,15 +1143,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera030/Matrix1]
+[Camera047/Matrix1]
 Illuminant=1
 Matrix=0,664401 -0,206085 -0,105935 -0,208489 0,655900 0,051953 -0,051591 0,115760 0,234946
 Mult=1,0 1,0 1,0
-[Camera030/Matrix2]
+[Camera047/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera031]
+[Camera048]
 Id={11111111-11110000-08a420c3-32f9000C}
 Name=Canon PowerShot A720 IS
 ShortName=PowerShot A720 IS
@@ -759,15 +1167,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=3
 BitsPerUnit=10
-[Camera031/Matrix1]
+[Camera048/Matrix1]
 Illuminant=1
 Matrix=14573,000000 -5482,000000 -1546,000000 -1266,000000 9799,000000 1468,000000 -1040,000000 1912,000000 3810,000000
 Mult=1,0 1,0 1,0
-[Camera031/Matrix2]
+[Camera048/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera032]
+[Camera049]
 Id={11111111-11110000-08a420c3-32f90010}
 Name=Canon PowerShot G7
 ShortName=PowerShot G7
@@ -783,15 +1191,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera032/Matrix1]
+[Camera049/Matrix1]
 Illuminant=1
 Matrix=0,575419 -0,185557 -0,077898 -0,213702 0,733569 0,081514 -0,024604 0,131906 0,280378
 Mult=1,0 1,0 1,0
-[Camera032/Matrix2]
+[Camera049/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera033]
+[Camera050]
 Id={11111111-11110000-08a420c3-32f90002}
 Name=Canon PowerShot S2 IS
 ShortName=PowerShot S2 IS
@@ -807,15 +1215,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera033/Matrix1]
+[Camera050/Matrix1]
 Illuminant=1
 Matrix=0,580618 -0,182631 -0,094502 -0,192656 0,650899 0,058592 -0,015379 0,089453 0,256275
 Mult=1,0 1,0 1,0
-[Camera033/Matrix2]
+[Camera050/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera034]
+[Camera051]
 Id={11111111-11110000-08a420c3-32f90011}
 Name=Canon PowerShot S3 IS
 ShortName=PowerShot S3 IS
@@ -831,15 +1239,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera034/Matrix1]
+[Camera051/Matrix1]
 Illuminant=17
 Matrix=14062,000000 -5199,000000 -1446,000000 -4712,000000 12470,000000 2243,000000 -1286,000000 2028,000000 4836,000000
 Mult=1,0 1,0 1,0
-[Camera034/Matrix2]
+[Camera051/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera035]
+[Camera052]
 Id={11111111-11110000-08a420c3-32f9000D}
 Name=Canon PowerShot S5 IS
 ShortName=PowerShot S5 IS
@@ -855,87 +1263,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=3
 BitsPerUnit=10
-[Camera035/Matrix1]
+[Camera052/Matrix1]
 Illuminant=1
 Matrix=0,650591 -0,199585 -0,123118 -0,069617 0,583926 0,034354 -0,019113 0,082163 0,210786
 Mult=1,0 1,0 1,0
-[Camera035/Matrix2]
+[Camera052/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera036]
-Id={11111111-11110000-08a420c3-32f90021}
-Name=Canon PowerShot SD450 / Canon DIGITAL IXUS 55
-ShortName=PowerShot SD450 / IXUS 55
-SensorWidth=2672
-SensorHeight=1968
-CroppedWidth=2592
-CroppedHeight=1944
-ActiveOriginX=12
-ActiveOriginY=8
-ActiveOriginRight=44
-ActiveOriginBottom=0
-BlackLevel=31
-WhiteLevel=1023
-Mosaic=1
-BitsPerUnit=10
-[Camera036/Matrix1]
-Illuminant=1
-Matrix=0,536034 -0,173429 -0,089823 -0,290416 0,735807 0,047894 -0,071455 0,114314 0,274533
-Mult=1,0 1,0 1,0
-[Camera036/Matrix2]
-Illuminant=-1
-Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
-Mult=0,0 0,0 0,0
-[Camera037]
-Id={11111111-11110000-08a420c3-32f9001B}
-Name=Canon PowerShot SD600 / Canon Digital IXUS 60
-ShortName=PowerShot SD600 / IXUS 60
-SensorWidth=2888
-SensorHeight=2136
-CroppedWidth=2816
-CroppedHeight=2112
-ActiveOriginX=44
-ActiveOriginY=8
-ActiveOriginRight=4
-ActiveOriginBottom=0
-BlackLevel=31
-WhiteLevel=1023
-Mosaic=1
-BitsPerUnit=10
-[Camera037/Matrix1]
-Illuminant=1
-Matrix=0,767398 -0,227658 -0,144213 -0,217466 0,669319 0,038180 -0,023152 0,077743 0,238669
-Mult=1,0 1,0 1,0
-[Camera037/Matrix2]
-Illuminant=-1
-Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
-Mult=0,0 0,0 0,0
-[Camera038]
-Id={11111111-11110000-08a420c3-32f90005}
-Name=Canon PowerShot SD800 IS / Canon DIGITAL IXUS 850 IS
-ShortName=PowerShot SD800 IS / IXUS 850 IS
-SensorWidth=3152
-SensorHeight=2340
-CroppedWidth=3072
-CroppedHeight=2304
-ActiveOriginX=38
-ActiveOriginY=14
-ActiveOriginRight=6
-ActiveOriginBottom=2
-BlackLevel=31
-WhiteLevel=1023
-Mosaic=1
-BitsPerUnit=10
-[Camera038/Matrix1]
-Illuminant=1
-Matrix=0,661014 -0,189364 -0,115797 -0,168772 0,661827 0,047392 -0,035846 0,107148 0,233705
-Mult=1,0 1,0 1,0
-[Camera038/Matrix2]
-Illuminant=-1
-Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
-Mult=0,0 0,0 0,0
-[Camera039]
+[Camera053]
 Id={11111111-11110000-08a420c3-32f9002B}
 Name=Canon PowerShot SX10 IS
 ShortName=PowerShot SX10 IS
@@ -951,15 +1287,15 @@ BlackLevel=127
 WhiteLevel=4095
 Mosaic=1
 BitsPerUnit=12
-[Camera039/Matrix1]
+[Camera053/Matrix1]
 Illuminant=17
 Matrix=13124,000000 -5329,000000 -1390,000000 -3602,000000 11658,000000 1944,000000 -1612,000000 2863,000000 4885,000000
 Mult=1,0 1,0 1,0
-[Camera039/Matrix2]
+[Camera053/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera040]
+[Camera054]
 Id={11111111-11110000-08a420c3-32f9001A}
 Name=Canon PowerShot SX100 IS
 ShortName=PowerShot SX100 IS
@@ -975,15 +1311,15 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=3
 BitsPerUnit=10
-[Camera040/Matrix1]
+[Camera054/Matrix1]
 Illuminant=1
 Matrix=0,656793 -0,168702 -0,108030 -0,002711 0,661538 0,037919 0,077255 0,048834 0,241797
 Mult=1,0 1,0 1,0
-[Camera040/Matrix2]
+[Camera054/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera041]
+[Camera055]
 Id={11111111-11110000-08a420c3-32f90028}
 Name=Canon PowerShot SX110 IS
 ShortName=PowerShot SX110 IS
@@ -999,15 +1335,15 @@ BlackLevel=127
 WhiteLevel=4095
 Mosaic=1
 BitsPerUnit=12
-[Camera041/Matrix1]
+[Camera055/Matrix1]
 Illuminant=17
 Matrix=14134,000000 -5576,000000 -1527,000000 -1991,000000 10719,000000 1273,000000 -1158,000000 1929,000000 3581,000000
 Mult=1,0 1,0 1,0
-[Camera041/Matrix2]
+[Camera055/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0
-[Camera042]
+[Camera056]
 Id={11111111-11110000-08a420c3-32f90019}
 Name=Canon PowerShot TX1
 ShortName=PowerShot TX1
@@ -1023,11 +1359,11 @@ BlackLevel=31
 WhiteLevel=1023
 Mosaic=1
 BitsPerUnit=10
-[Camera042/Matrix1]
+[Camera056/Matrix1]
 Illuminant=1
 Matrix=0,510370 -0,068998 -0,086859 -0,279980 0,766686 0,067944 -0,014382 0,113688 0,239853
 Mult=1,0 1,0 1,0
-[Camera042/Matrix2]
+[Camera056/Matrix2]
 Illuminant=-1
 Matrix=0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000 0,000000
 Mult=0,0 0,0 0,0

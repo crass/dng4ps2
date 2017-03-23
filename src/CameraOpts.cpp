@@ -111,8 +111,8 @@ namespace
 			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90004}" },
 
-		{	L"Canon PowerShot SD800 IS / Canon DIGITAL IXUS 850 IS", 
-			L"PowerShot SD800 IS / IXUS 850 IS",
+		{	L"Canon DIGITAL IXUS 850 IS / Canon PowerShot SD800 IS", 
+			L"IXUS 850 IS / PowerShot SD800 IS",
 			3152,2340, 38,14,6,2, 3072,2304,  MOSAIC_RGGB, // checked
 			lsDaylight, { 0.661014f,-0.189364f,-0.115797f, -0.168772f,0.661827f,0.047392f, -0.035846f,0.107148f,0.233705f },
 			{1.0f, 1.0f, 1.0f},
@@ -278,11 +278,10 @@ namespace
 			lsDaylight, {0.656793f,-0.168702f,-0.108030f, -0.002711f,0.661538f,0.037919f, 0.077255f,0.048834f,0.241797f},
 			{1.0f, 1.0f, 1.0f},
 			-1, {}, {}, ppc_10,
-			L"{11111111-11110000-08a420c3-32f9001A}"
-		},
+			L"{11111111-11110000-08a420c3-32f9001A}" },
 
-		{	L"Canon PowerShot SD600 / Canon Digital IXUS 60", 
-			L"PowerShot SD600 / IXUS 60",
+		{	L"Canon Digital IXUS 60 / Canon PowerShot SD600", 
+			L"IXUS 60 / PowerShot SD600",
 			2888,2136, 44,8,4,0, 2816,2112,  MOSAIC_RGGB,
 			lsDaylight, {0.767398f,-0.227658f,-0.144213f, -0.217466f,0.669319f,0.038180f, -0.023152f,0.077743f,0.238669f},
 			{1.0f, 1.0f, 1.0f},
@@ -313,7 +312,8 @@ namespace
 			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f9001E}" },
 
-		{	L"Canon DIGITAL IXUS 960 IS / Canon PowerShot SD950 IS", L"IXUS 960 IS / PowerShot SD950 IS",
+		{	L"Canon DIGITAL IXUS 960 IS / Canon PowerShot SD950 IS",
+			L"IXUS 960 IS / PowerShot SD950 IS",
 			4104,3048, 48,12,24,12, 4000,3000,  MOSAIC_RGGB,
 			lsDaylight, {0.764117f,-0.223884f,-0.116036f, -0.035875f,0.582534f,0.032982f, 0.010441f,0.064164f,0.198520f}, // my
 			{1.0f, 1.0f, 1.0f},
@@ -328,8 +328,8 @@ namespace
 			-1, {}, {}, ppc_10,
 			L"{11111111-11110000-08a420c3-32f90020}" },
 
-		{	L"Canon PowerShot SD450 / Canon DIGITAL IXUS 55", 
-			L"PowerShot SD450 / IXUS 55",
+		{	L"Canon DIGITAL IXUS 55 / Canon PowerShot SD450", 
+			L"IXUS 55 / PowerShot SD450",
 			2672,1968, 12,8,44,0, 2592,1944,  MOSAIC_RGGB, // Checked
 			lsDaylight, {0.536034f,-0.173429f,-0.089823f, -0.290416f,0.735807f,0.047894f, -0.071455f,0.114314f,0.274533f}, // is good enough
 			{1.0f, 1.0f, 1.0f},

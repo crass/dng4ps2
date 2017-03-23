@@ -36,11 +36,11 @@ void fill_about_text_into(wxTextCtrl* txtAboutText)
 	vers.Printf
 	(
 		L"%d.%d.%d %s build %d ",
-		AutoVersion::MAJOR,
-		AutoVersion::MINOR,
-		AutoVersion::BUILD,
-		wxString(AutoVersion::STATUS, wxConvLocal).c_str(),
-		AutoVersion::BUILDS_COUNT
+		(int)AutoVersion::MAJOR,
+		(int)AutoVersion::MINOR,
+		(int)AutoVersion::BUILD,
+		wxString(AutoVersion::STATUS, wxConvLocal).wx_str(),
+		(int)AutoVersion::BUILDS_COUNT
 	);
 
 	text.Replace(L"__VERSION__", vers, true);

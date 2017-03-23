@@ -233,7 +233,7 @@ void CamCalibrFrame::load_raw_file(bool update_scroll_bars)
 
 	unsigned long file_size = wxFileName::GetSize(raw_file).GetLo();
 	if (file_size != CameraOpts::get_file_size(camera_))
-		throw Exception(wxString::Format(_("wrong_camera"), camera_.model_name.c_str()));
+		throw Exception(wxString::Format(_("wrong_camera"), camera_.model_name.wx_str()));
 
 	double bright = 1;
 	txtBright->GetValue().ToDouble(&bright);
@@ -286,7 +286,7 @@ void CamCalibrFrame::show_color_areas()
 	{
 		const ColorArea &area = areas_[i];
 
-		buffer.Printf(L"%i: [%i,%i,%i,%i]", i+1, area.left, area.top, area.right, area.bottom);
+		buffer.Printf(L"%i: [%i,%i,%i,%i]", (int)i+1, area.left, area.top, area.right, area.bottom);
 		lbxAreas->Append(buffer);
 	}
 	if (last_selection < (int)lbxAreas->GetCount()) lbxAreas->SetSelection(last_selection);
@@ -509,7 +509,7 @@ void CamCalibrFrame::OnProcessClick(wxCommandEvent& event)
 	log(L"\nCALCULATION");
 	for (size_t i = 0; i < areas_.size(); i++)
 	{
-		buffer.Printf(L"Area %i", i+1);
+		buffer.Printf(L"Area %i", (int)i+1);
 		log(buffer);
 		calc_color_for_area(jpeg_image, i, area.jpeg, true, 1/bright, best_gammut);
 		calc_color_for_area(raw_image, i, area.camera, true, 1, imagine_gammut);

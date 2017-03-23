@@ -544,7 +544,7 @@ void OptionsDialog::btnCopyClick(wxCommandEvent& event)
 
 	wxMessageDialog *dialog = new wxMessageDialog(
 		this,
-		wxString::Format(_("dlgCopyCameraText"), item->model_name.c_str()),
+		wxString::Format(_("dlgCopyCameraText"), item->model_name.wx_str()),
 		_("dlgCopyCameraCap"),
 		wxYES_NO|wxNO_DEFAULT
 	);
@@ -554,8 +554,8 @@ void OptionsDialog::btnCopyClick(wxCommandEvent& event)
 
 	wxString new_id;
 	CameraData new_item = *item;
-	new_item.model_name = wxString::Format(_("copyOfCameraProf"), item->model_name.c_str());
-	new_item.short_name = wxString::Format(_("copyOfCameraProf"), item->short_name.c_str());
+	new_item.model_name = wxString::Format(_("copyOfCameraProf"), item->model_name.wx_str());
+	new_item.short_name = wxString::Format(_("copyOfCameraProf"), item->short_name.wx_str());
 	new_item.id = L"";
 	cam_opts_->add(new_item, &new_id);
 	show_cameras_list(new_id);
@@ -568,7 +568,7 @@ void OptionsDialog::btnDeleteClick(wxCommandEvent& event)
 
 	wxMessageDialog *dialog = new wxMessageDialog(
 		this,
-		wxString::Format(_("dlgDeleteCameraText"), item->model_name.c_str()),
+		wxString::Format(_("dlgDeleteCameraText"), item->model_name.wx_str()),
 		_("dlgDeleteCameraCap"),
 		wxYES_NO|wxNO_DEFAULT
 	);
@@ -604,7 +604,7 @@ void OptionsDialog::btnResetToDefaultsClick(wxCommandEvent& event)
 
 	wxMessageDialog *dialog = new wxMessageDialog(
 		this,
-		wxString::Format(_("dlgDefaultCameraText"), item->model_name.c_str()),
+		wxString::Format(_("dlgDefaultCameraText"), item->model_name.wx_str()),
 		_("dlgDefaultCameraCap"),
 		wxYES_NO|wxNO_DEFAULT
 	);
@@ -732,13 +732,13 @@ void OptionsDialog::OnGetLastestClick(wxCommandEvent& event)
 	wxHTTP get;
 	get.SetHeader(_T("Content-type"), _T("text/html; charset=utf-8"));
 	get.SetTimeout(30);
-	 
+        
 	get.Connect(_T("dng4ps2.googlecode.com"));
-	 
+        
 	wxApp::IsMainLoopRunning();
-	 
+        
 	wxInputStream *httpStream = get.GetInputStream(_T("/svn/trunk/src/cameras.txt"));
-	 
+        
 	if (get.GetError() == wxPROTO_NOERR)
 	{
 		wxFileName file_name;
@@ -763,7 +763,7 @@ void OptionsDialog::OnGetLastestClick(wxCommandEvent& event)
 	{
 		wxMessageBox(_T("Unable to connect!"));
 	}
-	 
+        
 	wxDELETE(httpStream);
 	get.Close();
 }

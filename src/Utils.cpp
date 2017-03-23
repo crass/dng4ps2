@@ -1024,7 +1024,7 @@ void Utils::process_file
 		{
 			unsigned int camera_file_size = CameraOpts::get_file_size(*camera);
 			if (file_size != camera_file_size)
-				throw Exception(wxString::Format(_("raw_file_size_not_correspond"), file_size, camera_name.c_str()));
+				throw Exception(wxString::Format(_("raw_file_size_not_correspond"), (int)file_size, camera_name.wx_str()));
 		}
 	}
 	else

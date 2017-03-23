@@ -238,7 +238,7 @@ private:
 	void btnStopClick(wxCommandEvent& event);
 
 public:
-	WorkerProgress(const FileList & fl, DNG4PSFrame * fr) : file_list(fl), frame(fr), ProcessDialog(fr, fr)
+	WorkerProgress(const FileList & fl, DNG4PSFrame * fr) : ProcessDialog(fr, fr), file_list(fl), frame(fr)
 	{ Bind(EVT_THREAD_UPDATE, &WorkerProgress::OnThreadUpdate, this); }
 
 	void RunInGui(std::function<void()>);
@@ -293,7 +293,8 @@ void* WorkerProgress::Entry()
 
 	for (size_t i = 0; i < count; i++)
 	{
-		if (canceled = GetThread()->TestDestroy()) break;
+		canceled = GetThread()->TestDestroy();
+		if (canceled) break;
 		const FileListItem & item = file_list[i];
 
 		wxString err_text = L"";
@@ -368,7 +369,7 @@ void DNG4PSFrame::startTimerTrigger(wxTimerEvent& event)
 // for command line, does not use threads
 void DNG4PSFrame::convertFiles(wxArrayString files, wxString outputDir)
 {
-    std::auto_ptr<FileList> file_list (new FileList());
+    std::unique_ptr<FileList> file_list (new FileList());
     if( !outputDir.IsEmpty() )
         sys.options->output_path = outputDir;
 
@@ -379,7 +380,7 @@ void DNG4PSFrame::convertFiles(wxArrayString files, wxString outputDir)
     }
 
 	size_t count = file_list->size();
-	wxDateTime start_time = wxDateTime::Now();
+	//~ wxDateTime start_time = wxDateTime::Now();
 
 	for (size_t num = 0; num < count; num++)
 	{

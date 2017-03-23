@@ -289,7 +289,7 @@ void CamCalibrFrame::show_color_areas()
 		buffer.Printf(L"%i: [%i,%i,%i,%i]", i+1, area.left, area.top, area.right, area.bottom);
 		lbxAreas->Append(buffer);
 	}
-	if (last_selection < lbxAreas->GetCount()) lbxAreas->SetSelection(last_selection);
+	if (last_selection < (int)lbxAreas->GetCount()) lbxAreas->SetSelection(last_selection);
 }
 
 void CamCalibrFrame::OnImageLeftDown(wxMouseEvent& event)
@@ -806,7 +806,7 @@ bool CamCalibrFrame::area_viewable(const ColorArea& current_area)
 
     scrwImage->GetClientSize(&width, &height);
     scrwImage->GetViewStart(&start_x, &start_y);
-	scrwImage->GetScrollPixelsPerUnit(&unit_x, &unit_y);
+    scrwImage->GetScrollPixelsPerUnit(&unit_x, &unit_y);
 
     // Is each side of the rectanble visible?
     if (current_area.left >= (start_x * unit_x)
@@ -815,7 +815,7 @@ bool CamCalibrFrame::area_viewable(const ColorArea& current_area)
         && current_area.bottom <= ((start_y * unit_y) + height))
         result = true;
 
-	return result;
+    return result;
 }
 
 // Scrolls the current view to centre on the area

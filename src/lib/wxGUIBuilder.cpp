@@ -298,7 +298,7 @@ UIElem dlg_buttons(const UIElemOptions &options)
 {
 	auto create_fun = [=] (const BuildOptions &build_options, wxObject *parent, wxSizer *sizer, const UIElems &items) -> wxObject* 
 	{
-		wxWindow *parent_window = dynamic_cast<wxWindow*>(parent);
+		//~ wxWindow *parent_window = dynamic_cast<wxWindow*>(parent);
 		wxStdDialogButtonSizer *sizer_obj = new wxStdDialogButtonSizer();
 		for (auto &item : items)
 		{

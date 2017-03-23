@@ -157,8 +157,8 @@ public:
 	UIElem operator [] (const UIElems &elems);
 
 private:
-	UIElem layout_;
 	const CreateWidgetFun create_fun_;
+	UIElem layout_;
 	UIElemOptions options_;
 	wxString name_;
 };
@@ -178,8 +178,8 @@ public:
 	const UIElemOptions& get_elem_options() const { return elem_options_; }
 
 protected:
-	uint32_t flags_;
 	UIElemOptions elem_options_;
+	uint32_t flags_;
 };
 
 template <typename T>

@@ -7,8 +7,8 @@ class CameraOpts;
 class ProgramObjects
 {
 public:
-    std::auto_ptr<Options> options;
-    std::auto_ptr<CameraOpts> cameras;
+    std::unique_ptr<Options> options;
+    std::unique_ptr<CameraOpts> cameras;
     wxString langs_path;
 
     void init_language();

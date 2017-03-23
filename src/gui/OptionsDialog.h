@@ -65,7 +65,7 @@ protected:
 	wxTextCtrl* txtMatr1;
 
 private:
-	std::auto_ptr<CameraOpts> cam_opts_;
+	std::unique_ptr<CameraOpts> cam_opts_;
 	typedef std::map<unsigned int, wxChoice*> GroupControls;
 	GroupControls group_controls_;
 	wxString lastCameraId;

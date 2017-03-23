@@ -26,7 +26,7 @@ private:
 	wxTextCtrl* txtPathToRaw;
 	wxTextCtrl* txtOutputDir;
 
-	std::auto_ptr<FileList> file_list;
+	std::unique_ptr<FileList> file_list;
 	void fill_files_list();
 	void read_some_options();
 	void show_progress(ScanProgressWin * win, int percent, const wxDateTime &start_time);

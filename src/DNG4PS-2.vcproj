@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="windows-1251"?>
+<?xml version="1.0" encoding="windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="DNG4PS-2"
 	ProjectGUID="{18ED6DE0-C2AC-48C5-B317-F7B16F896B21}"
 	RootNamespace="DNG4PS2"
@@ -120,7 +120,7 @@
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories="&quot;$(wx)\include&quot;;&quot;$(boost_include)&quot;;&quot;$(wx)\lib\vc_lib\mswu&quot;;external_libs\dng_sdk;external_libs\expat\src;external_libs\libexif;external_libs\libexif\canon;external_libs\libexif\olympus;external_libs\MD5;external_libs\missed_files;external_libs\xmp_sdk\include;external_libs\xmp_sdk\common"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;wxUSE_UNICODE;wxUSE_NO_MANIFEST;WIN_ENV;qDNGLittleEndian=1;qWinOS=1;qMacOS=0;HAVE_MEMMOVE;DISABLE_CALIBR"
-				RuntimeLibrary="0"
+				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderThrough=""
@@ -139,9 +139,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libcmt.lib comctl32.lib wxbase28u.lib wxjpeg.lib wxmsw28u_core.lib wxbase28u_net.lib wxpng.lib wxzlib.lib wxtiff.lib wsock32.lib"
+				AdditionalDependencies="comctl32.lib rpcrt4.lib wxbase29u.lib wxjpeg.lib wxmsw29u_core.lib wxbase29u_net.lib wxpng.lib wxzlib.lib wxtiff.lib wsock32.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;$(wx)\lib\vc_lib&quot;"
+				IgnoreAllDefaultLibraries="false"
+				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="false"
 				SubSystem="2"
 				OptimizeReferences="2"

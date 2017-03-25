@@ -40,7 +40,7 @@ If compiling via Makefile the following is required:
 
 Project's web page: http://code.google.com/p/dng4ps2
 Author's email:     denis.artyomov@gmail.com
-Developer's email:  glenn.washburn@efficientek.com
+Developer's email:  development@efficientek.com
 git:                https://github.com/crass/dng4ps2
 PPA:                https://code.launchpad.net/~crass/+archive/dng4ps2
 
